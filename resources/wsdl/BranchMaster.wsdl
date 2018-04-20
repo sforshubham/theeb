@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.BranchMaster"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.BranchMaster"
+             xmlns:xsdin3270="DummyRequest"
+             xmlns:xsdout3270="BrancheMstResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : NILOFER---NILOFER
+Created Date : 05/08/2016 Time :15:03:26
+Application   : RentproWeb
+</documentation>
+
+<import  namespace="DummyRequest" location="http://81.21.59.232/Magic94Scripts/Wsdl/DummyReq.xsd"/>
+<import  namespace="BrancheMstResponse" location="http://81.21.59.232/Magic94Scripts/Wsdl/BranchMstRes.xsd"/>
+
+ 
+<message name="BranchMasterWebService">
+   <part name="PI_Dummy_1" element="xsdin3270:Dummy" />
+</message>
+<message name="BranchMasterWebServiceResponse">
+   <part name="BranchMasterWebService_Ret"  element="xsdout3270:Branches" />
+</message>
+
+<portType name="BranchMasterPortType">
+         <operation name="BranchMasterWebService" >
+         <input message="tns:BranchMasterWebService" />
+         <output message="tns:BranchMasterWebServiceResponse"/>
+      </operation>
+</portType>
+
+<binding name="BranchMasterBinding"
+   type="tns:BranchMasterPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="BranchMasterWebService">
+         <documentation></documentation>
+         <soap:operation soapAction="03C213F2563696672756352656752756473716D48636E6162724F2265675F6270747E65625A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="BranchMaster">
+   <documentation></documentation>
+   <port name="BranchMasterPortType" binding="tns:BranchMasterBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>
