@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.CarProReservationWS"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.CarProReservationWS"
+             xmlns:xsdin8="CarProReservation"
+             xmlns:xsdout8="CarProReservationResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : NIKHIL---NIKHIL
+Created Date : 30/05/2016 Time :14:08:25
+Application   : Import Process
+</documentation>
+
+<import  namespace="CarProReservation" location="ReservationImport.xsd"/>
+<import  namespace="CarProReservationResponse" location="ReservationResponse.xsd"/>
+
+ 
+<message name="CarProReservationWS">
+   <part name="P__InBlob_1" element="xsdin8:ReservationDetails" />
+</message>
+<message name="CarProReservationWSResponse">
+   <part name="CarProReservationWS_Ret"  element="xsdout8:ReservationDetails" />
+</message>
+
+<portType name="CarProReservationWSPortType">
+         <operation name="CarProReservationWS" >
+         <input message="tns:CarProReservationWS" />
+         <output message="tns:CarProReservationWSResponse"/>
+      </operation>
+</portType>
+
+<binding name="CarProReservationWSBinding"
+   type="tns:CarProReservationWSPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="CarProReservationWS">
+         <documentation></documentation>
+         <soap:operation soapAction="3575E6F6964716672756375625F62705271634F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="CarProReservationWS">
+   <documentation></documentation>
+   <port name="CarProReservationWSPortType" binding="tns:CarProReservationWSBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

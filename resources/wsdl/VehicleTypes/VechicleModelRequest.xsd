@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="VehicleTypeWS" xmlns:ns1="VehicleTypeWS" targetNamespace="VehicleTypeWS" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="VehicleTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VehicleType" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

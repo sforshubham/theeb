@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.TransactionData"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.TransactionData"
+             xmlns:xsdin25="TransactionRequest"
+             xmlns:xsdout25="TransactionRequestResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 21/08/2017 Time :14:21:50
+Application   : Import Process
+</documentation>
+
+<import  namespace="TransactionRequest" location="TransactionRequest.xsd"/>
+<import  namespace="TransactionRequestResponse" location="TransactionResponse.xsd"/>
+
+ 
+<message name="GetTransactionData">
+   <part name="PI_In_Blob_1" element="xsdin25:TransactionRQ" />
+</message>
+<message name="GetTransactionDataResponse">
+   <part name="GetTransactionData_Ret"  element="xsdout25:TransactionRS" />
+</message>
+
+<portType name="TransactionRequestPortType">
+         <operation name="GetTransactionData" >
+         <input message="tns:GetTransactionData" />
+         <output message="tns:GetTransactionDataResponse"/>
+      </operation>
+</portType>
+
+<binding name="TransactionRequestBinding"
+   type="tns:TransactionRequestPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="GetTransactionData">
+         <documentation></documentation>
+         <soap:operation soapAction="16471644E6F69647361637E6162745475674F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="TransactionRequest">
+   <documentation></documentation>
+   <port name="TransactionRequestPortType" binding="tns:TransactionRequestBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

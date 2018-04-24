@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.RentProPrint"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.RentProPrint"
+             xmlns:xsdin26="RentProPrintRequest"
+             xmlns:xsdout26="RentProPrintResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 04/09/2017 Time :14:58:13
+Application   : Import Process
+</documentation>
+
+<import  namespace="RentProPrintRequest" location="RentProPrintRequest.xsd"/>
+<import  namespace="RentProPrintResponse" location="RentProPrintResponse.xsd"/>
+
+ 
+<message name="GetRentProPrint">
+   <part name="PI__In_Blob_1" element="xsdin26:RentProPrintRQ" />
+</message>
+<message name="GetRentProPrintResponse">
+   <part name="GetRentProPrint_Ret"  element="xsdout26:RentProPrintRS" />
+</message>
+
+<portType name="RentProPrintPortType">
+         <operation name="GetRentProPrint" >
+         <input message="tns:GetRentProPrint" />
+         <output message="tns:GetRentProPrintResponse"/>
+      </operation>
+</portType>
+
+<binding name="RentProPrintBinding"
+   type="tns:RentProPrintPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="GetRentProPrint">
+         <documentation></documentation>
+         <soap:operation soapAction="47E6962705F6270547E65625475674F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="RentProPrint">
+   <documentation></documentation>
+   <port name="RentProPrintPortType" binding="tns:RentProPrintBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

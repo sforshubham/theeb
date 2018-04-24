@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="ReservationMobilePayment" targetNamespace="ReservationMobilePayment" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="PayMentRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="PAYMENTOPTION"/>
+        <xs:element type="xs:string" name="MERCHANTREFERENCE"/>
+        <xs:element type="xs:string" name="AMOUNT"/>
+        <xs:element type="xs:string" name="CARDNUMBER"/>
+        <xs:element type="xs:string" name="EXPIRYDATE"/>
+        <xs:element type="xs:string" name="AUTHORIZATIONCODE"/>
+        <xs:element type="xs:string" name="RESERVATIONNO"/>
+        <xs:element type="xs:string" name="DRIVERCODE"/>
+        <xs:element type="xs:string" name="CURRENCY"/>
+		<xs:element type="xs:string" name="INVOICE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

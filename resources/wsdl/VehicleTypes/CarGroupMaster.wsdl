@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.CarGroupMaster"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.CarGroupMaster"
+             xmlns:xsdin3272="DummyRequest"
+             xmlns:xsdout3272="CarGroupMstResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : NILOFER---NILOFER
+Created Date : 05/08/2016 Time :16:54:56
+Application   : RentproWeb
+</documentation>
+
+<import  namespace="DummyRequest" location="DummyReq.xsd"/>
+<import  namespace="CarGroupMstResponse" location="CarGroupMstRes.xsd"/>
+
+ 
+<message name="CarGroupMasterWebService">
+   <part name="PI_Dummy_1" element="xsdin3272:Dummy" />
+</message>
+<message name="CarGroupMasterWebServiceResponse">
+   <part name="CarGroupMasterWebService_Ret"  element="xsdout3272:CarGroups" />
+</message>
+
+<portType name="CarGroupMasterPortType">
+         <operation name="CarGroupMasterWebService" >
+         <input message="tns:CarGroupMasterWebService" />
+         <output message="tns:CarGroupMasterWebServiceResponse"/>
+      </operation>
+</portType>
+
+<binding name="CarGroupMasterBinding"
+   type="tns:CarGroupMasterPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="CarGroupMasterWebService">
+         <documentation></documentation>
+         <soap:operation soapAction="03C213F2563696672756352656752756473716D40757F62774271634F2265675F6270747E65625A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="CarGroupMaster">
+   <documentation></documentation>
+   <port name="CarGroupMasterPortType" binding="tns:CarGroupMasterBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

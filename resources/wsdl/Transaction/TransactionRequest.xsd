@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TransactionRequest" xmlns:ns1="TransactionRequest" targetNamespace="TransactionRequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="TransactionRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="StartDate"/>
+        <xs:element type="xs:string" name="EndDate"/>
+        <xs:element type="xs:string" name="TransactionFor"/>
+        <xs:element type="xs:string" name="DriverCode"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

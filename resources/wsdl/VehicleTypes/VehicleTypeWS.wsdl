@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.VehicleTypeWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdin92="VehicleTypeWS" xmlns:xsdout92="VehicleTypeWS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:magic.81.21.59.232.VehicleTypeWS">
+   <documentation>WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 29/06/2017 Time :14:47:38
+Application   : Import Process</documentation>
+   <import namespace="VehicleTypeWS" location="VehicleTypeRequest.xsd" />
+   <import namespace="VehicleTypeWS" location="VehicleTypesResponse.xsd" />
+   <message name="VehicletypeWS">
+      <part name="PI_Dummy_1" element="xsdin92:VehicleTypes" />
+   </message>
+   <message name="VehicletypeWSResponse">
+      <part name="VehicletypeWS_Ret" element="xsdout92:VehicleTypes" />
+   </message>
+   <portType name="VehicleTypeWSPortType">
+      <operation name="VehicletypeWS">
+         <input message="tns:VehicletypeWS" />
+         <output message="tns:VehicletypeWSResponse" />
+      </operation>
+   </portType>
+   <binding name="VehicleTypeWSBinding" type="tns:VehicleTypeWSPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+      <operation name="VehicletypeWS">
+         <documentation />
+         <soap:operation soapAction="35755607974756C63696865665F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+   </binding>
+   <service name="VehicleTypeWS">
+      <documentation />
+      <port name="VehicleTypeWSPortType" binding="tns:VehicleTypeWSBinding">
+         <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+      </port>
+   </service>
+</definitions>

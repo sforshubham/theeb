@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="ShipmentSendDataResponse" targetNamespace="CarProDriver">
+	<xs:element name="DriverImportRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Success" type="xs:string"/>
+				<xs:element name="VarianceReason" type="xs:string"/>
+				<xs:element name="DriverCode" type="xs:positiveInteger"/>
+				<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+				<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+				<xs:element name="DateOfBirth" type="xs:string" minOccurs="0"/>
+				<xs:element name="Nationality" type="xs:string" minOccurs="0"/>
+				<xs:element name="LicenseId" type="xs:string" minOccurs="0"/>
+				<xs:element name="LicenseIssuedBy" type="xs:string" minOccurs="0"/>
+				<xs:element name="LicenseExpiryDate" type="xs:string" minOccurs="0"/>
+				<xs:element name="LicenseDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="LicenseDocExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="Address1" type="xs:string" minOccurs="0"/>
+				<xs:element name="Address2" type="xs:string" minOccurs="0"/>
+				<xs:element name="HomeTel" type="xs:string" minOccurs="0"/>
+				<xs:element name="WorkTel" type="xs:string" minOccurs="0"/>
+				<xs:element name="Mobile" type="xs:string" minOccurs="0"/>
+				<xs:element name="Email" type="xs:string" minOccurs="0"/>
+				<xs:element name="IdType" type="xs:string" minOccurs="0"/>
+				<xs:element name="IdNo" type="xs:string" minOccurs="0"/>
+				<xs:element name="IdDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="IdDocExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="MembershipNo" type="xs:string" minOccurs="0"/>
+				<xs:element name="IDSerialNo" type="xs:string" minOccurs="0"/>
+				<xs:element name="Password" type="xs:string" minOccurs="0"/>
+				<xs:element name="Status" type="xs:string" minOccurs="0"/>
+				<xs:element name="WorkIdDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="WorkIdDocExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="DriverImage" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="DriverImageExt" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

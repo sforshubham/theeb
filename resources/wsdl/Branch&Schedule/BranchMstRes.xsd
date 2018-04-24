@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="BranchMaster" targetNamespace="BrancheMstResponse" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Branches">
+		<xs:annotation>
+			<xs:documentation>Branch Master Information</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Branch">
+					<xs:complexType>
+						<xs:sequence>
+				<xs:element name="BranchCode" type="xs:integer"/>
+				<xs:element name="BranchName" type="xs:string"/>
+				<xs:element name="DistArea" type="xs:integer"/>
+				<xs:element name="DistAreaName" type="xs:string"/>
+				<xs:element name="OpArea" type="xs:integer"/>
+				<xs:element name="OpAreaName" type="xs:string"/>
+				<xs:element name="Country" type="xs:string"/>				
+				<xs:element name="CountryName" type="xs:string"/>
+				<xs:element name="BranchLat" type="xs:string"/>
+				<xs:element name="BranchLong" type="xs:string"/>
+				<xs:element name="City" type="xs:string"/>
+				<xs:element name="State" type="xs:string"/>
+				<xs:element name="Telephone" type="xs:string"/>
+				<xs:element name="Telephone1" type="xs:string"/>
+				<xs:element name="Fax" type="xs:string"/>
+				<xs:element name="Telex" type="xs:string"/>
+				<xs:element name="Email" type="xs:string"/>
+				<xs:element name="Schedule" type="xs:string"/>
+				</xs:sequence>
+		</xs:complexType>
+		</xs:element>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

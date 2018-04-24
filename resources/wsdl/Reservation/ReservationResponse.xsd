@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="ReservationResponse" targetNamespace="CarProReservationResponse">
+	<xs:element name="ReservationDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Reservation" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LicenseNo" type="xs:string" minOccurs="0"/>
+							<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+							<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+							<xs:element name="CDP" type="xs:string" minOccurs="0"/>
+							<xs:element name="OutBranch" type="xs:string" minOccurs="0"/>
+							<xs:element name="InBranch" type="xs:string" minOccurs="0"/>
+							<xs:element name="OutDate" type="xs:string" minOccurs="0"/>
+							<xs:element name="OutTime" type="xs:string" minOccurs="0"/>
+							<xs:element name="InDate" type="xs:string" minOccurs="0"/>
+							<xs:element name="InTime" type="xs:string" minOccurs="0"/>
+							<xs:element name="RateNo" type="xs:string" minOccurs="0"/>
+							<xs:element name="DiscountPercent" type="xs:string" minOccurs="0"/>
+							<xs:element name="RentalSum" type="xs:string" minOccurs="0"/>
+							<xs:element name="DepositAmount" type="xs:string" minOccurs="0"/>
+							<xs:element name="ReservatonNo" type="xs:string" minOccurs="0"/>
+							<xs:element name="ReservationStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="CarGroup" type="xs:string" minOccurs="0"/>
+							<xs:element name="Currency" type="xs:string" minOccurs="0"/>
+							<xs:element name="PaymentType" type="xs:string" minOccurs="0"/>
+							<xs:element name="CreditCardNo" type="xs:string" minOccurs="0"/>
+							<xs:element name="CarMake" type="xs:string" minOccurs="0"/>
+							<xs:element name="CarModel" type="xs:string" minOccurs="0"/>
+							<xs:element name="Remarks" type="xs:string" minOccurs="0"/>
+							<xs:element name="Insurances" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Code" type="xs:string" minOccurs="0"/>
+										<xs:element name="Name" type="xs:string" minOccurs="0"/>
+										<xs:element name="Quantity" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Extras" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Code" type="xs:string" minOccurs="0"/>
+										<xs:element name="Name" type="xs:string" minOccurs="0"/>
+										<xs:element name="Quantity" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Success" type="xs:string"/>
+				<xs:element name="VarianceReason" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

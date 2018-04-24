@@ -16,8 +16,8 @@ Created Date : 05/08/2016 Time :15:03:26
 Application   : RentproWeb
 </documentation>
 
-<import  namespace="DummyRequest" location="http://81.21.59.232/Magic94Scripts/Wsdl/DummyReq.xsd"/>
-<import  namespace="BrancheMstResponse" location="http://81.21.59.232/Magic94Scripts/Wsdl/BranchMstRes.xsd"/>
+<import  namespace="DummyRequest" location="DummyReq.xsd"/>
+<import  namespace="BrancheMstResponse" location="BranchMstRes.xsd"/>
 
  
 <message name="BranchMasterWebService">

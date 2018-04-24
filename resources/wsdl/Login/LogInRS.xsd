@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="CarProUserLoginResponse" targetNamespace="CarProUserLogin">
+	<xs:element name="UserLogOut">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Success" type="xs:string"/>
+				<xs:element name="SessionId" type="xs:string"/>
+				<xs:element name="LastName" type="xs:string"/>
+				<xs:element name="FirstName" type="xs:string"/>
+				<xs:element name="Email" type="xs:string"/>
+				<xs:element name="MobileNo" type="xs:string"/>
+				<xs:element name="DriverCode" type="xs:string"/>
+				<xs:element name="CurrentDate" type="xs:string"/>
+				<xs:element name="CurrentTime" type="xs:string"/>
+				<xs:element name="DriverStatus" type="xs:string"/>
+				<xs:element name="LicenseNo" type="xs:string"/>
+				<xs:element name="IDType" type="xs:string"/>
+				<xs:element name="IDNo" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

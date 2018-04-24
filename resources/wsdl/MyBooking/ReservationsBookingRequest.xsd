@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="ReservationsBookingRequest" xmlns:ns1="ReservationsBookingRequest" targetNamespace="ReservationsBookingRequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Reservations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PassportID" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="VehicleTypesResponse" targetNamespace="VehicleType">
+         <xs:element name="VehicleTypes">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="VehType" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="Code" type="xs:string"></xs:element>
+                                             <xs:element name="Desc" type="xs:string"></xs:element>
+                                             <xs:element name="Type"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

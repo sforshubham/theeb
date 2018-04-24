@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.DriverProfileRequest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdin22="DriverProfileRequest" xmlns:xsdout22="DriverProfileResposne" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:magic.81.21.59.232.DriverProfileRequest">
+   <documentation>WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 01/08/2017 Time :18:14:28
+Application   : Import Process</documentation>
+   <import namespace="DriverProfileRequest" location="DriverProfileRequest.xsd" />
+   <import namespace="DriverProfileResposne" location="DriverProfileResponse.xsd" />
+   <message name="LoadDriverProfileWS">
+      <part name="PI_In_Blob_1" element="xsdin22:DriverProfileRQ" />
+   </message>
+   <message name="LoadDriverProfileWSResponse">
+      <part name="LoadDriverProfileWS_Ret" element="xsdout22:DriverProfileRS" />
+   </message>
+   <portType name="DriverProfileRequestPortType">
+      <operation name="LoadDriverProfileWS">
+         <input message="tns:LoadDriverProfileWS" />
+         <output message="tns:LoadDriverProfileWSResponse" />
+      </operation>
+   </portType>
+   <binding name="DriverProfileRequestBinding" type="tns:DriverProfileRequestPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+      <operation name="LoadDriverProfileWS">
+         <documentation />
+         <soap:operation soapAction="357556C69666F627052756679627444616F6C4F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+   </binding>
+   <service name="DriverProfileRequest">
+      <documentation />
+      <port name="DriverProfileRequestPortType" binding="tns:DriverProfileRequestBinding">
+         <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.ReservationsBookingRequest"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.ReservationsBookingRequest"
+             xmlns:xsdin24="ReservationsBookingRequest"
+             xmlns:xsdout24="ReservationsBookingResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 11/08/2017 Time :10:20:39
+Application   : Import Process
+</documentation>
+
+<import  namespace="ReservationsBookingRequest" location="ReservationsBookingRequest.xsd"/>
+<import  namespace="ReservationsBookingResponse" location="ReservationsBookingResponse.xsd"/>
+
+ 
+<message name="GetReservationBookingData">
+   <part name="PI_In_Bolb_1" element="xsdin24:Reservations" />
+</message>
+<message name="GetReservationBookingDataResponse">
+   <part name="GetReservationBookingData_Ret"  element="xsdout24:ReservationDetails" />
+</message>
+
+<portType name="ReservationsBookingRequestPortType">
+         <operation name="GetReservationBookingData" >
+         <input message="tns:GetReservationBookingData" />
+         <output message="tns:GetReservationBookingDataResponse"/>
+      </operation>
+</portType>
+
+<binding name="ReservationsBookingRequestBinding"
+   type="tns:ReservationsBookingRequestPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="GetReservationBookingData">
+         <documentation></documentation>
+         <soap:operation soapAction="1647164476E696B6F6F624E6F6964716672756375625475674F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="ReservationsBookingRequest">
+   <documentation></documentation>
+   <port name="ReservationsBookingRequestPortType" binding="tns:ReservationsBookingRequestBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="RentProPrintRequest" xmlns:ns1="RentProPrintRequest" targetNamespace="RentProPrintRequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="RentProPrintRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="PrintFor"/>
+        <xs:element type="xs:string" name="DocumentNumber"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic./81.21.59.232.DriverCreateWS"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic./81.21.59.232.DriverCreateWS"
+             xmlns:xsdin7="CarProDriver"
+             xmlns:xsdout7="CarProDriver"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 21/06/2017 Time :17:33:10
+Application   : Import Process
+</documentation>
+
+<import  namespace="CarProDriver" location="DriverImportTemplate.xsd"/>
+<import  namespace="CarProDriver" location="DriverResponseTemplate.xsd"/>
+
+ 
+<message name="CarProDriverWS">
+   <part name="P__In_Blob_1" element="xsdin7:DriverImportRQ" />
+</message>
+<message name="CarProDriverWSResponse">
+   <part name="CarProDriverWS_Ret"  element="xsdout7:DriverImportRS" />
+</message>
+
+<portType name="DriverCreateWSPortType">
+         <operation name="CarProDriverWS" >
+         <input message="tns:CarProDriverWS" />
+         <output message="tns:CarProDriverWSResponse"/>
+      </operation>
+</portType>
+
+<binding name="DriverCreateWSBinding"
+   type="tns:DriverCreateWSPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="CarProDriverWS">
+         <documentation></documentation>
+         <soap:operation soapAction="3575275667962744F62705271634F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="DriverCreateWS">
+   <documentation></documentation>
+   <port name="DriverCreateWSPortType" binding="tns:DriverCreateWSBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

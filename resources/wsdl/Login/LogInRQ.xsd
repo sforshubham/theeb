@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="CarProUserLogin" xmlns:ns1="CarProUserLogin" targetNamespace="CarProUserLogin" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="LoginRQ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserName" type="xs:string"/>
+				<xs:element name="Password" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

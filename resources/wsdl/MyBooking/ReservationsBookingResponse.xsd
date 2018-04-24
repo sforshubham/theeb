@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ns1="ReservationsBookingResponse" xmlns:ns2="ReservationsBookingResponse" targetNamespace="ReservationsBookingResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ReservationDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="Success"/>
+        <xs:element type="xs:string" name="VarianceReason"/>
+        <xs:element type="xs:long" name="DriverCode"/>
+        <xs:element type="xs:string" name="DriverFirstName"/>
+        <xs:element type="xs:string" name="DriverLastName"/>
+        <xs:element name="OnGoing">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Reservation" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:anyURI" name="CarGroupImagePath"/>
+                    <xs:element type="xs:string" name="CarGroupDescription"/>
+                    <xs:element type="xs:string" name="CheckOutDate"/>
+                    <xs:element type="xs:string" name="CheckOutTime"/>
+                    <xs:element type="xs:string" name="CheckInDate"/>
+                    <xs:element type="xs:string" name="CheckInTime"/>
+                    <xs:element type="xs:short" name="RateNo"/>
+                    <xs:element type="xs:string" name="RateName"/>
+                    <xs:element type="xs:string" name="CheckOutBranch"/>
+                    <xs:element type="xs:string" name="CheckInBranch"/>
+                    <xs:element type="xs:string" name="ReservationStatus"/>
+                    <xs:element type="xs:string" name="Tariff"/>
+                    <xs:element type="xs:string" name="LicenseNo"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Completed">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Reservation" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:anyURI" name="CarGroupImagePath"/>
+                    <xs:element type="xs:string" name="CarGroupDescription"/>
+                    <xs:element type="xs:string" name="CheckOutDate"/>
+                    <xs:element type="xs:string" name="CheckOutTime"/>
+                    <xs:element type="xs:string" name="CheckInDate"/>
+                    <xs:element type="xs:string" name="CheckInTime"/>
+                    <xs:element type="xs:short" name="RateNo"/>
+                    <xs:element type="xs:string" name="RateName"/>
+                    <xs:element type="xs:string" name="CheckOutBranch"/>
+                    <xs:element type="xs:string" name="CheckInBranch"/>
+                    <xs:element type="xs:string" name="ReservationStatus"/>
+                    <xs:element type="xs:string" name="Tariff"/>
+                    <xs:element type="xs:string" name="LicenseNo"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cancelled">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Reservation" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:anyURI" name="CarGroupImagePath"/>
+                    <xs:element type="xs:string" name="CarGroupDescription"/>
+                    <xs:element type="xs:string" name="CheckOutDate"/>
+                    <xs:element type="xs:string" name="CheckOutTime"/>
+                    <xs:element type="xs:string" name="CheckInDate"/>
+                    <xs:element type="xs:string" name="CheckInTime"/>
+                    <xs:element type="xs:short" name="RateNo"/>
+                    <xs:element type="xs:string" name="RateName"/>
+                    <xs:element type="xs:string" name="CheckOutBranch"/>
+                    <xs:element type="xs:string" name="CheckInBranch"/>
+                    <xs:element type="xs:string" name="ReservationStatus"/>
+                    <xs:element type="xs:string" name="Tariff"/>
+                    <xs:element type="xs:string" name="LicenseNo"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+

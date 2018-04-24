@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="DriverImport" xmlns:ns1="CarproPriceEstimation" targetNamespace="CarproPriceEstimation" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="EstimationDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Price" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CDP" type="xs:string"/>
+							<xs:element name="OutBranch" type="xs:string"/>
+							<xs:element name="InBranch" type="xs:string"/>
+							<xs:element name="OutDate" type="xs:string"/>
+							<xs:element name="OutTime" type="xs:string"/>
+							<xs:element name="InDate" type="xs:string"/>
+							<xs:element name="InTime" type="xs:string"/>
+							<xs:element name="CarGroup" type="xs:string"/>
+							<xs:element name="Currency" type="xs:string"/>
+							<xs:element name="DebitorCode" type="xs:string"/>
+							<xs:element name="VoucherType" type="xs:string"/>
+							<xs:element name="VoucherNo" type="xs:string"/>
+							<xs:element name="Booked" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Insurance" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Code" type="xs:string"/>
+													<xs:element name="Name" type="xs:string"/>
+													<xs:element name="Quantity" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Extra" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Code" type="xs:string"/>
+													<xs:element name="Name" type="xs:string"/>
+													<xs:element name="Quantity" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="UserId" type="xs:string"/>
+			<xs:attribute name="UserPassword" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.PriceEstimationWS" xmlns:xsdin14="CarproPriceEstimation" xmlns:xsdout14="PriceEstimationResponse" targetNamespace="urn:magic.81.21.59.232.PriceEstimationWS">
+	<import namespace="CarproPriceEstimation" location="PriceEstimationRequest.xsd"/>
+	<import namespace="PriceEstimationResponse" location="PriceEstimationResponse.xsd"/>
+	<message name="PriceEstimationWS">
+		<part name="P__InBlob_1" element="xsdin14:EstimationDetails"/>
+	</message>
+	<message name="PriceEstimationWSResponse">
+		<part name="PriceEstimationWS_Ret" element="xsdout14:EstimationDetails"/>
+	</message>
+	<portType name="PriceEstimationWSPortType">
+		<operation name="PriceEstimationWS">
+			<input message="tns:PriceEstimationWS"/>
+			<output message="tns:PriceEstimationWSResponse"/>
+		</operation>
+	</portType>
+	<binding name="PriceEstimationWSBinding" type="tns:PriceEstimationWSPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PriceEstimationWS">
+			<documentation/>
+			<soap:operation soapAction="3575E6F6964716D6964737545636962705F237375636F62705024727F607D694A336F646"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="PriceEstimationWS">
+		<documentation/>
+		<port name="PriceEstimationWSPortType" binding="tns:PriceEstimationWSBinding">
+			<soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll"/>
+		</port>
+	</service>
+	<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : NIKHIL---NIKHIL
+Created Date : 16/11/2016 Time :19:17:16
+Application   : Import Process
+</documentation>
+</definitions>

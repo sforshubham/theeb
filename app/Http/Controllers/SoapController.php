@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Config;
-
 use Illuminate\Http\Request;
 use Artisaninweb\SoapWrapper\SoapWrapper;
-use Artisaninweb\SoapWrapper\Client;
+
+use App\Models\Branches;
+use App\Models\Vehicles;
 
 class SoapController extends Controller
 {
@@ -19,125 +20,129 @@ class SoapController extends Controller
 
     public function __construct(SoapWrapper $soapWrapper)
     {
+        ini_set('soap.wsdl_cache_enabled',0);
+        ini_set('soap.wsdl_cache_ttl',0);
         //ini_set('default_socket_timeout', 600);
         $this->soapWrapper = $soapWrapper;
     }
 
-    public function index()
-    {
-        //
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Get all the branches from ERP api
      *
      * @return \Illuminate\Http\Response
      */
     public function getAllBranches()
     {
-        $status_code = 200;
-        $response = array();
-
+        $result = (object)[];
         try {
-            $this->soapWrapper->add('Dummy', function ($service) {
+            $this->soapWrapper->add('Branches', function ($service) {
               $service
-                ->wsdl(__DIR__.'/../../../resources/wsdl/BranchMaster.wsdl')
+                ->wsdl(Config::get('settings.wsdl.branches'))
                 ->trace(true);
             });
 
-            $result = $this->soapWrapper->call('Dummy.BranchMasterWebService');
-            $response['status'] = true;
-            $response['message'] = '';
-            $response['result'] = $result;
+            $result = $this->soapWrapper->call('Branches.BranchMasterWebService');
         } catch (Exception $e) {
-            $status_code = 500;
-            $response['status'] = false;
-            $response['message'] = 'Server Error';
-            $response['result'] = NULL;
+            //Log::info('Exception: '.$e->getMessage());
         }
-        finally {
-            return response()->json($response, $status_code);
+        if (!empty((array) $result) && isset($result->Branch)) {
+            $result = object_to_array($result->Branch, ['Schedule']);
+            $status = Branches::updateAll($result);
+        }
+    }
+
+    /**
+     * Get all the vehicle types from ERP api
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllVehicleTypes()
+    {
+        $result = (object)[];
+        try {
+            $this->soapWrapper->add('Dummy', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.vehicle_type'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Dummy.VehicletypeWS');
+        } catch (Exception $e) {
+            //Log::info('Exception: '.$e->getMessage());
+        }
+
+        if (!empty((array) $result) && isset($result->Vehicles)) {
+            $result = object_to_array($result->Vehicles);
+            $status = Vehicles::updateAll($result);
         }
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param $username user name
+     * @param $password password
      * @return \Illuminate\Http\Response
      */
-    public function doLogin(Request $request)
+    public function doLogin($username, $password)
     {
-        $status_code = 200;
-        $response = array();
+        $result = (object)[];
+        try {
+            $this->soapWrapper->add('Login', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.login'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Login.LogInWS', ['UserName' => $username, 'Password' => $password]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
 
-        $username = $request->input('username');
-        $password = $request->input('password');
+    public function getDriverProfile($IDNo)
+    {
+        $result = (object)[];
 
         try {
             $this->soapWrapper->add('Dummy', function ($service) {
               $service
-                ->wsdl(__DIR__.'/../../../resources/wsdl/LogInWS.wsdl')
+                ->wsdl(Config::get('settings.wsdl.driver_profile'))
                 ->trace(true);
             });
 
-            $result = $this->soapWrapper->call('Dummy.LogInWS', ['UserName' => $username, 'Password' => $password]);
-            $response['status'] = true;
-            $response['message'] = '';
-            $response['result'] = $result;
+            $result = $this->soapWrapper->call('Dummy.LoadDriverProfileWS', ['IDNo' => '22323'.$IDNo]);
         } catch (Exception $e) {
-            $status_code = 500;
-            $response['status'] = false;
-            $response['message'] = 'Server Error';
-            $response['result'] = NULL;
+            //
         }
-        finally {
-            return response()->json($response, $status_code);
-        }
+        return $result;
+    }
+
+
+
+
+
+
+    /**
+     * List all the Branches from DB
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listAllBranches()
+    {
+        $rows = Branches::getAll();
+        return $rows;
     }
 
     /**
-     * Display the specified resource.
+     * List all the Vehicles from DB
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function listAllVehicles()
     {
-        //
+        $rows = Vehicles::getAll();
+        return $rows;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

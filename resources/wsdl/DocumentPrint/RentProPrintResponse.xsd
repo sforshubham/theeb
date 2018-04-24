@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ns1="TransactionRequestResponse" xmlns:ns2="RentProPrintResponse" targetNamespace="RentProPrintResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="RentProPrintRS">
+    <xs:complexType>
+      <xs:sequence>
+                    <xs:element type="xs:string" name="Success"/>
+                    <xs:element type="xs:string" name="VarianceReason"/>
+                    <xs:element type="xs:string" name="DocumentPrint"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

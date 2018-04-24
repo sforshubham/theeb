@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="Windows-1256"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ns1="TransactionRequestResponse" xmlns:ns2="TransactionRequestResponse" targetNamespace="TransactionRequestResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TransactionRS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Agreements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Agreement" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="CheckOutBranch"/>
+                    <xs:element type="xs:string" name="CheckInBranch"/>
+                    <xs:element type="xs:string" name="CheckOutDate"/>
+                    <xs:element type="xs:string" name="CheckInDate"/>
+                    <xs:element type="xs:string" name="ReservationNo"/>
+                    <xs:element type="xs:string" name="StatusCode"/>
+                    <xs:element type="xs:string" name="AgreementNo"/>
+                    <xs:element type="xs:string" name="ChrageGroup"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Reservations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Reservation" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="ReservationNo"/>
+                    <xs:element type="xs:string" name="CheckOutBranch"/>
+                    <xs:element type="xs:string" name="CheckInBranch"/>
+                    <xs:element type="xs:string" name="CheckOutDateTime"/>
+                    <xs:element type="xs:string" name="CheckInDateTime"/>
+                    <xs:element type="xs:string" name="Status"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Invoices">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Invoice" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="InvoiceNo"/>
+                    <xs:element type="xs:string" name="InvoiceType"/>
+                    <xs:element type="xs:string" name="AgreementNo"/>
+                    <xs:element type="xs:string" name="InvoiceDate"/>
+                    <xs:element type="xs:string" name="InvoiceRental"/>
+                    <xs:element type="xs:string" name="InvoiceOther"/>
+                    <xs:element type="xs:string" name="InvoiceTotal"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Payments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Payment" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="ReceiptNo"/>
+                    <xs:element type="xs:string" name="PaymentMethod"/>
+                    <xs:element type="xs:string" name="InvoiceNo"/>
+                    <xs:element type="xs:string" name="ReceiptDate"/>
+                    <xs:element type="xs:string" name="ReceiptAmount"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

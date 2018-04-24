@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.CarModelWS"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.CarModelWS"
+             xmlns:xsdin93="VehicleTypeWS"
+             xmlns:xsdout93="VehicleType"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 29/06/2017 Time :18:07:18
+Application   : Import Process
+</documentation>
+
+<import  namespace="VehicleTypeWS" location="VechicleModelRequest.xsd"/>
+<import  namespace="VehicleType" location="VehicleModelResponse.xsd"/>
+
+ 
+<message name="CarModelWS">
+   <part name="PI_Dummy_1" element="xsdin93:VehicleTypes" />
+</message>
+<message name="CarModelWSResponse">
+   <part name="CarModelWS_Ret"  element="xsdout93:VehicleTypes" />
+</message>
+
+<portType name="CarModelWSPortType">
+         <operation name="CarModelWS" >
+         <input message="tns:CarModelWS" />
+         <output message="tns:CarModelWSResponse"/>
+      </operation>
+</portType>
+
+<binding name="CarModelWSBinding"
+   type="tns:CarModelWSPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="CarModelWS">
+         <documentation></documentation>
+         <soap:operation soapAction="3575C65646F6D4271634F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="CarModelWS">
+   <documentation></documentation>
+   <port name="CarModelWSPortType" binding="tns:CarModelWSBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>

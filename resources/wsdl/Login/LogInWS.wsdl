@@ -9,8 +9,8 @@
 	xmlns:xsdin91="CarProUserLogin" 
 	xmlns:xsdout91="CarProUserLogin" 
 	targetNamespace="urn:magic.81.21.59.232.LoginWS">
-	<import namespace="CarProUserLogin" location="http://81.21.59.232/Magic94Scripts/WSDL/LogInRQ.xsd"/>
-	<import namespace="CarProUserLogin" location="http://81.21.59.232/Magic94Scripts/WSDL/LogInRS.xsd"/>
+	<import namespace="CarProUserLogin" location="LogInRQ.xsd"/>
+	<import namespace="CarProUserLogin" location="LogInRS.xsd"/>
 	<message name="LogInWS">
 		<part name="V__In_Blob_1" element="xsdin91:LoginRQ"/>
 	</message>
