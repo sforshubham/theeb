@@ -6,10 +6,7 @@ use Config;
 use Illuminate\Http\Request;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
-use App\Models\Branches;
-use App\Models\Vehicles;
-
-class SoapController extends Controller
+class SoapController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +30,6 @@ class SoapController extends Controller
      */
     public function getAllBranches()
     {
-        $result = (object)[];
         try {
             $this->soapWrapper->add('Branches', function ($service) {
               $service
@@ -46,9 +42,12 @@ class SoapController extends Controller
             //Log::info('Exception: '.$e->getMessage());
         }
         if (!empty((array) $result) && isset($result->Branch)) {
-            $result = object_to_array($result->Branch, ['Schedule']);
-            $status = Branches::updateAll($result);
+            $result = object_to_array($result->Branch, ['Schedule' => '']);
+            $status = $this->updateBranches($result);
+        } else {
+            $result = [];
         }
+        return $result;
     }
 
     /**
@@ -58,7 +57,6 @@ class SoapController extends Controller
      */
     public function getAllVehicleTypes()
     {
-        $result = (object)[];
         try {
             $this->soapWrapper->add('Dummy', function ($service) {
               $service
@@ -70,10 +68,13 @@ class SoapController extends Controller
             //Log::info('Exception: '.$e->getMessage());
         }
 
-        if (!empty((array) $result) && isset($result->Vehicles)) {
-            $result = object_to_array($result->Vehicles);
-            $status = Vehicles::updateAll($result);
+        if (!empty((array) $result) && isset($result->VehicleTypes)) {
+            $result = object_to_array($result->VehicleTypes);
+            $status = $this->updateVehicles($result);
+        } else {
+            $result = [];
         }
+        return $result;
     }
 
     /**
@@ -121,28 +122,6 @@ class SoapController extends Controller
 
 
 
-
-    /**
-     * List all the Branches from DB
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function listAllBranches()
-    {
-        $rows = Branches::getAll();
-        return $rows;
-    }
-
-    /**
-     * List all the Vehicles from DB
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function listAllVehicles()
-    {
-        $rows = Vehicles::getAll();
-        return $rows;
-    }
 
 
 }

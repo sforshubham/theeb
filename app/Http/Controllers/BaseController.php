@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Branches;
+use App\Models\VehicleTypes;
+
+class BaseController extends Controller
+{
+    /**
+     * List all the Branches from DB
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listAllBranches()
+    {
+        $rows = Branches::getAll();
+        return $rows;
+    }
+
+    /**
+     * List all the Vehicles from DB
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listAllVehicles()
+    {
+        $rows = VehicleTypes::getAll();
+        return $rows;
+    }
+
+    /**
+     * Update branches table
+     * @param array $data list of branches
+     *
+     */
+    public function updateBranches($data)
+    {
+        $status = Branches::updateAll($data);
+        return $status;
+    }
+
+    /**
+     * Update vehicles table
+     * @param array $data list of vehicle types
+     *
+     */
+    public function updateVehicles($data)
+    {
+        $status = VehicleTypes::updateAll($data);
+        return $status;
+    }
+
+    
+
+}
