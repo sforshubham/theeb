@@ -51,6 +51,15 @@ class BaseController extends Controller
         return $status;
     }
 
+    public function getFileAndEncode($file_obj)
+    {
+        $info = ['file_base64'=> '','ext'=>''];
+        if (!empty($file_obj)) {
+            $info['file_base64'] = file_to_base64($file_obj->getPathName());
+            $info['ext'] = $file_obj->getClientOriginalExtension();
+        }
+        return $info;
+    }
     
 
 }

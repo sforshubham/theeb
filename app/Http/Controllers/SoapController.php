@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
 use App\Soap\Request\GetSoapRequest;
-use App\Soap\Request\GetDriverProfile;
-use App\Soap\Request\GetVehicleType;
-use App\Soap\Request\GetPriceEstimation;
 
 class SoapController extends BaseController
 {
@@ -167,6 +164,44 @@ class SoapController extends BaseController
         return $result;
     }
 
+    public function password($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Password', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.password'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Password.DriverPasswordResetWS', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
+    public function payment($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Payment', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.payment'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Payment.CreatePaymentMobileApp', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
 
 
 
@@ -174,25 +209,6 @@ class SoapController extends BaseController
     {
         ini_set("soap.wsdl_cache_enabled", 0);
         $input = [
-            'LastName' => '',
-            'FirstName' => '',
-            'DateOfBirth' => '',
-            'Nationality' => '',
-            'LicenseId' => '',
-            'LicenseIssuedBy' => '',
-            'LicenseExpiryDate' => '',
-            'LicenseDoc' => '',
-            'LicenseDocFileExt' => '',
-            'Address1' => '',
-            'Address2' => '',
-            'HomeTel' => '',
-            'WorkTel' => '',
-            'Mobile' => '',
-            'Email' => '',
-            'IdType' => '',
-            'IdNo' => '',
-            'IdDoc' => '',
-            'IdDocFileExt' => '',
             'MembershipNo' => '',
             'Operation' => 'V',
             'Password' => '',
@@ -202,9 +218,9 @@ class SoapController extends BaseController
             'DriverImage' => '',
             'DriverImageFileExt' => ''
         ];
-        $client = new \SoapClient("/var/www/html/theeb/resources/wsdl/DriverCreateModify/DriverCreateWS.wsdl", array('trace' => 1));
+        $client = new \SoapClient(Config::get('settings.wsdl.payment'), array('trace' => 1));
         try {
-            $a = $client->CarProDriverWS($input);
+            $a = $client->CreatePaymentMobileApp(['PAYMENTOPTION' => 'Master Card', 'MERCHANTREFERENCE' => 'CPUAT1201', 'AMOUNT' => '125', 'CARDNUMBER' => '1111222233334444', 'EXPIRYDATE' => '20170501', 'AUTHORIZATIONCODE' => 'AUTH1257', 'RESERVATIONNO' => '009700970327', 'DRIVERCODE' => '9800004012', 'CURRENCY' => 'SAR', 'INVOICE' => '']);
             pr($a);
         } catch (Exception $e){
             var_dump($e->getMessage());

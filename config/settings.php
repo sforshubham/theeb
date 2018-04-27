@@ -8,14 +8,21 @@ return [
         'driver_profile' => resource_path().'/wsdl/DriverProfile/DriverProfileRequest.wsdl',
         'price_estimation' => resource_path().'/wsdl/PriceEstimation/PriceEstimationWS.wsdl',
         'driver_modify' => resource_path().'/wsdl/DriverCreateModify/DriverCreateWS.wsdl',
+        'password' => resource_path().'/wsdl/DriverPasswordReset/DriverPasswordReset.wsdl',
+        'payment' => resource_path().'/wsdl/Payment/PaymentCreateRequest.wsdl',
     ],
     'resp_msg' => [
         'invalid_input' => 'Please provide valid {tag}',
         'incorrect_input' => 'Incorrect {tag} entered',
         'auth_error' => 'Authentication Error',
         '500' => 'Server Error',
+        'payment_fail' => 'Payment Failed',
+        'processing_error' => 'Error processing request'
 
-        'logout' => 'Logged out successfully'
+        'logout' => 'Logged out successfully',
+        'new_password' => 'Email with new password has been sent to given email address',
+        'reset_password' => 'Password reset has been successful',
+        'payment_success' => 'Payment is successful'
     ],
     'operation' => [
         'view_driver' => 'V',

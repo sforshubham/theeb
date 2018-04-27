@@ -37,7 +37,28 @@ function array_to_object($array)
      }
   }
   return $obj;
-} 
+}
+
+function file_to_base64($filepath)
+{
+    $path = $filepath;
+    $type = mime_content_type($path);
+    $data = file_get_contents($path);
+    $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
+    return $base64;
+}
+
+function no_trim_object($array = [])
+{
+    $result = array_map(function ($val) {
+        if (is_object($val)) {
+            return $val;
+        } else {
+            return trim($val);
+        }
+    }, $array);
+    return $result;
+}
 
 function createModifyDriverRules($operation = '')
 {
@@ -90,3 +111,47 @@ function createModifyDriverRules($operation = '')
     return $rules;
 }
 
+function driverRequestBody()
+{
+    $input = [
+        'LastName' => '',
+        'FirstName' => '',
+        'DateOfBirth' => '',
+        'Nationality' => '',
+        'LicenseId' => '',
+        'LicenseExpiryDate' => '',
+        'LicenseDoc' => '',
+        'LicenseDocFileExt' => '',
+        'Address1' => '',
+        'Address2' => '',
+        'WorkTel' => '',
+        'Mobile' => '',
+        'Email' => '',
+        'IdType' => '',
+        'IdNo' => '',
+        'IdDoc' => '',
+        'IdDocFileExt' => '',
+        'MembershipNo' => '',
+        'Operation' => '',
+        'Password' => '',
+        'IDSerialNo' => '',
+        'WorkIdDoc' => '',
+        'WorkIdDocFileExt' => '',
+        'DriverImage' => '',
+        'DriverImageFileExt' => '',
+        'HomeTel' => '',
+        'LicenseIssuedBy' => '',
+    ];
+    return $input;
+}
+
+function passwordRequestBody()
+{
+    $input = [
+        'Mode' => '',
+        'Email' => '',
+        'Password' => '',
+        'NewPassword' => '',
+    ];
+    return $input;
+}

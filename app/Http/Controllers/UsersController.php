@@ -10,23 +10,15 @@ class UsersController extends SoapController
 {
     // This controller requires user session id
 
-    /**
-     * Returns a listing of the branches.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public $IDNo = '';
-
     public function checkLogin()
     {
-        if (session('user.IDNo')) {
+        if (!session('user.IDNo')) {
             $status_code = 401;
             $response['status'] = false;
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
             return response()->json($response, $status_code);
         }
-        $this->IDNo = session('user.IDNo');
     }
 
     public function driverProfile(Request $request)
@@ -34,11 +26,12 @@ class UsersController extends SoapController
         $status_code = 200;
         $response = array();
         $this->checkLogin();
+        $IDNo = session('user.IDNo');
         $data = $this->getDriverProfile($this->IDNo);
         if (empty((array) $data) || $data->Success != 'Y') {
-            $status_code = 401;
+            $status_code = 400;
             $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
+            $response['message'] = Config::get('settings.resp_msg.processing_error');
             $response['result'] = NULL;
         } else {
             $response['status'] = true;
@@ -89,9 +82,9 @@ class UsersController extends SoapController
         ];
         $data = $this->getPriceEstimation($input);
         if (empty((array) $data) || $data->Success != 'Y') {
-            $status_code = 401;
+            $status_code = 400;
             $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
+            $response['message'] = Config::get('settings.resp_msg.processing_error');
             $response['result'] = NULL;
         } else {
             $response['status'] = true;
@@ -100,5 +93,95 @@ class UsersController extends SoapController
         }
         return response()->json($response, $status_code);
 
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $status_code = 200;
+        $result = (object)[];
+        $response = [];
+        $this->checkLogin();
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
+            'Email' => 'required|email',
+            'Password' => 'required',
+            'NewPassword' => 'required'
+        ]);
+        if ($validator->fails()) {
+            $status_code = 400;
+            $response['status'] = false;
+            $response['message'] = $validator->errors()->all();
+            $response['result'] = null;
+        } else {
+            $request_body = passwordRequestBody();
+            $request_body['Mode'] = 'R';
+            $request_body['Email'] = $input['Email'];
+            $request_body['Password'] = $input['Password'];
+            $request_body['NewPassword'] = $input['NewPassword'];
+
+            $result = $this->password($request_body);
+            if (empty((array) $result) || $result->Success != 'Y') {
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = $result->VarianceReason;
+                $response['result'] = null;
+            } else {
+                $response['status'] = true;
+                $response['message'] = Config::get('settings.resp_msg.reset_password');
+                $response['result'] = null;
+            }
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function makePayment(Request $request)
+    {
+        $status_code = 200;
+        $result = (object)[];
+        $response = [];
+        $this->checkLogin();
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
+            'PaymentOption' => 'required',
+            'MerchantReference' => 'required',
+            'Amount' => 'required',
+            'CardNumber' => 'required',
+            'ExpiryDate' => 'required',
+            'AuthorizationCode' => 'required',
+            'ReservationNo' => 'required_without:Invoice',
+            'DriverCode' => 'required',
+            'Invoice' => 'required_without:ReservationNo',
+        ]);
+        if ($validator->fails()) {
+            $status_code = 400;
+            $response['status'] = false;
+            $response['message'] = $validator->errors()->all();
+            $response['result'] = null;
+        } else {
+            $request_body = [
+                'PAYMENTOPTION' => ($input['PaymentOption']) ? $input['PaymentOption'] : '',
+                'MERCHANTREFERENCE' => ($input['MerchantReference']) ? $input['MerchantReference'] : '',
+                'AMOUNT' => ($input['Amount']) ? $input['Amount'] : '',
+                'CARDNUMBER' => ($input['CardNumber']) ? $input['CardNumber'] : '',
+                'EXPIRYDATE' => ($input['ExpiryDate']) ? $input['ExpiryDate'] : '',
+                'AUTHORIZATIONCODE' => ($input['AuthorizationCode']) ? $input['AuthorizationCode'] : '',
+                'RESERVATIONNO' => ($input['ReservationNo']) ? $input['ReservationNo'] : '',
+                'DRIVERCODE' => ($input['DriverCode']) ? $input['DriverCode'] : '',
+                'INVOICE' => ($input['Invoice']) ? $input['Invoice'] : '',
+                'CURRENCY' => 'SAR'
+            ];
+            $result = $this->payment($request_body);
+            if (empty((array) $result) || $result->SUCCESS != 'Y') {
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = Config::get('settings.resp_msg.processing_error');
+                $response['result'] = null;
+            } else {
+                $response['status'] = true;
+                $response['message'] = Config::get('settings.resp_msg.payment_success');
+                $response['result'] = null;
+            }
+        }
+        return response()->json($response, $status_code);
     }
 }

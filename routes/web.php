@@ -19,14 +19,17 @@ Route::group(['prefix' => 'api/v1'], function(){
 
     Route::get('/branches', 'ApiController@getAllBranches');
     Route::get('/vehicle_types', 'ApiController@getAllVehicleTypes');
-    Route::post('/login', 'ApiController@login');
     Route::get('/logout', 'ApiController@logout');
+    Route::post('/login', 'ApiController@login');
+    Route::post('/forgot_password', 'ApiController@forgotPassword');
+    Route::post('/create_driver', 'ApiController@createModifyDriver');
+    Route::post('/modify_driver', 'ApiController@createModifyDriver');
+    Route::post('/view_driver', 'ApiController@createModifyDriver');
 
-    Route::post('/price_estimation', 'UsersController@priceEstimation');
     Route::get('/profile', 'UsersController@driverProfile');
-    Route::post('/create_driver', 'UsersController@createModifyDriver');
-    Route::post('/modify_driver', 'UsersController@createModifyDriver');
-    Route::post('/view_driver', 'UsersController@createModifyDriver');
+    Route::post('/price_estimation', 'UsersController@priceEstimation');
+    Route::post('/reset_password', 'UsersController@resetPassword');
+    Route::post('/payment', 'UsersController@makePayment');
 
     /**
      * Delete below given routes CAREFULLY
