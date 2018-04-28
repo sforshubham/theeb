@@ -17,7 +17,7 @@ return [
         'auth_error' => 'Authentication Error',
         '500' => 'Server Error',
         'payment_fail' => 'Payment Failed',
-        'processing_error' => 'Error processing request'
+        'processing_error' => 'Error processing request',
 
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',
