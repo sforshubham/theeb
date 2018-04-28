@@ -59,18 +59,18 @@ class ApiController extends SoapController
         } else {
             $result = $this->doLogin($request->input('username'), $request->input('password'));
             // if login is success, write IDNo in session
-            if (empty((array) $result) && !isset($result->IDNo)) {
-                $status_code = 401;
-                $response['status'] = false;
-                $response['message'] = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
-                $response['result'] = null;
-            } else {
+            if (isset($result->Success) && $result->Success == 'True') {
                 $session_IDNo = (int)$result->IDNo ? $result->IDNo : $result->LicenseNo;
                 $request->session()->put('user.IDNo', $session_IDNo);
                 $request->session()->put('user.DriverCode', $result->DriverCode);
                 $response['status'] = true;
                 $response['message'] = '';
                 $response['result'] = $result;
+            } else {
+                $status_code = 401;
+                $response['status'] = false;
+                $response['message'] = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
+                $response['result'] = null;
             }
         }
         return response()->json($response, $status_code);
