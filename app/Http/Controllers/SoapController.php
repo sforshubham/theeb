@@ -64,7 +64,7 @@ class SoapController extends BaseController
                 ->wsdl(Config::get('settings.wsdl.vehicle_type'))
                 ->trace(true);
             });
-            $result = $this->soapWrapper->call('VehicleTypes.VehicletypeWS', [
+            $result = $this->soapWrapper->lastResponse('VehicleTypes.VehicletypeWS', [
                 new GetSoapRequest(['VehicleType' => ''])
             ]);
         } catch (Exception $e) {
@@ -202,6 +202,63 @@ class SoapController extends BaseController
         return $result;
     }
 
+    public function docuPrint($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Print', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.doc_print'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Print.GetRentProPrint', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
+    public function transaction($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Trans', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.transaction'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Trans.GetTransactionData', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
+    public function booking($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Booking', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.booking'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Booking.GetReservationBookingData', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
 
 
 
@@ -218,17 +275,19 @@ class SoapController extends BaseController
             'DriverImage' => '',
             'DriverImageFileExt' => ''
         ];
-        $client = new \SoapClient(Config::get('settings.wsdl.payment'), array('trace' => 1));
+        $client = new \SoapClient(Config::get('settings.wsdl.car_model'), array('trace' => 1));
         try {
-            $a = $client->CreatePaymentMobileApp(['PAYMENTOPTION' => 'Master Card', 'MERCHANTREFERENCE' => 'CPUAT1201', 'AMOUNT' => '125', 'CARDNUMBER' => '1111222233334444', 'EXPIRYDATE' => '20170501', 'AUTHORIZATIONCODE' => 'AUTH1257', 'RESERVATIONNO' => '009700970327', 'DRIVERCODE' => '9800004012', 'CURRENCY' => 'SAR', 'INVOICE' => '']);
-            pr($a);
+            $a = $client->CarModelWS(['VehicleType' =>'1']);
+            //pr($client->__getLastRequest());
+            pr($a);die;
+            //throw new \Exception('hi');
         } catch (Exception $e){
             var_dump($e->getMessage());
             pr($client->__getLastResponse());
             echo PHP_EOL;
             pr($client->__getLastRequest());
         }
-        //pr($client->__getLastRequest());
+        pr($client->__getLastRequest());
     }
 
 

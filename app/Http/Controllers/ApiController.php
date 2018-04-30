@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Config;
 use Validator;
 use Illuminate\Http\Request;
+use Payfort;
 
 class ApiController extends SoapController
 {
@@ -61,8 +62,8 @@ class ApiController extends SoapController
             // if login is success, write IDNo in session
             if (isset($result->Success) && $result->Success == 'True') {
                 $session_IDNo = (int)$result->IDNo ? $result->IDNo : $result->LicenseNo;
-                $request->session()->put('user.IDNo', $session_IDNo);
-                $request->session()->put('user.DriverCode', $result->DriverCode);
+                $request->session()->put('user.IDNo', '2258370366');
+                $request->session()->put('user.DriverCode', '9800002661');
                 $response['status'] = true;
                 $response['message'] = '';
                 $response['result'] = $result;
@@ -186,5 +187,16 @@ class ApiController extends SoapController
             }
         }
         return response()->json($response, $status_code);
+    }
+
+    public function payFortPay()
+    {
+        return Payfort::redirection()->displayRedirectionPage([
+            'command' => 'AUTHORIZATION',              # AUTHORIZATION/PURCHASE according to your operation.
+            'merchant_reference' => 'ORDR.34562134',   # You reference id for this operation (Order id for example).
+            'amount' => 230,                           # The operation amount.
+            'currency' => 'SAR',                       # Optional if you need to use another currenct than set in config.
+            'customer_email' => 'shubhamgoeloctane@gmail.com'  # Customer email.
+        ]); 
     }
 }

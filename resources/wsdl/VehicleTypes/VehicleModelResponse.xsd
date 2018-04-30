@@ -8,7 +8,7 @@
                                        <xs:sequence>
                                              <xs:element name="Code" type="xs:string"></xs:element>
                                              <xs:element name="Desc" type="xs:string"></xs:element>
-                                             <xs:element name="Type"></xs:element>
+                                             <xs:element name="Type" type="xs:string"></xs:element>
                                        </xs:sequence>
                                  </xs:complexType>
                            </xs:element>

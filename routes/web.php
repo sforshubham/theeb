@@ -30,6 +30,12 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::post('/price_estimation', 'UsersController@priceEstimation');
     Route::post('/reset_password', 'UsersController@resetPassword');
     Route::post('/payment', 'UsersController@makePayment');
+    Route::post('/document_print', 'UsersController@documentPrint');
+    Route::post('/trans_reservation', 'UsersController@getTransDetails');
+    Route::post('/trans_payment', 'UsersController@getTransDetails');
+    Route::post('/trans_agreement', 'UsersController@getTransDetails');
+    Route::post('/trans_invoice', 'UsersController@getTransDetails');
+    Route::post('/my_booking', 'UsersController@myBooking');
 
     /**
      * Delete below given routes CAREFULLY
@@ -39,6 +45,7 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::get('/loging', 'ApiController@login');
     //Route::get('/profile', 'UsersController@driverProfile');
     Route::get('/test', 'SoapController@noshow');
+    Route::get('/payfort', 'ApiController@payFortPay');
 
 
 });

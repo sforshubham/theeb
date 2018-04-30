@@ -27,7 +27,7 @@ class UsersController extends SoapController
         $response = array();
         $this->checkLogin();
         $IDNo = session('user.IDNo');
-        $data = $this->getDriverProfile($this->IDNo);
+        $data = $this->getDriverProfile($IDNo);
         if (empty((array) $data) || $data->Success != 'Y') {
             $status_code = 400;
             $response['status'] = false;
@@ -92,7 +92,6 @@ class UsersController extends SoapController
             $response['result'] = $data;
         }
         return response()->json($response, $status_code);
-
     }
 
     public function resetPassword(Request $request)
@@ -180,6 +179,110 @@ class UsersController extends SoapController
                 $response['status'] = true;
                 $response['message'] = Config::get('settings.resp_msg.payment_success');
                 $response['result'] = null;
+            }
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function documentPrint(Request $request)
+    {
+        $status_code = 200;
+        $result = (object)[];
+        $response = [];
+        $this->checkLogin();
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
+            'DocumentNumber' => 'required',
+        ]);
+        if ($validator->fails()) {
+            $status_code = 400;
+            $response['status'] = false;
+            $response['message'] = $validator->errors()->all();
+            $response['result'] = null;
+        } else {
+            $request_body['PrintFor'] = 'R';
+            $request_body['DocumentNumber'] = $input['DocumentNumber'];
+
+            $result = $this->docuPrint($request_body);
+            if (empty((array) $result) || $result->Success != 'Y') {
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = $result->VarianceReason;
+                $response['result'] = null;
+            } else {
+                $response['status'] = true;
+                $response['message'] = '';
+                $response['result'] = $result;
+            }
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function getTransDetails(Request $request)
+    {
+        $status_code = 200;
+        $result = (object)[];
+        $response = [];
+        $this->checkLogin();
+        $operation = Config::get('settings.transaction')[$request->segment(3)];
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
+            'StartDate' => 'required|date_format:d/m/Y',
+            'EndDate' => 'required|date_format:d/m/Y',
+            'DriverCode' => 'required'
+        ]);
+        if ($validator->fails()) {
+            $status_code = 400;
+            $response['status'] = false;
+            $response['message'] = $validator->errors()->all();
+            $response['result'] = null;
+        } else {
+            $request_body['TransactionFor'] = $operation;
+            $request_body['StartDate'] = $input['StartDate'];
+            $request_body['EndDate'] = $input['EndDate'];
+            $request_body['DriverCode'] = $input['DriverCode'];
+
+            $result = $this->transaction($request_body);
+            if (empty((array) $result)) {
+                $status_code = 200;
+                $response['status'] = true;
+                $response['message'] = Config::get('settings.resp_msg.no_data');;
+                $response['result'] = null;
+            } else {
+                $response['status'] = true;
+                $response['message'] = '';
+                $response['result'] = $result;
+            }
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function myBooking(Request $request)
+    {
+        $status_code = 200;
+        $result = (object)[];
+        $response = [];
+        $this->checkLogin();
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
+            'PassportID' => 'required',
+        ]);
+        if ($validator->fails()) {
+            $status_code = 400;
+            $response['status'] = false;
+            $response['message'] = $validator->errors()->all();
+            $response['result'] = null;
+        } else {
+            $result = $this->booking($input);
+            if (empty((array) $result) || $result->Success != 'Y') {
+                $status_code = 400;
+                $response['status'] = true;
+                $response['message'] = $result->VarianceReason;
+                $response['result'] = null;
+            } else {
+                $response['status'] = true;
+                $response['message'] = '';
+                $response['result'] = $result;
             }
         }
         return response()->json($response, $status_code);
