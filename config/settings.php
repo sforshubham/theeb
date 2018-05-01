@@ -15,6 +15,7 @@ return [
         'booking' => resource_path().'/wsdl/MyBooking/ReservationsBookingRequest.wsdl',
         'car_group' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarModelWS.wsdl',
+        'reservation' => resource_path().'/wsdl/Reservation/CarProReservationWS.wsdl',
     ],
     'resp_msg' => [
         'invalid_input' => 'Please provide valid {tag}',
@@ -32,8 +33,8 @@ return [
     ],
     'operation' => [
         'view_driver' => 'V',
-        'create_driver' => 'C',
-        'modify_driver' => ''
+        'create_driver' => 'N',
+        'modify_driver' => 'E'
     ],
     'transaction' => [
         'trans_reservation' => 'R',

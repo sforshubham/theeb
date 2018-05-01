@@ -36,6 +36,7 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::post('/trans_agreement', 'UsersController@getTransDetails');
     Route::post('/trans_invoice', 'UsersController@getTransDetails');
     Route::post('/my_booking', 'UsersController@myBooking');
+    Route::post('/reservation', 'UsersController@makeReservation');
 
     /**
      * Delete below given routes CAREFULLY
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::get('/loging', 'ApiController@login');
     //Route::get('/profile', 'UsersController@driverProfile');
     Route::get('/test', 'SoapController@noshow');
-    Route::get('/payfort', 'ApiController@payFortPay');
+    Route::get('/payfort', 'UsersController@payFortPay');
 
 
 });

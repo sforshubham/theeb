@@ -69,18 +69,18 @@ function createModifyDriverRules($operation = '')
                 'IdNo' => 'required'
             ];
             break;
-        case 'C':
+        case 'N':
             $rules = [
                 'IdType' => 'required|in:iqama,saudi id,passport',
                 'IdNo' => 'required',
-                'IdDoc' => 'required|file',
+                'IdDoc' => 'file',
                 'LastName' => 'required',
                 'FirstName' => 'required',
                 'DateOfBirth' => 'date_format:d/m/Y|before_or_equal:today',
                 'Nationality' => 'required',
                 'LicenseId' => 'required',
                 'LicenseExpiryDate' => 'required|date_format:d/m/Y',
-                'LicenseDoc' => 'required|file',
+                'LicenseDoc' => 'file',
                 'WorkTel' => 'numeric',
                 'Mobile' => 'required|numeric|regex:/(05)[0-9]{8}/',
                 'Email' => 'required|email',
@@ -88,7 +88,7 @@ function createModifyDriverRules($operation = '')
                 'DriverImage' => 'image'
             ];
             break;
-        case '':
+        case 'E':
             $rules = [
                 'IdType' => 'in:iqama,saudi id,passport',
                 'IdNo' => 'required',
@@ -152,6 +152,44 @@ function passwordRequestBody()
         'Email' => '',
         'Password' => '',
         'NewPassword' => '',
+    ];
+    return $input;
+}
+
+function reservationBody()
+{
+    $input = [
+        'DriverCode' => '9900000023',
+        'LicenseNo' => '1003282780',
+        'LastName' => '',
+        'FirstName' => '',
+        'CDP' => '',
+        'OutBranch' => '5',
+        'InBranch' => '5',
+        'OutDate' => '23/08/2017',
+        'OutTime' => '16:49',
+        'InDate' => '30/08/2017',
+        'InTime' => '16:49',
+        'RateNo' => '302',
+        'RentalSum' => '',
+        'DepositAmount' => '',
+        'ReservationNo' => '8983302639',
+        'ReservationStatus' => 'N',
+        'CarGroup' => 'PR38',
+        'Currency' => 'SAR',
+        'PaymentType' => '4',
+        'CreditCardNo' => '',
+        'CarMake' => '',
+        'CarModel' => '',
+        'Remarks' => 'Testing',
+        'Booked' => [
+            'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
+            'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
+        ],
+        'included' => [
+            'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
+            'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
+        ],
     ];
     return $input;
 }
