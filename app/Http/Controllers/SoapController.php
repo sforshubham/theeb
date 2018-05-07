@@ -21,7 +21,7 @@ class SoapController extends BaseController
     {
         ini_set('soap.wsdl_cache_enabled',0);
         ini_set('soap.wsdl_cache_ttl',0);
-        //ini_set('default_socket_timeout', 600);
+        ini_set('default_socket_timeout', 600);
         $this->soapWrapper = $soapWrapper;
     }
 
@@ -43,7 +43,7 @@ class SoapController extends BaseController
             //Log::info('Exception: '.$e->getMessage());
         }
         if (!empty((array) $result) && isset($result->Branch)) {
-            $result = object_to_array($result->Branch, ['Schedule' => '']);
+            $result = object_to_array($result->Branch, Config::get('settings.branches_db_fields'));
             $status = $this->updateBranches($result);
         } else {
             $result = [];
@@ -61,10 +61,10 @@ class SoapController extends BaseController
         try {
             $this->soapWrapper->add('VehicleTypes', function ($service) {
               $service
-                ->wsdl(Config::get('settings.wsdl.vehicle_type'))
+                ->wsdl(Config::get('settings.wsdl.car_model'))
                 ->trace(true);
             });
-            $result = $this->soapWrapper->lastResponse('VehicleTypes.VehicletypeWS', [
+            $result = $this->soapWrapper->call('VehicleTypes.CarModelWS', [
                 new GetSoapRequest(['VehicleType' => ''])
             ]);
         } catch (Exception $e) {
@@ -72,7 +72,7 @@ class SoapController extends BaseController
         }
 
         if (!empty((array) $result) && isset($result->VehicleTypes)) {
-            $result = object_to_array($result->VehicleTypes);
+            $result = object_to_array($result->VehicleTypes, Config::get('settings.vehicles_db_fields'));
             $status = $this->updateVehicles($result);
         } else {
             $result = [];
@@ -283,6 +283,7 @@ class SoapController extends BaseController
 
     public function noshow()
     {
+        ini_set('soap.wsdl_cache_ttl',0);
         ini_set("soap.wsdl_cache_enabled", 0);
         /*$input = [
             'MembershipNo' => '',
@@ -345,19 +346,21 @@ class SoapController extends BaseController
                     'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
                 ],
             ];
-        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
         try {
-            $a = $client->PriceEstimationWS(['Price' => $input]);
+            $client = new \SoapClient(Config::get('settings.wsdl.car_model'), array('trace' => 1));
+            $a = $client->CarModelWS(/*['VehicleType'=>'21']*/);
             //pr($client->__getLastRequest());
-            //pr($a);die;
-            //throw new \Exception('hi');
-        } catch (Exception $e){
-            var_dump($e->getMessage());
-            pr($client->__getLastResponse());
-            echo PHP_EOL;
-            pr($client->__getLastRequest());
+            pr($a);
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Exception $e) {
+            echo $e->getMessage();die;
         }
-        pr($client->__getLastResponse());
+        
+        $a = $client->CarModelWS(/*['VehicleType'=>'21']*/);
+        //pr($client->__getLastRequest());
+        pr($a);
+        //throw new \Exception('hi');
+        //pr($client->__getLastResponse());
     }
 
 

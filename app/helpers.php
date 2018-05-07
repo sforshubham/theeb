@@ -7,21 +7,26 @@ function pr($param)
     echo '</pre>';
 }
 
-function object_to_array($obj, $escape_keys = [])
+function object_to_array($obj, $allowed_keys = [])
 {
     if (is_object($obj)) {
     	$obj = (array) $obj;
     }
     if (is_array($obj)) {
         foreach ($obj as $key => $val) {
-            if (array_key_exists($key, $escape_keys)) {
-                unset($obj[$key]);
+            if (is_int($key)) {
+                $obj[$key] = object_to_array($val, $allowed_keys);
+            } elseif (isset($allowed_keys[$key])) {
+                if ($allowed_keys[$key] != '') {
+                    $val = $allowed_keys[$key]($val);
+                }
+                $obj[$key] = object_to_array($val, $allowed_keys);
             } else {
-                $obj[$key] = object_to_array($val, $escape_keys);
+                unset($obj[$key]);
             }
         }
     }
-    return $obj; 
+    return $obj;
 }
 
 function array_to_object($array)
@@ -192,4 +197,40 @@ function reservationBody()
         ],
     ];
     return $input;
+}
+
+function DMStoDD($input ='')
+{
+    $deg = '';
+    $min = '';
+    $sec = '';
+    $inputM = '';
+    $input = trim($input);
+    if ($input == '') {
+        return '0';
+    }
+    for ($i=0; $i < strlen($input); $i++)
+    {
+        $tempD = $input[$i];
+        if ($tempD == iconv("UTF-8", "ISO-8859-1//TRANSLIT", '°'))
+        {
+            $newI = $i + 1;
+            $inputM =  substr($input, $newI, -1);
+            break;
+        }
+        $deg .= $tempD;
+    }
+    for ($j=0; $j < strlen($inputM); $j++)
+    {
+        $tempM = $inputM[$j];
+        if ($tempM == "'")
+        {
+            $newI = $j + 1;
+            $sec =  substr($inputM, $newI, -1);
+            break;
+        }
+        $min .= $tempM;
+    }
+    $result =  floatval($deg)+(((floatval($min)*60)+floatval($sec)) / 3600);
+    return $result;
 }

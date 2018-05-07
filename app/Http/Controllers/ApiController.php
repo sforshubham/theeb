@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Config;
 use Validator;
 use Illuminate\Http\Request;
+use App\Models\Branches;
 
 class ApiController extends SoapController
 {
@@ -186,5 +187,19 @@ class ApiController extends SoapController
             }
         }
         return response()->json($response, $status_code);
+    }
+
+    public function maps()
+    {
+        $allbranches = Branches::all()->toArray();
+        //pr($data);die;
+
+        return view('gmap', ['allbranches' => $allbranches]);
+
+    }
+
+    public function sharer()
+    {
+        return view('sharer');
     }
 }

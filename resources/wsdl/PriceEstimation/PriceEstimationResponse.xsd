@@ -1,95 +1,55 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="PriceEstimationResponse" targetNamespace="PriceEstimationResponse">
-	<xs:element name="EstimationDetails">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="Price" minOccurs="0" maxOccurs="unbounded">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Price" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="DebitorCode" type="xs:string" minOccurs="0"/>
-										<xs:element name="CDP" type="xs:string" minOccurs="0"/>
-										<xs:element name="VoucherType" type="xs:string" minOccurs="0"/>
-										<xs:element name="VoucherCode" type="xs:string" minOccurs="0"/>
-										<xs:element name="CarGroup" type="xs:string" minOccurs="0"/>
-										<xs:element name="Currency" type="xs:string" minOccurs="0"/>
-										<xs:element name="OutBranch" type="xs:string" minOccurs="0"/>
-										<xs:element name="InBranch" type="xs:string" minOccurs="0"/>
-										<xs:element name="OutDate" type="xs:string" minOccurs="0"/>
-										<xs:element name="OutTime" type="xs:string" minOccurs="0"/>
-										<xs:element name="InDate" type="xs:string" minOccurs="0"/>
-										<xs:element name="InTime" type="xs:string" minOccurs="0"/>
-										<xs:element name="RateNo" type="xs:string" minOccurs="0"/>
-										<xs:element name="RateName" type="xs:string" minOccurs="0"/>
-										<xs:element name="SoldDays" type="xs:string" minOccurs="0"/>
-										<xs:element name="RentalSum" type="xs:string" minOccurs="0"/>
-										<xs:element name="InsuranceSum" type="xs:string" minOccurs="0"/>
-										<xs:element name="ExtrasSum" type="xs:string" minOccurs="0"/>
-										<xs:element name="DropOffSum" type="xs:string" minOccurs="0"/>
-										<xs:element name="AirportFee" type="xs:string" minOccurs="0"/>
-										<xs:element name="VATPerc" type="xs:string" minOccurs="0"/>
-										<xs:element name="VATAmount" type="xs:string" minOccurs="0"/>
-										<xs:element name="TotalAmount" type="xs:string" minOccurs="0"/>
-										<xs:element name="Insurance" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="Code" type="xs:string" minOccurs="0"/>
-													<xs:element name="Name" type="xs:string" minOccurs="0"/>
-													<xs:element name="Quantity" type="xs:string" minOccurs="0"/>
-													<xs:element name="Amount" type="xs:string" minOccurs="0"/>
-													<xs:element name="IncludedYN" type="xs:string" minOccurs="0"/>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="Extra" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="Code" type="xs:string" minOccurs="0"/>
-													<xs:element name="Name" type="xs:string" minOccurs="0"/>
-													<xs:element name="Quantity" type="xs:string" minOccurs="0"/>
-													<xs:element name="Amount" type="xs:string" minOccurs="0"/>
-													<xs:element name="IncludedYN" type="xs:string" minOccurs="0"/>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="CarGroupPrice" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="RateNo" type="xs:string" minOccurs="0"/>
-													<xs:element name="RateName" type="xs:string" minOccurs="0"/>
-													<xs:element name="SoldDays" type="xs:string" minOccurs="0"/>
-													<xs:element name="RentalSum" type="xs:string" minOccurs="0"/>
-													<xs:element name="InsuranceSum" type="xs:string" minOccurs="0"/>
-													<xs:element name="ExtrasSum" type="xs:string" minOccurs="0"/>
-													<xs:element name="DropOffSum" type="xs:string" minOccurs="0"/>
-													<xs:element name="AirportFee" type="xs:string" minOccurs="0"/>
-													<xs:element name="VATPerc" type="xs:string" minOccurs="0"/>
-													<xs:element name="VATAmount" type="xs:string" minOccurs="0"/>
-													<xs:element name="TotalAmount" type="xs:string" minOccurs="0"/>
-													<xs:element name="CarAvailable">
-														<xs:simpleType>
-															<xs:restriction base="xs:string">
-																<xs:enumeration value="SoldOut"/>
-																<xs:enumeration value="Available"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:element>
-												</xs:sequence>
-												<xs:attribute name="CarGrop"/>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Success" type="xs:string"/>
-				<xs:element name="VarianceReason" type="xs:string"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EstimationDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="Success"/>
+        <xs:element name="Price">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="DebitorCode"/>
+              <xs:element type="xs:short" name="CDP"/>
+              <xs:element type="xs:string" name="VoucherType"/>
+              <xs:element type="xs:string" name="VoucherCode"/>
+              <xs:element type="xs:string" name="CarGroup"/>
+              <xs:element type="xs:string" name="Currency"/>
+              <xs:element type="xs:byte" name="OutBranch"/>
+              <xs:element type="xs:byte" name="InBranch"/>
+              <xs:element type="xs:string" name="OutDate"/>
+              <xs:element type="xs:string" name="OutTime"/>
+              <xs:element type="xs:string" name="InDate"/>
+              <xs:element type="xs:string" name="InTime"/>
+              <xs:element type="xs:string" name="Status"/>
+              <xs:element name="CarGroupPrice" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:short" name="RateNo"/>
+                    <xs:element type="xs:string" name="RateName"/>
+                    <xs:element type="xs:string" name="RatePackage"/>
+                    <xs:element type="xs:float" name="RatePackageDays"/>
+                    <xs:element type="xs:float" name="RatePackagePrice"/>
+                    <xs:element type="xs:float" name="SoldDays"/>
+                    <xs:element type="xs:float" name="RentalSum"/>
+                    <xs:element type="xs:float" name="InsuranceSum"/>
+                    <xs:element type="xs:float" name="ExtrasSum"/>
+                    <xs:element type="xs:float" name="DropOffSum"/>
+                    <xs:element type="xs:float" name="AirportFee"/>
+                    <xs:element type="xs:float" name="VATPerc"/>
+                    <xs:element type="xs:float" name="VATAmount"/>
+                    <xs:element type="xs:float" name="TotalAmount"/>
+                    <xs:element type="xs:float" name="WeekendAmount"/>
+                    <xs:element type="xs:string" name="Alert"/>
+                    <xs:element type="xs:string" name="VTHCode"/>
+                    <xs:element type="xs:string" name="VTHDesc" maxOccurs="unbounded" minOccurs="0"/>
+                    <xs:element type="xs:string" name="CarAvailable"/>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="CarGrop" use="optional"/>
+                  <xs:attribute type="xs:string" name="CarGropIntCode" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

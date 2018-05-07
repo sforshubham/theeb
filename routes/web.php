@@ -47,6 +47,8 @@ Route::group(['prefix' => 'api/v1'], function(){
     //Route::get('/profile', 'UsersController@driverProfile');
     Route::get('/test', 'SoapController@noshow');
     Route::get('/payfort', 'UsersController@payFortPay');
+    Route::get('/maps', 'ApiController@maps');
+    Route::get('/sharer', 'ApiController@sharer');
 
 
 });

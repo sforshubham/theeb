@@ -17,7 +17,6 @@ Application   : RentproWeb
 </documentation>
 
 <import  namespace="DummyRequest" location="DummyReq.xsd"/>
-<import  namespace="BrancheMstResponse" location="BranchMstRes.xsd"/>
 
  
 <message name="BranchMasterWebService">
