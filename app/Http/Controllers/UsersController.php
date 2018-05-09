@@ -56,7 +56,8 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $validator = Validator::make($request->all(), [
+            $input = array_map('trim', $request->all());
+            $validator = Validator::make($input, [
                 'PickupLocation' => 'required',
                 'DropLocation' => 'required',
                 'PickupDate' => 'required|date_format:d/m/Y|after_or_equal:today',
@@ -73,13 +74,13 @@ class UsersController extends SoapController
             } else {
                 $input = [
                     'CDP' => '',
-                    'OutBranch' => $request->input('PickupLocation'),
-                    'InBranch' => $request->input('DropLocation'),
-                    'OutDate' => $request->input('PickupDate'),
-                    'OutTime' => $request->input('PickupTime'),
-                    'InDate' => $request->input('DropDate'),
-                    'InTime' => $request->input('DropTime'),
-                    'CarGroup' => $request->input('CarCategory'),
+                    'OutBranch' => $input['PickupLocation'],
+                    'InBranch' => $input['DropLocation'],
+                    'OutDate' => $input['PickupDate'],
+                    'OutTime' => $input['PickupTime'],
+                    'InDate' => $input['DropDate'],
+                    'InTime' => $input['DropTime'],
+                    'CarGroup' => $input['CarCategory'],
                     'Currency' => 'SAR',
                     'DebitorCode' => '',
                     'VoucherType' => '',
@@ -120,7 +121,7 @@ class UsersController extends SoapController
             $validator = Validator::make($input, [
                 'Email' => 'required|email',
                 'Password' => 'required',
-                'NewPassword' => 'required'
+                'NewPassword' => 'required|size:8'
             ]);
             if ($validator->fails()) {
                 $status_code = 400;
@@ -359,7 +360,7 @@ class UsersController extends SoapController
                     $response['result'] = null;
                 } else {
                     $response['status'] = true;
-                    $response['message'] = '';
+                    $response['message'] = $result->VarianceReason;
                     $response['result'] = $result;
                 }
             }

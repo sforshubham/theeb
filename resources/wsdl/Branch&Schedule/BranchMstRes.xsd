@@ -6,31 +6,39 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="Success" type="xs:string"/>
+				<xs:element name="VarianceReason" type="xs:string"/>
 				<xs:element name="Branch">
 					<xs:complexType>
 						<xs:sequence>
-				<xs:element name="BranchCode" type="xs:integer"/>
-				<xs:element name="BranchName" type="xs:string"/>
-				<xs:element name="DistArea" type="xs:integer"/>
-				<xs:element name="DistAreaName" type="xs:string"/>
-				<xs:element name="OpArea" type="xs:integer"/>
-				<xs:element name="OpAreaName" type="xs:string"/>
-				<xs:element name="Country" type="xs:string"/>				
-				<xs:element name="CountryName" type="xs:string"/>
-				<xs:element name="BranchLat" type="xs:string"/>
-				<xs:element name="BranchLong" type="xs:string"/>
-				<xs:element name="City" type="xs:string"/>
-				<xs:element name="State" type="xs:string"/>
-				<xs:element name="Telephone" type="xs:string"/>
-				<xs:element name="Telephone1" type="xs:string"/>
-				<xs:element name="Fax" type="xs:string"/>
-				<xs:element name="Telex" type="xs:string"/>
-				<xs:element name="Email" type="xs:string"/>
-				<xs:element name="Schedule" type="xs:string"/>
-				</xs:sequence>
-		</xs:complexType>
-		</xs:element>
-				</xs:sequence>
+						<xs:element name="BranchCode" type="xs:integer"/>
+						<xs:element name="BranchName" type="xs:string"/>
+						<xs:element name="DistArea" type="xs:integer"/>
+						<xs:element name="DistAreaName" type="xs:string"/>
+						<xs:element name="OpArea" type="xs:integer"/>
+						<xs:element name="OpAreaName" type="xs:string"/>
+						<xs:element name="Country" type="xs:string"/>
+						<xs:element name="CountryName" type="xs:string"/>
+						<xs:element name="BranchLat" type="xs:string"/>
+						<xs:element name="BranchLong" type="xs:string"/>
+						<xs:element name="City" type="xs:string"/>
+						<xs:element name="State" type="xs:string"/>
+						<xs:element name="Telephone" type="xs:string"/>
+						<xs:element name="Telephone1" type="xs:string"/>
+						<xs:element name="Fax" type="xs:string"/>
+						<xs:element name="Telex" type="xs:string"/>
+						<xs:element name="Email" type="xs:string"/>
+						<xs:element name="Schedule" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="DayCode" type="xs:string" use="optional" />
+								<xs:attribute name="EndTime" type="xs:string" use="optional" />
+								<xs:attribute name="StartTime" type="xs:string" use="optional" />
+							</xs:complexType>
+						</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>

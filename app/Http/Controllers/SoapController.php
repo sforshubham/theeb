@@ -43,7 +43,8 @@ class SoapController extends BaseController
             //Log::info('Exception: '.$e->getMessage());
         }
         if (!empty((array) $result) && isset($result->Branch)) {
-            $result = object_to_array($result->Branch, Config::get('settings.branches_db_fields'));
+            $db_columns = Config::get('settings.branches_db_fields');
+            $result = object_to_array($result->Branch, $db_columns);
             $status = $this->updateBranches($result);
         } else {
             $result = [];
@@ -295,9 +296,9 @@ class SoapController extends BaseController
             'DriverImage' => '',
             'DriverImageFileExt' => ''
         ];*/
-        $input = [ //
+        /*$input = [ //reservation
             'DriverCode' => '9800002661',
-            'LicenseNo' => '2258370366​',
+            'LicenseNo' => '2258370366',
             'LastName' => '',
             'FirstName' => '',
             'CDP' => '',
@@ -310,11 +311,11 @@ class SoapController extends BaseController
             'RateNo' => '302',
             'RentalSum' => '',
             'DepositAmount' => '',
-            'ReservationNo' => '8983302639',
+            'ReservationNo' => '8983302655',
             'ReservationStatus' => 'N',
             'CarGroup' => 'PR38',
             'Currency' => 'SAR',
-            'PaymentType' => '4',
+            'PaymentType' => '',
             'CreditCardNo' => '',
             'CarMake' => '',
             'CarModel' => '',
@@ -327,40 +328,32 @@ class SoapController extends BaseController
                 'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
+        ];*/
+        $input = [ // Price estimation
+            'CDP' => '',
+            'OutBranch' => '19',
+            'InBranch' => '19',
+            'OutDate' => '11/05/2018',
+            'OutTime' => '11:00',
+            'InDate' => '13/05/2018',
+            'InTime' => '15:00',
+            'CarGroup' => '',
+            'VEHICLETYPE' => '3',
+            'Currency' => 'SAR',
+            'DebitorCode' => '',
+            'VoucherType' => '',
+            'VoucherNo' => '',
+            'Booked' => [
+                'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
+                'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
+            ],
         ];
-            $input = [ //Price estimation
-                'CDP' => '',
-                'OutBranch' => '2',
-                'InBranch' => '2',
-                'OutDate' => '02/05/2018',
-                'OutTime' => '17:00',
-                'InDate' => '03/05/2018',
-                'InTime' => '17:30',
-                'CarGroup' => 'ME58',
-                'Currency' => 'SAR',
-                'DebitorCode' => '',
-                'VoucherType' => '',
-                'VoucherNo' => '',
-                'Booked' => [
-                    'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
-                    'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
-                ],
-            ];
-        try {
-            $client = new \SoapClient(Config::get('settings.wsdl.car_model'), array('trace' => 1));
-            $a = $client->CarModelWS(/*['VehicleType'=>'21']*/);
-            //pr($client->__getLastRequest());
-            pr($a);
-            throw new \Exception("Error Processing Request", 1);
-        } catch (\Exception $e) {
-            echo $e->getMessage();die;
-        }
-        
-        $a = $client->CarModelWS(/*['VehicleType'=>'21']*/);
+        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
+        $a = $client->PriceEstimationWS(['Price' => $input]);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');
-        //pr($client->__getLastResponse());
+        pr($client->__getLastResponse());
     }
 
 

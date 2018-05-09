@@ -78,18 +78,18 @@ function createModifyDriverRules($operation = '')
             $rules = [
                 'IdType' => 'required|in:iqama,saudi id,passport',
                 'IdNo' => 'required',
-                'IdDoc' => 'file',
+                'IdDoc' => 'image',
                 'LastName' => 'required',
                 'FirstName' => 'required',
                 'DateOfBirth' => 'date_format:d/m/Y|before_or_equal:today',
                 'Nationality' => 'required',
                 'LicenseId' => 'required',
                 'LicenseExpiryDate' => 'required|date_format:d/m/Y',
-                'LicenseDoc' => 'file',
+                'LicenseDoc' => 'image',
                 'WorkTel' => 'numeric',
                 'Mobile' => 'required|numeric|regex:/(05)[0-9]{8}/',
                 'Email' => 'required|email',
-                'WorkIdDoc' => 'file',
+                'WorkIdDoc' => 'image',
                 'DriverImage' => 'image'
             ];
             break;
@@ -97,18 +97,18 @@ function createModifyDriverRules($operation = '')
             $rules = [
                 'IdType' => 'in:iqama,saudi id,passport',
                 'IdNo' => 'required',
-                'IdDoc' => 'file',
+                'IdDoc' => 'image',
                 'LastName' => 'required',
                 'FirstName' => 'required',
                 'DateOfBirth' => 'date_format:d/m/Y|before_or_equal:today',
                 'Nationality' => 'required',
                 'LicenseId' => 'required',
                 'LicenseExpiryDate' => 'required|date_format:d/m/Y',
-                'LicenseDoc' => 'required|file',
+                'LicenseDoc' => 'image',
                 'WorkTel' => 'numeric',
                 'Mobile' => 'required|numeric|regex:/(05)[0-9]{8}/',
                 'Email' => 'required|email',
-                'WorkIdDoc' => 'file',
+                'WorkIdDoc' => 'image',
                 'DriverImage' => 'image'
             ];
             break;
@@ -233,4 +233,9 @@ function DMStoDD($input ='')
     }
     $result =  floatval($deg)+(((floatval($min)*60)+floatval($sec)) / 3600);
     return $result;
+}
+
+function convert_to_json($data)
+{
+    return json_encode($data);
 }

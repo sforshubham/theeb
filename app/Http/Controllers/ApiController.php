@@ -48,7 +48,8 @@ class ApiController extends SoapController
         $status_code = 200;
         $result = (object)[];
         $response = [];
-        $validator = Validator::make($request->all(), [
+        $input = array_map('trim', $request->all());
+        $validator = Validator::make($input, [
             'username' => 'required',
             'password' => 'required'
         ]);
