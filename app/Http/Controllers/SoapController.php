@@ -296,7 +296,7 @@ class SoapController extends BaseController
             'DriverImage' => '',
             'DriverImageFileExt' => ''
         ];*/
-        /*$input = [ //reservation
+        $input = [ //reservation
             'DriverCode' => '9800002661',
             'LicenseNo' => '2258370366',
             'LastName' => '',
@@ -311,7 +311,7 @@ class SoapController extends BaseController
             'RateNo' => '302',
             'RentalSum' => '',
             'DepositAmount' => '',
-            'ReservationNo' => '8983302655',
+            'ReservationNo' => '88774026552',
             'ReservationStatus' => 'N',
             'CarGroup' => 'PR38',
             'Currency' => 'SAR',
@@ -328,8 +328,8 @@ class SoapController extends BaseController
                 'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
-        ];*/
-        $input = [ // Price estimation
+        ];
+        /*$input = [ // Price estimation
             'CDP' => '',
             'OutBranch' => '19',
             'InBranch' => '19',
@@ -347,9 +347,9 @@ class SoapController extends BaseController
                 'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
-        ];
-        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
-        $a = $client->PriceEstimationWS(['Price' => $input]);
+        ];*/
+        $client = new \SoapClient(Config::get('settings.wsdl.reservation'), array('trace' => 1));
+        $a = $client->CarProReservationWS(['Reservation' => $input]);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');

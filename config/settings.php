@@ -31,18 +31,23 @@ return [
         'reset_password' => 'Password reset has been successful',
         'payment_success' => 'Payment is successful'
     ],
-    'operation' => [
+    'cmd_operation' => [
         'view_driver' => 'V',
         'create_driver' => 'N',
         'modify_driver' => 'E'
     ],
-    'transaction' => [
+    'trans_operation' => [
         'trans_reservation' => 'R',
         'trans_payment' => 'P',
         'trans_agreement' => 'A',
         'trans_invoice' => 'I',
     ],
-    'branches_db_fields' => ['BranchCode' => '', 'BranchName' => '', 'DistArea' => '', 'DistAreaName' => '', 'OpArea' => '', 'OpAreaName' => '', 'Country' => '', 'CountryName' => '', 'BranchLat' => 'DMStoDD', 'BranchLong' => 'DMStoDD', 'City' => '', 'State' => '', 'Telephone' => '', 'Telephone1' => '', 'Fax' => '', 'Telex' => '', 'Email' => '', 'Schedule' => 'convert_to_json'],
+    'reservation_operation' => [
+        'new_reservation' => 'N',
+        'modify_reservation' => 'A',
+        'cancel_reservation' => 'C'
+    ],
+    'branches_db_fields' => ['BranchCode' => '', 'BranchName' => '', 'DistArea' => '', 'DistAreaName' => '', 'OpArea' => '', 'OpAreaName' => '', 'Country' => '', 'CountryName' => '', 'BranchLat' => 'DMStoDD', 'BranchLong' => 'DMStoDD', 'City' => '', 'State' => '', 'Telephone' => '', 'Telephone1' => '', 'Fax' => '', 'Telex' => '', 'Email' => '', 'Schedule' => 'json_encode'],
 
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
 ];

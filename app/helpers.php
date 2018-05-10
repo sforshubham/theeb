@@ -69,12 +69,12 @@ function createModifyDriverRules($operation = '')
 {
     $rules = [];
     switch ($operation) {
-        case 'V':
+        case 'V': //view driver
             $rules = [
                 'IdNo' => 'required'
             ];
             break;
-        case 'N':
+        case 'N':// create new driver
             $rules = [
                 'IdType' => 'required|in:iqama,saudi id,passport',
                 'IdNo' => 'required',
@@ -93,7 +93,7 @@ function createModifyDriverRules($operation = '')
                 'DriverImage' => 'image'
             ];
             break;
-        case 'E':
+        case 'E': // update driver
             $rules = [
                 'IdType' => 'in:iqama,saudi id,passport',
                 'IdNo' => 'required',
@@ -163,30 +163,30 @@ function passwordRequestBody()
 
 function reservationBody()
 {
-    $input = [
-        'DriverCode' => '9900000023',
-        'LicenseNo' => '1003282780',
+    $input = [ //reservation
+        'DriverCode' => '',
+        'LicenseNo' => '',
         'LastName' => '',
         'FirstName' => '',
         'CDP' => '',
-        'OutBranch' => '5',
-        'InBranch' => '5',
-        'OutDate' => '23/08/2017',
-        'OutTime' => '16:49',
-        'InDate' => '30/08/2017',
-        'InTime' => '16:49',
-        'RateNo' => '302',
+        'OutBranch' => '',
+        'InBranch' => '',
+        'OutDate' => '',
+        'OutTime' => '',
+        'InDate' => '',
+        'InTime' => '',
+        'RateNo' => '',
         'RentalSum' => '',
         'DepositAmount' => '',
-        'ReservationNo' => '8983302639',
-        'ReservationStatus' => 'N',
-        'CarGroup' => 'PR38',
-        'Currency' => 'SAR',
-        'PaymentType' => '4',
+        'ReservationNo' => '',
+        'ReservationStatus' => '',
+        'CarGroup' => '',
+        'Currency' => '',
+        'PaymentType' => '',
         'CreditCardNo' => '',
         'CarMake' => '',
         'CarModel' => '',
-        'Remarks' => 'Testing',
+        'Remarks' => '',
         'Booked' => [
             'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
             'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
@@ -235,7 +235,43 @@ function DMStoDD($input ='')
     return $result;
 }
 
-function convert_to_json($data)
+function reservationRules($operation = '')
 {
-    return json_encode($data);
+    $rules = [];
+    switch ($operation) {
+        case 'C': //cancel reservation
+            $rules = [
+                'ReservationNo' => 'required'
+            ];
+            break;
+        case 'N'://new reservation
+            $rules = [
+                'DriverCode' => 'required',
+                'OutBranch' => 'required',
+                'InBranch' => 'required',
+                'OutDate' => 'required|date_format:d/m/Y|after_or_equal:today',
+                'OutTime' => 'required',
+                'InDate' => 'date_format:d/m/Y|after_or_equal:OutDate',
+                'InTime' => 'required',
+                'RateNo' => 'required',
+                'ReservationNo' => 'required',
+                'CarGroup' => 'required',
+            ];
+            break;
+        case 'A'://extend reservation
+            $rules = [
+                'DriverCode' => 'required',
+                'OutBranch' => 'required',
+                'InBranch' => 'required',
+                'OutDate' => 'required|date_format:d/m/Y|after_or_equal:today',
+                'OutTime' => 'required',
+                'InDate' => 'date_format:d/m/Y|after_or_equal:OutDate',
+                'InTime' => 'required',
+                'RateNo' => 'required',
+                'ReservationNo' => 'required',
+                'CarGroup' => 'required',
+            ];
+            break;
+    }
+    return $rules;
 }

@@ -259,7 +259,7 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $operation = Config::get('settings.transaction')[$request->segment(3)];
+            $operation = Config::get('settings.trans_operation')[$request->segment(3)];
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
                 'StartDate' => 'required|date_format:d/m/Y',
@@ -330,7 +330,7 @@ class UsersController extends SoapController
         return response()->json($response, $status_code);
     }
 
-    public function makeReservation(Request $request)
+    public function manageReservation(Request $request)
     {
         $status_code = 200;
         $result = (object)[];
@@ -341,17 +341,23 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $input = array_map('trim', $request->all());
-            $validator = Validator::make($input, [
-                'DriverCode' => 'required',
-            ]);
+            $operation = Config::get('settings.reservation_operation')[$request->segment(3)];
+            $rules = reservationRules($operation);
+            $request_body = reservationBody();
+            $input = [];
+            foreach ($request->all() as $key => $val) {
+                if (isset($request_body[$key])) {
+                    $input[$key] = $request_body[$key] = (is_object($val) || is_array($val)) ? $val : trim($val);
+                }
+            }
+            $validator = Validator::make($input, $rules);
             if ($validator->fails()) {
                 $status_code = 400;
                 $response['status'] = false;
                 $response['message'] = $validator->errors()->all();
                 $response['result'] = null;
             } else {
-                $request_body = reservationBody();
+                $request_body['ReservationStatus'] = $operation;
                 $result = $this->reservation(['Reservation' => $request_body]);
                 if (empty((array) $result) || $result->Success != 'Y') {
                     $status_code = 400;
@@ -377,6 +383,5 @@ class UsersController extends SoapController
             'currency' => 'SAR',                       # Optional if you need to use another currenct than set in config.
             'customer_email' => 'shubhamgoeloctane@gmail.com'  # Customer email.
         ]);
-        //pr($response);die;
     }
 }

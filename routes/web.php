@@ -36,7 +36,9 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::post('/trans_agreement', 'UsersController@getTransDetails');
     Route::post('/trans_invoice', 'UsersController@getTransDetails');
     Route::post('/my_booking', 'UsersController@myBooking');
-    Route::post('/reservation', 'UsersController@makeReservation');
+    Route::post('/new_reservation', 'UsersController@manageReservation');
+    Route::post('/modify_reservation', 'UsersController@manageReservation');
+    Route::post('/cancel_reservation', 'UsersController@manageReservation');
 
     /**
      * Delete below given routes CAREFULLY
@@ -49,6 +51,8 @@ Route::group(['prefix' => 'api/v1'], function(){
     Route::get('/payfort', 'UsersController@payFortPay');
     Route::get('/maps', 'ApiController@maps');
     Route::get('/sharer', 'ApiController@sharer');
+});
 
-
+Route::get('/test', function () {
+    return view('test');
 });

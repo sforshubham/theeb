@@ -96,7 +96,7 @@ class ApiController extends SoapController
     {
         $status_code = 200;
         $response = array();
-        $operation = Config::get('settings.operation')[$request->segment(3)];
+        $operation = Config::get('settings.cmd_operation')[$request->segment(3)];
         $rules = createModifyDriverRules($operation);
         $request_body = driverRequestBody();
         $input = [];
@@ -121,8 +121,8 @@ class ApiController extends SoapController
             $driver_img = $this->getFileAndEncode($request->file('DriverImage'));
         } else {
             $id_doc = $license_doc = $work_id_doc = $driver_img = ['file_base64'=> '','ext'=>''];
+            $request_body['Operation'] = $operation;
         }
-        $request_body['Operation'] = $operation;
         $request_body['LicenseDoc'] = $license_doc['file_base64'];
         $request_body['LicenseDocFileExt'] = $license_doc['ext'];
         $request_body['IdDoc'] = $id_doc['file_base64'];
@@ -193,8 +193,6 @@ class ApiController extends SoapController
     public function maps()
     {
         $allbranches = Branches::all()->toArray();
-        //pr($data);die;
-
         return view('gmap', ['allbranches' => $allbranches]);
 
     }
