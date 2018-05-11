@@ -259,7 +259,7 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $operation = Config::get('settings.trans_operation')[$request->segment(3)];
+            $operation = Config::get('settings.trans_operation')[$request->segment(1)];
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
                 'StartDate' => 'required|date_format:d/m/Y',
@@ -293,41 +293,24 @@ class UsersController extends SoapController
         return response()->json($response, $status_code);
     }
 
-    public function myBooking(Request $request)
+    public function myBooking()
     {
-        $status_code = 200;
         $result = (object)[];
-        $response = [];
+
         if (!$this->checkLogin()) {
             $status_code = 401;
             $response['status'] = false;
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $input = array_map('trim', $request->all());
-            $validator = Validator::make($input, [
-                'PassportID' => 'required',
-            ]);
-            if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+            $IDNo = session('user.IDNo');
+            $result = $this->booking(['PassportID' => $IDNo]);
+            if (empty((array) $result) || $result->Success != 'Y') {
+                return redirect('/')->with('msg', $result->VarianceReason);
             } else {
-                $result = $this->booking($input);
-                if (empty((array) $result) || $result->Success != 'Y') {
-                    $status_code = 400;
-                    $response['status'] = false;
-                    $response['message'] = $result->VarianceReason;
-                    $response['result'] = null;
-                } else {
-                    $response['status'] = true;
-                    $response['message'] = '';
-                    $response['result'] = $result;
-                }
+                return view('app.booking')->with('result', $result);
             }
         }
-        return response()->json($response, $status_code);
     }
 
     public function manageReservation(Request $request)
