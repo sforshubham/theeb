@@ -22,28 +22,18 @@ class UsersController extends SoapController
 
     public function driverProfile(Request $request)
     {
-        $status_code = 200;
-        $response = array();
+        $data = (object)[];
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $IDNo = session('user.IDNo');
             $data = $this->getDriverProfile($IDNo);
             if (empty((array) $data) || $data->Success != 'Y') {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = Config::get('settings.resp_msg.processing_error');
-                $response['result'] = NULL;
+                return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
-                $response['status'] = true;
-                $response['message'] = '';
-                $response['result'] = $data;
+                return view('app.profile')->with('data', $data);
             }
         }
-        return response()->json($response, $status_code);
     }
 
     public function priceEstimation(Request $request)
@@ -60,9 +50,9 @@ class UsersController extends SoapController
             $validator = Validator::make($input, [
                 'PickupLocation' => 'required',
                 'DropLocation' => 'required',
-                'PickupDate' => 'required|date_format:d/m/Y|after_or_equal:today',
+                'PickupDate' => 'required|date_format:d/m/Y|after:tomorrow',
                 'PickupTime' => 'required',
-                'DropDate' => 'required|date_format:d/m/Y|after_or_equal:PickupDate',
+                'DropDate' => 'required|date_format:d/m/Y|after:PickupDate',
                 'DropTime' => 'required',
                 'CarCategory' => 'required',
             ]);
@@ -297,10 +287,7 @@ class UsersController extends SoapController
         $result = (object)[];
 
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('msg', Config::get('settings.resp_msg.auth_error'));
         } else {
             $IDNo = session('user.IDNo');
             $result = $this->booking(['PassportID' => $IDNo]);

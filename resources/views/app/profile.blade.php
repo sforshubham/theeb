@@ -9,30 +9,38 @@
                         <div class="white-bg">
                             <div class="left-wrap-profile floatRight">
                                 <div class="profile-image-show">
-                                    <img src="images/no-profile.png" />
-                                    <h5>Aman Khan</h5>
+                                    <img src="{{config('settings.defaults.profile_img')}}" />
+                                    <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">
                                     <span>Personal Details</span>
                                     <div class="profile-single-wrap">
+                                        <strong>ID</strong>
+                                        <span>{{$data->ID ? $data->ID : '--'}}</span>
+                                    </div>
+                                    <div class="profile-single-wrap">
                                         <strong>Nationality</strong>
-                                        <span>Indian</span>
+                                        <span>{{$data->Nationality ? $data->Nationality : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>License Number</strong>
-                                        <span>1297947</span>
+                                        <span>{{$data->LicenseID ? $data->LicenseID : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>Nationality</strong>
-                                        <span>Indian</span>
+                                        <strong>License Expiry Date</strong>
+                                        <span>{{$data->LicenseExpiryDate ? $data->LicenseExpiryDate : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>License Number</strong>
-                                        <span>1297947</span>
+                                        <strong>License Issued By</strong>
+                                        <span>{{$data->LicenseIssuedBy ? $data->LicenseIssuedBy : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>Nationality</strong>
-                                        <span>Nationality</span>
+                                        <strong>Email Id</strong>
+                                        <span>{{$data->Email ? $data->Email : '--'}}</span>
+                                    </div>
+                                    <div class="profile-single-wrap">
+                                        <strong>Date Of Birth</strong>
+                                        <span>{{$data->DateOfBirth ? $data->DateOfBirth : '--'}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -41,38 +49,42 @@
                                     <h5>Membership Details</h5>
                                     <div class="membership-details">
                                         <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <span>{{$data->Membership->MembershipNo ? $data->Membership->MembershipNo : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
                                         <strong>Status</strong>
-                                        <span>Status</span>
+                                        <span>{{$data->Membership->Status ? $data->Membership->Status : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Card Type</strong>
+                                        <span>{{$data->Membership->CardType ? $data->Membership->CardType : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Issue Date</strong>
+                                        <span>{{$data->Membership->IssueDate ? $data->Membership->IssueDate : '--'}}</span>
+                                    </div>
+                                    <div class="membership-details">
+                                        <strong>Expiry Date</strong>
+                                        <span>{{$data->Membership->ExpiryDate ? $data->Membership->ExpiryDate : '--'}}</span>
                                     </div>
                                 </div>
                                 <div class="profile-right-single">
                                     <h5>Loyalty</h5>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Total Points</strong>
+                                        <span>{{$data->Loyality->TotalPoints ? $data->Loyality->TotalPoints : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Used Points</strong>
+                                        <span>{{$data->Loyality->UsedPoints ? $data->Loyality->UsedPoints : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Last Used</strong>
+                                        <span>{{$data->Loyality->LastUsed ? $data->Loyality->LastUsed : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>Balance Points</strong>
+                                        <span>{{$data->Loyality->BalancePoints ? $data->Loyality->BalancePoints : '--'}}</span>
                                     </div>
                                 </div>
                                 <div class="profile-right-single">

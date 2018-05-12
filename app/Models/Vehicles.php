@@ -14,7 +14,7 @@ class VehicleTypes extends Model
      * @var string
      */
     protected $table = 'vehicles';
-    protected $uniqueKey = 'Code';
+    protected $uniqueKey = 'Group';
     public $timestamps = false;
 
     public static function updateAll($list = [])

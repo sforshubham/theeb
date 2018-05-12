@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	if (session()->has('user.IDNo')) {
+        return redirect('/booking');
+    } else {
+        return view('app.login');
+    }
 });
 
 Route::group(['prefix' => 'api/v1'], function(){
@@ -33,7 +37,7 @@ Route::post('/price_estimation', 'UsersController@priceEstimation');
 Route::post('/reset_password', 'UsersController@resetPassword');
 Route::post('/payment', 'UsersController@makePayment');
 Route::post('/document_print', 'UsersController@documentPrint');
-Route::get('/my_booking', 'UsersController@myBooking');
+Route::get('/booking', 'UsersController@myBooking');
 Route::post('/new_reservation', 'UsersController@manageReservation');
 Route::post('/modify_reservation', 'UsersController@manageReservation');
 Route::post('/cancel_reservation', 'UsersController@manageReservation');

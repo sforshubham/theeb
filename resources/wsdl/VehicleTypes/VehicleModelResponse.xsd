@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="VehicleTypesResponse" targetNamespace="VehicleType">
-         <xs:element name="VehicleTypes">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="VehicleTypesResponse" targetNamespace="VehicleType">
+   <xs:element name="CarModel">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Model" maxOccurs="unbounded">
                <xs:complexType>
-                     <xs:sequence>
-                           <xs:element name="VehType" maxOccurs="unbounded">
-                                 <xs:complexType>
-                                       <xs:sequence>
-                                             <xs:element name="VTHCode" type="xs:string"></xs:element>
-                                             <xs:element name="VTHDesc" type="xs:string"></xs:element>
-                                             <xs:element name="VTHType" type="xs:string"></xs:element>
-                                  <xs:element name="Group" type="xs:string"></xs:element>
-                                  <xs:element name="VehTypeDesc" type="xs:string"></xs:element>
-                                  <xs:element name="ImageUrl" type="xs:string"></xs:element>
-                                       </xs:sequence>
-                                 </xs:complexType>
-                           </xs:element>
-                     </xs:sequence>
+                  <xs:sequence>
+                     <xs:element name="VTHCode" type="xs:string" />
+                     <xs:element name="VTHDesc" type="xs:string" />
+                     <xs:element name="VTHType" type="xs:string" />
+                     <xs:element name="Group" type="xs:string" />
+                     <xs:element name="VehTypeDesc" type="xs:string" />
+                     <xs:element name="ImageUrl" type="xs:string" />
+                  </xs:sequence>
                </xs:complexType>
-         </xs:element>
-   </xs:schema>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

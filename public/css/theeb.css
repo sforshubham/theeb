@@ -90,6 +90,163 @@ Version: 1.0
 
 .from-end-date-rental:after{clear:both; content:''; display:block}
 
+.my-booking-btn{    display: inline-block;    background: #1269a0;    padding: 15px 65px;    color: #fff;    border-radius: 10px;    text-align: center;}
+
+.tabs-top ul li{   float:left;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.tabs-top ul{float:right; background: #f9b1c5;    padding-bottom: 7px;    border-radius: 10px;}
+
+.tabs-top ul li a{color:#fff;   padding: 15px 110px; display:block; position:relative;}
+
+.tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}
+
+.tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.tabs-top ul li.active a:after{display:none;}
+
+.tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+
+.tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+
+.tabs-top ul li:last-child a:after{display:none;}
+
+.rental-history-btn{    display: inline-block;    background: #1269a0;    padding: 15px 55px;    color: #fff;    border-radius: 10px;    text-align: center;}
+
+.rental-tabs-top ul li{   float:left;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.rental-tabs-top ul{float:right; background: #f9b1c5;    padding-bottom: 5px;    border-radius: 10px;}
+
+.rental-tabs-top ul li a{color:#fff;   padding: 13px 84px; display:block; position:relative;}
+
+.rental-tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}
+
+.rental-tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.rental-tabs-top ul li.active a:after{display:none;}
+
+.rental-tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+
+.rental-tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+
+.rental-tabs-top ul li:last-child a:after{display:none;}
+
+ 
+
+.white-bg{background:#fff; margin-top:50px; border-radius:10px; padding:20px 15px;}
+
+.single-car-section{width:48%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-right:15px; margin-bottom:30px;}
+
+.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:left; padding:0 0 10px 10px;}
+
+.pickup-drop-time span{color:#444; font-size:16px; text-align:center;}
+
+.pickup-drop-time span strong{ color:#1e4878; margin-bottom:10px; display:inline-block; }
+
+.pickup-drop-time{ width:45%; text-align:left; display:inline-block; margin-top:50px; padding-left:10px;  margin-right:10px;}
+
+.border-right{border-right:1px solid #ccc}
+
+.buttons-all { text-align:left; margin-top:30px; margin-left:10px; margin-bottom:30px;}
+
+.buttons-all .buttons{width:110px; text-align:center; display:inline-block;color:#fff; border-radius:10px; font-size:14px; margin-right:10px; padding:10px 23px; }
+
+.buttons-all .cancel-booking-btn{ background:#bf0005;}
+
+.buttons-all .extend-booking-btn{ background:#f59c1e;}
+
+.buttons-all .view-booking-btn{ background:#1d4578;}
+
+.cancelled{color:#ff0000; float:right; padding-right:10px; font-weight:normal;}
+
+.table-rental tr th{background:#f1f1f1; color:#333; border:1px solid #ccc; padding:10px; text-align:left;}
+
+.table-rental tr td{border:1px solid #ccc; padding:10px; width:25%}
+
+.table-rental tr td:first-child, .table-rental tr td:nth-child(3){font-weight:bold;}
+
+.address-table{font-weight:normal; margin:20px 0}
+
+.from-end-date-rental input{ background:url(../images/calender.png) no-repeat 96%; border: 1px solid #ccc; margin-right:5px;   padding: 15px 10px;min-width:250px;     float: left;}
+
+.from-end-date-rental:after{clear:both; content:''; display:block}
+
+ 
+
+.tariff-car-section{width:31.5%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;}
+
+.tariff-car-section h4{ color:#1e4878; font-size:17px; border-bottom:1px solid #ccc; text-align:left; padding:0 0 10px 10px;}
+
+.tariff-car-section img{margin-top:10px;}
+
+.tariff-car-section .car-price{    width: 45%;    text-align: left;    display: inline-block;    margin-top: 35px;    padding-left: 10px;    margin-right: 10px;    float: left;    vertical-align: top;}
+
+.filter-category{    padding: 13px 10px;    border: 1px solid #ccc;    min-width: 230px;}
+
+.left-wrap-profile{width:27%; padding:15px; border:1px solid #ccc; border-radius:10px;}
+
+.profile-image-show{ text-align:center;}
+
+.profile-image-show img{border-radius:100%; max-width:150px;}
+
+.profile-image-show h5{font-size:16px;    color: #1269a0;}
+
+.profile-single-wrap{margin-top:15px; font-size:15px;}
+
+.profile-single-wrap strong{display:inline-block; width:50%;}
+
+.profile-details{margin-top:20px;}
+
+.right-wrap-profile{ width:67%}
+
+.profile-right-single{ border-radius: 10px; font-size:14px;width:100%;padding-bottom: 10px; margin-bottom:25px; box-shadow:0px 1px 1px #999; }
+
+.profile-right-single h5{background:#094c77; font-size: 18px; padding:10px; color: #fff; border-radius: 10px 10px 0 0;}
+
+.membership-details strong{    float: left;    width: 20%;    padding: 10px;}
+
+.membership-details span{    float: right;    padding: 10px;    width: 20%;}
+
+.membership-details:after{content:''; clear:both; display:block;}
+
+.login-bg{background:url(../images/login.jpg) no-repeat; margin-top:50px; border-radius:10px; padding:20px 15px; min-height:300px}
+
+.login-wrapper{max-width:600px; margin:100px auto; border-radius: 10px;   min-height: 300px;    border: 1px solid #ccc; position:relative;}
+
+.login-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.white-transparent{background:#fff; border-radius: 10px;opacity:0.7; border-radius:10px; width:100%;z-index:0; height:100%; position:absolute; }
+
+.main-login-wrapper{position:relative;     border-radius: 10px;z-index:2; border-radius:10px;}
+
+.login-wrapper input{width:80%; padding:23px 20px 23px 50px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:50px auto 0;}
+
+.login-wrapper input.email{background:url(../images/lock.png) #fff 2% no-repeat}
+
+.login-wrapper input.username{background:url(../images/user.png) #fff 2% no-repeat}
+
+.login-wrapper input[type="submit"]{width:92%; background:#1d4578; color:#fff;cursor:pointer;}
+
+.login-inner-wrapper{text-align:center;}
+
+.buttons-signup{margin:20px;}
+
+.buttons-signup a{color:#1d4578; font-weight:bold;}
+
+.signup-wrapper{ margin:30px auto 0; border-radius: 10px;   min-height: 300px;  text-align:left;   border: 1px solid #ccc; position:relative;}
+
+.signup-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.signup-wrapper .two-column-signup  input{width:42%; display:inline-block; padding:17px 20px 17px 20px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:40px 20px 0;}
+
+.signup-wrapper .three-column-signup input, .signup-wrapper .three-column-signup select{width:28%; display:inline-block; padding:17px 20px 17px 20px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:20px 0 0 20px;}
+
+.signup-wrapper input[type="button"]{    width: 96%;    background: #1d4578;    color: #fff;    padding: 20px 0;    margin: 20px;    border: 0;    border-radius: 10px;}
+
+.signup-inner-wrapper{text-align:left;}
+
+.license-number{ background:url(../images/upload-icon.png) no-repeat #fff 98%;}
+
+
 /*--------------CSS by Shubham start-------------------*/
 .single-car-section img {width:400px;height:224px;}
 

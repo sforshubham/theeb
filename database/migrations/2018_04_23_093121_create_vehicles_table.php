@@ -14,9 +14,12 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->integer('Code')->unique();
-            $table->string('Desc', 200)->nullable();
-            $table->string('Type', 200)->nullable();
+            $table->integer('VTHCode');
+            $table->string('VTHDesc', 200)->nullable();
+            $table->string('VTHType', 200)->nullable();
+            $table->string('Group', 200)->unique();
+            $table->string('VehTypeDesc', 200)->nullable();
+            $table->string('ImageUrl', 500)->nullable();
         });
     }
 
