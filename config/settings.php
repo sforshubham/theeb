@@ -37,10 +37,10 @@ return [
         'modify_driver' => 'E'
     ],
     'trans_operation' => [
-        'trans_reservation' => 'R',
-        'trans_payment' => 'P',
-        'trans_agreement' => 'A',
-        'trans_invoice' => 'I',
+        'agreement' => 'A',
+        'invoice' => 'I',
+        'payment' => 'P',
+        'reservation' => 'R',
     ],
     'reservation_operation' => [
         'new_reservation' => 'N',

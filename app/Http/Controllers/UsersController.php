@@ -259,12 +259,11 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $operation = Config::get('settings.trans_operation')[$request->segment(3)];
+            $operation = Config::get('settings.trans_operation')[$request->segment(1)];
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
-                'StartDate' => 'required|date_format:d/m/Y',
-                'EndDate' => 'required|date_format:d/m/Y',
-                'DriverCode' => 'required'
+                'StartDate' => 'nullable|date_format:d/m/Y',
+                'EndDate' => 'nullable|date_format:d/m/Y'
             ]);
             if ($validator->fails()) {
                 $status_code = 400;
@@ -273,9 +272,9 @@ class UsersController extends SoapController
                 $response['result'] = null;
             } else {
                 $request_body['TransactionFor'] = $operation;
-                $request_body['StartDate'] = $input['StartDate'];
-                $request_body['EndDate'] = $input['EndDate'];
-                $request_body['DriverCode'] = $input['DriverCode'];
+                $request_body['StartDate'] = isset($input['StartDate']) ? $input['StartDate'] : '';
+                $request_body['EndDate'] = isset($input['EndDate']) ? $input['EndDate'] : '';
+                $request_body['DriverCode'] = session('user.DriverCode');
 
                 $result = $this->transaction($request_body);
                 if (empty((array) $result)) {
@@ -290,7 +289,7 @@ class UsersController extends SoapController
                 }
             }
         }
-        return response()->json($response, $status_code);
+        return view('rentals', ['result' => $result]);
     }
 
     public function myBooking(Request $request)

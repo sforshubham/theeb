@@ -6,6 +6,8 @@
         <xs:element name="Agreements">
           <xs:complexType>
             <xs:sequence>
+              <xs:element type="xs:string" name="H1"/>
+              <xs:element type="xs:string" name="H2"/>
               <xs:element name="Agreement" maxOccurs="unbounded" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
@@ -17,6 +19,38 @@
                     <xs:element type="xs:string" name="StatusCode"/>
                     <xs:element type="xs:string" name="AgreementNo"/>
                     <xs:element type="xs:string" name="ChrageGroup"/>
+                    <xs:element type="xs:string" name="LicenseNo" />
+                    <xs:element type="xs:string" name="TOTALAMOUNT" />
+                    <xs:element type="xs:string" name="TOTALPAID" />
+                    <xs:element type="xs:string" name="TOTALBALANCE" />
+                    <xs:element type="xs:string" name="CheckOutBranchContact" />
+                    <xs:element type="xs:string" name="CheckInBranchContact" />
+                    <xs:element type="xs:string" name="DriverId" />
+                    <xs:element type="xs:string" name="DriverName" />
+                    <xs:element type="xs:string" name="DriverLicenseNo" />
+                    <xs:element type="xs:string" name="DriverLicenseExpiryDate" />
+                    <xs:element type="xs:string" name="DriverNationality" />
+                    <xs:element type="xs:string" name="DriverMembershipNo" />
+                    <xs:element type="xs:string" name="DriverMembershipType" />
+                    <xs:element type="xs:string" name="DriverContactNo" />
+                    <xs:element type="xs:string" name="DebitorCode" />
+                    <xs:element type="xs:string" name="DebitorName" />
+                    <xs:element type="xs:string" name="AgreementUser" />
+                    <xs:element type="xs:string" name="AgreementDays" />
+                    <xs:element type="xs:string" name="AgreementPackage" />
+                    <xs:element type="xs:string" name="AgreementPackagePrice" />
+                    <xs:element type="xs:string" name="AgreementCheckOutTime" />
+                    <xs:element type="xs:string" name="AgreementChargeGroup" />
+                    <xs:element type="xs:string" name="AgreementOutKm" />
+                    <xs:element type="xs:string" name="AgreementModelName" />
+                    <xs:element type="xs:string" name="AgreementTotalRental" />
+                    <xs:element type="xs:string" name="AgreementDiscount" />
+                    <xs:element type="xs:string" name="AgreementFreeKm" />
+                    <xs:element type="xs:string" name="AgreementFreeHr" />
+                    <xs:element type="xs:string" name="AgreementExtraKmCharge" />
+                    <xs:element type="xs:string" name="AgreementExtraHourCharge" />
+                    <xs:element type="xs:string" name="AgreementExtras" />
+                    <xs:element type="xs:string" name="AgreementInsurance" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

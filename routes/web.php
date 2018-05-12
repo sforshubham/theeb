@@ -56,3 +56,8 @@ Route::group(['prefix' => 'api/v1'], function(){
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::get('/agreement', 'UsersController@getTransDetails');
+Route::get('/invoice', 'UsersController@getTransDetails');
+Route::get('/payment', 'UsersController@getTransDetails');
+Route::get('/reservation', 'UsersController@getTransDetails');
