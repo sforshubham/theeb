@@ -89,3 +89,9 @@ Version: 1.0
 .from-end-date-rental input{ background:url(../images/calender.png) no-repeat 96%; border: 1px solid #ccc; margin-right:5px;   padding: 15px 10px;min-width:250px;     float: left;}
 
 .from-end-date-rental:after{clear:both; content:''; display:block}
+
+/*--------------CSS by Shubham start-------------------*/
+.single-car-section img {width:400px;height:224px;}
+
+
+/*--------------CSS by Shubham end-------------------*/

@@ -50,4 +50,9 @@ return [
     'branches_db_fields' => ['BranchCode' => '', 'BranchName' => '', 'DistArea' => '', 'DistAreaName' => '', 'OpArea' => '', 'OpAreaName' => '', 'Country' => '', 'CountryName' => '', 'BranchLat' => 'DMStoDD', 'BranchLong' => 'DMStoDD', 'City' => '', 'State' => '', 'Telephone' => '', 'Telephone1' => '', 'Fax' => '', 'Telex' => '', 'Email' => '', 'Schedule' => 'json_encode'],
 
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
+
+    'defaults' => [
+        'car_img' => asset('images/no-car-image-large.png'),
+        'car_desc' => 'Default text',
+    ]
 ];

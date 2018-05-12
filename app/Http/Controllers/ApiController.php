@@ -96,7 +96,7 @@ class ApiController extends SoapController
     {
         $status_code = 200;
         $response = array();
-        $operation = Config::get('settings.cmd_operation')[$request->segment(3)];
+        $operation = Config::get('settings.cmd_operation')[$request->segment(1)];
         $rules = createModifyDriverRules($operation);
         $request_body = driverRequestBody();
         $input = [];

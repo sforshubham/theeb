@@ -17,41 +17,26 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'api/v1'], function(){
 
-    Route::get('/branches', 'ApiController@getAllBranches');
-    Route::get('/vehicle_types', 'ApiController@getAllVehicleTypes');
-    Route::get('/logout', 'ApiController@logout');
-    Route::post('/login', 'ApiController@login');
-    Route::post('/forgot_password', 'ApiController@forgotPassword');
-    Route::post('/create_driver', 'ApiController@createModifyDriver');
-    Route::post('/modify_driver', 'ApiController@createModifyDriver');
-    Route::post('/view_driver', 'ApiController@createModifyDriver');
-
-    Route::get('/profile', 'UsersController@driverProfile');
-    Route::post('/price_estimation', 'UsersController@priceEstimation');
-    Route::post('/reset_password', 'UsersController@resetPassword');
-    Route::post('/payment', 'UsersController@makePayment');
-    Route::post('/document_print', 'UsersController@documentPrint');
-    Route::post('/trans_reservation', 'UsersController@getTransDetails');
-    Route::post('/trans_payment', 'UsersController@getTransDetails');
-    Route::post('/trans_agreement', 'UsersController@getTransDetails');
-    Route::post('/trans_invoice', 'UsersController@getTransDetails');
-    Route::post('/my_booking', 'UsersController@myBooking');
-    Route::post('/new_reservation', 'UsersController@manageReservation');
-    Route::post('/modify_reservation', 'UsersController@manageReservation');
-    Route::post('/cancel_reservation', 'UsersController@manageReservation');
-
-    /**
-     * Delete below given routes CAREFULLY
-     */
-    Route::get('/branches2', 'SoapController@getAllBranches');
-    Route::get('/vehicle_types2', 'SoapController@getAllVehicleTypes');
-    Route::get('/loging', 'ApiController@login');
-    //Route::get('/profile', 'UsersController@driverProfile');
-    Route::get('/test', 'SoapController@noshow');
-    Route::get('/payfort', 'UsersController@payFortPay');
-    Route::get('/maps', 'ApiController@maps');
-    Route::get('/sharer', 'ApiController@sharer');
 });
+
+Route::get('/branches', 'ApiController@getAllBranches');
+Route::get('/vehicle_types', 'ApiController@getAllVehicleTypes');
+Route::get('/logout', 'ApiController@logout');
+Route::post('/login', 'ApiController@login');
+Route::post('/forgot_password', 'ApiController@forgotPassword');
+Route::post('/create_driver', 'ApiController@createModifyDriver');
+Route::post('/modify_driver', 'ApiController@createModifyDriver');
+Route::post('/view_driver', 'ApiController@createModifyDriver');
+
+Route::get('/profile', 'UsersController@driverProfile');
+Route::post('/price_estimation', 'UsersController@priceEstimation');
+Route::post('/reset_password', 'UsersController@resetPassword');
+Route::post('/payment', 'UsersController@makePayment');
+Route::post('/document_print', 'UsersController@documentPrint');
+Route::get('/my_booking', 'UsersController@myBooking');
+Route::post('/new_reservation', 'UsersController@manageReservation');
+Route::post('/modify_reservation', 'UsersController@manageReservation');
+Route::post('/cancel_reservation', 'UsersController@manageReservation');
 
 Route::get('/test', function () {
     return view('test');
@@ -61,3 +46,14 @@ Route::get('/agreement', 'UsersController@getTransDetails');
 Route::get('/invoice', 'UsersController@getTransDetails');
 Route::get('/payment', 'UsersController@getTransDetails');
 Route::get('/reservation', 'UsersController@getTransDetails');
+/**
+ * Delete below given routes CAREFULLY
+ */
+Route::get('/branches2', 'SoapController@getAllBranches');
+Route::get('/vehicle_types2', 'SoapController@getAllVehicleTypes');
+Route::get('/loging', 'ApiController@login');
+//Route::get('/profile', 'UsersController@driverProfile');
+Route::get('/test', 'SoapController@noshow');
+Route::get('/payfort', 'UsersController@payFortPay');
+Route::get('/maps', 'ApiController@maps');
+Route::get('/sharer', 'ApiController@sharer');

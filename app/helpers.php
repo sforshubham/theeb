@@ -21,6 +21,8 @@ function object_to_array($obj, $allowed_keys = [])
                     $val = $allowed_keys[$key]($val);
                 }
                 $obj[$key] = object_to_array($val, $allowed_keys);
+            } elseif (empty($allowed_keys)) {
+                $obj[$key] = object_to_array($val, $allowed_keys);
             } else {
                 unset($obj[$key]);
             }
@@ -244,7 +246,7 @@ function reservationRules($operation = '')
                 'ReservationNo' => 'required'
             ];
             break;
-        case 'N'://new reservation
+        case 'N': //new reservation
             $rules = [
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
@@ -258,7 +260,7 @@ function reservationRules($operation = '')
                 'CarGroup' => 'required',
             ];
             break;
-        case 'A'://extend reservation
+        case 'A': //extend reservation
             $rules = [
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
