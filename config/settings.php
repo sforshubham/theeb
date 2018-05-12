@@ -52,7 +52,7 @@ return [
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
 
     'defaults' => [
-        'car_img' => asset('images/no-car-image-large.png'),
+        'car_img' => '/../public/images/no-car-image-large.png',
         'car_desc' => 'Default text',
     ]
 ];
