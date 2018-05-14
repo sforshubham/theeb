@@ -60,6 +60,17 @@ class BaseController extends Controller
         }
         return $info;
     }
-    
+
+    /**
+     * List all distinct Vehicles types from DB
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function vehicleTypes()
+    {
+        $rows = VehicleTypes::vehicleType();
+        return $rows;
+    }
+
 
 }

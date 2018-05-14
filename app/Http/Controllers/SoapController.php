@@ -72,8 +72,8 @@ class SoapController extends BaseController
             //Log::info('Exception: '.$e->getMessage());
         }
 
-        if (!empty((array) $result) && isset($result->VehicleTypes)) {
-            $result = object_to_array($result->VehicleTypes, Config::get('settings.vehicles_db_fields'));
+        if (!empty((array) $result) && !empty($result->Model)) {
+            $result = object_to_array($result->Model, Config::get('settings.vehicles_db_fields'));
             $status = $this->updateVehicles($result);
         } else {
             $result = [];
@@ -329,7 +329,7 @@ class SoapController extends BaseController
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
         ];
-        /*$input = [ // Price estimation
+        $input = [ // Price estimation
             'CDP' => '',
             'OutBranch' => '19',
             'InBranch' => '19',
@@ -347,13 +347,13 @@ class SoapController extends BaseController
                 'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
-        ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.reservation'), array('trace' => 1));
-        $a = $client->CarProReservationWS(['Reservation' => $input]);
+        ];
+        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
+        $a = $client->PriceEstimationWS(['Price' => $input]);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');
-        pr($client->__getLastResponse());
+        //pr($client->__getLastResponse());
     }
 
 

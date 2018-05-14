@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         //$schedule->command('inspire')->hourly();
         $schedule->call('\App\Http\Controllers\SoapController@getAllBranches')->everyMinute();
-        //$schedule->call('\App\Http\Controllers\SoapController@getAllVehicleTypes')->everyMinute();
+        $schedule->call('\App\Http\Controllers\SoapController@getAllVehicleTypes')->everyMinute();
     }
 
     /**

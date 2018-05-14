@@ -14,17 +14,19 @@ function object_to_array($obj, $allowed_keys = [])
     }
     if (is_array($obj)) {
         foreach ($obj as $key => $val) {
-            if (is_int($key)) {
-                $obj[$key] = object_to_array($val, $allowed_keys);
-            } elseif (isset($allowed_keys[$key])) {
-                if ($allowed_keys[$key] != '') {
-                    $val = $allowed_keys[$key]($val);
-                }
-                $obj[$key] = object_to_array($val, $allowed_keys);
-            } elseif (empty($allowed_keys)) {
+            if (empty($allowed_keys)) {
                 $obj[$key] = object_to_array($val, $allowed_keys);
             } else {
-                unset($obj[$key]);
+                if (is_int($key)) {
+                    $obj[$key] = object_to_array($val, $allowed_keys);
+                } elseif (isset($allowed_keys[$key])) {
+                    if ($allowed_keys[$key] != '') {
+                        $val = $allowed_keys[$key]($val); // call the 
+                    }
+                    $obj[$key] = object_to_array($val, $allowed_keys);
+                } else {
+                    unset($obj[$key]);
+                }
             }
         }
     }

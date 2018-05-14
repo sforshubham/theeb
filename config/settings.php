@@ -3,7 +3,7 @@ return [
     'wsdl' => [
         'login' => resource_path().'/wsdl/Login/LogInWS.wsdl',
         'branches' => resource_path().'/wsdl/Branch&Schedule/BranchMaster.wsdl',
-        'vehicle_type' => resource_path().'/wsdl/VehicleTypes/VehicleTypeWS.wsdl',
+        //'vehicle_type' => resource_path().'/wsdl/VehicleTypes/VehicleTypeWS.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'driver_profile' => resource_path().'/wsdl/DriverProfile/DriverProfileRequest.wsdl',
         'price_estimation' => resource_path().'/wsdl/PriceEstimation/PriceEstimationWS.wsdl',
@@ -13,7 +13,7 @@ return [
         'doc_print' => resource_path().'/wsdl/DocumentPrint/RentProPrint.wsdl',
         'transaction' => resource_path().'/wsdl/Transaction/TransactionData.WSDL',
         'booking' => resource_path().'/wsdl/MyBooking/ReservationsBookingRequest.wsdl',
-        'car_group' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
+        //'car_group' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarModelWS.wsdl',
         'reservation' => resource_path().'/wsdl/Reservation/CarProReservationWS.wsdl',
     ],
@@ -173,6 +173,8 @@ return [
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
 
     'defaults' => [
+        'car_img' => 'images/no-car-image-large.png',
         'car_desc' => 'Default text',
-    ],
+        'profile_img' => 'images/no-profile-picture.png',
+    ]
 ];

@@ -14,7 +14,7 @@ class VehicleTypes extends Model
      * @var string
      */
     protected $table = 'vehicles';
-    protected $uniqueKey = 'Code';
+    protected $uniqueKey = 'Group';
     public $timestamps = false;
 
     public static function updateAll($list = [])
@@ -29,7 +29,18 @@ class VehicleTypes extends Model
 
     public static function getAll()
     {
-        $rows = self::select('Code', 'Desc', 'Type');
+        $rows = self::select('VTHCode', 'VTHDesc', 'VTHType', 'Group', 'VehTypeDesc', 'ImageUrl');
+        if ($rows->count()) {
+            $rows = $rows->get()->toArray();
+        } else {
+            $rows = [];
+        }
+        return $rows;
+    }
+
+    public static function vehicleType()
+    {
+        $rows = self::distinct('VTHCode')->select('VTHCode', 'VTHDesc');
         if ($rows->count()) {
             $rows = $rows->get()->toArray();
         } else {

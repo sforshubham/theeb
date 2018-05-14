@@ -16,14 +16,8 @@ class ApiController extends SoapController
      */
     public function getAllBranches()
     {
-        $status_code = 200;
-        $response = array();
-
         $data = $this->listAllBranches();
-        $response['status'] = true;
-        $response['message'] = '';
-        $response['result'] = $data;
-        return response()->json($response, $status_code);
+        return $data;
     }
 
     /**
@@ -33,49 +27,33 @@ class ApiController extends SoapController
      */
     public function getAllVehicleTypes()
     {
-        $status_code = 200;
-        $response = array();
-
         $data = $this->listAllVehicles();
-        $response['status'] = true;
-        $response['message'] = '';
-        $response['result'] = $data;
-        return response()->json($response, $status_code);
+        return $data;
     }
 
     public function login(Request $request)
     {
-        $status_code = 200;
         $result = (object)[];
-        $response = [];
         $input = array_map('trim', $request->all());
         $validator = Validator::make($input, [
-            'username' => 'required',
+            'emailId' => 'required|email',
             'password' => 'required'
         ]);
         if ($validator->fails()) {
-            $status_code = 400;
-            $response['status'] = false;
-            $response['message'] = $validator->errors()->all();
-            $response['result'] = null;
+            return back()->with('error', $validator->errors()->all());
         } else {
-            $result = $this->doLogin($request->input('username'), $request->input('password'));
+            $result = $this->doLogin($input['emailId'], $input['password']);
             // if login is success, write IDNo in session
             if (isset($result->Success) && $result->Success == 'True') {
-                $session_IDNo = (int)$result->IDNo ? $result->IDNo : $result->LicenseNo;
-                $request->session()->put('user.IDNo', '2258370366');
-                $request->session()->put('user.DriverCode', '9800002661');
-                $response['status'] = true;
-                $response['message'] = '';
-                $response['result'] = $result;
+                $session_IDNo = $result->IDNo ? $result->IDNo : $result->LicenseNo;
+                $request->session()->put('user.IDNo', $session_IDNo);
+                $request->session()->put('user.DriverCode', $result->DriverCode);
+                return redirect('/');
             } else {
-                $status_code = 401;
-                $response['status'] = false;
-                $response['message'] = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
-                $response['result'] = null;
+                $msg = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
+                return back()->with('error', $msg);
             }
         }
-        return response()->json($response, $status_code);
     }
 
     public function logout(Request $request)
