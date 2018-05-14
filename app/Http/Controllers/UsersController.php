@@ -36,6 +36,17 @@ class UsersController extends SoapController
         }
     }
 
+    public function tariff()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $veh_type = $this->vehicleTypes();
+            $data = $this->listAllVehicles();
+            return view('app.tariff')->with('data', $data)->with('veh_type', $veh_type);
+        }
+    }
+
     public function priceEstimation(Request $request)
     {
         $status_code = 200;

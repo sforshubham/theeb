@@ -41,6 +41,7 @@ Route::get('/booking', 'UsersController@myBooking');
 Route::post('/new_reservation', 'UsersController@manageReservation');
 Route::post('/modify_reservation', 'UsersController@manageReservation');
 Route::post('/cancel_reservation', 'UsersController@manageReservation');
+Route::get('/tariff', 'UsersController@tariff');
 
 Route::get('/testq', function () {
     return view('test');

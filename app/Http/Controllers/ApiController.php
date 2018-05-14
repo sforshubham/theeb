@@ -16,14 +16,8 @@ class ApiController extends SoapController
      */
     public function getAllBranches()
     {
-        $status_code = 200;
-        $response = array();
-
         $data = $this->listAllBranches();
-        $response['status'] = true;
-        $response['message'] = '';
-        $response['result'] = $data;
-        return response()->json($response, $status_code);
+        return $data;
     }
 
     /**
@@ -33,14 +27,8 @@ class ApiController extends SoapController
      */
     public function getAllVehicleTypes()
     {
-        $status_code = 200;
-        $response = array();
-
         $data = $this->listAllVehicles();
-        $response['status'] = true;
-        $response['message'] = '';
-        $response['result'] = $data;
-        return response()->json($response, $status_code);
+        return $data;
     }
 
     public function login(Request $request)
