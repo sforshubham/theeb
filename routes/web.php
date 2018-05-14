@@ -42,10 +42,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/agreement', 'UsersController@getTransDetails');
-Route::get('/invoice', 'UsersController@getTransDetails');
-Route::get('/payment', 'UsersController@getTransDetails');
-Route::get('/reservation', 'UsersController@getTransDetails');
+Route::get('/agreement', ['as'=>"agreement", 'uses'=>'UsersController@getTransDetails']);
+Route::get('/invoice', ['as'=>"invoice", 'uses'=>'UsersController@getTransDetails']);
+Route::get('/payment', ['as'=>"payment", 'uses'=>'UsersController@getTransDetails']);
+Route::get('/reservation', ['as'=>"reservation", 'uses'=>'UsersController@getTransDetails']);
 /**
  * Delete below given routes CAREFULLY
  */

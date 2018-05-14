@@ -11,6 +11,9 @@
             @yield('content')
         </div>
         <footer>
+            @yield('jquery_script')
+            @yield('daterangepicker_script')
+            @yield('custom_script')
             @include('includes.footer')
         </footer>
     </body>

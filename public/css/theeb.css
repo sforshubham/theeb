@@ -38,7 +38,7 @@ Version: 1.0
 
 .rental-tabs-top ul li a{color:#fff;   padding: 13px 76px; display:block; position:relative;}
 
-.rental-tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}
+/*.rental-tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}*/
 
 .rental-tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
 

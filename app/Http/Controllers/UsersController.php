@@ -250,6 +250,7 @@ class UsersController extends SoapController
 
     public function getTransDetails(Request $request)
     {
+        $requester = $request->route()->getAction('as');
         $status_code = 200;
         $result = (object)[];
         $response = [];
@@ -259,7 +260,7 @@ class UsersController extends SoapController
             $response['message'] = Config::get('settings.resp_msg.auth_error');
             $response['result'] = NULL;
         } else {
-            $operation = Config::get('settings.trans_operation')[$request->segment(1)];
+            $operation = Config::get('settings.trans_master')[$requester]['operation'];
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
                 'StartDate' => 'nullable|date_format:d/m/Y',
@@ -271,25 +272,35 @@ class UsersController extends SoapController
                 $response['message'] = $validator->errors()->all();
                 $response['result'] = null;
             } else {
+                $request_body = [];
                 $request_body['TransactionFor'] = $operation;
-                $request_body['StartDate'] = isset($input['StartDate']) ? $input['StartDate'] : '';
-                $request_body['EndDate'] = isset($input['EndDate']) ? $input['EndDate'] : '';
+                $request_body['StartDate'] = isset($input['StartDate']) ? $input['StartDate'] : (new \DateTime("-3 months"))->format('d/m/Y');
+                $request_body['EndDate'] = isset($input['EndDate']) ? $input['EndDate'] : (new \DateTime())->format('d/m/Y');
                 $request_body['DriverCode'] = session('user.DriverCode');
 
                 $result = $this->transaction($request_body);
                 if (empty((array) $result)) {
                     $status_code = 200;
                     $response['status'] = true;
-                    $response['message'] = Config::get('settings.resp_msg.no_data');;
+                    $response['message'] = Config::get('settings.resp_msg.no_data');
                     $response['result'] = null;
                 } else {
                     $response['status'] = true;
                     $response['message'] = '';
                     $response['result'] = $result;
                 }
+                return view(
+                    'app.' . config('settings.trans_master')[$requester]['view'],
+                    [
+                        'result' => $result,
+                        'labels' => config('settings.trans_master')[$requester]['labels'],
+                        'start_date' => $request_body['StartDate'],
+                        'end_date' => $request_body['EndDate'],
+                    ]
+                );
+
             }
         }
-        return view('rentals', ['result' => $result]);
     }
 
     public function myBooking()
