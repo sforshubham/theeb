@@ -23,14 +23,14 @@ Route::group(['prefix' => 'api/v1'], function(){
 
 });
 
-Route::get('/branches', 'ApiController@getAllBranches');
-Route::get('/vehicle_types', 'ApiController@getAllVehicleTypes');
-Route::get('/logout', 'ApiController@logout');
-Route::post('/login', 'ApiController@login');
-Route::post('/forgot_password', 'ApiController@forgotPassword');
-Route::post('/create_driver', 'ApiController@createModifyDriver');
-Route::post('/modify_driver', 'ApiController@createModifyDriver');
-Route::post('/view_driver', 'ApiController@createModifyDriver');
+Route::get('/branches', 'GuestController@getAllBranches');
+Route::get('/vehicle_types', 'GuestController@getAllVehicleTypes');
+Route::get('/logout', 'GuestController@logout');
+Route::post('/login', 'GuestController@login');
+Route::post('/forgot_password', 'GuestController@forgotPassword');
+Route::post('/create_driver', 'GuestController@createModifyDriver');
+Route::post('/modify_driver', 'GuestController@createModifyDriver');
+Route::post('/view_driver', 'GuestController@createModifyDriver');
 
 Route::get('/profile', 'UsersController@driverProfile');
 Route::post('/price_estimation', 'UsersController@priceEstimation');
@@ -47,18 +47,24 @@ Route::get('/testq', function () {
     return view('test');
 });
 
+// Rental History - Transaction API
 Route::get('/agreement', ['as'=>"agreement", 'uses'=>'UsersController@getTransDetails']);
 Route::get('/invoice', ['as'=>"invoice", 'uses'=>'UsersController@getTransDetails']);
 Route::get('/payment', ['as'=>"payment", 'uses'=>'UsersController@getTransDetails']);
 Route::get('/reservation', ['as'=>"reservation", 'uses'=>'UsersController@getTransDetails']);
+
+// Signup
+Route::get('/signup', 'GuestController@createModifyDriver');
+Route::get('/view_driver', 'GuestController@createModifyDriver');
+
 /**
  * Delete below given routes CAREFULLY
  */
 Route::get('/branches2', 'SoapController@getAllBranches');
 Route::get('/vehicle_types2', 'SoapController@getAllVehicleTypes');
-Route::get('/loging', 'ApiController@login');
+Route::get('/loging', 'GuestController@login');
 //Route::get('/profile', 'UsersController@driverProfile');
 Route::get('/test', 'SoapController@noshow');
 Route::get('/payfort', 'UsersController@payFortPay');
-Route::get('/maps', 'ApiController@maps');
-Route::get('/sharer', 'ApiController@sharer');
+Route::get('/maps', 'GuestController@maps');
+Route::get('/sharer', 'GuestController@sharer');

@@ -7,7 +7,7 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Models\Branches;
 
-class ApiController extends SoapController
+class GuestController extends SoapController
 {
     /**
      * Returns a listing of the branches.
