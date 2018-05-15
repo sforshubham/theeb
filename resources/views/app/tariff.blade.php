@@ -89,6 +89,7 @@
 
             detail_html += content;
         });
+        detail_html += '<div class="clearBoth"></div>';
         $('.white-bg').html(detail_html);
         return;
     }

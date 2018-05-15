@@ -166,8 +166,110 @@ Version: 1.0
 
 .license-number{ background:url(../images/upload-icon.png) no-repeat #fff 98%;}
 
+.submit-buttom{margin-bottom:20px !important;}
+
+.change-pwd-input{padding:23px 20px 23px 20px !important}
+
+.change-pwd-input-btn{ width:88% !important; padding:20px !important}
+
+.reservation-individual-wrap {    display: inline-block;    width: 350px;    margin-bottom: 20px;}
+
+.reservation-individual-wrap.width230{     width: 230px;  margin-left:20px;   margin-bottom: 20px;}
+
+.reservation-individual-wrap select {    background: url(../images/selcect_arrow.jpg) 98% 50% no-repeat #fff!important;    -webkit-appearance: none;
+
+    -moz-appearance: none;    appearance: none; width: 100%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;    border-left: 0;
+
+    border-top: 0;}
+
+.reservation-individual-wrap input{    width: 91%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;
+
+    border-left: 0;    border-top: 0;}
+
+.reservation-form{     position: absolute;  background-color: rgba(255,255,255,0.6); padding:20px;    border-radius: 10px;  z-index: 1;    right: 0;    left: 0;    margin: auto;    bottom: 240px;    width: 80%;}
+
+.reservation-form h3{    font-size: 22px;    margin-bottom: 20px;}
+
+.reservation-form .home-butt {    background-color: #dd5094;    border: 0; margin-top:5px;   padding: 10px 15px;    border-radius: 6px;    color: #fff;    cursor: pointer;    text-align: center;    border: 1px solid #b71b5c;}
+
+.SliderCaption{bottom: -70px; width:550px;top:auto; right:0; margin:0 auto;     background: #dd5094;}
+
+.captionPad a.btnMore {
+
+  background: #fff;   color: #000;  font-size: 20px;  height: auto;  padding: 20px 32px;  text-align: center;
+
+  text-transform: uppercase;  width: auto; float:right;  transition: all 300ms linear 0s;}
+
+  .captionPad{padding:0;     border: 1px solid #b12e6d;}
+
+.captionTitle a{    padding: 7px 20px 0; width:70%; font-size:21px;  float: left;}
+
+.payment-pickup-details{width:45%; border:1px solid #999; padding:15px; margin-bottom:20px;}
+
+.payment-pickup-details span{ font-size:18px; color: #1269a0; display:block;}
+
+.payment-pickup-date{padding: 19px 20px 20px 0;    display: inline-block;    border-right: 1px solid #ccc; color:#444;   width: 49%;}
+
+.payment-pickup-location{padding: 19px 20px 20px 0;    display: inline-block;    color:#444;   width: 40%;}
+
+.payment-pickup-details a img{position:relative; top:7px;}
+
+.payment-fare-details{padding: 10px 20px 0px 0;    display: inline-block;   color:#444;   width: 45%;}
+
+.proceed-btn{background: #1269a0;    color: #fff;    margin: 9px auto;    width: 300px;    padding: 20px 40px;    border-radius: 35px;    border: 0;
+
+    font-size: 18px;}
+
+.payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px;}
+
+.payment-pickup-details a label{margin-left: 30px;}
+
+.align-left{text-align:left;}
+
+.payment-label{border: 1px solid #9a9a9a; min-width:300px; padding: 20px 40px 20px 4px;}
+
+.payment-credit-card-detail{width:90%;  padding:15px; margin-bottom:20px;}
+
+.payment-master-card{margin:10px 0}
+
+.payment-master-card span{font-size:20px;}
+
+.payment-master-card img{ padding:10px 0}
+
+.payment-net-amount{padding-top: 45px;    padding-bottom: 45px;}
+
+.payment-view-detail label{font-size:18px; width: 40%;}
+
+.view-detail-payment-pickup{    margin: 10px 0 0px;    border-top: 1px solid #ccc;    padding-top: 10px;   border-bottom: 1px solid #ccc;    padding-bottom: 10px;}
+
+.border-top-none{border-top:0px !important}
+
+.payment-fare-details {border:1px solid #999; width:45%; }
+
+.view-detail-payment-pickup-drop { padding:10px 20px 10px 10px !important}
+
+.payment-fare-details h4{font-size:18px; color:#1269a0;padding:10px 0 7px 10px; border-bottom:1px solid #999;}
+
+.payment-fare-details label{display:inline-block; float:none; width:47%; font-size:16px;  padding:7px 0 10px 10px}
+
+.payment-fare-details span{display:inline-block; width:47%; font-size:16px; padding:7px 0 10px 10px}
+
+.padding-none{padding:0px !important}
+
+.border-none{border:0 !important;}
+
+.pd-left-10{padding-left:10px;}
+
+.wdth-49{width:49% !important}
+
+.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center; position: relative;    top: -7px;}
+
+.price-tag{background: url(../images/price-bg.png) no-repeat right;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; left:0;    top: 15px;}
+
+.select-car img{margin-top:30px}
+
 /*--------------CSS by Shubham start-------------------*/
-.single-car-section,.tariff-car-section img {width:400px;height:224px;}
+.single-car-section img, .tariff-car-section img {width:400px;height:224px;}
 
 
 /*--------------CSS by Shubham end-------------------*/
