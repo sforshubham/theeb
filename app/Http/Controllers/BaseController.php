@@ -72,5 +72,16 @@ class BaseController extends Controller
         return $rows;
     }
 
+    /**
+     * List all vehicle type against a vehicle code
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getSelectedVehicles($code)
+    {
+        $rows = VehicleTypes::getSelectedVehicles($code);
+        return $rows;
+    }
+
 
 }

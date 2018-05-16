@@ -172,9 +172,4 @@ return [
 
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
 
-    'defaults' => [
-        'car_img' => 'images/no-car-image-large.png',
-        'car_desc' => 'Default text',
-        'profile_img' => 'images/no-profile-picture.png',
-    ]
 ];

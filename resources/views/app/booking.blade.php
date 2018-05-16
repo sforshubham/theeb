@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@php ($setting = default_settings())
 <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
     <div class="safeArea">
         <div class="tabs-top">
@@ -21,9 +22,9 @@
                     @if (@getimagesize($list->CarGroupImagePath))
                     <img src="{{ $list->CarGroupImagePath }}" />
                     @else
-                    <img src="{{ config('settings.defaults.car_img') }}" />
+                    <img src="{{ $setting['car_img'] }}" />
                     @endif
-                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : config('settings.defaults.car_desc') }}</h4>
+                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
                         {{ $list->CheckOutDate.' '.$list->CheckOutTime }}
@@ -58,9 +59,9 @@
                     @if (@getimagesize($list->CarGroupImagePath))
                     <img src="{{ $list->CarGroupImagePath }}" />
                     @else
-                    <img src="{{ config('settings.defaults.car_img') }}" />
+                    <img src="{{ $setting['car_img'] }}" />
                     @endif
-                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : config('settings.defaults.car_desc') }}</h4>
+                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
                         {{ $list->CheckOutDate.' '.$list->CheckOutTime }}
@@ -95,9 +96,9 @@
                     @if (@getimagesize($list->CarGroupImagePath))
                     <img src="{{ $list->CarGroupImagePath }}" />
                     @else
-                    <img src="{{ config('settings.defaults.car_img') }}" />
+                    <img src="{{ $setting['car_img'] }}" />
                     @endif
-                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : config('settings.defaults.car_desc') }}</h4>
+                    <h4>{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
                         {{ $list->CheckOutDate.' '.$list->CheckOutTime }}

@@ -253,9 +253,9 @@ function reservationRules($operation = '')
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
                 'InBranch' => 'required',
-                'OutDate' => 'required|date_format:d/m/Y|after_or_equal:today',
+                'OutDate' => 'required|date_format:d/m/Y|after:tomorrow',
                 'OutTime' => 'required',
-                'InDate' => 'date_format:d/m/Y|after_or_equal:OutDate',
+                'InDate' => 'date_format:d/m/Y|after:OutDate',
                 'InTime' => 'required',
                 'RateNo' => 'required',
                 'ReservationNo' => 'required',
@@ -267,9 +267,9 @@ function reservationRules($operation = '')
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
                 'InBranch' => 'required',
-                'OutDate' => 'required|date_format:d/m/Y|after_or_equal:today',
+                'OutDate' => 'required|date_format:d/m/Y|after:tomorrow',
                 'OutTime' => 'required',
-                'InDate' => 'date_format:d/m/Y|after_or_equal:OutDate',
+                'InDate' => 'date_format:d/m/Y|after:OutDate',
                 'InTime' => 'required',
                 'RateNo' => 'required',
                 'ReservationNo' => 'required',
@@ -278,4 +278,16 @@ function reservationRules($operation = '')
             break;
     }
     return $rules;
+}
+
+
+
+function default_settings()
+{
+    $setting = [
+        'car_img' => url('/').'/images/no-car-image-large.png',
+        'car_desc' => 'Default text',
+        'profile_img' => url('/').'/images/no-profile-picture.png',
+    ];
+    return $setting;
 }
