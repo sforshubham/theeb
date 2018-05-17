@@ -17,7 +17,7 @@ class CreateVehiclesTable extends Migration
             $table->integer('VTHCode');
             $table->string('VTHDesc', 200)->nullable();
             $table->string('VTHType', 200)->nullable();
-            $table->string('Group', 200)->unique();
+            $table->string('Group', 100)->unique();
             $table->string('VehTypeDesc', 200)->nullable();
             $table->string('ImageUrl', 500)->nullable();
         });

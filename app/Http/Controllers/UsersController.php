@@ -372,9 +372,12 @@ class UsersController extends SoapController
 
     public function rentACar()
     {
-        $branches = $this->listAllBranches();
-        $vehicles = $this->vehicleTypes();
-
-        return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $branches = $this->listAllBranches();
+            $vehicles = $this->vehicleTypes();
+            return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
+        }
     }
 }

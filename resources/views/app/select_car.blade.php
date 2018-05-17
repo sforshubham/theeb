@@ -9,6 +9,10 @@
                     </div>
                     <div>
                         <div class="white-bg">
+                        @if (!empty($data->Price->CarGroupPrice))
+                            @if (is_object($data->Price->CarGroupPrice))
+                                @php ($data->Price->CarGroupPrice = [$data->Price->CarGroupPrice])
+                            @endif
                             @foreach ($data->Price->CarGroupPrice as $price_est)
                             <div class="tariff-car-section select-car">
                                 <span class="price-tag">{{$data->Price->Currency}} {{ $price_est->TotalAmount }}</span>
@@ -21,6 +25,9 @@
                                 <div class="clearBoth"></div>
                             </div>
                             @endforeach
+                        @else
+                        <span>{{$setting['no_data'] }}</span>
+                        @endif
                             <div class="clearBoth"></div>
                         </div>
 

@@ -288,6 +288,7 @@ function default_settings()
         'car_img' => url('/').'/images/no-car-image-large.png',
         'car_desc' => 'Default text',
         'profile_img' => url('/').'/images/no-profile-picture.png',
+        'no_data' => 'No data found. Please try again later.'
     ];
     return $setting;
 }
