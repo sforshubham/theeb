@@ -10,7 +10,7 @@
                                 <div class="main-login-wrapper">
                                     <h4>Login to your Account</h4>
                                     <div class="login-inner-wrapper">
-                                        <form action="login" method="POST">
+                                        <form action="{{url('/login')}}" method="POST">
                                             <input type="text" name="emailId" placeholder="Email Id" class="username" />
                                             <input type="password" name="password" placeholder="Password" class="email" />
                                             <input type="submit" value="Login" />

@@ -144,7 +144,7 @@ Version: 1.0
 
 .login-wrapper input.username{background:url(../images/user.png) #fff 2% no-repeat}
 
-.login-wrapper input[type="button"]{width:92%; background:#1d4578; color:#fff;}
+.login-wrapper input[type="submit"]{width:92%; background:#1d4578; color:#fff;}
 
 .login-inner-wrapper{text-align:center;}
 

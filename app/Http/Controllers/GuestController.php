@@ -48,6 +48,7 @@ class GuestController extends SoapController
                 $session_IDNo = $result->IDNo ? $result->IDNo : $result->LicenseNo;
                 $request->session()->put('user.IDNo', $session_IDNo);
                 $request->session()->put('user.DriverCode', $result->DriverCode);
+                $request->session()->put('user.Email', $result->Email);
                 return redirect('/');
             } else {
                 $msg = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));

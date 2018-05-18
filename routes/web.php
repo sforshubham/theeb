@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	if (session()->has('user.IDNo')) {
+    if (session()->has('user.IDNo')) {
         return redirect('/book');
     } else {
         return view('app.login');
@@ -43,6 +43,7 @@ Route::post('/modify_reservation', 'UsersController@manageReservation');
 Route::post('/cancel_reservation', 'UsersController@manageReservation');
 Route::get('/tariff', 'UsersController@tariff');
 Route::get('/book', 'UsersController@rentACar');
+Route::get('/change_password', 'UsersController@changePassword');
 
 Route::get('/testq', function () {
     return view('test');

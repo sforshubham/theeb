@@ -27,7 +27,7 @@ class UsersController extends SoapController
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $IDNo = session('user.IDNo');
-            $data = $this->getDriverProfile($IDNo);
+            $data = $this->getDriverProfile($IDNo);pr($data);die;
             if (empty((array) $data) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
@@ -107,39 +107,27 @@ class UsersController extends SoapController
         $result = (object)[];
         $response = [];
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
-                'Email' => 'required|email',
-                'Password' => 'required',
-                'NewPassword' => 'required|size:8'
+                'OldPassword' => 'required',
+                'NewPassword' => 'required|size:8',
+                'ConfirmPassword' => 'required|same:NewPassword',
             ]);
             if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+                return back()->with('error', $validator->errors()->all());
             } else {
                 $request_body = passwordRequestBody();
                 $request_body['Mode'] = 'R';
-                $request_body['Email'] = $input['Email'];
-                $request_body['Password'] = $input['Password'];
+                $request_body['Email'] = session('user.Email');
+                $request_body['Password'] = $input['OldPassword'];
                 $request_body['NewPassword'] = $input['NewPassword'];
-
                 $result = $this->password($request_body);
                 if (empty((array) $result) || $result->Success != 'Y') {
-                    $status_code = 400;
-                    $response['status'] = false;
-                    $response['message'] = $result->VarianceReason;
-                    $response['result'] = null;
+                    return back()->with('error', $result->VarianceReason);
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = Config::get('settings.resp_msg.reset_password');
-                    $response['result'] = null;
+                    return back()->with('success', Config::get('settings.resp_msg.reset_password'));
                 }
             }
         }
@@ -378,6 +366,15 @@ class UsersController extends SoapController
             $branches = $this->listAllBranches();
             $vehicles = $this->vehicleTypes();
             return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
+        }
+    }
+
+    public function changePassword()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            return view('app.change_password');
         }
     }
 }
