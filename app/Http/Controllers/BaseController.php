@@ -83,5 +83,35 @@ class BaseController extends Controller
         return $rows;
     }
 
+    public function getSessionData()
+    {
+        $set_data = [
+            'PickupLocation' => '',
+            'DropLocation' => '',
+            'PickupDate' => '',
+            'PickupTime' => '',
+            'DropDate' => '',
+            'DropTime' => '',
+            'CarCategory' => '',
+            'CarGroup' => ''
+        ];
+        if (session()->has('price_estimation')) {
+            $set_data['PickupLocation'] = session()->has('price_estimation.PickupLocation') ? session('price_estimation.PickupLocation') : '';
+            $set_data['DropLocation'] = session()->has('price_estimation.DropLocation') ? session('price_estimation.DropLocation') : '';
+            $set_data['PickupDate'] = session()->has('price_estimation.PickupDate') ? session('price_estimation.PickupDate') : '';
+            $set_data['PickupTime'] = session()->has('price_estimation.PickupTime') ? session('price_estimation.PickupTime') : '';
+            $set_data['DropDate'] = session()->has('price_estimation.DropDate') ? session('price_estimation.DropDate') : '';
+            $set_data['DropTime'] = session()->has('price_estimation.DropTime') ? session('price_estimation.DropTime') : '';
+            $set_data['CarCategory'] = session()->has('price_estimation.CarCategory') ? session('price_estimation.CarCategory') : '';
+            $set_data['CarGroup'] = session()->has('price_estimation.CarGroup') ? session('price_estimation.CarGroup') : '';
+
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('POST', url('/price_estimation'), [
+                'form_params' => $set_data
+            ]);
+        }
+        return $set_data;
+    }
+
 
 }

@@ -27,7 +27,7 @@ class UsersController extends SoapController
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $IDNo = session('user.IDNo');
-            $data = $this->getDriverProfile($IDNo);pr($data);die;
+            $data = $this->getDriverProfile($IDNo);
             if (empty((array) $data) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
@@ -49,56 +49,54 @@ class UsersController extends SoapController
 
     public function priceEstimation(Request $request)
     {
-        if (!$this->checkLogin()) {
+        $input = array_map('trim', $request->all());pr($input);die;
+        $validator = Validator::make($input, [
+            'PickupLocation' => 'required',
+            'DropLocation' => 'required',
+            'PickupDate' => 'required|date_format:d/m/Y|after:tomorrow',
+            'PickupTime' => 'required',
+            'DropDate' => 'required|date_format:d/m/Y|after_or_equal:PickupDate',
+            'DropTime' => 'required',
+            'CarCategory' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->with('error', $validator->errors()->all());
+        } elseif (!$this->checkLogin()) {
+            $request->session()->put('price_estimation', $input);
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $input = array_map('trim', $request->all());
-            $validator = Validator::make($input, [
-                'PickupLocation' => 'required',
-                'DropLocation' => 'required',
-                'PickupDate' => 'required|date_format:d/m/Y|after:tomorrow',
-                'PickupTime' => 'required',
-                'DropDate' => 'required|date_format:d/m/Y|after_or_equal:PickupDate',
-                'DropTime' => 'required',
-                'CarCategory' => 'required',
-            ]);
-            if ($validator->fails()) {
-                return back()->with('error', $validator->errors()->all());
+            $input = [
+                'CDP' => '',
+                'OutBranch' => $input['PickupLocation'],
+                'InBranch' => $input['DropLocation'],
+                'OutDate' => $input['PickupDate'],
+                'OutTime' => $input['PickupTime'],
+                'InDate' => $input['DropDate'],
+                'InTime' => $input['DropTime'],
+                'VEHICLETYPE' => $input['CarCategory'],
+                'CarGroup' => '',
+                'Currency' => 'SAR',
+                'DebitorCode' => '',
+                'VoucherType' => '',
+                'VoucherNo' => '',
+                'Booked' => [
+                    'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
+                    'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
+                ],
+            ];
+            $data = $this->getPriceEstimation($input);
+            if (empty((array) $data) || $data->Success != 'Y') {
+                return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
-                $input = [
-                    'CDP' => '',
-                    'OutBranch' => $input['PickupLocation'],
-                    'InBranch' => $input['DropLocation'],
-                    'OutDate' => $input['PickupDate'],
-                    'OutTime' => $input['PickupTime'],
-                    'InDate' => $input['DropDate'],
-                    'InTime' => $input['DropTime'],
-                    'VEHICLETYPE' => $input['CarCategory'],
-                    'CarGroup' => '',
-                    'Currency' => 'SAR',
-                    'DebitorCode' => '',
-                    'VoucherType' => '',
-                    'VoucherNo' => '',
-                    'Booked' => [
-                        'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
-                        'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
-                    ],
-                ];
-                $data = $this->getPriceEstimation($input);//pr($data);die;
-                if (empty((array) $data) || $data->Success != 'Y') {
-                    return back()->with('error', Config::get('settings.resp_msg.processing_error'));
-                } else {
-                    $veh_types = $this->getSelectedVehicles($input['VEHICLETYPE']);
-                    $car_groups = [];
-                    foreach ($veh_types as $veh) {
-                        $car_groups[$veh['Group']] = $veh;
-                    }
-                    unset($veh_types);
-                    return view('app.select_car')->with('data', $data)->with('car_groups', $car_groups);
+                $veh_types = $this->getSelectedVehicles($input['VEHICLETYPE']);
+                $car_groups = [];
+                foreach ($veh_types as $veh) {
+                    $car_groups[$veh['Group']] = $veh;
                 }
+                unset($veh_types);
+                return view('app.select_car')->with('data', $data)->with('car_groups', $car_groups);
             }
         }
-        return response()->json($response, $status_code);
     }
 
     public function resetPassword(Request $request)
@@ -360,13 +358,14 @@ class UsersController extends SoapController
 
     public function rentACar()
     {
-        if (!$this->checkLogin()) {
+        /*if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
-        } else {
+        } else {*/
+            $set_data = $this->getSessionData();
             $branches = $this->listAllBranches();
             $vehicles = $this->vehicleTypes();
             return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
-        }
+        //}
     }
 
     public function changePassword()
