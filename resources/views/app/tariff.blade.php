@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@php ($setting = default_settings())
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
@@ -18,7 +19,7 @@
                             @foreach ($data as $key => $car)
                                 @php ($str_data[$car['VTHCode']][$key] = $key)
                                 @if (!@getimagesize($car['ImageUrl']))
-                                    @php ($data[$key]['ImageUrl'] = $car['ImageUrl'] =  config('settings.defaults.car_img'))
+                                    @php ($data[$key]['ImageUrl'] = $car['ImageUrl'] =  $setting['car_img'])
                                 @endif
                             <div class="tariff-car-section">
                                 <img src="{{$car['ImageUrl']}}" />

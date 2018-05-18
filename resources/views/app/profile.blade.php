@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@php ($setting = default_settings())
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
@@ -9,7 +10,7 @@
                         <div class="white-bg">
                             <div class="left-wrap-profile floatRight">
                                 <div class="profile-image-show">
-                                    <img src="{{config('settings.defaults.profile_img')}}" />
+                                    <img src="{{$setting['profile_img']}}" />
                                     <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">

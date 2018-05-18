@@ -49,13 +49,8 @@ class UsersController extends SoapController
 
     public function priceEstimation(Request $request)
     {
-        $status_code = 200;
-        $response = array();
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
@@ -63,15 +58,12 @@ class UsersController extends SoapController
                 'DropLocation' => 'required',
                 'PickupDate' => 'required|date_format:d/m/Y|after:tomorrow',
                 'PickupTime' => 'required',
-                'DropDate' => 'required|date_format:d/m/Y|after:PickupDate',
+                'DropDate' => 'required|date_format:d/m/Y|after_or_equal:PickupDate',
                 'DropTime' => 'required',
                 'CarCategory' => 'required',
             ]);
             if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+                return back()->with('error', $validator->errors()->all());
             } else {
                 $input = [
                     'CDP' => '',
@@ -81,7 +73,8 @@ class UsersController extends SoapController
                     'OutTime' => $input['PickupTime'],
                     'InDate' => $input['DropDate'],
                     'InTime' => $input['DropTime'],
-                    'CarGroup' => $input['CarCategory'],
+                    'VEHICLETYPE' => $input['CarCategory'],
+                    'CarGroup' => '',
                     'Currency' => 'SAR',
                     'DebitorCode' => '',
                     'VoucherType' => '',
@@ -91,16 +84,17 @@ class UsersController extends SoapController
                         'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
                     ],
                 ];
-                $data = $this->getPriceEstimation($input);
+                $data = $this->getPriceEstimation($input);//pr($data);die;
                 if (empty((array) $data) || $data->Success != 'Y') {
-                    $status_code = 400;
-                    $response['status'] = false;
-                    $response['message'] = Config::get('settings.resp_msg.processing_error');
-                    $response['result'] = NULL;
+                    return back()->with('error', Config::get('settings.resp_msg.processing_error'));
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = '';
-                    $response['result'] = $data;
+                    $veh_types = $this->getSelectedVehicles($input['VEHICLETYPE']);
+                    $car_groups = [];
+                    foreach ($veh_types as $veh) {
+                        $car_groups[$veh['Group']] = $veh;
+                    }
+                    unset($veh_types);
+                    return view('app.select_car')->with('data', $data)->with('car_groups', $car_groups);
                 }
             }
         }
@@ -374,5 +368,16 @@ class UsersController extends SoapController
             'currency' => 'SAR',                       # Optional if you need to use another currenct than set in config.
             'customer_email' => 'shubhamgoeloctane@gmail.com'  # Customer email.
         ]);
+    }
+
+    public function rentACar()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $branches = $this->listAllBranches();
+            $vehicles = $this->vehicleTypes();
+            return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
+        }
     }
 }

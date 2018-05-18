@@ -15,6 +15,7 @@
 							<xs:element name="InDate" type="xs:string"/>
 							<xs:element name="InTime" type="xs:string"/>
 							<xs:element name="CarGroup" type="xs:string"/>
+							<xs:element name="VEHICLETYPE" type="xs:string"/>
 							<xs:element name="Currency" type="xs:string"/>
 							<xs:element name="DebitorCode" type="xs:string"/>
 							<xs:element name="VoucherType" type="xs:string"/>
