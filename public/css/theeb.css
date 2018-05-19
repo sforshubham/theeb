@@ -279,6 +279,6 @@ Version: 1.0
 
 /*--------------CSS by Shubham start-------------------*/
 .single-car-section img, .tariff-car-section img {width:400px;height:224px;}
-
+.truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 /*--------------CSS by Shubham end-------------------*/

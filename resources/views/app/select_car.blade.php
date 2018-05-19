@@ -14,6 +14,9 @@
                                 @php ($data->Price->CarGroupPrice = [$data->Price->CarGroupPrice])
                             @endif
                             @foreach ($data->Price->CarGroupPrice as $price_est)
+                                @if (!$price_est->TotalAmount)
+                                    @continue;
+                                @endif
                             <div class="tariff-car-section select-car">
                                 <span class="price-tag">{{$data->Price->Currency}} {{ $price_est->TotalAmount }}</span>
                                 @if (@getimagesize($car_groups[$price_est->CarGrop]['ImageUrl']))
@@ -21,7 +24,7 @@
                                 @else
                                 <img src="{{ $setting['car_img'] }}" />
                                 @endif
-                                <h4 class="border-none">{{$car_groups[$price_est->CarGrop]['VehTypeDesc']}} <a href="" class="proceed-btn-select-car">Proceed</a></h4>
+                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 25, $end = '...') }} <a href="" class="proceed-btn-select-car">Proceed</a></h4>
                                 <div class="clearBoth"></div>
                             </div>
                             @endforeach

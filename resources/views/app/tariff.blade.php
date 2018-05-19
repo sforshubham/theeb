@@ -23,12 +23,12 @@
                                 @endif
                             <div class="tariff-car-section">
                                 <img src="{{$car['ImageUrl']}}" />
-                                <h4>{{$car['VehTypeDesc'].' - '.$car['VTHType']}}</h4>
-                                <div class="car-price">
+                                <h4 class="truncate-text">{{$car['VehTypeDesc'].' - '.$car['VTHType']}}</h4>
+                                <div class="car-price truncate-text">
                                     {{$car['VTHDesc']}}
                                 </div>
                                 <div class="buttons-all">
-                                    <a rel="{{$car['Group']}}" href="javascript:void(0)" class="view-booking-btn buttons floatLeft">View Booking</a>
+                                    <a href="{{ url('/book?g='.$car['Group']) }}" class="view-booking-btn buttons floatLeft">Book now</a>
                                     <div class="clearBoth"></div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
     var data = <?php echo json_encode($data) ?>;
     var div_html = '<div class="tariff-car-section">'+
         '<img src="{img}">'+
-        '<h4>{typedesc} - {type}</h4>'+
+        '<h4 class="truncate-text">{typedesc} - {type}</h4>'+
         '<div class="car-price">'+
             '{desc}'+
         '</div>'+

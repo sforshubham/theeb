@@ -28,12 +28,13 @@ Route::get('/vehicle_types', 'GuestController@getAllVehicleTypes');
 Route::get('/logout', 'GuestController@logout');
 Route::post('/login', 'GuestController@login');
 Route::post('/forgot_password', 'GuestController@forgotPassword');
+Route::get('/request_password', 'GuestController@requestPassword');
 Route::post('/create_driver', 'GuestController@createModifyDriver');
 Route::post('/modify_driver', 'GuestController@createModifyDriver');
-Route::post('/view_driver', 'GuestController@createModifyDriver');
+Route::get('/view_driver', 'GuestController@createModifyDriver');
 
 Route::get('/profile', 'UsersController@driverProfile');
-Route::post('/price_estimation', 'UsersController@priceEstimation');
+Route::get('/price_estimation', 'UsersController@priceEstimation');
 Route::post('/reset_password', 'UsersController@resetPassword');
 Route::post('/payment', 'UsersController@makePayment');
 Route::post('/document_print', 'UsersController@documentPrint');

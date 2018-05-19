@@ -11,15 +11,6 @@ class UsersController extends SoapController
 {
     // This controller requires user session id
 
-    public function checkLogin()
-    {
-        if (session()->has('user.IDNo')) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function driverProfile(Request $request)
     {
         $data = (object)[];
@@ -49,7 +40,7 @@ class UsersController extends SoapController
 
     public function priceEstimation(Request $request)
     {
-        $input = array_map('trim', $request->all());pr($input);die;
+        $input = array_map('trim', $request->all());
         $validator = Validator::make($input, [
             'PickupLocation' => 'required',
             'DropLocation' => 'required',
@@ -62,7 +53,7 @@ class UsersController extends SoapController
         if ($validator->fails()) {
             return back()->with('error', $validator->errors()->all());
         } elseif (!$this->checkLogin()) {
-            $request->session()->put('price_estimation', $input);
+            $request->session()->put('booking_form', $input);
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $input = [
@@ -73,8 +64,8 @@ class UsersController extends SoapController
                 'OutTime' => $input['PickupTime'],
                 'InDate' => $input['DropDate'],
                 'InTime' => $input['DropTime'],
-                'VEHICLETYPE' => $input['CarCategory'],
-                'CarGroup' => '',
+                'VEHICLETYPE' => $input['CarGroup'] ? '' : $input['CarCategory'],
+                'CarGroup' => $input['CarGroup'] ? $input['CarGroup'] : '',
                 'Currency' => 'SAR',
                 'DebitorCode' => '',
                 'VoucherType' => '',
@@ -88,7 +79,7 @@ class UsersController extends SoapController
             if (empty((array) $data) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
-                $veh_types = $this->getSelectedVehicles($input['VEHICLETYPE']);
+                $veh_types = $this->getSelectedVehicles($request->get('CarCategory'));
                 $car_groups = [];
                 foreach ($veh_types as $veh) {
                     $car_groups[$veh['Group']] = $veh;
@@ -356,16 +347,24 @@ class UsersController extends SoapController
         ]);
     }
 
-    public function rentACar()
+    public function rentACar(Request $request)
     {
-        /*if (!$this->checkLogin()) {
+        if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
-        } else {*/
-            $set_data = $this->getSessionData();
+        } else {
+            $car_group = $request->get('g');
+            $selected = ['CarCategory' => '', 'CarGroup' => ''];
+            if ($car_group) {
+                $vth_code = $this->getVehCode($car_group);
+                if ($vth_code) {
+                    $selected['CarCategory'] = $vth_code;
+                    $selected['CarGroup'] = $car_group;
+                }
+            }
             $branches = $this->listAllBranches();
             $vehicles = $this->vehicleTypes();
-            return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles);
-        //}
+            return view('app.rentacar')->with('branches', $branches)->with('vehicles', $vehicles)->with('selected', $selected);
+        }
     }
 
     public function changePassword()

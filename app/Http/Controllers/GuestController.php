@@ -49,6 +49,12 @@ class GuestController extends SoapController
                 $request->session()->put('user.IDNo', $session_IDNo);
                 $request->session()->put('user.DriverCode', $result->DriverCode);
                 $request->session()->put('user.Email', $result->Email);
+
+                if (session()->has('booking_form')) {
+                    $form_data = session('booking_form');
+                    session()->forget('booking_form');
+                    return redirect('/price_estimation?'.http_build_query($form_data));
+                }
                 return redirect('/');
             } else {
                 $msg = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
@@ -59,16 +65,9 @@ class GuestController extends SoapController
 
     public function logout(Request $request)
     {
-
-        $status_code = 200;
-        $response = [];
-
         $request->session()->flush();
         session()->flush();
-        $response['status'] = true;
-        $response['message'] = Config::get('settings.resp_msg.logout');
-        $response['result'] = null;
-        return response()->json($response, $status_code);
+        return redirect('/')->with('success', Config::get('settings.resp_msg.logout'));
     }
 
     public function createModifyDriver(Request $request)
@@ -137,18 +136,12 @@ class GuestController extends SoapController
 
     public function forgotPassword(Request $request)
     {
-        $status_code = 200;
-        $result = (object)[];
-        $response = [];
         $input = array_map('trim', $request->all());
         $validator = Validator::make($input, [
             'Email' => 'required|email'
         ]);
         if ($validator->fails()) {
-            $status_code = 400;
-            $response['status'] = false;
-            $response['message'] = $validator->errors()->all();
-            $response['result'] = null;
+            return back()->with('error', $validator->errors()->all());
         } else {
             $request_body = passwordRequestBody();
             $request_body['Mode'] = 'S';
@@ -156,14 +149,9 @@ class GuestController extends SoapController
 
             $result = $this->password($request_body);
             if (empty((array) $result) || $result->Success != 'Y') {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $result->VarianceReason;
-                $response['result'] = null;
+                return back()->with('error', $result->VarianceReason);
             } else {
-                $response['status'] = true;
-                $response['message'] = Config::get('settings.resp_msg.new_password');
-                $response['result'] = null;
+                return back()->with('success', Config::get('settings.resp_msg.new_password'));
             }
         }
         return response()->json($response, $status_code);
@@ -179,5 +167,14 @@ class GuestController extends SoapController
     public function sharer()
     {
         return view('sharer');
+    }
+
+    public function requestPassword()
+    {
+        if ($this->checkLogin()) {
+            return redirect('/');
+        } else {
+            return view('app.forgot_password');
+        }
     }
 }

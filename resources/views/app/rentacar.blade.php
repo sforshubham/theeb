@@ -15,11 +15,12 @@
                     foreach ($vehicles as $veh) {
                         $vehicleOptn .= '<option value="'.$veh['VTHCode'].'">'.$veh['VTHDesc'].'</option>';
                     }
+                    $vehicleOptn = str_replace('<option value="'.$selected['CarCategory'].'">', '<option value="'.$selected['CarCategory'].'" selected="selected">', $vehicleOptn);
                     ?>
                     <div>
                         <div class="white-bg">
                             <div class="show-vehicles">
-                            <form method ="POST" action = "{{url('/price_estimation')}}">
+                            <form method="GET" action = "{{url('/price_estimation')}}">
                                 <div class="show-vehicles-individual-wrap">
                                     <label><img src="../images/map-icon.png" align="absmiddle" />Pickup Location</label>
                                     <select name="PickupLocation" required>
@@ -41,6 +42,7 @@
                                     <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
                                     <input type="hidden" name="DropDate" id="in_date"/>
                                     <input type="hidden" name="DropTime" id="in_time"/>
+                                    <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
                                     <label><img src="../images/car-icon.png" align="absmiddle" />Select Car Category</label>

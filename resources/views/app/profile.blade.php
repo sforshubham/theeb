@@ -10,18 +10,22 @@
                         <div class="white-bg">
                             <div class="left-wrap-profile floatRight">
                                 <div class="profile-image-show">
+                                    @if ($data->DriverImage)
+                                    <img src="data:image/gif;base64,{{$data->DriverImage}}" />
+                                    @else
                                     <img src="{{$setting['profile_img']}}" />
+                                    @endif
                                     <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">
                                     <span>Personal Details</span>
                                     <div class="profile-single-wrap">
-                                        <strong>ID</strong>
-                                        <span>{{$data->ID ? $data->ID : '--'}}</span>
-                                    </div>
-                                    <div class="profile-single-wrap">
                                         <strong>Nationality</strong>
                                         <span>{{$data->Nationality ? $data->Nationality : '--'}}</span>
+                                    </div>
+                                    <div class="profile-single-wrap">
+                                        <strong>ID & version</strong>
+                                        <span>{{$data->ID ? $data->ID.'-'.$data->IDVersion : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>License Number</strong>
@@ -91,20 +95,12 @@
                                 <div class="profile-right-single">
                                     <h5>Uploaded Documents</h5>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>ID/Iqama</strong>
+                                        <span>{{$data->ID}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
-                                    </div>
-                                    <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
-                                    </div>
-                                    <div class="membership-details">
-                                        <strong>Membership ID</strong>
-                                        <span>001</span>
+                                        <strong>License</strong>
+                                        <span>{{$data->LicenseID}}</span>
                                     </div>
                                 </div>
                             </div>

@@ -65,4 +65,19 @@ class VehicleTypes extends Model
         }
         return $rows;
     }
+
+    /**
+     * Select vehicles code based on group
+     *
+     * @return [type] [description]
+     */
+    public static function getVehCode($group)
+    {
+        $rows = self::select('VTHCode')
+            ->where('Group', $group) ;
+        if ($rows->count()) {
+            return $rows->first()->VTHCode;
+        }
+        return false;
+    }
 }

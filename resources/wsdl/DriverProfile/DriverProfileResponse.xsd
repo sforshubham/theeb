@@ -43,6 +43,14 @@
                   </xs:sequence>
                </xs:complexType>
             </xs:element>
+            <xs:element type="xs:string" name="LicenseDoc" />
+            <xs:element type="xs:string" name="LicenseDocExt" />
+            <xs:element type="xs:string" name="IdDoc" />
+            <xs:element type="xs:string" name="IdDocExt" />
+            <xs:element type="xs:string" name="WorkIdDoc" />
+            <xs:element type="xs:string" name="WorkIdDocExt" />
+            <xs:element type="xs:string" name="DriverImage" />
+            <xs:element type="xs:string" name="DriverImageExt" />
          </xs:sequence>
       </xs:complexType>
    </xs:element>
