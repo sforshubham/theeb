@@ -112,7 +112,7 @@ class GuestController extends SoapController
 
         $data = $this->getDriverCreateModify($request_body);
 
-        if (empty((array) $data) || $data->Success != 'Y') {
+        if (!isset($data->Success) || $data->Success != 'Y') {
             $status_code = 400;
             $response['status'] = false;
             $response['message'] = Config::get('settings.resp_msg.processing_error');
@@ -148,7 +148,7 @@ class GuestController extends SoapController
             $request_body['Email'] = $input['Email'];
 
             $result = $this->password($request_body);
-            if (empty((array) $result) || $result->Success != 'Y') {
+            if (!isset($result->Success) || $result->Success != 'Y') {
                 return back()->with('error', $result->VarianceReason);
             } else {
                 return back()->with('success', Config::get('settings.resp_msg.new_password'));

@@ -37,4 +37,18 @@ class Branches extends Model
         }
         return $rows;
     }
+
+    public static function getBranchName($codes)
+    {
+        if (!empty($codes)) {
+            $rows = self::whereIn('BranchCode', $codes)
+                ->pluck('BranchName','BranchCode');
+        } else {
+            $rows = self::pluck('BranchName','BranchCode');
+        }
+        if (!$rows->count()) {
+             $rows = [];
+        }
+        return $rows;
+    }
 }

@@ -45,6 +45,7 @@ Route::post('/cancel_reservation', 'UsersController@manageReservation');
 Route::get('/tariff', 'UsersController@tariff');
 Route::get('/book', 'UsersController@rentACar');
 Route::get('/change_password', 'UsersController@changePassword');
+Route::get('/car_detail/{index}', 'UsersController@viewCarDetail');
 
 Route::get('/testq', function () {
     return view('test');

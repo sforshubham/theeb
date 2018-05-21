@@ -10,10 +10,7 @@
                     <div>
                         <div class="white-bg">
                         @if (!empty($data->Price->CarGroupPrice))
-                            @if (is_object($data->Price->CarGroupPrice))
-                                @php ($data->Price->CarGroupPrice = [$data->Price->CarGroupPrice])
-                            @endif
-                            @foreach ($data->Price->CarGroupPrice as $price_est)
+                            @foreach ($data->Price->CarGroupPrice as $key => $price_est)
                                 @if (!$price_est->TotalAmount)
                                     @continue;
                                 @endif
@@ -24,7 +21,7 @@
                                 @else
                                 <img src="{{ $setting['car_img'] }}" />
                                 @endif
-                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 25, $end = '...') }} <a href="" class="proceed-btn-select-car">Proceed</a></h4>
+                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="/car_detail/{{$key}}" class="proceed-btn-select-car">Proceed</a></h4>
                                 <div class="clearBoth"></div>
                             </div>
                             @endforeach

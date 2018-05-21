@@ -98,4 +98,10 @@ class BaseController extends Controller
         return $rows;
     }
 
+    public function getBranchName($codes =[])
+    {
+        $rows = Branches::getBranchName($codes);
+        return $rows;
+    }
+
 }

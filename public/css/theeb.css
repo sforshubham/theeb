@@ -262,7 +262,7 @@ Version: 1.0
 
 .wdth-49{width:49% !important}
 
-.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center; position: relative;    top: -7px;}
+.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center;top: -7px;}
 
 .price-tag{background: url(../images/price-bg.png) no-repeat right;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; left:0;    top: 15px;}
 
@@ -280,5 +280,8 @@ Version: 1.0
 /*--------------CSS by Shubham start-------------------*/
 .single-car-section img, .tariff-car-section img {width:400px;height:224px;}
 .truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+.payment-pickup-details h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+
 
 /*--------------CSS by Shubham end-------------------*/

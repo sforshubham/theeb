@@ -19,7 +19,7 @@ class UsersController extends SoapController
         } else {
             $IDNo = session('user.IDNo');
             $data = $this->getDriverProfile($IDNo);
-            if (empty((array) $data) || $data->Success != 'Y') {
+            if (!isset($data->Success) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
                 return view('app.profile')->with('data', $data);
@@ -76,10 +76,14 @@ class UsersController extends SoapController
                 ],
             ];
             $data = $this->getPriceEstimation($input);
-            if (empty((array) $data) || $data->Success != 'Y') {
+            if (!isset($data->Success) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
                 $veh_types = $this->getSelectedVehicles($request->get('CarCategory'));
+                if (isset($data->Price->CarGroupPrice) && is_object($data->Price->CarGroupPrice)) {
+                    $data->Price->CarGroupPrice = [$data->Price->CarGroupPrice];
+                }
+                $request->session()->put('price_estimation', $data);
                 $car_groups = [];
                 foreach ($veh_types as $veh) {
                     $car_groups[$veh['Group']] = $veh;
@@ -113,7 +117,7 @@ class UsersController extends SoapController
                 $request_body['Password'] = $input['OldPassword'];
                 $request_body['NewPassword'] = $input['NewPassword'];
                 $result = $this->password($request_body);
-                if (empty((array) $result) || $result->Success != 'Y') {
+                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
                     return back()->with('error', $result->VarianceReason);
                 } else {
                     return back()->with('success', Config::get('settings.resp_msg.reset_password'));
@@ -165,7 +169,7 @@ class UsersController extends SoapController
                     'CURRENCY' => 'SAR'
                 ];
                 $result = $this->payment($request_body);
-                if (empty((array) $result) || $result->SUCCESS != 'Y') {
+                if (!isset($result->SUCCESS) || $result->SUCCESS != 'Y') {
                     $status_code = 400;
                     $response['status'] = false;
                     $response['message'] = Config::get('settings.resp_msg.processing_error');
@@ -205,7 +209,7 @@ class UsersController extends SoapController
                 $request_body['DocumentNumber'] = $input['DocumentNumber'];
 
                 $result = $this->docuPrint($request_body);
-                if (empty((array) $result) || $result->Success != 'Y') {
+                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
                     $status_code = 400;
                     $response['status'] = false;
                     $response['message'] = $result->VarianceReason;
@@ -284,7 +288,7 @@ class UsersController extends SoapController
         } else {
             $IDNo = session('user.IDNo');
             $result = $this->booking(['PassportID' => $IDNo]);
-            if (empty((array) $result) || $result->Success != 'Y') {
+            if (!isset($result->SUCCESS) || $result->Success != 'Y') {
                 return redirect('/')->with('msg', $result->VarianceReason);
             } else {
                 return view('app.booking')->with('result', $result);
@@ -321,7 +325,7 @@ class UsersController extends SoapController
             } else {
                 $request_body['ReservationStatus'] = $operation;
                 $result = $this->reservation(['Reservation' => $request_body]);
-                if (empty((array) $result) || $result->Success != 'Y') {
+                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
                     $status_code = 400;
                     $response['status'] = false;
                     $response['message'] = $result->VarianceReason;
@@ -357,7 +361,7 @@ class UsersController extends SoapController
             if ($car_group) {
                 $vth_code = $this->getVehCode($car_group);
                 if ($vth_code) {
-                    $selected['CarCategory'] = $vth_code;
+                    $selected['CarCategory'] = $vth_code->VTHCode;
                     $selected['CarGroup'] = $car_group;
                 }
             }
@@ -373,6 +377,27 @@ class UsersController extends SoapController
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             return view('app.change_password');
+        }
+    }
+
+    public function viewCarDetail(Request $request, $index)
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $data = session('price_estimation');//pr($data);die;
+            if (isset($data->Price->CarGroupPrice[$index])) {
+                $car_group = $data->Price->CarGroupPrice[$index]->CarGrop;
+                $more_detail = $this->getVehCode($car_group);
+                $selected_branches = $this->getBranchName([$data->Price->OutBranch, $data->Price->InBranch]);
+            } else {
+                return back()->with('error', Config::get('settings.resp_msg.no_data'));
+            }
+            return view('app.car_detail')
+                ->with('index',$index)
+                ->with('data',$data)
+                ->with('selected_branches',$selected_branches)
+                ->with('more_detail',$more_detail);
         }
     }
 }

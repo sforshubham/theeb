@@ -280,8 +280,6 @@ function reservationRules($operation = '')
     return $rules;
 }
 
-
-
 function default_settings()
 {
     $setting = [

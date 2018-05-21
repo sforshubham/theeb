@@ -8,28 +8,32 @@
                     <div>
                         <div class="white-bg">
                             <div class="payment-pickup-details floatRight">
-                                <span>Pick up Details</span>
-                                <a href="#" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> 01/05/2018, 06:30 PM</a>
-                                <a href="#" class="payment-pickup-location"><img src="../images/map-icon.png" align="absmiddle" /> Riyadh</a>
+                                <span>Hyundai Sonata or Similar</span>
+                                <a href="#" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> Pickup Time
+                                    <br/>
+                                    <label>01/05/2018, 06:30 PM</label>
+                                </a>
+                                <a href="#" class="payment-pickup-location"><img src="../images/calender-icon.png" align="absmiddle" /> Drop Time
+                                    <br/>
+                                    <label> 01/05/2018, 06:30 PM</label>
+                                </a>
                             </div>
-                            <div class="payment-pickup-details floatLeft">
-                                <span>Drop Details</span>
-                                <a href="#" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> 01/05/2018, 06:30 PM</a>
-                                <a href="#" class="payment-pickup-location"><img src="../images/map-icon.png" align="absmiddle" /> Riyadh</a>
+                            <div class="payment-pickup-details floatLeft payment-net-amount">
+
+                                <a href="#" class="payment-pickup-date"> Net Payable Amount</a>
+                                <a href="#" class="payment-pickup-location">SAR 450.0</a>
                             </div>
-                            <div class="payment-pickup-details floatRight">
-                                <span>Fare Details</span>
-                                <div>
-                                    <a href="#" class="payment-fare-details">Charge Group </a>
-                                    <a href="#" class="payment-fare-details">VAT Amount</a>
+                            <div class="clearBoth"></div>
+
+                            <div class="payment-credit-card-detail floatRight align-left">
+                                <div class="payment-master-card"><span>Select Payment Method</span>
+                                    <br/>
+                                    <img src="../images/master_card.png" />
                                 </div>
-                                <div>
-                                    <a href="#" class="payment-fare-details">Total without VAT</a>
-                                    <a href="#" class="payment-fare-details">Total including VAT</a>
-                                </div>
-                            </div>
-                            <div class="payment-pickup-details-btn floatLeft">
-                                <input type="button" Value="Proceed to Pay SAR 262.50" class="proceed-btn" />
+                                <label class="payment-label">
+                                    <input type="radio" name="card">Credit Card</label>
+                                <label class="payment-label">
+                                    <input type="radio" name="card">Cash on Delivery</label>
                             </div>
                             <div class="clearBoth"></div>
                         </div>
