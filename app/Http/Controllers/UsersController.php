@@ -117,7 +117,7 @@ class UsersController extends SoapController
                 $request_body['Password'] = $input['OldPassword'];
                 $request_body['NewPassword'] = $input['NewPassword'];
                 $result = $this->password($request_body);
-                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
+                if (!isset($result->Success) || $result->Success != 'Y') {
                     return back()->with('error', $result->VarianceReason);
                 } else {
                     return back()->with('success', Config::get('settings.resp_msg.reset_password'));
@@ -209,7 +209,7 @@ class UsersController extends SoapController
                 $request_body['DocumentNumber'] = $input['DocumentNumber'];
 
                 $result = $this->docuPrint($request_body);
-                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
+                if (!isset($result->Success) || $result->Success != 'Y') {
                     $status_code = 400;
                     $response['status'] = false;
                     $response['message'] = $result->VarianceReason;
@@ -284,11 +284,11 @@ class UsersController extends SoapController
         $result = (object)[];
 
         if (!$this->checkLogin()) {
-            return redirect('/')->with('msg', Config::get('settings.resp_msg.auth_error'));
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $IDNo = session('user.IDNo');
             $result = $this->booking(['PassportID' => $IDNo]);
-            if (!isset($result->SUCCESS) || $result->Success != 'Y') {
+            if (!isset($result->Success) || $result->Success != 'Y') {
                 return redirect('/')->with('msg', $result->VarianceReason);
             } else {
                 return view('app.booking')->with('result', $result);
@@ -298,19 +298,15 @@ class UsersController extends SoapController
 
     public function manageReservation(Request $request)
     {
-        $status_code = 200;
-        $result = (object)[];
-        $response = [];
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $operation = Config::get('settings.reservation_operation')[$request->segment(3)];
+            $requester = $request->route()->getAction('as');
+            $operation = Config::get('settings.reservation_operation')[$requester];
             $rules = reservationRules($operation);
             $request_body = reservationBody();
             $input = [];
+
             foreach ($request->all() as $key => $val) {
                 if (isset($request_body[$key])) {
                     $input[$key] = $request_body[$key] = (is_object($val) || is_array($val)) ? $val : trim($val);
@@ -318,22 +314,50 @@ class UsersController extends SoapController
             }
             $validator = Validator::make($input, $rules);
             if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+                return redirect('/')->with('error', $validator->errors()->all());
             } else {
                 $request_body['ReservationStatus'] = $operation;
-                $result = $this->reservation(['Reservation' => $request_body]);
-                if (!isset($result->SUCCESS) || $result->Success != 'Y') {
-                    $status_code = 400;
-                    $response['status'] = false;
-                    $response['message'] = $result->VarianceReason;
-                    $response['result'] = null;
+                if ($operation == 'N') {
+                    $index =  (int) $request->get('index') ?? 0;
+                    if (session()->has('price_estimation')) {
+                        $sess_data = session('price_estimation');
+                    } else {
+                        return redirect('/')->with('error', Config::get('settings.resp_msg.processing_error'));
+                    }
+                    if (file_exists(Config::get('settings.reservation.file_path'))) {
+                        $res_no = file_get_contents(Config::get('settings.reservation.file_path')) + 1;
+                    } else {
+                        $res_no = Config::get('settings.reservation.init_no');
+                    }
+                    file_put_contents(Config::get('settings.reservation.file_path'), $res_no);
+                    $request_body['DriverCode'] = session('user.DriverCode');
+                    $request_body['OutBranch'] = $sess_data->Price->OutBranch;
+                    $request_body['CDP'] = $sess_data->Price->CDP;
+                    $request_body['InBranch'] = $sess_data->Price->InBranch;
+                    $request_body['OutDate'] = $sess_data->Price->OutDate;
+                    $request_body['OutTime'] = $sess_data->Price->OutTime;
+                    $request_body['InDate'] = $sess_data->Price->InDate;
+                    $request_body['InTime'] = $sess_data->Price->InTime;
+                    $request_body['RateNo'] = $sess_data->Price->CarGroupPrice[$index]->RateNo;
+                    $request_body['CarGroup'] = $sess_data->Price->CarGroupPrice[$index]->CarGrop;
+                } elseif ($operation == 'A') {
+                    $res_no = $input['ReservationNo'];
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = $result->VarianceReason;
-                    $response['result'] = $result;
+                    $res_no = $input['ReservationNo'];
+                }
+                $request_body['ReservationNo'] = $res_no;
+                $result = $this->reservation(['Reservation' => $request_body]);
+
+                if (!isset($result->Success) || $result->Success != 'Y') {
+                    return redirect('/')->with('error', $result->VarianceReason);
+                } else {
+                    $sess_data->Price->CarGroupPrice = $sess_data->Price->CarGroupPrice[$index];
+                    session()->put('reserved_car', $sess_data);
+                    $lw = explode(' ', $result->VarianceReason);
+                    $lw = end($lw);
+                    session()->put('ReservationNo', $lw);
+                    session()->forget('price_estimation');
+                    return redirect('/payment_mode')->with('success', $result->VarianceReason);
                 }
             }
         }
@@ -385,7 +409,7 @@ class UsersController extends SoapController
         if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $data = session('price_estimation');//pr($data);die;
+            $data = session('price_estimation');
             if (isset($data->Price->CarGroupPrice[$index])) {
                 $car_group = $data->Price->CarGroupPrice[$index]->CarGrop;
                 $more_detail = $this->getVehCode($car_group);
@@ -398,6 +422,21 @@ class UsersController extends SoapController
                 ->with('data',$data)
                 ->with('selected_branches',$selected_branches)
                 ->with('more_detail',$more_detail);
+        }
+    }
+
+    public function paymentMode()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $booking_data = session('reserved_car');
+            $car_group = $booking_data->Price->CarGroupPrice->CarGrop;
+            $group_detail = $this->getVehCode($car_group);
+
+            return view('app.payment_mode')
+                ->with('group_detail', $group_detail)
+                ->with('booking_data', $booking_data);
         }
     }
 }

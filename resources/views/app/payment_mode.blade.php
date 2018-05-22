@@ -8,20 +8,20 @@
                     <div>
                         <div class="white-bg">
                             <div class="payment-pickup-details floatRight">
-                                <span>Hyundai Sonata or Similar</span>
+                                <span>{{$group_detail->VehTypeDesc}}</span>
                                 <a href="#" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> Pickup Time
                                     <br/>
-                                    <label>01/05/2018, 06:30 PM</label>
+                                    <label> {{$booking_data->Price->OutDate.', '.date('h:i a', strtotime($booking_data->Price->OutTime))}}</label>
                                 </a>
                                 <a href="#" class="payment-pickup-location"><img src="../images/calender-icon.png" align="absmiddle" /> Drop Time
                                     <br/>
-                                    <label> 01/05/2018, 06:30 PM</label>
+                                    <label> {{$booking_data->Price->InDate.', '.date('h:i a', strtotime($booking_data->Price->InTime))}}</label>
                                 </a>
                             </div>
                             <div class="payment-pickup-details floatLeft payment-net-amount">
 
                                 <a href="#" class="payment-pickup-date"> Net Payable Amount</a>
-                                <a href="#" class="payment-pickup-location">SAR 450.0</a>
+                                <a href="#" class="payment-pickup-location">{{ $booking_data->Price->Currency}}&nbsp;{{ $booking_data->Price->CarGroupPrice->TotalAmount }}</a>
                             </div>
                             <div class="clearBoth"></div>
 

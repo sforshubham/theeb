@@ -185,7 +185,7 @@ function reservationBody()
         'ReservationNo' => '',
         'ReservationStatus' => '',
         'CarGroup' => '',
-        'Currency' => '',
+        'Currency' => 'SAR',
         'PaymentType' => '',
         'CreditCardNo' => '',
         'CarMake' => '',
@@ -248,7 +248,7 @@ function reservationRules($operation = '')
                 'ReservationNo' => 'required'
             ];
             break;
-        case 'N': //new reservation
+        /*case 'N': //new reservation
             $rules = [
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
@@ -261,7 +261,7 @@ function reservationRules($operation = '')
                 'ReservationNo' => 'required',
                 'CarGroup' => 'required',
             ];
-            break;
+            break;*/
         case 'A': //extend reservation
             $rules = [
                 'DriverCode' => 'required',

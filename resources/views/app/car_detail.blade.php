@@ -79,7 +79,10 @@
                                 <a href="javascript:void(0)" class="payment-pickup-location"><img src="../images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->OutBranch]}}</a>
                             </div>
                             <div class="payment-pickup-details-btn floatLeft">
-                                <input type="button" Value="Proceed to Pay {{ $data->Price->Currency}}&nbsp;{{ $data->Price->CarGroupPrice[$index]->TotalAmount }}" class="proceed-btn" />
+                            <form action="{{ url('/new_reservation')}}" method="POST">
+                                <input type="hidden" name="index" value="{{$index}}" />
+                                <input type="submit" Value="Proceed to Pay {{ $data->Price->Currency}}&nbsp;{{ $data->Price->CarGroupPrice[$index]->TotalAmount }}" class="proceed-btn" />
+                            </form>
                             </div>
                             <div class="payment-pickup-details floatRight">
                                 <span>Drop Details</span>

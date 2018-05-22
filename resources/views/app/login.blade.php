@@ -11,13 +11,13 @@
                                     <h4>Login to your Account</h4>
                                     <div class="login-inner-wrapper">
                                         <form action="{{url('/login')}}" method="POST">
-                                            <input type="text" name="emailId" placeholder="Email Id" class="username" />
+                                            <input type="text" name="emailId" placeholder="Email Id" class="username" autofocus/>
                                             <input type="password" name="password" placeholder="Password" class="email" />
                                             <input type="submit" value="Login" />
                                         </form>
                                         <div class="buttons-signup">
                                             <a href="#" class="floatRight">Don't have account? Register</a>
-                                            <a href="#" class="floatLeft">Forgot Password?</a>
+                                            <a href="{{url('/request_password') }}" class="floatLeft">Forgot Password?</a>
                                             <div class="clearBoth"></div>
                                         </div>
 

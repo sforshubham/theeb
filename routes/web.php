@@ -39,13 +39,14 @@ Route::post('/reset_password', 'UsersController@resetPassword');
 Route::post('/payment', 'UsersController@makePayment');
 Route::post('/document_print', 'UsersController@documentPrint');
 Route::get('/booking', 'UsersController@myBooking');
-Route::post('/new_reservation', 'UsersController@manageReservation');
-Route::post('/modify_reservation', 'UsersController@manageReservation');
-Route::post('/cancel_reservation', 'UsersController@manageReservation');
+Route::post('/new_reservation', ['as'=> 'new_reservation', 'uses'=>'UsersController@manageReservation']);
+Route::post('/modify_reservation', ['as'=> 'modify_reservation', 'uses'=>'UsersController@manageReservation']);
+Route::post('/cancel_reservation', ['as'=> 'cancel_reservation', 'uses'=>'UsersController@manageReservation']);
 Route::get('/tariff', 'UsersController@tariff');
 Route::get('/book', 'UsersController@rentACar');
 Route::get('/change_password', 'UsersController@changePassword');
 Route::get('/car_detail/{index}', 'UsersController@viewCarDetail');
+Route::get('/payment_mode', 'UsersController@paymentMode');
 
 Route::get('/testq', function () {
     return view('test');
