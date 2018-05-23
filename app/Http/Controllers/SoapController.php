@@ -302,7 +302,7 @@ class SoapController extends BaseController
             'LastName' => '',
             'FirstName' => '',
             'CDP' => '300',
-            'OutBranch' => '5',
+            'OutBranch' => '',
             'InBranch' => '5',
             'OutDate' => '23/08/2017',
             'OutTime' => '16:49',
@@ -311,8 +311,8 @@ class SoapController extends BaseController
             'RateNo' => '302',
             'RentalSum' => '5040',
             'DepositAmount' => '',
-            'ReservationNo' => '98679696',
-            'ReservationStatus' => 'N',
+            'ReservationNo' => '11448337',
+            'ReservationStatus' => 'A',
             'CarGroup' => 'PR38',
             'Currency' => 'SAR',
             'PaymentType' => '',
@@ -348,8 +348,8 @@ class SoapController extends BaseController
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
         ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.driver_profile'), array('trace' => 1));
-        $a = $client->LoadDriverProfileWS(['IDNo' => session('user.IDNo')]);
+        $client = new \SoapClient(Config::get('settings.wsdl.reservation'), array('trace' => 1));
+        $a = $client->CarProReservationWS(['Reservation' => $input]);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');

@@ -29,6 +29,7 @@ return [
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',
         'reset_password' => 'Password reset has been successful',
+        'incorrect_password' => 'Incorrect password entered',
         'payment_success' => 'Payment is successful'
     ],
     'cmd_operation' => [

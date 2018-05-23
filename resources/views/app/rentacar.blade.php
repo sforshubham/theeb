@@ -95,11 +95,12 @@
             }
         }, function(start, end, label) {
             var out_date = start.format('DD/MM/YYYY');
-            var out_time = start.format('HH:MM');
+            var out_time = start.format('HH:mm');
             $('#out_date').val(out_date);
             $('#out_time').val(out_time);
             $('#in_date').val(out_date);
             $('#in_time').val(out_time);
+            console.log(out_date+'  '+out_time)
 
             $('#datetimepicker2').daterangepicker({
                 startDate: start,
@@ -112,9 +113,10 @@
                 }
             }, function(start, end, label) {
                 var in_date = start.format('DD/MM/YYYY');
-                var in_time = start.format('HH:MM');
+                var in_time = start.format('HH:mm');
                 $('#in_date').val(in_date);
-                $('#in_time').val(in_time);
+                $('#in_time').val(in_date);
+                console.log(in_date+'  '+in_date);
             });
         });
 
@@ -128,9 +130,11 @@
             }
         }, function(start, end, label) {
             var in_date = start.format('DD/MM/YYYY');
-            var in_time = start.format('HH:MM');
+            var in_time = start.format('HH:mm');
             $('#in_date').val(in_date);
             $('#in_time').val(in_time);
+
+            console.log(in_date+'  '+in_date);
         });
     });
 </script>
