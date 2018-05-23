@@ -3,7 +3,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="#" class="my-booking-btn">Show Vehicles</a>
+                        <a href="javascript:void();" class="my-booking-btn">Show Vehicles</a>
 
                     </div>
                     <?php 

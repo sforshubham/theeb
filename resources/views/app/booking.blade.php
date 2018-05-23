@@ -4,7 +4,7 @@
 <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
     <div class="safeArea">
         <div class="tabs-top">
-            <a href="" class="my-booking-btn">My Booking</a>
+            <a href="javascript:void();" class="my-booking-btn">My Booking</a>
             <ul class="booking_tabs">
                 <li rel="ongoing" class="category_tab active"><a href="javascript:void();">Ongoing</a></li>
                 <li rel="completed" class="category_tab"><a href="javascript:void();">Completed</a></li>
@@ -36,9 +36,9 @@
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="#" class="cancel-booking-btn buttons">Cancel Booking</a>
-                        <a href="#" class="extend-booking-btn buttons">Extend Booking</a>
-                        <a href="#" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:void();" class="cancel-booking-btn buttons">Cancel Booking</a>
+                        <a href="javascript:void();" class="extend-booking-btn buttons">Extend Booking</a>
+                        <a href="javascript:void();" class="view-booking-btn buttons">View Booking</a>
                     </div>
                 </div>
                 @endforeach
@@ -73,7 +73,7 @@
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="#" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:void();" class="view-booking-btn buttons">View Booking</a>
                     </div>
                 </div>
                 @endforeach
@@ -108,7 +108,7 @@
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="#" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:void();" class="view-booking-btn buttons">View Booking</a>
                     </div>
                 </div>
                 @endforeach

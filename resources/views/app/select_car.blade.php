@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="#" class="my-booking-btn">Select Car</a>
+                        <a href="javascript:void();" class="my-booking-btn">Select Car</a>
 
                     </div>
                     <div>
@@ -21,7 +21,7 @@
                                 @else
                                 <img src="{{ $setting['car_img'] }}" />
                                 @endif
-                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="/car_detail/{{$key}}" class="proceed-btn-select-car">Proceed</a></h4>
+                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="car_detail/{{$key}}" class="proceed-btn-select-car">Proceed</a></h4>
                                 <div class="clearBoth"></div>
                             </div>
                             @endforeach
