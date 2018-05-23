@@ -96,16 +96,13 @@ class UsersController extends SoapController
 
     public function resetPassword(Request $request)
     {
-        $status_code = 200;
-        $result = (object)[];
-        $response = [];
         if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
                 'OldPassword' => 'required',
-                'NewPassword' => 'required|size:8',
+                'NewPassword' => 'required|between:8,16',
                 'ConfirmPassword' => 'required|same:NewPassword',
             ]);
             if ($validator->fails()) {
