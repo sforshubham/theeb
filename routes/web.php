@@ -39,7 +39,7 @@ Route::post('/reset_password', 'UsersController@resetPassword');
 Route::post('/payment', 'UsersController@makePayment');
 Route::post('/document_print', 'UsersController@documentPrint');
 Route::get('/booking', 'UsersController@myBooking');
-Route::post('/new_reservation', ['as'=> 'new_reservation', 'uses'=>'UsersController@manageReservation']);
+Route::post('/new_reservation', ['as'=> 'new_reservation', 'uses'=>'UsersController@newReservation']);
 Route::post('/modify_reservation', ['as'=> 'modify_reservation', 'uses'=>'UsersController@manageReservation']);
 Route::post('/cancel_reservation', ['as'=> 'cancel_reservation', 'uses'=>'UsersController@manageReservation']);
 Route::get('/tariff', 'UsersController@tariff');
