@@ -9,11 +9,11 @@
                         <div class="white-bg">
                             <div class="payment-pickup-details floatRight">
                                 <span>{{$group_detail->VehTypeDesc}}</span>
-                                <a href="#" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> Pickup Time
+                                <a href="#" class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> Pickup Time
                                     <br/>
                                     <label> {{$booking_data->Price->OutDate.', '.date('h:i a', strtotime($booking_data->Price->OutTime))}}</label>
                                 </a>
-                                <a href="#" class="payment-pickup-location"><img src="../images/calender-icon.png" align="absmiddle" /> Drop Time
+                                <a href="#" class="payment-pickup-location"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> Drop Time
                                     <br/>
                                     <label> {{$booking_data->Price->InDate.', '.date('h:i a', strtotime($booking_data->Price->InTime))}}</label>
                                 </a>
@@ -28,7 +28,7 @@
                             <div class="payment-credit-card-detail floatRight align-left">
                                 <div class="payment-master-card"><span>Select Payment Method</span>
                                     <br/>
-                                    <img src="../images/master_card.png" />
+                                    <img src="{{url('/')}}/images/master_card.png" />
                                 </div>
                                 <label class="payment-label">
                                     <input type="radio" name="card">Credit Card</label>

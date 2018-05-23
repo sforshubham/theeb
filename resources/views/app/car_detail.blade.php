@@ -75,8 +75,8 @@
                             </div>
                             <div class="payment-pickup-details floatRight">
                                 <span>Pick up Details</span>
-                                <a href="javascript:void(0)" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> {{$data->Price->OutDate.', '.date('h:i a', strtotime($data->Price->OutTime))}}</a>
-                                <a href="javascript:void(0)" class="payment-pickup-location"><img src="../images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->OutBranch]}}</a>
+                                <a href="javascript:void(0)" class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> {{$data->Price->OutDate.', '.date('h:i a', strtotime($data->Price->OutTime))}}</a>
+                                <a href="javascript:void(0)" class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->OutBranch]}}</a>
                             </div>
                             <div class="payment-pickup-details-btn floatLeft">
                             <form action="{{ url('/new_reservation')}}" method="POST">
@@ -86,8 +86,8 @@
                             </div>
                             <div class="payment-pickup-details floatRight">
                                 <span>Drop Details</span>
-                                <a href="javascript:void(0)" class="payment-pickup-date"><img src="../images/calender-icon.png" align="absmiddle" /> {{$data->Price->InDate.', '.date('h:i a', strtotime($data->Price->InTime))}}</a>
-                                <a href="javascript:void(0)" class="payment-pickup-location"><img src="../images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->InBranch]}}</a>
+                                <a href="javascript:void(0)" class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> {{$data->Price->InDate.', '.date('h:i a', strtotime($data->Price->InTime))}}</a>
+                                <a href="javascript:void(0)" class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->InBranch]}}</a>
                             </div>
                             <div class="clearBoth"></div>
                         </div>

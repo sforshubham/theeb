@@ -22,30 +22,30 @@
                             <div class="show-vehicles">
                             <form method="GET" action = "{{url('/price_estimation')}}">
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/map-icon.png" align="absmiddle" />Pickup Location</label>
+                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
                                     <select name="PickupLocation" required>
                                         <option value="">Select Pickup Location</option>
                                         <?php echo $branchOptn; ?>
                                     </select>
-                                    <label><img src="../images/map-icon.png" align="absmiddle" />Drop Location</label>
+                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
                                     <select name="DropLocation" required>
                                         <option value="">Select Drop Location</option>
                                         <?php echo $branchOptn; ?>
                                     </select>
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/time-icon.png" align="absmiddle" />Pickup Time</label>
+                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
                                     <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
                                     <input type="hidden" name="PickupDate" id="out_date"/>
                                     <input type="hidden" name="PickupTime" id="out_time"/>
-                                    <label><img src="../images/time-icon.png" align="absmiddle" />Drop Time</label>
+                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
                                     <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
                                     <input type="hidden" name="DropDate" id="in_date"/>
                                     <input type="hidden" name="DropTime" id="in_time"/>
                                     <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/car-icon.png" align="absmiddle" />Select Car Category</label>
+                                    <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />Select Car Category</label>
                                     <select name="CarCategory" required>
                                         <option value="">Select Car Category</option>
                                         <?php echo $vehicleOptn; ?>
