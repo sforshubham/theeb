@@ -16,11 +16,7 @@
                                 @endif
                             <div class="tariff-car-section select-car">
                                 <span class="price-tag">{{$data->Price->Currency}} {{ $price_est->TotalAmount }}</span>
-                                @if (@getimagesize($car_groups[$price_est->CarGrop]['ImageUrl']))
-                                <img src="{{ $car_groups[$price_est->CarGrop]['ImageUrl'] }}" />
-                                @else
-                                <img src="{{ $setting['car_img'] }}" />
-                                @endif
+                                <img src="{{ $car_groups[$price_est->CarGrop]['ImageUrl'] }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                                 <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="car_detail/{{$key}}" class="proceed-btn-select-car">Proceed</a></h4>
                                 <div class="clearBoth"></div>
                             </div>

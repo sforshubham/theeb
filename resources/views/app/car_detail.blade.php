@@ -9,11 +9,7 @@
                     <div>
                         <div class="white-bg">
                             <div class="payment-pickup-details floatRight">
-                                @if (@getimagesize($more_detail->ImageUrl))
-                                <img src="{{ $more_detail->ImageUrl }}" />
-                                @else
-                                <img src="{{ $setting['car_img'] }}" />
-                                @endif
+                                <img src="{{ $more_detail->ImageUrl }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                                 <div class="car-description">
                                     <h4 class="border-none">{{ $more_detail->VehTypeDesc.' - '.$more_detail->VTHDesc }}</h4>
                                 </div>

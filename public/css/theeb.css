@@ -94,7 +94,7 @@ Version: 1.0
 
 .tariff-car-section{width:31.5%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;position:relative;}
 
-.tariff-car-section h4{ color:#1e4878; font-size:17px; border-bottom:1px solid #ccc; text-align:left; padding:0 0 10px 10px;}
+.tariff-car-section h4{ color:#1e4878; font-size:17px; border-bottom:1px solid #ccc; text-align:left; padding:10px 0px 0 10px;}
 
 .tariff-car-section img{margin-top:10px;}
 
@@ -281,7 +281,8 @@ Version: 1.0
 .single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
 .truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-left: auto; margin-right: auto;}
-.payment-pickup-details > h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+.payment-pickup-details  h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+.doc-download-btn {color: #333;}
 
 
 /*--------------modal start-------------------*/

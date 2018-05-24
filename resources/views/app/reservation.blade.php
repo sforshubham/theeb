@@ -5,7 +5,7 @@
             <div class="rental-tabs-top">
                 <a href="javascript:void();" class="rental-history-btn">Rental History</a>
                 <ul>
-                    <li><a href="agreement">Aggrement</a></li>
+                    <li><a href="agreement">Agreement</a></li>
                     <li><a href="invoice">Invoice</a></li>
                     <li><a href="payment">Payment</a></li>
                     <li class="active"><a href="reservation">Reservation</a></li>
@@ -30,7 +30,8 @@
                         @for ($i = 0; $i < $row_count; $i++)
                                 @php ($reservation = $result->Reservations->Reservation[$i])
                             <tr>
-                                <th colspan="4">Reservation No. {{ $reservation->ReservationNo }}</th>
+                                <th colspan="3">Reservation No. {{ $reservation->ReservationNo }}</th>
+                                <th colspan="1"><a href="javascript:void(0);" class="doc-download-btn" rel="{{ $reservation->ReservationNo }}">Download Document</a></th>
                             </tr>
                             <tr>
                             @php($j = 1)
@@ -64,6 +65,21 @@
             </div>
         </div>
     </div>
+    <form action="document_print" method="POST" id="reservation_doc">
+        <input type="hidden" name="DocumentNumber" id="reservation_number" />
+    </form>
+    <script type="text/javascript">
+        $('.doc-download-btn').on('click', function (){
+            var doc_num = parseInt($(this).attr('rel'));
+            console.log(doc_num);
+            if (doc_num) {
+                $('#reservation_number').val(doc_num);
+                $('#reservation_doc').submit();
+            } else {
+                return false;
+            }
+        });
+    </script>
 @stop
 
 @include('app.daterangepicker')

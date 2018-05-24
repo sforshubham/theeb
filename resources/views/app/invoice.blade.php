@@ -5,7 +5,7 @@
             <div class="rental-tabs-top">
                 <a href="javascript:void();" class="rental-history-btn">Rental History</a>
                 <ul>
-                    <li><a href="agreement">Aggrement</a></li>
+                    <li><a href="agreement">Agreement</a></li>
                     <li class="active"><a href="invoice">Invoice</a></li>
                     <li><a href="payment">Payment</a></li>
                     <li><a href="reservation">Reservation</a></li>

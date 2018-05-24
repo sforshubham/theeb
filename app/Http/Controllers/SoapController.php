@@ -348,8 +348,8 @@ class SoapController extends BaseController
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
         ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.reservation'), array('trace' => 1));
-        $a = $client->CarProReservationWS(['Reservation' => $input]);
+        $client = new \SoapClient(Config::get('settings.wsdl.doc_print'), array('trace' => 1));
+        $a = $client->GetRentProPrint(['PrintFor' => 'R', 'DocumentNumber' => '000660004352']);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');

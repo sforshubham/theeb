@@ -19,11 +19,7 @@
                 @endif
                 @foreach ($result->OnGoing->Reservation as $list)
                 <div class="single-car-section">
-                    @if (@getimagesize($list->CarGroupImagePath))
-                    <img src="{{ $list->CarGroupImagePath }}" />
-                    @else
-                    <img src="{{ $setting['car_img'] }}" />
-                    @endif
+                    <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
@@ -59,11 +55,7 @@
                 @endif
                 @foreach ($result->Completed->Reservation as $list)
                 <div class="single-car-section">
-                    @if (@getimagesize($list->CarGroupImagePath))
-                    <img src="{{ $list->CarGroupImagePath }}" />
-                    @else
-                    <img src="{{ $setting['car_img'] }}" />
-                    @endif
+                    <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
@@ -94,11 +86,7 @@
                 @endif
                 @foreach ($result->Cancelled->Reservation as $list)
                 <div class="single-car-section">
-                    @if (@getimagesize($list->CarGroupImagePath))
-                    <img src="{{ $list->CarGroupImagePath }}" />
-                    @else
-                    <img src="{{ $setting['car_img'] }}" />
-                    @endif
+                    <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
@@ -180,7 +168,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
-    var modal = document.getElementById('myModal');
+/*    var modal = document.getElementById('myModal');
     var btn = $(".extend-booking-btn");
     var close_span = $(".close");
 
@@ -218,7 +206,7 @@
 
             console.log(in_date+'  '+in_date);
         });
-    });
+    });*/
 </script>
 <script type="text/javascript">
     $('.category_tab').on('click', function(){

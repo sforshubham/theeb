@@ -18,11 +18,8 @@
                             @php ($str_data = [])
                             @foreach ($data as $key => $car)
                                 @php ($str_data[$car['VTHCode']][$key] = $key)
-                                @if (!@getimagesize($car['ImageUrl']))
-                                    @php ($data[$key]['ImageUrl'] = $car['ImageUrl'] =  $setting['car_img'])
-                                @endif
                             <div class="tariff-car-section">
-                                <img src="{{$car['ImageUrl']}}" />
+                                <img src="{{$car['ImageUrl']}}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                                 <h4 class="truncate-text">{{$car['VehTypeDesc'].' - '.$car['VTHType']}}</h4>
                                 <div class="car-price truncate-text">
                                     {{$car['VTHDesc']}}

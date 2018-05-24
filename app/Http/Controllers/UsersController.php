@@ -185,24 +185,15 @@ class UsersController extends SoapController
 
     public function documentPrint(Request $request)
     {
-        $status_code = 200;
-        $result = (object)[];
-        $response = [];
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $input = array_map('trim', $request->all());
             $validator = Validator::make($input, [
                 'DocumentNumber' => 'required',
             ]);
             if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+                return back()->with('error', $validator->errors()->all());
             } else {
                 $request_body['PrintFor'] = 'R';
                 $request_body['DocumentNumber'] = $input['DocumentNumber'];
@@ -211,14 +202,18 @@ class UsersController extends SoapController
                 if (!isset($result->Success)) {
                     return back()->with('error', Config::get('settings.resp_msg.processing_error'));
                 } elseif ($result->Success != 'Y') {
-                    $status_code = 400;
-                    $response['status'] = false;
-                    $response['message'] = $result->VarianceReason;
-                    $response['result'] = null;
+                    return back()->with('error', $result->VarianceReason);
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = '';
-                    $response['result'] = $result;
+                    $file_url = $result->DocumentPrint;
+                    if(@get_headers($file_url)[0] == 'HTTP/1.1 404 Not Found') {
+                        return back()->with('error', Config::get('settings.resp_msg.no_document'));
+                    } else {
+                        header('Content-Type: application/octet-stream');
+                        header("Content-Transfer-Encoding: Binary"); 
+                        header("Content-disposition: attachment; filename=\"".basename($file_url)."\""); 
+                        readfile($file_url);
+                        exit;
+                    }
                 }
             }
         }
