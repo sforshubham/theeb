@@ -36,7 +36,7 @@
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="javascript:void();" rel="{{ $list->ReservationNo }}" class="cancel-booking-btn buttons">Cancel Booking</a>
+                        <a href="javascript:void();" rel="{{ $list->InternetReservationNo }}" class="cancel-booking-btn buttons">Cancel Booking</a>
                         <a href="javascript:void();" class="extend-booking-btn buttons">Extend Booking</a>
                         <a href="javascript:void();" class="view-booking-btn buttons">View Booking</a>
                     </div>
