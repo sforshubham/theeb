@@ -16,7 +16,7 @@
                                             <input type="submit" value="Login" />
                                         </form>
                                         <div class="buttons-signup">
-                                            <a href="javascript:void();" class="floatRight">Don't have account? Register</a>
+                                            <a href="{{url('/signup')}}" class="floatRight">Don't have account? Register</a>
                                             <a href="{{url('/request_password') }}" class="floatLeft">Forgot Password?</a>
                                             <div class="clearBoth"></div>
                                         </div>
