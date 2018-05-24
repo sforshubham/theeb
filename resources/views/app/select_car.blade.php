@@ -11,7 +11,7 @@
                         <div class="white-bg">
                         @if (!empty($data->Price->CarGroupPrice))
                             @foreach ($data->Price->CarGroupPrice as $key => $price_est)
-                                @if (!$price_est->TotalAmount)
+                                @if (!$price_est->TotalAmount || !isset($car_groups[$price_est->CarGrop]))
                                     @continue;
                                 @endif
                             <div class="tariff-car-section select-car">

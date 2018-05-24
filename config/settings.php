@@ -25,6 +25,7 @@ return [
         'payment_fail' => 'Payment Failed',
         'processing_error' => 'Error processing request',
         'no_data' => 'No data found',
+        'no_cars' => 'No cars available for given details',
 
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',

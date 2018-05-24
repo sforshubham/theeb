@@ -27,15 +27,15 @@
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
-                        {{ $list->CheckOutDate.' '.$list->CheckOutTime }}
+                        {{ $list->CheckOutDate.' '.date('h:m a', strtotime($list->CheckOutTime)) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time">
                         <span><strong>Drop Time</strong><br/>
-                        {{ $list->CheckInDate.' '.$list->CheckInTime }}
+                        {{ $list->CheckInDate.' '.date('h:m a', strtotime($list->CheckInTime)) }}
                         </span>
                     </div>
-                    <div class="buttons-all">
+                    <div class="buttons-all" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{date('h:m a', strtotime($list->CheckOutTime)) }}" show-in-time="{{date('h:m a', strtotime($list->CheckInTime))}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}"  in-branch-code ="{{ remove_characters($list->CheckInBranch) }}">
                         <a href="javascript:void();" rel="{{ $list->InternetReservationNo }}" class="cancel-booking-btn buttons">Cancel Booking</a>
                         <a href="javascript:void();" class="extend-booking-btn buttons">Extend Booking</a>
                         <a href="javascript:void();" class="view-booking-btn buttons">View Booking</a>
@@ -67,12 +67,12 @@
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
-                        {{ $list->CheckOutDate.' '.$list->CheckOutTime }}
+                        {{ $list->CheckOutDate.' '.date('h:m a', strtotime($list->CheckOutTime)) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time ">
                         <span><strong>Drop Time</strong><br/>
-                        {{ $list->CheckInDate.' '.$list->CheckInTime }}
+                        {{ $list->CheckInDate.' '.date('h:m a', strtotime($list->CheckInTime)) }}
                         </span>
                     </div>
                     <div class="buttons-all">
@@ -102,12 +102,12 @@
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>Pickup Time</strong><br/>
-                        {{ $list->CheckOutDate.' '.$list->CheckOutTime }}
+                        {{ $list->CheckOutDate.' '.date('h:m a', strtotime($list->CheckOutTime)) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time ">
                         <span><strong>Drop Time</strong><br/>
-                        {{ $list->CheckInDate.' '.$list->CheckInTime }}
+                        {{ $list->CheckInDate.' '.date('h:m a', strtotime($list->CheckInTime)) }}
                         </span>
                     </div>
                     <div class="buttons-all">
@@ -156,7 +156,7 @@
                         <input type="hidden" name="CarGroup" value="" />
                     </div>
                     <div class="show-vehicles-individual-wrap">
-                        <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />Select Car Category</label>
+                        <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />Car Category</label>
                         <select name="CarCategory" required>
                             <option value="">Select Car Category</option>
                         </select>
@@ -164,7 +164,7 @@
                     </div>
                     <div class="show-vehicles-individual-wrap">
                         <label>&nbsp;</label>
-                        <input type="submit" Value="Show Vehicles" />
+                        <input type="submit" Value="Extend Booking" />
 
                     </div>
                 </form>

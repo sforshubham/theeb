@@ -290,3 +290,13 @@ function default_settings()
     ];
     return $setting;
 }
+
+function remove_numbers($string) {
+    $str = preg_replace('/[0-9]+/', null, $string);
+    return trim($str);
+}
+
+function remove_characters($string) {
+    $int = (int) filter_var($string, FILTER_SANITIZE_NUMBER_INT);
+    return $int;
+}

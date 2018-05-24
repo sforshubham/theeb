@@ -218,7 +218,7 @@ Version: 1.0
 
 .proceed-btn{background: #1269a0;    color: #fff;    margin: 9px auto;    width: 300px;    padding: 20px 40px;    border-radius: 35px;    border: 0;
 
-    font-size: 18px;}
+    font-size: 18px;cursor:pointer;}
 
 .payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px;}
 
@@ -278,10 +278,10 @@ Version: 1.0
 
 
 /*--------------CSS by Shubham start-------------------*/
-.single-car-section img, .tariff-car-section img {width:400px;height:224px;}
+.single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
 .truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-
-.payment-pickup-details h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+.payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-left: auto; margin-right: auto;}
+.payment-pickup-details > h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
 
 
 /*--------------modal start-------------------*/

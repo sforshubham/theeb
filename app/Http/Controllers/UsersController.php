@@ -76,8 +76,8 @@ class UsersController extends SoapController
                 ],
             ];
             $data = $this->getPriceEstimation($input);
-            if (!isset($data->Success) || $data->Success != 'Y') {
-                return back()->with('error', Config::get('settings.resp_msg.processing_error'));
+            if (!isset($data->Success) || empty($data->Price) || $data->Success != 'Y') {
+                return back()->with('error', Config::get('settings.resp_msg.no_cars'));
             } else {
                 $veh_types = $this->getSelectedVehicles($request->get('CarCategory'));
                 if (isset($data->Price->CarGroupPrice) && is_object($data->Price->CarGroupPrice)) {
