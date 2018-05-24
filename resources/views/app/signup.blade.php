@@ -310,7 +310,7 @@
 <script type="text/javascript">
     jQuery(function() {
         // Set Notifier defaults
-        jQuery.notify.defaults({ autoHideDelay: 3000 });
+        jQuery.notify.defaults({ autoHideDelay: 7000 });
 
         @if ($status == true)
             jQuery.notify("Your details have been saved successfully. Please login with your credentials.", "success");
@@ -405,12 +405,16 @@
             // try to fetch the ID based records
             jQuery('#loader').show();
             jQuery.get( "{{url('/view_driver')}}", { IdNo: id_number.val() } ).done(function( data ) {
-                for (var property in data) {
-                    if (jQuery('input[name="' + property + '"]').length) {
-                        jQuery('input[name="' + property + '"]').val(data[property]);
-                    } else if (jQuery('select[name="' + property + '"]').length) {
-                        jQuery('select[name="' + property + '"]').val(data[property]);
+                if (data['IdNo'] != '') {
+                    for (var property in data) {
+                        if (jQuery('input[name="' + property + '"]').length) {
+                            jQuery('input[name="' + property + '"]').val(data[property]);
+                        } else if (jQuery('select[name="' + property + '"]').length) {
+                            jQuery('select[name="' + property + '"]').val(data[property]);
+                        }
                     }
+                } else {
+                    jQuery.notify("We do not have your details with us. Please fill up the remaining form to proceed.", "info");
                 }
             }).always(function() {
                 jQuery('#loader').hide();
