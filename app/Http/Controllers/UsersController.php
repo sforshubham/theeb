@@ -223,14 +223,8 @@ class UsersController extends SoapController
     public function getTransDetails(Request $request)
     {
         $requester = $request->route()->getAction('as');
-        $status_code = 200;
-        $result = (object)[];
-        $response = [];
         if (!$this->checkLogin()) {
-            $status_code = 401;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.auth_error');
-            $response['result'] = NULL;
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
             $operation = Config::get('settings.trans_master')[$requester]['operation'];
             $input = array_map('trim', $request->all());
@@ -239,10 +233,7 @@ class UsersController extends SoapController
                 'EndDate' => 'nullable|date_format:d/m/Y'
             ]);
             if ($validator->fails()) {
-                $status_code = 400;
-                $response['status'] = false;
-                $response['message'] = $validator->errors()->all();
-                $response['result'] = null;
+                return back()->with('error', $validator->errors()->all());
             } else {
                 $request_body = [];
                 $request_body['TransactionFor'] = $operation;
@@ -251,26 +242,21 @@ class UsersController extends SoapController
                 $request_body['DriverCode'] = session('user.DriverCode');
 
                 $result = $this->transaction($request_body);
-                if (empty((array) $result)) {
-                    $status_code = 200;
-                    $response['status'] = true;
-                    $response['message'] = Config::get('settings.resp_msg.no_data');
-                    $response['result'] = null;
+                if (!isset($result->Success)) {
+                    return back()->with('error', Config::get('settings.resp_msg.processing_error'));
+                } elseif ($result->Success != 'Y') {
+                    return back()->with('error', Config::get('settings.resp_msg.no_data'));
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = '';
-                    $response['result'] = $result;
+                    return view(
+                        'app.' . config('settings.trans_master')[$requester]['view'],
+                        [
+                            'result' => $result,
+                            'labels' => config('settings.trans_master')[$requester]['labels'],
+                            'start_date' => $request_body['StartDate'],
+                            'end_date' => $request_body['EndDate'],
+                        ]
+                    );
                 }
-                return view(
-                    'app.' . config('settings.trans_master')[$requester]['view'],
-                    [
-                        'result' => $result,
-                        'labels' => config('settings.trans_master')[$requester]['labels'],
-                        'start_date' => $request_body['StartDate'],
-                        'end_date' => $request_body['EndDate'],
-                    ]
-                );
-
             }
         }
     }

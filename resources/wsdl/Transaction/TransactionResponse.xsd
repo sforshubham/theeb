@@ -3,6 +3,7 @@
   <xs:element name="TransactionRS">
     <xs:complexType>
       <xs:sequence>
+        <xs:element type="xs:string" name="Success"/>
         <xs:element name="Agreements">
           <xs:complexType>
             <xs:sequence>

@@ -22,7 +22,12 @@
                             </div>
                             @endforeach
                         @else
-                        <span>{{$setting['no_data'] }}</span>
+                        <div style="
+                            color:  grey;
+                            border-top: 1px grey solid;
+                            padding-top: 40px;
+                            margin-top: 20px;
+                        ">{{$setting['no_data']}}</div>
                         @endif
                             <div class="clearBoth"></div>
                         </div>
