@@ -29,9 +29,6 @@ Route::get('/logout', 'GuestController@logout');
 Route::post('/login', 'GuestController@login');
 Route::post('/forgot_password', 'GuestController@forgotPassword');
 Route::get('/request_password', 'GuestController@requestPassword');
-Route::post('/create_driver', 'GuestController@createModifyDriver');
-Route::post('/modify_driver', 'GuestController@createModifyDriver');
-Route::get('/view_driver', 'GuestController@createModifyDriver');
 
 Route::get('/profile', 'UsersController@driverProfile');
 Route::get('/price_estimation', 'UsersController@priceEstimation');
@@ -56,9 +53,10 @@ Route::get('/invoice', ['as'=>"invoice", 'uses'=>'UsersController@getTransDetail
 Route::get('/payment', ['as'=>"payment", 'uses'=>'UsersController@getTransDetails']);
 Route::get('/reservation', ['as'=>"reservation", 'uses'=>'UsersController@getTransDetails']);
 
-// Signup
+// Signup & View & Update
 Route::get('/signup', 'GuestController@createModifyDriver');
-Route::get('/view_driver', 'GuestController@createModifyDriver');
+Route::post('/signup', 'GuestController@createModifyDriver');
+Route::get('/view_driver', ['as'=>"view_driver", 'uses'=>'GuestController@createModifyDriver']);
 
 /**
  * Delete below given routes CAREFULLY

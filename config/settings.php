@@ -34,6 +34,7 @@ return [
     'cmd_operation' => [
         'view_driver' => 'V',
         'create_driver' => 'N',
+        'signup' => 'N',
         'modify_driver' => 'E'
     ],
     'trans_master' => [

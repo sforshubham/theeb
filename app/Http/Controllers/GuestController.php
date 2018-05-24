@@ -72,66 +72,132 @@ class GuestController extends SoapController
 
     public function createModifyDriver(Request $request)
     {
-        $status_code = 200;
-        $response = array();
-        $operation = Config::get('settings.cmd_operation')[$request->segment(1)];
-        $rules = createModifyDriverRules($operation);
-        $request_body = driverRequestBody();
-        $input = [];
-        foreach ($request->all() as $key => $val) {
-            if (isset($request_body[$key])) {
-                $input[$key] = $request_body[$key] = is_object($val) ? $val : trim($val);
+        $requester = $request->route()->getAction('as');
+        if ($request->isMethod('post') || $requester == 'view_driver') {
+            
+            $status_code = 200;
+            $response = array();
+
+            $operation = Config::get('settings.cmd_operation')[$request->segment(1)];
+            $rules = createModifyDriverRules($operation);
+            $request_body = driverRequestBody();
+            $input = [];
+            foreach ($request->all() as $key => $val) {
+                if (isset($request_body[$key])) {
+                    $input[$key] = $request_body[$key] = is_object($val) ? $val : trim($val);
+                }
             }
-        }
-        $validator = Validator::make($input, $rules);
-        if ($validator->fails()) {
-            $status_code = 400;
-            $response['status'] = false;
-            $response['message'] = $validator->errors()->all();
-            $response['result'] = null;
-            return response()->json($response, $status_code);
-        }
 
-        if ($operation != 'V') {
-            $id_doc = $this->getFileAndEncode($request->file('IdDoc'));
-            $license_doc = $this->getFileAndEncode($request->file('LicenseDoc'));
-            $work_id_doc = $this->getFileAndEncode($request->file('WorkIdDoc'));
-            $driver_img = $this->getFileAndEncode($request->file('DriverImage'));
-        } else {
-            $id_doc = $license_doc = $work_id_doc = $driver_img = ['file_base64'=> '','ext'=>''];
+            $validator = Validator::make($input, $rules);
+            if ($validator->fails()) {
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = $validator->errors()->all();
+                $response['result'] = null;
+                return view('app.signup', [
+                    'status' => $response['status'] ?? '',
+                    'response' => $response['message'] ?? '',
+                    'IdType' => $request_body['IdType'] ?? '',
+                    'IdNo' => $request_body['IdNo'] ?? '',
+                    'IdDoc' => $request_body['IdDoc'] ?? '',
+                    'id_version' => $request_body['id_version'] ?? '',
+                    'LicenseId' => $request_body['LicenseId'] ?? '',
+                    'LicenseDoc' => $request_body['LicenseDoc'] ?? '',
+                    'LicenseExpiryDate' => $request_body['LicenseExpiryDate'] ?? '',
+                    'Nationality' => $request_body['Nationality'] ?? '',
+                    'FirstName' => $request_body['FirstName'] ?? '',
+                    'LastName' => $request_body['LastName'] ?? '',
+                    'Address1' => $request_body['Address1'] ?? '',
+                    'Address2' => $request_body['Address2'] ?? '',
+                    'DateOfBirth' => $request_body['DateOfBirth'] ?? '',
+                    'Mobile' => $request_body['Mobile'] ?? '',
+                    'Email' => $request_body['Email'] ?? '',
+                    'Password' => $request_body['Password'] ?? '',
+                ]);
+            }
+            
             $request_body['Operation'] = $operation;
-        }
-        $request_body['LicenseDoc'] = $license_doc['file_base64'];
-        $request_body['LicenseDocFileExt'] = $license_doc['ext'];
-        $request_body['IdDoc'] = $id_doc['file_base64'];
-        $request_body['IdDocFileExt'] = $id_doc['ext'];
-        $request_body['WorkIdDoc'] = $work_id_doc['file_base64'];
-        $request_body['WorkIdDocFileExt'] = $work_id_doc['ext'];
-        $request_body['DriverImage'] = $driver_img['file_base64'];
-        $request_body['DriverImageFileExt'] = $driver_img['ext'];
+            if ($operation != 'V') {
+                $id_doc = $this->getFileAndEncode($request->file('IdDoc'));
+                $license_doc = $this->getFileAndEncode($request->file('LicenseDoc'));
+                // $work_id_doc = $this->getFileAndEncode($request->file('WorkIdDoc'));
+                // $driver_img = $this->getFileAndEncode($request->file('DriverImage'));
+            } else {
+                $id_doc = $license_doc = $work_id_doc = $driver_img = ['file_base64'=> '','ext'=>''];
+            }
+            $request_body['LicenseDoc'] = $license_doc['file_base64'];
+            $request_body['LicenseDocFileExt'] = '.' . strtoupper($license_doc['ext']);
+            $request_body['IdDoc'] = $id_doc['file_base64'];
+            $request_body['IdDocFileExt'] = '.' . strtoupper($id_doc['ext']);
+            $request_body['IDSerialNo'] = '1';
 
-        $data = $this->getDriverCreateModify($request_body);
+            $data = $this->getDriverCreateModify($request_body);
 
-        if (empty((array) $data) || $data->Success != 'Y') {
-            $status_code = 400;
-            $response['status'] = false;
-            $response['message'] = Config::get('settings.resp_msg.processing_error');
-            $response['result'] = NULL;
-        } else {
-            $data->IdDoc = $data->IdDoc != '' ? base64_encode($data->IdDoc): '';
-            $data->LicenseDoc = $data->LicenseDoc != '' ? base64_encode($data->LicenseDoc): '';
-            $data->WorkIdDoc = $data->WorkIdDoc != '' ? base64_encode($data->WorkIdDoc): '';
-            $data->DriverImage = $data->DriverImage != '' ? base64_encode($data->DriverImage): '';
-            $response['status'] = true;
-            $response['message'] = '';
-            $response['result'] = $data;
+            if (empty((array) $data) || !isset($data->Success) || $data->Success != 'Y') {
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = Config::get('settings.resp_msg.processing_error');
+                $response['result'] = NULL;
+            } else {
+                $response['status'] = true;
+                $response['message'] = '';
+                $response['result'] = $data;
+
+                $request_body = array_replace($request_body, (array)$response['result']);
+            }
+            /**
+             * @todo For users having base64 encoded file handle the case
+             *
+             * "Malformed UTF-8 characters, possibly incorrectly encoded"
+             */
         }
-        /**
-         * @todo For users having base64 encoded file handle the case
-         *
-         * "Malformed UTF-8 characters, possibly incorrectly encoded"
-         */
-        return response()->json($response, $status_code);
+
+        if ($requester == 'view_driver') {
+            unset(
+                $request_body['LicenseDoc'],
+                $request_body['LicenseDocExt'],
+                $request_body['IdDoc'],
+                $request_body['IdDocExt'],
+                $request_body['IDSerialNo'],
+                $request_body['DriverImage'],
+                $request_body['DriverImageExt'],
+                $request_body['DriverImageFileExt'],
+                $request_body['WorkIdDoc'],
+                $request_body['WorkIdDocExt'],
+                $request_body['WorkIdDocFileExt'],
+                $request_body['WorkTel'],
+                $request_body['LicenseDocFileExt'],
+                $request_body['LicenseIssuedBy'],
+                $request_body['IdDocFileExt'],
+                $request_body['DriverCode'],
+                $request_body['HomeTel'],
+                $request_body['MembershipNo'],
+                $request_body['Operation'],
+                $request_body['VarianceReason'],
+                $request_body['Password']
+            );
+            return response()->json($request_body, 200);
+        }
+        return view('app.signup', [
+            'status' => $response['status'] ?? '',
+            'response' => $response['message'] ?? '',
+            'IdType' => $request_body['IdType'] ?? '',
+            'IdNo' => $request_body['IdNo'] ?? '',
+            'IdDoc' => $request_body['IdDoc'] ?? '',
+            'id_version' => $request_body['id_version'] ?? '',
+            'LicenseId' => $request_body['LicenseId'] ?? '',
+            'LicenseDoc' => $request_body['LicenseDoc'] ?? '',
+            'LicenseExpiryDate' => $request_body['LicenseExpiryDate'] ?? '',
+            'Nationality' => $request_body['Nationality'] ?? '',
+            'FirstName' => $request_body['FirstName'] ?? '',
+            'LastName' => $request_body['LastName'] ?? '',
+            'Address1' => $request_body['Address1'] ?? '',
+            'Address2' => $request_body['Address2'] ?? '',
+            'DateOfBirth' => $request_body['DateOfBirth'] ?? '',
+            'Mobile' => $request_body['Mobile'] ?? '',
+            'Email' => $request_body['Email'] ?? '',
+            'Password' => $request_body['Password'] ?? '',
+        ]);
     }
 
     public function forgotPassword(Request $request)

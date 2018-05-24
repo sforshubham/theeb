@@ -80,21 +80,20 @@ function createModifyDriverRules($operation = '')
             break;
         case 'N':// create new driver
             $rules = [
-                'IdType' => 'required|in:iqama,saudi id,passport',
+                'IdType' => 'required|in:I,S,P',
                 'IdNo' => 'required',
                 'IdDoc' => 'image',
                 'LastName' => 'required',
                 'FirstName' => 'required',
-                'DateOfBirth' => 'date_format:d/m/Y|before_or_equal:today',
+                'DateOfBirth' => 'required|date_format:d/m/Y|before_or_equal:today',
                 'Nationality' => 'required',
                 'LicenseId' => 'required',
                 'LicenseExpiryDate' => 'required|date_format:d/m/Y',
                 'LicenseDoc' => 'image',
-                'WorkTel' => 'numeric',
+                'Address1' => 'string',
+                'Address2' => 'string',
                 'Mobile' => 'required|numeric|regex:/(05)[0-9]{8}/',
                 'Email' => 'required|email',
-                'WorkIdDoc' => 'image',
-                'DriverImage' => 'image'
             ];
             break;
         case 'E': // update driver
