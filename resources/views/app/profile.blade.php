@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="#" class="my-booking-btn">Profile</a>
+                        <a href="javascript:void();" class="my-booking-btn">Profile</a>
                     </div>
                     <div>
                         <div class="white-bg">
@@ -83,13 +83,18 @@
                                         <strong>Used Points</strong>
                                         <span>{{$data->Loyality->UsedPoints ? $data->Loyality->UsedPoints : '--'}}</span>
                                     </div>
+                                    @php (list($dt, $up, $dn) = explode(',',$data->Loyality->LastUsed))
                                     <div class="membership-details">
                                         <strong>Last Used</strong>
-                                        <span>{{$data->Loyality->LastUsed ? $data->Loyality->LastUsed : '--'}}</span>
+                                        <span>{{ $dt ? $dt : '--' }}</span>
                                     </div>
                                     <div class="membership-details">
                                         <strong>Balance Points</strong>
                                         <span>{{$data->Loyality->BalancePoints ? $data->Loyality->BalancePoints : '--'}}</span>
+                                    </div>
+                                    <div class="membership-details">
+                                        <strong>Document Number</strong>
+                                        <span>{{ $dn ? $dn : '--' }}</span>
                                     </div>
                                 </div>
                                 <div class="profile-right-single">

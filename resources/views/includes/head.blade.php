@@ -9,4 +9,5 @@
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}">
     		var $ = jQuery;
 		</script>
+		<script type="text/javascript" src="{{ asset('js/notify.min.js') }}"></script>
 

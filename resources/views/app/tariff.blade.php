@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="#" class="my-booking-btn">Tariff</a>
+                        <a href="javascript:void();" class="my-booking-btn">Tariff</a>
                         <select id="filter_cat" class="floatLeft filter-category">
                             <option>Filter by Category</option>
                             @foreach ($veh_type as $type)
@@ -51,7 +51,7 @@
             '{desc}'+
         '</div>'+
         '<div class="buttons-all">'+
-            '<a rel="{group}" href="#" class="view-booking-btn buttons floatLeft">View Booking</a>'+
+            '<a rel="{group}" href="javascript:void();" class="view-booking-btn buttons floatLeft">View Booking</a>'+
             '<div class="clearBoth"></div>'+
         '</div>'+
     '</div>';

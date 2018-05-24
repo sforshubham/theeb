@@ -73,10 +73,10 @@ class VehicleTypes extends Model
      */
     public static function getVehCode($group)
     {
-        $rows = self::select('VTHCode')
+        $rows = self::select('VTHCode', 'Group', 'VehTypeDesc', 'ImageUrl', 'VTHDesc')
             ->where('Group', $group) ;
         if ($rows->count()) {
-            return $rows->first()->VTHCode;
+            return $rows->first();
         }
         return false;
     }

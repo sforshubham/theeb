@@ -3,7 +3,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="#" class="my-booking-btn">Show Vehicles</a>
+                        <a href="javascript:void();" class="my-booking-btn">Show Vehicles</a>
 
                     </div>
                     <?php 
@@ -22,30 +22,30 @@
                             <div class="show-vehicles">
                             <form method="GET" action = "{{url('/price_estimation')}}">
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/map-icon.png" align="absmiddle" />Pickup Location</label>
+                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
                                     <select name="PickupLocation" required>
                                         <option value="">Select Pickup Location</option>
                                         <?php echo $branchOptn; ?>
                                     </select>
-                                    <label><img src="../images/map-icon.png" align="absmiddle" />Drop Location</label>
+                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
                                     <select name="DropLocation" required>
                                         <option value="">Select Drop Location</option>
                                         <?php echo $branchOptn; ?>
                                     </select>
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/time-icon.png" align="absmiddle" />Pickup Time</label>
+                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
                                     <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
                                     <input type="hidden" name="PickupDate" id="out_date"/>
                                     <input type="hidden" name="PickupTime" id="out_time"/>
-                                    <label><img src="../images/time-icon.png" align="absmiddle" />Drop Time</label>
+                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
                                     <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
                                     <input type="hidden" name="DropDate" id="in_date"/>
                                     <input type="hidden" name="DropTime" id="in_time"/>
                                     <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
-                                    <label><img src="../images/car-icon.png" align="absmiddle" />Select Car Category</label>
+                                    <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />Select Car Category</label>
                                     <select name="CarCategory" required>
                                         <option value="">Select Car Category</option>
                                         <?php echo $vehicleOptn; ?>
@@ -95,11 +95,12 @@
             }
         }, function(start, end, label) {
             var out_date = start.format('DD/MM/YYYY');
-            var out_time = start.format('HH:MM');
+            var out_time = start.format('HH:mm');
             $('#out_date').val(out_date);
             $('#out_time').val(out_time);
             $('#in_date').val(out_date);
             $('#in_time').val(out_time);
+            console.log(out_date+'  '+out_time)
 
             $('#datetimepicker2').daterangepicker({
                 startDate: start,
@@ -112,9 +113,10 @@
                 }
             }, function(start, end, label) {
                 var in_date = start.format('DD/MM/YYYY');
-                var in_time = start.format('HH:MM');
+                var in_time = start.format('HH:mm');
                 $('#in_date').val(in_date);
-                $('#in_time').val(in_time);
+                $('#in_time').val(in_date);
+                console.log(in_date+'  '+in_date);
             });
         });
 
@@ -128,9 +130,11 @@
             }
         }, function(start, end, label) {
             var in_date = start.format('DD/MM/YYYY');
-            var in_time = start.format('HH:MM');
+            var in_time = start.format('HH:mm');
             $('#in_date').val(in_date);
             $('#in_time').val(in_time);
+
+            console.log(in_date+'  '+in_date);
         });
     });
 </script>

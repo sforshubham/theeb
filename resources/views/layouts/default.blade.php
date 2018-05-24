@@ -4,10 +4,24 @@
         @include('includes.head')
     </head>
     <body style="background: #ededed;">
-        <header>
-            @include('includes.header')
-        </header>
+        @include('includes.header')
         <div id="DivBody">
+            @if (session('success'))
+                <script>
+                    $.notify("{!! session('success') !!}", {globalPosition: "top right", className: "success", autoHide: false});
+                </script>
+            @endif
+            @if (session('error') && is_array(session('error')))
+                <script>
+                    @foreach (session('error') as $err)
+                    $.notify("{!! $err !!}", {globalPosition: "top right", className: "error", autoHide: false});
+                    @endforeach
+                </script>
+            @elseif (session('error'))
+                <script>
+                    $.notify("{!! session('error') !!}", {globalPosition: "top right", className: "error", autoHide: false});
+                </script>
+            @endif
             @yield('content')
         </div>
         <footer>

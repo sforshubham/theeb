@@ -223,7 +223,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 .proceed-btn{background: #1269a0;    color: #fff;    margin: 9px auto;    width: 300px;    padding: 20px 40px;    border-radius: 35px;    border: 0;
 
-    font-size: 18px;}
+    font-size: 18px;cursor:pointer;}
 
 .payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px;}
 
@@ -267,7 +267,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 .wdth-49{width:49% !important}
 
-.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center; position: relative;    top: -7px;}
+.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center;top: -7px;}
 
 .price-tag{background: url(../images/price-bg.png) no-repeat right;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; left:0;    top: 15px;}
 
@@ -283,9 +283,52 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 
 /*--------------CSS by Shubham start-------------------*/
-.single-car-section img, .tariff-car-section img {width:400px;height:224px;}
+.single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
 .truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
+.payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-left: auto; margin-right: auto;}
+.payment-pickup-details > h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+
+
+/*--------------modal start-------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*--------------modal end-------------------*/
 /*--------------CSS by Shubham end-------------------*/
 
 /*--------------CSS for Loader start-------------------*/

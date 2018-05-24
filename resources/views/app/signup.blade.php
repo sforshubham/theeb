@@ -560,8 +560,6 @@
                 return;
             }
 
-            // try to fetch the ID based records
-            jQuery.notify("Everything looks good", "success");
             jQuery('form[name="signup_form"]').submit();
         });
     });

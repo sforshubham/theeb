@@ -27,6 +27,8 @@
                     <xs:element type="xs:string" name="ReservationStatus"/>
                     <xs:element type="xs:string" name="Tariff"/>
                     <xs:element type="xs:string" name="LicenseNo"/>
+                    <xs:element type="xs:string" name="ReservationNo"/>
+                    <xs:element type="xs:string" name="InternetReservationNo"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -52,6 +54,8 @@
                     <xs:element type="xs:string" name="ReservationStatus"/>
                     <xs:element type="xs:string" name="Tariff"/>
                     <xs:element type="xs:string" name="LicenseNo"/>
+                    <xs:element type="xs:string" name="ReservationNo"/>
+                    <xs:element type="xs:string" name="InternetReservationNo"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -77,6 +81,8 @@
                     <xs:element type="xs:string" name="ReservationStatus"/>
                     <xs:element type="xs:string" name="Tariff"/>
                     <xs:element type="xs:string" name="LicenseNo"/>
+                    <xs:element type="xs:string" name="ReservationNo"/>
+                    <xs:element type="xs:string" name="InternetReservationNo"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

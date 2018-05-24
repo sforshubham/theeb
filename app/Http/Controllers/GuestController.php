@@ -178,6 +178,7 @@ class GuestController extends SoapController
             );
             return response()->json($request_body, 200);
         }
+        
         return view('app.signup', [
             'status' => $response['status'] ?? '',
             'response' => $response['message'] ?? '',
@@ -214,7 +215,7 @@ class GuestController extends SoapController
             $request_body['Email'] = $input['Email'];
 
             $result = $this->password($request_body);
-            if (empty((array) $result) || $result->Success != 'Y') {
+            if (!isset($result->Success) || $result->Success != 'Y') {
                 return back()->with('error', $result->VarianceReason);
             } else {
                 return back()->with('success', Config::get('settings.resp_msg.new_password'));

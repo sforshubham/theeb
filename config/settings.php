@@ -25,10 +25,12 @@ return [
         'payment_fail' => 'Payment Failed',
         'processing_error' => 'Error processing request',
         'no_data' => 'No data found',
+        'no_cars' => 'No cars available for given details',
 
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',
         'reset_password' => 'Password reset has been successful',
+        'incorrect_password' => 'Incorrect password entered',
         'payment_success' => 'Payment is successful'
     ],
     'cmd_operation' => [
@@ -172,5 +174,10 @@ return [
     'branches_db_fields' => ['BranchCode' => '', 'BranchName' => '', 'DistArea' => '', 'DistAreaName' => '', 'OpArea' => '', 'OpAreaName' => '', 'Country' => '', 'CountryName' => '', 'BranchLat' => 'DMStoDD', 'BranchLong' => 'DMStoDD', 'City' => '', 'State' => '', 'Telephone' => '', 'Telephone1' => '', 'Fax' => '', 'Telex' => '', 'Email' => '', 'Schedule' => 'json_encode'],
 
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => ''],
+
+    'reservation' => [
+        'init_no' => rand(22000000, 22999999),
+        'file_path' => storage_path('app/res_no.txt'),
+    ]
 
 ];

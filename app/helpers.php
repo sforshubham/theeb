@@ -184,7 +184,7 @@ function reservationBody()
         'ReservationNo' => '',
         'ReservationStatus' => '',
         'CarGroup' => '',
-        'Currency' => '',
+        'Currency' => 'SAR',
         'PaymentType' => '',
         'CreditCardNo' => '',
         'CarMake' => '',
@@ -247,7 +247,7 @@ function reservationRules($operation = '')
                 'ReservationNo' => 'required'
             ];
             break;
-        case 'N': //new reservation
+        /*case 'N': //new reservation
             $rules = [
                 'DriverCode' => 'required',
                 'OutBranch' => 'required',
@@ -260,7 +260,7 @@ function reservationRules($operation = '')
                 'ReservationNo' => 'required',
                 'CarGroup' => 'required',
             ];
-            break;
+            break;*/
         case 'A': //extend reservation
             $rules = [
                 'DriverCode' => 'required',
@@ -279,8 +279,6 @@ function reservationRules($operation = '')
     return $rules;
 }
 
-
-
 function default_settings()
 {
     $setting = [
@@ -290,4 +288,14 @@ function default_settings()
         'no_data' => 'No data found. Please try again later.'
     ];
     return $setting;
+}
+
+function remove_numbers($string) {
+    $str = preg_replace('/[0-9]+/', null, $string);
+    return trim($str);
+}
+
+function remove_characters($string) {
+    $int = (int) filter_var($string, FILTER_SANITIZE_NUMBER_INT);
+    return $int;
 }
