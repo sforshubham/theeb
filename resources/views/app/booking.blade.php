@@ -38,6 +38,13 @@
                     </div>
                 </div>
                 @endforeach
+            @else
+                <div style="
+                    color:  grey;
+                    border-top: 1px grey solid;
+                    padding-top: 40px;
+                    margin-top: 20px;
+                ">{{$setting['no_data']}}</div>
             @endif
                 <div class="clearBoth"></div>
             </div>
@@ -72,6 +79,13 @@
                     </div>
                 </div>
                 @endforeach
+            @else
+                <div style="
+                    color:  grey;
+                    border-top: 1px grey solid;
+                    padding-top: 40px;
+                    margin-top: 20px;
+                ">{{$setting['no_data']}}</div>
             @endif
                 <div class="clearBoth"></div>
             </div>
@@ -103,6 +117,13 @@
                     </div>
                 </div>
                 @endforeach
+            @else
+                <div style="
+                    color:  grey;
+                    border-top: 1px grey solid;
+                    padding-top: 40px;
+                    margin-top: 20px;
+                ">{{$setting['no_data']}}</div>
             @endif
                 <div class="clearBoth"></div>
             </div>
@@ -164,9 +185,9 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="{{ url('/js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('/js/daterangepicker.min.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('/css/daterangepicker.css') }}" />
 <script>
 /*    var modal = document.getElementById('myModal');
     var btn = $(".extend-booking-btn");
