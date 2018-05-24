@@ -209,7 +209,9 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 .captionTitle a{    padding: 7px 20px 0; width:70%; font-size:21px;  float: left;}
 
-.payment-pickup-details{width:45%; border:1px solid #999; padding:15px; margin-bottom:20px;}
+.payment-pickup-details{width:100%; border:1px solid #999; padding:15px; margin-bottom:20px;}
+.payment-pickup-details.payment-pickup-details-section-first{width: 45%;border: 0;padding: 0;}
+.payment-pickup-details.payment-pickup-details-section-second{width: 45%; border: 0; padding: 0; margin: 0 0 0 70px;}
 
 .payment-pickup-details span{ font-size:18px; color: #1269a0; display:block;}
 
@@ -225,7 +227,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
     font-size: 18px;cursor:pointer;}
 
-.payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px;}
+.payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px; margin-left: 115px;}
 
 .payment-pickup-details a label{margin-left: 30px;}
 
