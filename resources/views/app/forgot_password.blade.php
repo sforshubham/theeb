@@ -8,14 +8,14 @@
                             <div class="login-wrapper">
                                 <div class="white-transparent"></div>
                                 <div class="main-login-wrapper">
-                                    <h4>Forgot Password</h4>
+                                    <h4>{{ __('Forgot Password') }}</h4>
                                     <div class="login-inner-wrapper">
                                         <form method="POST" action="{{url('/forgot_password')}}">
-                                            <input type="text" name="Email" placeholder="Enter Email" class="change-pwd-input" value="{{session('data.Email') ?? ''}}"/>
-                                            <input type="submit" value="Submit" class="submit-buttom change-pwd-input-btn" />
+                                            <input type="text" name="Email" placeholder="{{ __('Email') }}" class="change-pwd-input" value="{{session('data.Email') ?? ''}}"/>
+                                            <input type="submit" value="{{ __('Submit') }}" class="submit-buttom change-pwd-input-btn" />
                                         </form>
                                         <div class="buttons-signup">
-                                            <a href="{{url('/') }}" class="floatLeft">Sign In?</a>
+                                            <a href="{{url('/') }}" class="floatLeft">{{ __('Login') }}</a>
                                             <div class="clearBoth"></div>
                                         </div>
                                     </div>
