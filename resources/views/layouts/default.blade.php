@@ -3,7 +3,11 @@
     <head id="Head1">
         @include('includes.head')
     </head>
-    <body style="background: #ededed;">
+    <body style="background: #ededed;
+        @if (App::getLocale() == 'ar')
+            direction: rtl; 
+        @endif
+    ">
         @if (App::getLocale() == 'en')
             @include('includes.header-en')
         @else
