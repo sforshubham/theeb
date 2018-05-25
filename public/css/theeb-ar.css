@@ -271,7 +271,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 
 .proceed-btn-select-car{ background:#1269a0;margin:0 0 10px 10px;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: left;    text-align: center;top: -7px;}
 
-.price-tag{background: url(../images/price-bg.png) no-repeat left;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; right:0;    top: 15px; left: auto;}
+.price-tag{background: url(../images/price-bg-ar.png) no-repeat left;    color: #fff;    padding: 10px 10px 10px 30px;   position: absolute; right:0;    top: 15px; left: auto;}
 
 .select-car img{margin-top:30px}
 
