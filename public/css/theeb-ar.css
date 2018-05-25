@@ -24,9 +24,9 @@ Version: 1.0
 
 .tabs-top ul li.active a:after{display:none;}
 
-.tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+.tabs-top ul li:first-child{border-radius:0 10px 10px 0}
 
-.tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+.tabs-top ul li:last-child{border-radius:10px 0 0 10px}
 
 .tabs-top ul li:last-child a:after{display:none;}
 
@@ -44,9 +44,9 @@ Version: 1.0
 
 .rental-tabs-top ul li.active a:after{display:none;}
 
-.rental-tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+.rental-tabs-top ul li:first-child{border-radius:0 10px 10px 0}
 
-.rental-tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+.rental-tabs-top ul li:last-child{border-radius:10px 0 0 10px}
 
 .rental-tabs-top ul li:last-child a:after{display:none;}
 
@@ -56,7 +56,7 @@ Version: 1.0
 
 .single-car-section{width:48%; float:right; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;}
 
-.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:right; padding:0 0 10px 10px;}
+.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:right; padding:0 10px 10px 0;}
 
 .pickup-drop-time span{color:#444; font-size:16px; text-align:center;}
 
@@ -86,7 +86,7 @@ Version: 1.0
 
 .address-table{font-weight:normal; margin:20px 0}
 
-.from-end-date-rental input{ background:url(../images/calender.png) no-repeat 96%; border: 1px solid #ccc; margin-left:5px;   padding: 15px 10px;min-width:250px;     float: right;}
+.from-end-date-rental input{ background:url(../images/calender.png) no-repeat 2%; border: 1px solid #ccc; margin-left:5px;   padding: 15px 10px;min-width:250px;     float: right;}
 
 .from-end-date-rental:after{clear:both; content:''; display:block}
 
@@ -136,7 +136,7 @@ Version: 1.0
 
 .white-transparent{background:#fff; border-radius: 10px;opacity:0.7; border-radius:10px; width:100%;z-index:0; height:100%; position:absolute; }
 
-.main-login-wrapper{position:relative;     border-radius: 10px; border-radius:10px;}
+.main-login-wrapper{position:relative;  z-index: 0;   border-radius: 10px; border-radius:10px;}
 
 .login-wrapper input{width:80%; padding:23px 50px 23px 20px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:50px auto 0;}
 
@@ -211,7 +211,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 
 .payment-pickup-details{width:100%; border:1px solid #999; padding:15px; margin-bottom:20px;}
 .payment-pickup-details.payment-pickup-details-section-first{width: 45%;border: 0;padding: 0;}
-.payment-pickup-details.payment-pickup-details-section-second{width: 45%; border: 0; padding: 0; margin: 0 0 0 70px;}
+.payment-pickup-details.payment-pickup-details-section-second{width: 45%; border: 0; padding: 0; margin: 0 70px 0 0;}
 
 .payment-pickup-details span{ font-size:18px; color: #1269a0; display:block;}
 
@@ -269,9 +269,9 @@ input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 
 .wdth-49{width:49% !important}
 
-.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: left;    text-align: center;top: -7px;}
+.proceed-btn-select-car{ background:#1269a0;margin:0 0 10px 10px;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: left;    text-align: center;top: -7px;}
 
-.price-tag{background: url(../images/price-bg.png) no-repeat left;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; right:0;    top: 15px;}
+.price-tag{background: url(../images/price-bg.png) no-repeat left;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; right:0;    top: 15px; left: auto;}
 
 .select-car img{margin-top:30px}
 

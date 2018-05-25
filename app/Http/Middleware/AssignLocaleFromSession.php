@@ -16,8 +16,12 @@ class AssignLocaleFromSession
      */
     public function handle($request, Closure $next)
     {
-	$locale = $request->cookie('locale');
-	App::setLocale($locale);
-	return $next($request);
+        $locale = $request->cookie('locale');
+        if (is_null($locale)) {
+            App::setLocale('ar');
+        } else {
+            App::setLocale($locale);
+        }
+        return $next($request);
     }
 }

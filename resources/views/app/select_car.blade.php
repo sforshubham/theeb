@@ -4,8 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:" class="my-booking-btn">Select Car</a>
-
+                        <a href="javascript:" class="my-booking-btn">{{ __('Select Car') }}</a>
                     </div>
                     <div>
                         <div class="white-bg">
@@ -17,7 +16,7 @@
                             <div class="tariff-car-section select-car">
                                 <span class="price-tag">{{$data->Price->Currency}} {{ $price_est->TotalAmount }}</span>
                                 <img src="{{ $car_groups[$price_est->CarGrop]['ImageUrl'] }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
-                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="car_detail/{{$key}}" class="proceed-btn-select-car">Proceed</a></h4>
+                                <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="car_detail/{{$key}}" class="proceed-btn-select-car">{{ __('Proceed') }}</a></h4>
                                 <div class="clearBoth"></div>
                             </div>
                             @endforeach

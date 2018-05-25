@@ -3,12 +3,12 @@
     <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
         <div class="safeArea">
             <div class="rental-tabs-top">
-                <a href="javascript:" class="rental-history-btn">Rental History</a>
+                <a href="javascript:" class="rental-history-btn">{{ __('Rental History') }}</a>
                 <ul>
-                    <li><a href="agreement">Agreement</a></li>
-                    <li><a href="invoice">Invoice</a></li>
-                    <li><a href="payment">Payment</a></li>
-                    <li class="active"><a href="reservation">Reservation</a></li>
+                    <li><a href="agreement">{{ __('Rental') }}</a></li>
+                    <li><a href="invoice">{{ __('Invoice') }}</a></li>
+                    <li><a href="payment">{{ __('Payment') }}</a></li>
+                    <li class="active"><a href="reservation">{{ __('Reservation') }}</a></li>
                 </ul>
             </div>
             <div>
@@ -58,7 +58,7 @@
                             border-top: 1px grey solid;
                             padding-top: 40px;
                             margin-top: 20px;
-                        ">No records found...</div>
+                        ">{{ __('Record not found') }}</div>
                     @endif
                 </div>
                 <div class="clearBoth"></div>

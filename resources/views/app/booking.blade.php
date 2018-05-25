@@ -4,11 +4,11 @@
 <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
     <div class="safeArea">
         <div class="tabs-top">
-            <a href="javascript:" class="my-booking-btn">My Booking</a>
+            <a href="javascript:" class="my-booking-btn">{{ __('My Booking') }}</a>
             <ul class="booking_tabs">
-                <li rel="ongoing" class="category_tab active"><a href="javascript:">Ongoing</a></li>
-                <li rel="completed" class="category_tab"><a href="javascript:">Completed</a></li>
-                <li rel="cancelled" class="category_tab"><a href="javascript:">Cancelled</a></li>
+                <li rel="ongoing" class="category_tab active"><a href="javascript:">{{ __('Ongoing') }}</a></li>
+                <li rel="completed" class="category_tab"><a href="javascript:">{{ __('Completed') }}</a></li>
+                <li rel="cancelled" class="category_tab"><a href="javascript:">{{ __('Cancelled') }}</a></li>
             </ul>
         </div>
         <div class="ongoing_div category_div">
@@ -22,19 +22,19 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
-                        <span><strong>Pickup Time</strong><br/>
+                        <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time">
-                        <span><strong>Drop Time</strong><br/>
+                        <span><strong>{{ __('Drop Details') }}</strong><br/>
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
                     <div class="buttons-all" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" car-group="">
-                        <a href="javascript:" class="cancel-booking-btn buttons">Cancel Booking</a>
-                        <a href="javascript:" class="extend-booking-btn buttons">Extend Booking</a>
-                        <a href="javascript:" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:" class="cancel-booking-btn buttons">{{ __('Cancel Booking') }}</a>
+                        <a href="javascript:" class="extend-booking-btn buttons">{{ __('Extend Booking') }}</a>
+                        <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -65,17 +65,17 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
-                        <span><strong>Pickup Time</strong><br/>
+                        <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time ">
-                        <span><strong>Drop Time</strong><br/>
+                        <span><strong>{{ __('Drop Details') }}</strong><br/>
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="javascript:" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -103,17 +103,17 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
                     <div class="pickup-drop-time border-right">
-                        <span><strong>Pickup Time</strong><br/>
+                        <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
                         </span>
                     </div>
                     <div class="pickup-drop-time ">
-                        <span><strong>Drop Time</strong><br/>
+                        <span><strong>{{ __('Drop Details') }}</strong><br/>
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
                     <div class="buttons-all">
-                        <a href="javascript:" class="view-booking-btn buttons">View Booking</a>
+                        <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
                 @endforeach

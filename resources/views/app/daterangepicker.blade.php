@@ -12,6 +12,7 @@
             @endif
             jQuery('input#daterangepicker').daterangepicker({
                 autoUpdateInput: false,
+                opens: '{{ __('open_daterange_picker') }}',
                 maxDate: moment().format('DD/MM/Y'),
                 maxSpan: {
                     "months": 3

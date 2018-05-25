@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:" class="my-booking-btn">Payment</a>
+                        <a href="javascript:" class="my-booking-btn">{{ __('Payment') }}</a>
                     </div>
                     <div>
                         <div class="white-bg">
@@ -16,19 +16,19 @@
                                     </div>
                                 </div>
                                 <div class="payment-pickup-details">
-                                    <span>Pick up Details</span>
+                                    <span>{{ __('Pickup Details') }}</span>
                                     <p class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$data->Price->OutDate.', '.convert24hrto12hr($data->Price->OutTime)}}</p>
                                     <p class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$selected_branches[$data->Price->OutBranch]}}</p>
                                 </div>
                                 <div class="payment-pickup-details">
-                                    <span>Drop Details</span>
+                                    <span>{{ __('Drop Details') }}</span>
                                     <p class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$data->Price->InDate.', '.convert24hrto12hr($data->Price->InTime)}}</p>
                                     <p class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$selected_branches[$data->Price->InBranch]}}</p>
                                 </div>
                             </div>
                             <div class="payment-pickup-details payment-pickup-details-section-second floatRight">
                                 <div class="payment-pickup-details">
-                                    <span>Fare Details</span>
+                                    <span>{{ __('Fare Details') }}</span>
                                     <div>
                                         <div class="payment-fare-details">&nbsp;Charge Group </div>
                                         <div class="payment-fare-details">&nbsp;{{ $data->Price->CarGroupPrice[$index]->VTHDesc[0].' '.$data->Price->CarGroupPrice[$index]->VTHDesc[1] }}</div>
