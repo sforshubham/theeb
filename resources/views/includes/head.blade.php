@@ -4,7 +4,12 @@
 
 		<title>Theeb - @yield('title')</title>
 
-		<link rel='stylesheet' id='theeb-lingual-style-css'  href='http://theeb.com.sa/wp-content/themes/theeb/style-en.css?ver=4.9.5' type='text/css' media='all' />
+	@if (App::getLocale() == 'en')
+        <link rel='stylesheet' id='theeb-lingual-style-css'  href='http://theeb.com.sa/wp-content/themes/theeb/style-en.css?ver=4.9.5' type='text/css' media='all' />
+    @else
+        <link rel='stylesheet' id='theeb-lingual-style-css'  href='http://theeb.com.sa/wp-content/themes/theeb/style-en.css?ver=4.9.5' type='text/css' media='all' />
+    @endif
+		
 		<link rel="stylesheet" href="{{ asset('css/theeb.css') }}">
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}">
     		var $ = jQuery;

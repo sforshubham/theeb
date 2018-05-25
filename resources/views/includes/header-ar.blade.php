@@ -44,7 +44,7 @@
                                         <a>Language</a> اللغة
                                         <p>
                                             <div class="lanDD">
-                                                <a id="aArabic" href="/home">عربي</a><a id="aEnglish" href="/en/home">English</a>
+                                                <a id="aArabic" href="{{ url('/lang_switch/ar') }}">عربي</a><a id="aEnglish" href="{{ url('/lang_switch/en') }}">English</a>
                                             </div>
                                             <div class="clearBoth"></div>
                                         </p>

@@ -9,26 +9,26 @@
                         <div class="loading" id="loader" style="display: none;">Loading…</div>
                         <div class="white-transparent"></div>
                         <div class="main-login-wrapper">
-                            <h4>Signup</h4>
+                            <h4>{{ __('Register') }}</h4>
                             <div class="signup-inner-wrapper">
                                 <form name="signup_form" method="post" enctype="multipart/form-data">
                                     <div class="three-column-signup">
                                         <select name="IdType">
-                                            <option value="0" selected="">Select ID Type</option>   
+                                            <option value="0" selected="">{{ __('ID Type') }}</option>   
                                             <option value="S">Saudi ID</option>
                                             <option value="I">Iqama</option>
                                             <option value="P">Passport</option>
                                         </select>
-                                        <input type="text" placeholder="ID Number" name="IdNo" id="IdNo" class="id-number" value="{{ $IdNo }}" /><input type="file" name="IdDoc" id="IdDoc"><label for="IdDoc" id="IdDocLabel"></label>
-                                        <input type="text" placeholder="ID Version*" name="id_version" value="{{ $id_version }}" />
+                                        <input type="text" placeholder="{{ __('ID Number') }}" name="IdNo" id="IdNo" class="id-number" value="{{ $IdNo }}" /><input type="file" name="IdDoc" id="IdDoc"><label for="IdDoc" id="IdDocLabel"></label>
+                                        <input type="text" placeholder="{{ __('ID Version') }}*" name="id_version" value="{{ $id_version }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" placeholder="License Number" class="license-number" name="LicenseId" value="{{ $LicenseId }}" id="LicenseId" /><input type="file" name="LicenseDoc" id="LicenseDoc"><label for="LicenseDoc" id="LicenseDocLabel"></label>
-                                        <input type="text" placeholder="License Expiry Date*" name="LicenseExpiryDate" value="{{ $LicenseExpiryDate }}" />
+                                        <input type="text" placeholder="{{ __('License Number') }}" class="license-number" name="LicenseId" value="{{ $LicenseId }}" id="LicenseId" /><input type="file" name="LicenseDoc" id="LicenseDoc"><label for="LicenseDoc" id="LicenseDocLabel"></label>
+                                        <input type="text" placeholder="{{ __('License Expiry Date') }}*" name="LicenseExpiryDate" value="{{ $LicenseExpiryDate }}" />
                                     </div>
                                     <div class="three-column-signup">
                                         <select name="Nationality">
-                                            <option value="" selected>Please select</option>
+                                            <option value="" selected>{{ __('Nationality') }}</option>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -269,22 +269,22 @@
                                             <option value="Zambia">Zambia</option>
                                             <option value="Zimbabwe">Zimbabwe</option>
                                         </select>
-                                        <input type="text" placeholder="First Name" name="FirstName" value="{{ $FirstName }}" />
-                                        <input type="text" placeholder="Last Name*" name="LastName" value="{{ $LastName }}" />
+                                        <input type="text" placeholder="{{ __('First Name') }}" name="FirstName" value="{{ $FirstName }}" />
+                                        <input type="text" placeholder="{{ __('Last Name') }}*" name="LastName" value="{{ $LastName }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" placeholder="Address 1" name="Address1" value="{{ $Address1 }}" />
-                                        <input type="text" placeholder="Address 2" name="Address2" value="{{ $Address2 }}" />
+                                        <input type="text" placeholder="{{ __('Address 1') }}" name="Address1" value="{{ $Address1 }}" />
+                                        <input type="text" placeholder="{{ __('Address 2') }}" name="Address2" value="{{ $Address2 }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" placeholder="Date of Birth*" name="DateOfBirth" value="{{ $DateOfBirth }}" />
-                                        <input type="text" placeholder="Mobile*" name="Mobile" value="{{ $Mobile }}" />
+                                        <input type="text" placeholder="{{ __('Date of Birth') }}*" name="DateOfBirth" value="{{ $DateOfBirth }}" />
+                                        <input type="text" placeholder="{{ __('Mobile Number') }}*" name="Mobile" value="{{ $Mobile }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" placeholder="Email*" name="Email" value="{{ $Email }}" />
-                                        <input type="password" placeholder="Password*" name="Password" value="{{ $Password }}" />
+                                        <input type="text" placeholder="{{ __('Email') }}*" name="Email" value="{{ $Email }}" />
+                                        <input type="password" placeholder="{{ __('Password') }}*" name="Password" value="{{ $Password }}" />
                                     </div>
-                                    <input type="button" value="Signup" name="signup" />
+                                    <input type="button" value="{{ __('Register') }}" name="signup" />
                                 </form>
                             </div>
                         </div>
@@ -379,7 +379,7 @@
 
             if (id_type.val() == 0) {
                 // ID type not selected
-                id_type.notify("Please select ID type", "error");
+                id_type.notify("Please select ID Type first", "error");
                 return;
             } else if (id_type.val() == 'S') {
                 // Saudi ID - ID Number must start wtih 2
@@ -442,7 +442,7 @@
 
             if (id_type.val() == 0) {
                 // ID type not selected
-                id_type.focus().notify("Please select ID type", "error");
+                id_type.focus().notify("Please select ID Type first", "error");
                 return;
             }
 

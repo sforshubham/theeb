@@ -23,6 +23,15 @@ Route::group(['prefix' => 'api/v1'], function(){
 
 });
 
+// Language Switcher
+Route::get('/lang_switch/{locale}', function ($locale) {
+    Cookie::queue(Cookie::make('locale', $locale, 60));
+    if (session()->has('user.IDNo')) {
+        return redirect('/book');
+    } else {
+        return redirect('/');
+    }
+});
 Route::get('/branches', 'GuestController@getAllBranches');
 Route::get('/vehicle_types', 'GuestController@getAllVehicleTypes');
 Route::get('/logout', 'GuestController@logout');
