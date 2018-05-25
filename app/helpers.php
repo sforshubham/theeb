@@ -263,7 +263,6 @@ function reservationRules($operation = '')
             break;*/
         case 'A': //extend reservation
             $rules = [
-                'DriverCode' => 'required',
                 'OutBranch' => 'required',
                 'InBranch' => 'required',
                 'OutDate' => 'required|date_format:d/m/Y|after:tomorrow',
@@ -298,4 +297,9 @@ function remove_numbers($string) {
 function remove_characters($string) {
     $int = (int) filter_var($string, FILTER_SANITIZE_NUMBER_INT);
     return $int;
+}
+
+function convert24hrto12hr($time)
+{
+    return date('h:i a', strtotime($time));
 }

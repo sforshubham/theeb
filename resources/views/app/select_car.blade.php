@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:void();" class="my-booking-btn">Select Car</a>
+                        <a href="javascript:" class="my-booking-btn">Select Car</a>
 
                     </div>
                     <div>

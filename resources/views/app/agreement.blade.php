@@ -3,7 +3,7 @@
     <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
         <div class="safeArea">
             <div class="rental-tabs-top">
-                <a href="javascript:void();" class="rental-history-btn">Rental History</a>
+                <a href="javascript:" class="rental-history-btn">Rental History</a>
                 <ul>
                     <li class="active"><a href="agreement">Agreement</a></li>
                     <li><a href="invoice">Invoice</a></li>

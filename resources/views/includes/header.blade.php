@@ -34,7 +34,7 @@
                                                 <form role="search" method="get" id="searchform" action="http://theeb.com.sa/en/">
                                                     <div>
                                                         <input type="text" value="" name="s" id="s" /><br />
-                                                        <a id="asearch" class="searchButn" href="javascript:void(0)" onclick="document.getElementById('searchform').submit();"></a>
+                                                        <a id="asearch" class="searchButn" href="javascript:" onclick="document.getElementById('searchform').submit();"></a>
                                                     </div>
                                                 </form>
                                             </div>

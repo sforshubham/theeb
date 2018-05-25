@@ -11,18 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    if (session()->has('user.IDNo')) {
-        return redirect('/book');
-    } else {
-        return view('app.login');
-    }
-});
-
-Route::group(['prefix' => 'api/v1'], function(){
-
-});
-
+Route::get('/', 'GuestController@guest');
+Route::get('/login', 'GuestController@guest');
 Route::get('/branches', 'GuestController@getAllBranches');
 Route::get('/vehicle_types', 'GuestController@getAllVehicleTypes');
 Route::get('/logout', 'GuestController@logout');
@@ -37,7 +27,7 @@ Route::post('/payment', 'UsersController@makePayment');
 Route::post('/document_print', 'UsersController@documentPrint');
 Route::get('/booking', 'UsersController@myBooking');
 Route::post('/new_reservation', ['as'=> 'new_reservation', 'uses'=>'UsersController@newReservation']);
-Route::post('/modify_reservation', ['as'=> 'modify_reservation', 'uses'=>'UsersController@manageReservation']);
+Route::post('/modify_reservation', ['as'=> 'modify_reservation', 'uses'=>'UsersController@modifyReservation']);
 Route::post('/cancel_reservation', ['as'=> 'cancel_reservation', 'uses'=>'UsersController@cancelReservation']);
 Route::get('/tariff', 'UsersController@tariff');
 Route::get('/book', 'UsersController@rentACar');

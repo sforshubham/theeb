@@ -11,8 +11,8 @@
                                     <h4>Login to your Account</h4>
                                     <div class="login-inner-wrapper">
                                         <form action="{{url('/login')}}" method="POST">
-                                            <input type="text" name="emailId" placeholder="Email Id" class="username" autofocus/>
-                                            <input type="password" name="password" placeholder="Password" class="email" />
+                                            <input type="text" required name="emailId" placeholder="Email Id" class="username" autofocus value="{{session('data.emailId') ?? ''}}" />
+                                            <input type="password" required name="password" placeholder="Password" class="email" />
                                             <input type="submit" value="Login" />
                                         </form>
                                         <div class="buttons-signup">

@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:void();" class="my-booking-btn">Profile</a>
+                        <a href="javascript:" class="my-booking-btn">Profile</a>
                     </div>
                     <div>
                         <div class="white-bg">
@@ -46,6 +46,7 @@
                                 </div>
                             </div>
                             <div class="right-wrap-profile floatLeft">
+                                @if (isset($data->Membership))
                                 <div class="profile-right-single">
                                     <h5>Membership Details</h5>
                                     <div class="membership-details">
@@ -69,6 +70,8 @@
                                         <span>{{$data->Membership->ExpiryDate ? $data->Membership->ExpiryDate : '--'}}</span>
                                     </div>
                                 </div>
+                                @endif
+                                @if (isset($data->Loyality))
                                 <div class="profile-right-single">
                                     <h5>Loyalty</h5>
                                     <div class="membership-details">
@@ -93,6 +96,7 @@
                                         <span>{{ $dn ? $dn : '--' }}</span>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="profile-right-single">
                                     <h5>Uploaded Documents</h5>
                                     <div class="membership-details">

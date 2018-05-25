@@ -40,7 +40,7 @@ class GuestController extends SoapController
             'password' => 'required'
         ]);
         if ($validator->fails()) {
-            return back()->with('error', $validator->errors()->all());
+            return back()->with('error', $validator->errors()->all())->with('data',$input);
         } else {
             $result = $this->doLogin($input['emailId'], $input['password']);
             // if login is success, write IDNo in session
@@ -58,7 +58,7 @@ class GuestController extends SoapController
                 return redirect('/');
             } else {
                 $msg = str_replace('{tag}', 'username/password', Config::get('settings.resp_msg.incorrect_input'));
-                return back()->with('error', $msg);
+                return back()->with('error', $msg)->with('data',$input);
             }
         }
     }
@@ -208,7 +208,7 @@ class GuestController extends SoapController
             'Email' => 'required|email'
         ]);
         if ($validator->fails()) {
-            return back()->with('error', $validator->errors()->all());
+            return back()->with('error', $validator->errors()->all())->with('data', $input);
         } else {
             $request_body = passwordRequestBody();
             $request_body['Mode'] = 'S';
@@ -216,7 +216,7 @@ class GuestController extends SoapController
 
             $result = $this->password($request_body);
             if (!isset($result->Success) || $result->Success != 'Y') {
-                return back()->with('error', $result->VarianceReason);
+                return back()->with('error', $result->VarianceReason)->with('data', $input);
             } else {
                 return back()->with('success', Config::get('settings.resp_msg.new_password'));
             }
@@ -242,6 +242,15 @@ class GuestController extends SoapController
             return redirect('/');
         } else {
             return view('app.forgot_password');
+        }
+    }
+
+    public function guest()
+    {
+        if (session()->has('user.IDNo')) {
+            return redirect('/book');
+        } else {
+            return view('app.login');
         }
     }
 }

@@ -11,7 +11,7 @@
                                     <h4>Forgot Password</h4>
                                     <div class="login-inner-wrapper">
                                         <form method="POST" action="{{url('/forgot_password')}}">
-                                            <input type="text" name="Email" placeholder="Enter Email" class="change-pwd-input" />
+                                            <input type="text" name="Email" placeholder="Enter Email" class="change-pwd-input" value="{{session('data.Email') ?? ''}}"/>
                                             <input type="submit" value="Submit" class="submit-buttom change-pwd-input-btn" />
                                         </form>
                                         <div class="buttons-signup">
