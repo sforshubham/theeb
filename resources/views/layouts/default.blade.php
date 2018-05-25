@@ -11,7 +11,7 @@
         @if (App::getLocale() == 'en')
             @include('includes.header-en')
         @else
-            @include('includes.header-en')
+            @include('includes.header-ar')
         @endif
         <div id="DivBody">
             @if (session('success'))
@@ -40,7 +40,7 @@
             @if (App::getLocale() == 'en')
                 @include('includes.footer-en')
             @else
-                @include('includes.footer-en')
+                @include('includes.footer-ar')
             @endif
         </footer>
     </body>

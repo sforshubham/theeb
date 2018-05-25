@@ -35,7 +35,6 @@
     "About US": "حول",
     "Contact Us": "اتصل بنا",
     "Email": "البريد الالكتروني",
-    "Password": "الرقم السري",
     "Profile": "الملف الشخصي",
     "Personal Details": "التفاصيل الشخصية",
     "Nationality": "الجنسية",
@@ -58,9 +57,14 @@
     "Uploaded Documents": "تحميل الملفات",
     "ID/Iqama": "الهوية / الإقامة",
     "License": "الرخصة",
-    "Word Id بطاقة": "العمل"
+    "Word Id بطاقة": "العمل",
+    "Tariffs": "التعريفات",
+    "My Booking": "الحجز",
+    "Rental History": "سجل التأجير",
+    "Change Password": "تغيير كلمة السر",
+    "Logout": "تسجيل الخروج",
+    "App": "التطبيق",
+    "Enter Old Password": "ادخل كلمة المرور القديمة",
+    "Enter new password": "ادخل كلمة المرور الجديدة",
+    "Confirm new password": "تأكيد كلمة المرور الجديدة"
 }
-
-
-
-

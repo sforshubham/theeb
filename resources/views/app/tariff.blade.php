@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:void();" class="my-booking-btn">Tariff</a>
+                        <a href="javascript:void();" class="my-booking-btn">{{ __('Tariffs') }}</a>
                         <select id="filter_cat" class="floatLeft filter-category">
                             <option>Filter by Category</option>
                             @foreach ($veh_type as $type)
