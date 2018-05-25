@@ -22,8 +22,8 @@
                                 </div>
                                 <div class="payment-pickup-details">
                                     <span>Drop Details</span>
-                                    <a href="javascript:void(0)" class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> {{$data->Price->InDate.', '.date('h:i a', strtotime($data->Price->InTime))}}</a>
-                                    <a href="javascript:void(0)" class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" /> {{$selected_branches[$data->Price->InBranch]}}</a>
+                                    <p class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$data->Price->InDate.', '.date('h:i a', strtotime($data->Price->InTime))}}</p>
+                                    <p class="payment-pickup-location"><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" style="vertical-align: bottom;" /> {{$selected_branches[$data->Price->InBranch]}}</p>
                                 </div>
                             </div>
                             <div class="payment-pickup-details payment-pickup-details-section-second floatRight">
