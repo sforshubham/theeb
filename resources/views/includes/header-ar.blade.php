@@ -1,5 +1,4 @@
 <header id="masthead" class="site-header" role="banner">
-
     
                     <div id="header-widget-area" class="hw-widget widget-area" role="complementary">
             <div class="hw-widget">         <div class="textwidget"><div class="headerContainer">

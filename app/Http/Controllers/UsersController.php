@@ -51,12 +51,12 @@ class UsersController extends SoapController
             'CarCategory' => 'required',
         ]);
         if ($validator->fails()) {
-            return back()->with('error', $validator->errors()->all());
+            return back()->with('error', $validator->errors()->all())->with('data',$input);
         } elseif (!$this->checkLogin()) {
             $request->session()->put('booking_form', $input);
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $input = [
+            $request_body = [
                 'CDP' => '',
                 'OutBranch' => $input['PickupLocation'],
                 'InBranch' => $input['DropLocation'],
@@ -75,9 +75,9 @@ class UsersController extends SoapController
                     'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
                 ],
             ];
-            $data = $this->getPriceEstimation($input);
+            $data = $this->getPriceEstimation($request_body);
             if (!isset($data->Success) || empty($data->Price) || $data->Success != 'Y') {
-                return back()->with('error', Config::get('settings.resp_msg.no_cars'));
+                return back()->with('error', Config::get('settings.resp_msg.no_cars'))->with('data',$input);
             } else {
                 $veh_types = $this->getSelectedVehicles($request->get('CarCategory'));
                 if (isset($data->Price->CarGroupPrice) && is_object($data->Price->CarGroupPrice)) {
@@ -340,7 +340,6 @@ class UsersController extends SoapController
             $rules = reservationRules($operation);
             $request_body = reservationBody();
             $input = [];
-
             foreach ($request->all() as $key => $val) {
                 if (isset($request_body[$key])) {
                     $input[$key] = $request_body[$key] = (is_object($val) || is_array($val)) ? $val : trim($val);
@@ -350,6 +349,8 @@ class UsersController extends SoapController
             if ($validator->fails()) {
                 return back()->with('error', $validator->errors()->all());
             } else {
+                $request_body['ReservationStatus'] = $operation;
+                $request_body['DriverCode'] = session('user.DriverCode');
                 $result = $this->reservation(['Reservation' => $request_body]);
 
                 if (!isset($result->Success)) {

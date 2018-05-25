@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:void();" class="my-booking-btn">{{ __('Tariffs') }}</a>
+                        <a href="javascript:" class="my-booking-btn">{{ __('Tariffs') }}</a>
                         <select id="filter_cat" class="floatLeft filter-category">
                             <option>Filter by Category</option>
                             @foreach ($veh_type as $type)
@@ -42,13 +42,13 @@
     var str_data = <?php echo json_encode($str_data)?>;
     var data = <?php echo json_encode($data) ?>;
     var div_html = '<div class="tariff-car-section">'+
-        '<img src="{img}">'+
+        '<img src="{img}"  onerror="this.src=\'{!!$setting['car_img']!!}\'">'+
         '<h4 class="truncate-text">{typedesc} - {type}</h4>'+
         '<div class="car-price">'+
             '{desc}'+
         '</div>'+
         '<div class="buttons-all">'+
-            '<a rel="{group}" href="javascript:void();" class="view-booking-btn buttons floatLeft">View Booking</a>'+
+            '<a rel="{group}" href="javascript:" class="view-booking-btn buttons floatLeft">View Booking</a>'+
             '<div class="clearBoth"></div>'+
         '</div>'+
     '</div>';

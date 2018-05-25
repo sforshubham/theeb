@@ -46,6 +46,7 @@
                                 </div>
                             </div>
                             <div class="right-wrap-profile floatLeft">
+                                @if (isset($data->Membership))
                                 <div class="profile-right-single">
                                     <h5>{{ __('Membership Details') }}</h5>
                                     <div class="membership-details">
@@ -69,6 +70,8 @@
                                         <span>{{$data->Membership->ExpiryDate ? $data->Membership->ExpiryDate : '--'}}</span>
                                     </div>
                                 </div>
+                                @endif
+                                @if (isset($data->Loyality))
                                 <div class="profile-right-single">
                                     <h5>{{ __('Loyalty') }}</h5>
                                     <div class="membership-details">
@@ -93,6 +96,7 @@
                                         <span>{{ $dn ? $dn : '--' }}</span>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="profile-right-single">
                                     <h5>{{ __('Uploaded Documents') }}</h5>
                                     <div class="membership-details">
