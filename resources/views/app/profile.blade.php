@@ -4,7 +4,7 @@
             <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:void();" class="my-booking-btn">Profile</a>
+                        <a href="javascript:void();" class="my-booking-btn">{{ __('Profile') }}</a>
                     </div>
                     <div>
                         <div class="white-bg">
@@ -14,21 +14,21 @@
                                     <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">
-                                    <span>Personal Details</span>
+                                    <span>{{ __('Personal Details') }}</span>
                                     <div class="profile-single-wrap">
-                                        <strong>Nationality</strong>
+                                        <strong>{{ __('Nationality') }}</strong>
                                         <span>{{$data->Nationality ? $data->Nationality : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>ID & version</strong>
+                                        <strong>{{ __('Id # & Version') }}</strong>
                                         <span>{{$data->ID ? $data->ID.'-'.$data->IDVersion : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>License Number</strong>
+                                        <strong>{{ __('License Number') }}</strong>
                                         <span>{{$data->LicenseID ? $data->LicenseID : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>License Expiry Date</strong>
+                                        <strong>{{ __('Expiry Date') }}</strong>
                                         <span>{{$data->LicenseExpiryDate ? $data->LicenseExpiryDate : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
@@ -36,71 +36,71 @@
                                         <span>{{$data->LicenseIssuedBy ? $data->LicenseIssuedBy : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>Email Id</strong>
+                                        <strong>{{ __('Email') }}</strong>
                                         <span>{{$data->Email ? $data->Email : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>Date Of Birth</strong>
+                                        <strong>{{ __('Date Of Birth') }}</strong>
                                         <span>{{$data->DateOfBirth ? $data->DateOfBirth : '--'}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="right-wrap-profile floatLeft">
                                 <div class="profile-right-single">
-                                    <h5>Membership Details</h5>
+                                    <h5>{{ __('Membership Details') }}</h5>
                                     <div class="membership-details">
-                                        <strong>Membership ID</strong>
+                                        <strong>{{ __('Membership Id') }}</strong>
                                         <span>{{$data->Membership->MembershipNo ? $data->Membership->MembershipNo : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Status</strong>
+                                        <strong>{{ __('Status') }}</strong>
                                         <span>{{$data->Membership->Status ? $data->Membership->Status : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Card Type</strong>
+                                        <strong>{{ __('Card Type') }}</strong>
                                         <span>{{$data->Membership->CardType ? $data->Membership->CardType : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Issue Date</strong>
+                                        <strong>{{ __('Issue Date') }}</strong>
                                         <span>{{$data->Membership->IssueDate ? $data->Membership->IssueDate : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Expiry Date</strong>
+                                        <strong>{{ __('Expiry Date') }}</strong>
                                         <span>{{$data->Membership->ExpiryDate ? $data->Membership->ExpiryDate : '--'}}</span>
                                     </div>
                                 </div>
                                 <div class="profile-right-single">
-                                    <h5>Loyalty</h5>
+                                    <h5>{{ __('Loyalty') }}</h5>
                                     <div class="membership-details">
-                                        <strong>Total Points</strong>
+                                        <strong>{{ __('Total Points') }}</strong>
                                         <span>{{$data->Loyality->TotalPoints ? $data->Loyality->TotalPoints : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Used Points</strong>
+                                        <strong>{{ __('Used Points') }}</strong>
                                         <span>{{$data->Loyality->UsedPoints ? $data->Loyality->UsedPoints : '--'}}</span>
                                     </div>
                                     @php (list($dt, $up, $dn) = explode(',',$data->Loyality->LastUsed))
                                     <div class="membership-details">
-                                        <strong>Last Used</strong>
+                                        <strong>{{ __('Last Used') }}</strong>
                                         <span>{{ $dt ? $dt : '--' }}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Balance Points</strong>
+                                        <strong>{{ __('Balance') }}</strong>
                                         <span>{{$data->Loyality->BalancePoints ? $data->Loyality->BalancePoints : '--'}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>Document Number</strong>
+                                        <strong>{{ __('Document Number') }}</strong>
                                         <span>{{ $dn ? $dn : '--' }}</span>
                                     </div>
                                 </div>
                                 <div class="profile-right-single">
-                                    <h5>Uploaded Documents</h5>
+                                    <h5>{{ __('Uploaded Documents') }}</h5>
                                     <div class="membership-details">
-                                        <strong>ID/Iqama</strong>
+                                        <strong>{{ __('ID/Iqama') }}</strong>
                                         <span>{{$data->ID}}</span>
                                     </div>
                                     <div class="membership-details">
-                                        <strong>License</strong>
+                                        <strong>{{ __('License') }}</strong>
                                         <span>{{$data->LicenseID}}</span>
                                     </div>
                                 </div>
