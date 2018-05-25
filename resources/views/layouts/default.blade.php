@@ -4,7 +4,11 @@
         @include('includes.head')
     </head>
     <body style="background: #ededed;">
-        @include('includes.header')
+        @if (App::getLocale() == 'en')
+            @include('includes.header-en')
+        @else
+            @include('includes.header-en')
+        @endif
         <div id="DivBody">
             @if (session('success'))
                 <script>
@@ -28,7 +32,12 @@
             @yield('jquery_script')
             @yield('daterangepicker_script')
             @yield('custom_script')
-            @include('includes.footer')
+
+            @if (App::getLocale() == 'en')
+                @include('includes.footer-en')
+            @else
+                @include('includes.footer-en')
+            @endif
         </footer>
     </body>
 </html>

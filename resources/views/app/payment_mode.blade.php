@@ -7,7 +7,7 @@
                     </div>
                     <div>
                         <div class="white-bg">
-                            <div class="payment-pickup-details floatRight">
+                            <div class="payment-pickup-details floatRight" style="width: 45%;">
                                 <span>{{$group_detail->VehTypeDesc}}</span>
                                 <a href="javascript:" class="payment-pickup-date"><img src="{{url('/')}}/images/calender-icon.png" align="absmiddle" /> Pickup Time
                                     <br/>
@@ -18,7 +18,7 @@
                                     <label> {{$booking_data->Price->InDate.', '.convert24hrto12hr($booking_data->Price->InTime)}}</label>
                                 </a>
                             </div>
-                            <div class="payment-pickup-details floatLeft payment-net-amount">
+                            <div class="payment-pickup-details floatLeft payment-net-amount" style="width: 45%;">
 
                                 <a href="javascript:" class="payment-pickup-date"> Net Payable Amount</a>
                                 <a href="javascript:" class="payment-pickup-location">{{ $booking_data->Price->Currency}}&nbsp;{{ $booking_data->Price->CarGroupPrice->TotalAmount }}</a>

@@ -34,7 +34,7 @@
                                                 <form role="search" method="get" id="searchform" action="http://theeb.com.sa/en/">
                                                     <div>
                                                         <input type="text" value="" name="s" id="s" /><br />
-                                                        <a id="asearch" class="searchButn" href="javascript:" onclick="document.getElementById('searchform').submit();"></a>
+                                                        <a id="asearch" class="searchButn" href="javascript:void(0)" onclick="document.getElementById('searchform').submit();"></a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -44,7 +44,7 @@
                                         <a>Language</a> اللغة
                                         <p>
                                             <div class="lanDD">
-                                                <a id="aArabic" href="/home">عربي</a><a id="aEnglish" href="/en/home">English</a>
+                                                <a id="aArabic" href="{{ url('/lang_switch/ar') }}">عربي</a><a id="aEnglish" href="{{ url('/lang_switch/en') }}">English</a>
                                             </div>
                                             <div class="clearBoth"></div>
                                         </p>
