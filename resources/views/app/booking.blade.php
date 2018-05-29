@@ -15,12 +15,13 @@
             <div class="white-bg">
             @if (isset($result->OnGoing->Reservation))
                 @if (is_object($result->OnGoing->Reservation))
-                    @php ($result->Completed->Reservation = [$result->Completed->Reservation])
+                    @php ($result->OnGoing->Reservation = [$result->OnGoing->Reservation])
                 @endif
                 @foreach ($result->OnGoing->Reservation as $list)
                 <div class="single-car-section">
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
-                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
+                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }} <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').' :' . $list->ReservationNo : '&nbsp;' }}</span></h4><br/>
+
                     <div class="pickup-drop-time border-right">
                         <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
@@ -63,7 +64,7 @@
                 @foreach ($result->Completed->Reservation as $list)
                 <div class="single-car-section">
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
-                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
+                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}<span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').' :' . $list->ReservationNo : '&nbsp;' }}</span></h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
@@ -101,7 +102,7 @@
                 @foreach ($result->Cancelled->Reservation as $list)
                 <div class="single-car-section">
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
-                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}</h4>
+                    <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}<span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').' :' . $list->ReservationNo : '&nbsp;' }}</span></h4>
                     <div class="pickup-drop-time border-right">
                         <span><strong>{{ __('Pickup Details') }}</strong><br/>
                         {{ $list->CheckOutDate.' '.convert24hrto12hr($list->CheckOutTime) }}
@@ -166,7 +167,53 @@
                         <input type="hidden" name="RateNo" id="rate_no"/>
                         <input type="hidden" name="CarGroup" value="" id="car_group" />
                     </div>
-                    
+                    <div class="show-vehicles-individual-wrap">
+                        <label>&nbsp;</label>
+                        <input type="submit" Value="Extend Booking" />
+
+                    </div>
+                </form>
+                </div>
+                <div class="clearBoth"></div>
+            </div>
+
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+            <div class="white-bg">
+                <div class="show-vehicles">
+                <form method="POST" id="extend-res-form" action = "{{url('/modify_reservation')}}">
+                    <div class="show-vehicles-individual-wrap">
+                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
+                        <select name="OutBranch" required>
+                            <option value="">Select Pickup Location</option>
+                        </select>
+                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
+                        <select name="InBranch" required>
+                            <option value="">Select Drop Location</option>
+                        </select>
+                    </div>
+                    <div class="show-vehicles-individual-wrap">
+                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
+                        <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
+                        <input type="hidden" name="OutDate" id="out_date"/>
+                        <input type="hidden" name="OutTime" id="out_time"/>
+                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
+                        <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
+                        <input type="hidden" name="InDate" id="in_date"/>
+                        <input type="hidden" name="InTime" id="in_time"/>
+                        <input type="hidden" name="ReservationNo" id="reservation_no"/>
+                        <input type="hidden" name="RateNo" id="rate_no"/>
+                        <input type="hidden" name="CarGroup" value="" id="car_group" />
+                    </div>
                     <div class="show-vehicles-individual-wrap">
                         <label>&nbsp;</label>
                         <input type="submit" Value="Extend Booking" />
@@ -185,6 +232,12 @@
 <script type="text/javascript" src="{{ url('/js/daterangepicker.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('/css/daterangepicker.css') }}" />
 <script>
+
+    /*$(".view-booking-btn").on('click', function() {
+        var modal = document.getElementById('myModal');
+        jQuery('body').css({'overflow-y': 'hidden'});
+    });*/
+    
     /*var modal = document.getElementById('myModal');
 
     $(".extend-booking-btn").on('click', function() {

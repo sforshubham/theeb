@@ -30,12 +30,12 @@
                                 <div class="payment-pickup-details">
                                     <span>{{ __('Fare Details') }}</span>
                                     <div>
-                                        <div class="payment-fare-details">&nbsp;Charge Group </div>
+                                        <div class="payment-fare-details">&nbsp;Vehicle Description </div>
                                         <div class="payment-fare-details">&nbsp;{{ $data->Price->CarGroupPrice[$index]->VTHDesc[0].' '.$data->Price->CarGroupPrice[$index]->VTHDesc[1] }}</div>
                                     </div>
                                     <div>
                                         <div class="payment-fare-details">&nbsp;Package Days </div>
-                                        <div class="payment-fare-details">&nbsp;{{ $data->Price->CarGroupPrice[$index]->RatePackageDays }}</div>
+                                        <div class="payment-fare-details">&nbsp;{{ $data->Price->CarGroupPrice[$index]->RatePackageDays }} day(s)</div>
                                     </div>
                                     <div>
                                         <div class="payment-fare-details">&nbsp;Package Price </div>
@@ -66,7 +66,7 @@
                                         <div class="payment-fare-details">&nbsp;{{ $data->Price->Currency}}&nbsp;{{ $data->Price->CarGroupPrice[$index]->DropOffSum }}</div>
                                     </div>
                                     <div>
-                                        <div class="payment-fare-details">&nbsp;VAT %age </div>
+                                        <div class="payment-fare-details">&nbsp;VAT % </div>
                                         <div class="payment-fare-details">&nbsp;{{ $data->Price->CarGroupPrice[$index]->VATPerc }}</div>
                                     </div>
                                     <div>

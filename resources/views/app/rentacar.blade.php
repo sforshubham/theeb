@@ -16,7 +16,9 @@
                     } else {
                         $input_data = [];
                     }
+                    $schedules = [];
                     foreach ($branches as $branch) {
+                        $schedules[$branch['BranchCode']] = $branch['Schedule'];
                         $branchOptn .= '<option value="'.$branch['BranchCode'].'">'.$branch['BranchName'].'</option>';
                     }
                     foreach ($vehicles as $veh) {
@@ -31,30 +33,30 @@
                             <form method="GET" action = "{{url('/price_estimation')}}">
                                 <div class="show-vehicles-individual-wrap">
                                     <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />{{ __('Pickup Location') }}</label>
-                                    <select name="PickupLocation" required>
+                                    <select name="PickupLocation" id="out_location" required="required">
                                         <option value="">{{ __('Select Pickup Location') }}</option>
                                         {!! isset($input_data['PickupLocation']) ? str_replace('<option value="'.$input_data['PickupLocation'].'">', '<option value="'.$input_data['PickupLocation'].'" selected="selected">', $branchOptn) : $branchOptn !!}
                                     </select>
                                     <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />{{ __('Drop Location') }}</label>
-                                    <select name="DropLocation" required>
+                                    <select name="DropLocation" id="in_location" required="required">
                                         <option value="">{{ __('Select Drop Location') }}</option>
                                         {!! isset($input_data['DropLocation']) ? str_replace('<option value="'.$input_data['DropLocation'].'">', '<option value="'.$input_data['DropLocation'].'" selected="selected">', $branchOptn) : $branchOptn !!}
                                     </select>
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
                                     <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />{{ __('Pickup Time') }}</label>
-                                    <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
+                                    <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required="required" readonly="readonly" />
                                     <input type="hidden" name="PickupDate" id="out_date" value="{{ $input_data['PickupDate'] ?? '' }}" />
                                     <input type="hidden" name="PickupTime" id="out_time" value="{{ $input_data['PickupTime'] ?? '' }}" />
                                     <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />{{ __('Drop Time') }}</label>
-                                    <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly value="{{ isset($input_data['DropDate']) ? $input_data['DropDate'].' '.$input_data['DropTime'] : '' }}"/>
+                                    <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required="required" readonly="readonly" />
                                     <input type="hidden" name="DropDate" id="in_date" value="{{ $input_data['DropDate'] ?? '' }}"/>
                                     <input type="hidden" name="DropTime" id="in_time" value="{{ $input_data['DropTime'] ?? '' }}"/>
                                     <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
                                     <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />{{ __('Select Car Category') }}</label>
-                                    <select name="CarCategory" required>
+                                    <select name="CarCategory" required="required">
                                         <option value="">{{ __('Select Car Category') }}</option>
                                         {!! $vehicleOptn !!}
                                     </select>
@@ -62,7 +64,7 @@
                                 </div>
                                 <div class="show-vehicles-individual-wrap">
                                     <label>&nbsp;</label>
-                                    <input type="submit" Value="{{ __('Show Vehicles') }}" />
+                                    <input type="submit" id="FormSubmit" Value="{{ __('Show Vehicles') }}" />
 
                                 </div>
                             </form>
@@ -88,30 +90,115 @@
 <script type="text/javascript">
     $(function() {
         var pickup_start_date = '';
+        var currentdate = new Date();
+        var cm = parseInt(currentdate.getMinutes());
+        var mm = cm % 5;
+        var mins = 0;
+        if (mm) {
+            var mins = (5 - mm);
+        }
+        currentdate.setMinutes(currentdate.getMinutes() + mins);
+        var mins = currentdate.getMinutes();
+        var ctime = currentdate.getHours() + ':' + mins;
+
+        var latedate = (currentdate.getDate()+1) + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear();
+        var branch_schedule = {!! json_encode($schedules) !!};
+        var time_format = "HH:mm";
+
+        moment.fn.roundNext5Min = function () {
+            var intervals = Math.floor(this.minutes() / 5);
+            if(this.minutes() % 5 != 0)
+                intervals++;
+            if(intervals == 20) {
+                this.add('hours', 1);
+                intervals = 0;
+            }
+            this.minutes(intervals * 5);
+            this.seconds(0);
+            return this;
+        }
+
         @if (empty($input_data))
-            var currentdate = new Date();
-            var latedate = (currentdate.getDate()+2) + "/" + ((currentdate.getMonth()+1) < 10 ? '0'+(currentdate.getMonth()+1) : (currentdate.getMonth()+1) ) + "/" + currentdate.getFullYear();
-            var ctime = "00:00";
             $('#out_date, #in_date').val(latedate);
             $('#out_time, #in_time').val(ctime);
         @endif
+
+        $('#FormSubmit').on('click', function (e){
+            var out_location = $('#out_location').val();
+            var out_date = $('#out_date').val();
+            var out_time = $('#out_time').val();
+            var in_location = $('#in_location').val();
+            var in_date = $('#in_date').val();
+            var in_time = $('#in_time').val();
+
+            /*if (out_location == '' || in_location == '') {
+                return false;
+            }*/
+
+            var out_m = moment(out_date+' '+out_time, 'DD/MM/YYYY HH:mm');
+            var in_m = moment(in_date+' '+in_time, 'DD/MM/YYYY HH:mm');
+            var is_pickup_avail = false;
+            var is_drop_avail = false;
+
+            if (out_location in branch_schedule) {
+                var out_d = out_m.get('d') + 1;
+                var sch = JSON.parse(branch_schedule[out_location]);
+                $.each(sch, function(key, value) {
+                    if (value.DayCode == out_d) {
+                        var chosen_time = moment(out_time, time_format);
+                        var start_time = moment(value.StartTime, time_format);
+                        var end_time = moment(value.EndTime, time_format);
+                        if (!chosen_time.isBetween(start_time, end_time)) {
+                        } else {
+                            is_pickup_avail = true;
+                        }
+                    }
+                });
+            }
+
+            if (in_location in branch_schedule) {
+                var in_d = in_m.get('d') + 1;
+                var sch = JSON.parse(branch_schedule[in_location]);
+                $.each(sch, function(key, value) {
+                    if (value.DayCode == in_d) {
+                        var chosen_time = moment(in_time, time_format);
+                        var start_time = moment(value.StartTime, time_format);
+                        var end_time = moment(value.EndTime, time_format);
+                        if (!chosen_time.isBetween(start_time, end_time)) {
+                        } else {
+                            is_drop_avail = true;
+                        }
+                    }
+                });
+            }
+            if (is_drop_avail == false) {
+                e.preventDefault();
+                $.notify("{!! str_replace('{tag}', 'Drop Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error", autoHide: true});
+            }
+
+            if (is_pickup_avail == false) {
+                e.preventDefault();
+                $.notify("{!! str_replace('{tag}', 'Pickup Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error", autoHide: true});
+            }
+
+        });
+
         $('#datetimepicker1').daterangepicker({
             singleDatePicker: true,
             timePicker: true,
             timePickerIncrement:5,
-            minDate:moment().startOf('d') .add(2, 'days'),
-            {!! isset($input_data['PickupDate']) ? 'startDate: "'.$input_data['PickupDate'].' '.convert24hrto12hr($input_data['PickupTime']).'",' : '' !!}
+            minDate:moment().startOf('d') .add(1, 'd'),
+            {!! isset($input_data['PickupDate']) ? 'startDate: "'.$input_data['PickupDate'].' '.convert24hrto12hr($input_data['PickupTime']).'",' : 'startDate: moment().add(1, \'d\').roundNext5Min(),' !!}
             locale: {
                 format: 'DD/MM/YYYY hh:mm A'
             }
         }, function(start, end, label) {
             var out_date = start.format('DD/MM/YYYY');
-            var out_time = start.format('HH:mm');
+            var out_time = start.format(time_format);
             $('#out_date').val(out_date);
             $('#out_time').val(out_time);
             $('#in_date').val(out_date);
             $('#in_time').val(out_time);
-            console.log(start)
 
             $('#datetimepicker2').daterangepicker({
                 minDate: start,
@@ -124,14 +211,15 @@
                 }
             }, function(start, end, label) {
                 var in_date = start.format('DD/MM/YYYY');
-                var in_time = start.format('HH:mm');
+                var in_time = start.format(time_format);
                 $('#in_date').val(in_date);
                 $('#in_time').val(in_time);
             });
         });
 
         $('#datetimepicker2').daterangepicker({
-            minDate: moment().startOf('d') .add(2, 'days'),
+            {!! isset($input_data['PickupDate']) ? 'minDate: "'.$input_data['PickupDate'].' '.convert24hrto12hr($input_data['PickupTime']).'",' : 'minDate: moment().add(1, \'d\').startOf(\'d\'),' !!}
+            {!! isset($input_data['DropDate']) ? 'startDate: "'.$input_data['DropDate'].' '.convert24hrto12hr($input_data['DropTime']).'",' : 'startDate: moment().add(1, \'d\').roundNext5Min(),' !!}
             singleDatePicker: true,
             timePicker: true,
             timePickerIncrement:5,
@@ -140,10 +228,15 @@
             }
         }, function(start, end, label) {
             var in_date = start.format('DD/MM/YYYY');
-            var in_time = start.format('HH:mm');
+            var in_time = start.format(time_format);
             $('#in_date').val(in_date);
             $('#in_time').val(in_time);
         });
+    });
+
+    $('select[name="PickupLocation"]').on('change', function (){
+        var selected_val = $(this).val();
+        $('select[name="DropLocation"]').val(selected_val);
     });
 </script>
 @stop

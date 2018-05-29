@@ -27,6 +27,7 @@ return [
         'no_data' => 'No data found',
         'no_cars' => 'No cars available for given details',
         'no_document' => 'Document not available',
+        'branch_unavailable' => 'This {tag} is not available on selected date and time',
 
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',

@@ -62,7 +62,7 @@ Version: 1.0
 
 .pickup-drop-time span strong{ color:#1e4878; margin-bottom:10px; display:inline-block; }
 
-.pickup-drop-time{ width:45%; text-align:right; display:inline-block; margin-top:50px; padding-right:10px;  margin-left:10px;}
+.pickup-drop-time{ width:45%; text-align:right; display:inline-block; margin-top:20px; padding-right:10px;  margin-left:10px;}
 
 .border-right{border-left:1px solid #ccc}
 
@@ -243,7 +243,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 
 .payment-master-card img{ padding:10px 0}
 
-.payment-net-amount{padding-top: 45px;    padding-bottom: 45px;}
+.payment-net-amount{padding-top: 16px;    padding-bottom: 16px;}
 
 .payment-view-detail label{font-size:18px; width: 40%;}
 
@@ -291,7 +291,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 .payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-right: auto; margin-left: auto;}
 .payment-pickup-details  h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
 .doc-download-btn {color: #333;}
-
+span.my-booking-reservation-no{font-size: small; margin-top: 8px; display: block;}
 
 /*--------------modal start-------------------*/
 /* The Modal (background) */

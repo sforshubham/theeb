@@ -29,7 +29,7 @@ class Branches extends Model
 
     public static function getAll()
     {
-        $rows = self::select('BranchCode', 'BranchName');
+        $rows = self::select('BranchCode', 'BranchName', 'Schedule');
         if ($rows->count()) {
             $rows = $rows->get()->toArray();
         } else {

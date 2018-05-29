@@ -44,7 +44,7 @@ class UsersController extends SoapController
         $validator = Validator::make($input, [
             'PickupLocation' => 'required',
             'DropLocation' => 'required',
-            'PickupDate' => 'required|date_format:d/m/Y|after:tomorrow',
+            'PickupDate' => 'required|date_format:d/m/Y|after:today',
             'PickupTime' => 'required',
             'DropDate' => 'required|date_format:d/m/Y|after_or_equal:PickupDate',
             'DropTime' => 'required',

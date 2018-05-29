@@ -19,6 +19,8 @@
                                 </a>
                             </div>
                             <div class="payment-pickup-details floatLeft payment-net-amount" style="width: 45%;">
+                                <a href="javascript:" class="payment-pickup-date"> {{ __('Reservation No') }}</a>
+                                <a href="javascript:" class="payment-pickup-location">{{ session('ReservationNo') }}</a>
 
                                 <a href="javascript:" class="payment-pickup-date"> {{ __('Net Payable Amount') }}</a>
                                 <a href="javascript:" class="payment-pickup-location">{{ $booking_data->Price->Currency}}&nbsp;{{ $booking_data->Price->CarGroupPrice->TotalAmount }}</a>

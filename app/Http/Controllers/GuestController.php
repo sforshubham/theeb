@@ -49,6 +49,7 @@ class GuestController extends SoapController
                 $request->session()->put('user.IDNo', $session_IDNo);
                 $request->session()->put('user.DriverCode', $result->DriverCode);
                 $request->session()->put('user.Email', $result->Email);
+                $request->session()->put('user.FirstName', $result->FirstName);
 
                 if (session()->has('booking_form')) {
                     $form_data = session('booking_form');
