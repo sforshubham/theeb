@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Branches;
 use App\Models\VehicleTypes;
+use App\Models\Countries;
 
 class BaseController extends Controller
 {
@@ -101,6 +102,12 @@ class BaseController extends Controller
     public function getBranchName($codes =[])
     {
         $rows = Branches::getBranchName($codes);
+        return $rows;
+    }
+
+    public function listAllCountries()
+    {
+        $rows = Countries::getAll();
         return $rows;
     }
 

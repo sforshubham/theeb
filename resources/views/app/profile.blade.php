@@ -17,7 +17,7 @@
                                     <span>{{ __('Personal Details') }}</span>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Nationality') }}</strong>
-                                        <span>{{$data->Nationality ? $data->Nationality : '--'}}</span>
+                                        <span>{{ $countries[$data->Nationality] ?? '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Id # & Version') }}</strong>
