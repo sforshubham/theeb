@@ -31,6 +31,8 @@ class CreateBranchesTable extends Migration
             $table->string('Fax', 50);
             $table->string('Telex', 100);
             $table->string('Email', 100);
+            $table->string('ArabicBranchName', 100);
+            $table->string('OperationAreaName', 100);
             $table->text('Schedule');
 
             $table->charset = 'utf8';

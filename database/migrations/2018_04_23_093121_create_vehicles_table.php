@@ -20,6 +20,7 @@ class CreateVehiclesTable extends Migration
             $table->string('Group', 100)->unique();
             $table->string('VehTypeDesc', 200)->nullable();
             $table->string('ImageUrl', 500)->nullable();
+            $table->string('VTHDescription', 200)->nullable();
         });
     }
 

@@ -28,6 +28,8 @@
 						<xs:element name="Fax" type="xs:string"/>
 						<xs:element name="Telex" type="xs:string"/>
 						<xs:element name="Email" type="xs:string"/>
+						<xs:element name="ArabicBranchName" type="xs:string"/>
+						<xs:element name="OperationAreaName" type="xs:string"/>
 						<xs:element name="Schedule" minOccurs="0">
 							<xs:complexType>
 								<xs:attribute name="DayCode" type="xs:string" use="optional" />

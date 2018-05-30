@@ -12,6 +12,7 @@
                      <xs:element name="Group" type="xs:string" />
                      <xs:element name="VehTypeDesc" type="xs:string" />
                      <xs:element name="ImageUrl" type="xs:string" />
+                     <xs:element name="VTHDescription" type="xs:string" />
                   </xs:sequence>
                </xs:complexType>
             </xs:element>

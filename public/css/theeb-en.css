@@ -10,7 +10,7 @@ Version: 1.0
 
 /*Added Amit */
 
-.my-booking-btn{    display: inline-block;    background: #1269a0;    padding: 15px 65px;    color: #fff;    border-radius: 10px;    text-align: center;}
+.my-booking-btn{    display: inline-block;  font-size:15px;  background: #1269a0;    padding: 15px 65px;    color: #fff;    border-radius: 10px;    text-align: center;}
 
 .tabs-top ul li{   float:left;    background: #1269a0;     color: #fff;     text-align: center;}
 
@@ -52,7 +52,7 @@ Version: 1.0
 
  
 
-.white-bg{background:#fff; margin-top:50px; border-radius:10px; padding:20px 15px;}
+.white-bg{background:#fff; margin-top:50px; border-radius:10px; padding:20px 15px;margin-top: 30px;}
 
 .single-car-section{width:48%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-right:15px; margin-bottom:30px;}
 
@@ -128,9 +128,9 @@ Version: 1.0
 
 .membership-details:after{content:''; clear:both; display:block;}
 
-.login-bg{background:url(../images/login.jpg) no-repeat; margin-top:50px; border-radius:10px; padding:20px 15px; min-height:300px}
+.login-bg{background:url(../images/login.jpg) no-repeat; margin-top:0px; border-radius:10px; padding:20px 15px; min-height:300px}
 
-.login-wrapper{max-width:600px; margin:100px auto; border-radius: 10px;   min-height: 300px;    border: 1px solid #ccc; position:relative;}
+.login-wrapper{max-width:600px; margin:40px auto; border-radius: 10px;   min-height: 300px;    border: 1px solid #ccc; position:relative;}
 
 .login-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
 
@@ -138,7 +138,7 @@ Version: 1.0
 
 .main-login-wrapper{position:relative;     border-radius: 10px; border-radius:10px;}
 
-.login-wrapper input{width:80%; padding:23px 20px 23px 50px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:50px auto 0;}
+.login-wrapper input{width:80%; padding: 15px 20px 15px 50px; font-size:16px; border-radius:8px; border: 1px solid #ccc; margin: 32px auto 0;}
 
 .login-wrapper input.email{background:url(../images/lock.png) #fff 2% no-repeat}
 
@@ -156,11 +156,11 @@ Version: 1.0
 
 .signup-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
 
-.signup-wrapper .two-column-signup  input{width:42%; display:inline-block; padding:17px 20px 17px 20px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:30px 20px 0;}
+.signup-wrapper .two-column-signup  input{width:42%; display:inline-block; padding:10px 20px 10px 20px; font-size:15px; border-radius:8px; border:1px solid #ccc; margin:30px 20px 0;}
 
-.signup-wrapper .three-column-signup input, .signup-wrapper .three-column-signup select{width:28%; display:inline-block; padding:17px 20px 17px 20px; font-size:18px; border-radius:8px; border:1px solid #ccc; margin:30px 0 0 20px;}
+.signup-wrapper .three-column-signup input, .signup-wrapper .three-column-signup select{width:28%; display:inline-block; padding:10px 20px 10px 20px; font-size:15px; border-radius:8px; border:1px solid #ccc; margin:30px 0 0 20px;}
 
-.signup-wrapper input[type="button"]{    width: 35%;    background: #1d4578;    color: #fff;    padding: 20px 0;    margin: 20px 20px 20px 350px;    border: 0;    border-radius: 10px;}
+.signup-wrapper input[type="button"]{    width: 35%;    background: #1d4578;    color: #fff;    padding: 16px 0;    margin: 20px 20px 20px 350px;    border: 0;    border-radius: 10px;}
 
 .signup-inner-wrapper{text-align:left;}
 
@@ -169,7 +169,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 #IdDoc, #LicenseDoc{ width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
 
-#IdDocLabel, #LicenseDocLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 43px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-right-radius: 8px; border-top-right-radius: 8px; border: 1px solid #ccc; }
+#IdDocLabel, #LicenseDocLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 27px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-right-radius: 8px; border-top-right-radius: 8px; border: 1px solid #ccc; }
 
 .submit-buttom{margin-bottom:20px !important;}
 
@@ -281,7 +281,7 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 .show-vehicles-individual-wrap img{    position: relative;  margin-right:10px;   top: 5px;}
 .show-vehicles-individual-wrap{margin-bottom:20px;}
 .show-vehicles-individual-wrap input[type="text"]{float:left; color:#999; width:23%; margin-right:15px; background:url(../images/calender-grey-icon.png)  no-repeat right; border:1px solid #ccc; padding:10px}
-.show-vehicles-individual-wrap input[type="submit"]{float:left; color:#fff; width:25%; border-radius:10px; margin-right:15px; background:#1269a0; border:0;padding:15px 10px;cursor:pointer;}
+.show-vehicles-individual-wrap input[type="submit"]{float:left; color:#fff; width:25%; border-radius:10px; margin-right:15px; background:#1269a0; border:0;padding:15px 10px;cursor:pointer;font-size: 15px;}
 
 
 /*--------------CSS by Shubham start-------------------*/
