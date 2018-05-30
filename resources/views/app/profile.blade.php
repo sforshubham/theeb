@@ -46,7 +46,6 @@
                                 </div>
                             </div>
                             <div class="right-wrap-profile floatLeft">
-                                @if (isset($data->Membership))
                                 <div class="profile-right-single">
                                     <h5>{{ __('Membership Details') }}</h5>
                                     <div class="membership-details">
@@ -70,8 +69,6 @@
                                         <span>{{$data->Membership->ExpiryDate ? $data->Membership->ExpiryDate : '--'}}</span>
                                     </div>
                                 </div>
-                                @endif
-                                @if (isset($data->Loyality))
                                 <div class="profile-right-single">
                                     <h5>{{ __('Loyalty') }}</h5>
                                     <div class="membership-details">
@@ -82,7 +79,10 @@
                                         <strong>{{ __('Used Points') }}</strong>
                                         <span>{{$data->Loyality->UsedPoints ? $data->Loyality->UsedPoints : '--'}}</span>
                                     </div>
-                                    @php (list($dt, $up, $dn) = explode(',',$data->Loyality->LastUsed))
+                                    @php ($dt = $up = $dn = '')
+                                    @if ($data->Loyality->LastUsed != '')
+                                        @php (list($dt, $up, $dn) = explode(',',$data->Loyality->LastUsed))
+                                    @endif
                                     <div class="membership-details">
                                         <strong>{{ __('Last Used') }}</strong>
                                         <span>{{ $dt ? $dt : '--' }}</span>
@@ -96,7 +96,6 @@
                                         <span>{{ $dn ? $dn : '--' }}</span>
                                     </div>
                                 </div>
-                                @endif
                                 <div class="profile-right-single">
                                     <h5>{{ __('Uploaded Documents') }}</h5>
                                     <div class="membership-details">
