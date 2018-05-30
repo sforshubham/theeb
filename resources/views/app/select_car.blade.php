@@ -8,6 +8,7 @@
                     </div>
                     <div>
                         <div class="white-bg">
+                        @php ($count = 0)
                         @if (!empty($data->Price->CarGroupPrice))
                             @foreach ($data->Price->CarGroupPrice as $key => $price_est)
                                 @if (!$price_est->TotalAmount || !isset($car_groups[$price_est->CarGrop]))
@@ -19,8 +20,10 @@
                                 <h4 class="border-none">{{ str_limit($car_groups[$price_est->CarGrop]['VehTypeDesc'], $limit = 22, $end = '...') }} <a href="car_detail/{{$key}}" class="proceed-btn-select-car">{{ __('Proceed') }}</a></h4>
                                 <div class="clearBoth"></div>
                             </div>
+                                @php ($count++)
                             @endforeach
-                        @else
+                        @endif
+                        @if ($count == 0)
                         <div style="
                             color:  grey;
                             border-top: 1px grey solid;
