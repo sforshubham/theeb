@@ -12,28 +12,28 @@ class PayfortIntegration
     /**
      * @var string your Merchant Identifier account (mid)
      */
-    public $merchantIdentifier = 'fnISEZbA';
-    
+    public $merchantIdentifier = PAYFORT_MERCHANT_IDENTIFIER;
+
     /**
      * @var string your access code
      */
-    public $accessCode         = 'QMYoYvRcz7LhCpHplJZa';
+    public $accessCode         = PAYFORT_ACCESS_CODE;
     
     /**
      * @var string SHA Request passphrase
      */
-    public $SHARequestPhrase   = 'TESTSHAIN';
+    public $SHARequestPhrase   = PAYFORT_SHA_REQUEST_PHRASE;
     
     /**
      * @var string SHA Response passphrase
      */
-    public $SHAResponsePhrase = 'TESTSHAOUT';
+    public $SHAResponsePhrase = PAYFORT_SHA_RESPONSE_PHRASE;
     
     /**
      * @var string SHA Type (Hash Algorith)
      * expected Values ("sha1", "sha256", "sha512")
      */
-    public $SHAType       = 'sha256';
+    public $SHAType       = PAYFORT_SHA_TYPE;
     
     /**
      * @var string  command
@@ -49,22 +49,22 @@ class PayfortIntegration
     /**
      * @var string order currency
      */
-    public $currency           = 'SAR';
+    public $currency           = PAYFORT_CURRENCY;
     
     /**
      * @var string item name
      */
-    public $itemName           = 'Apple iPhone 6s Plus';
+    public $itemName           = '';
     
     /**
      * @var string you can change it to your email
      */
-    public $customerEmail      = 'test@test.com';
+    public $customerEmail      = PAYFORT_CUSTOMER_EMAIL;
     
     /**
      * @var boolean for live account change it to false
      */
-    public $sandboxMode        = true;
+    public $sandboxMode        = PAYFORT_USE_SANDBOX;
     /**
      * @var string  project root folder
      * change it if the project is not on root folder.
