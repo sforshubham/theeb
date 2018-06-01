@@ -247,6 +247,7 @@
 <script>
     var modal = document.getElementById('myModal');
     var modal2 = document.getElementById('myModal2');
+    var currency = "{{ env('APP_CURRENCY') }}";
 
     $(".view-booking-btn").on('click', function() {
         var selector = $(this).parent('.buttons-all');

@@ -9,8 +9,7 @@
         "artisaninweb/laravel-soap": "0.3.0.8",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0",
-        "wshurafa/laravel-payfort": "dev-master"
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
