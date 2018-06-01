@@ -47,7 +47,7 @@ class Branches extends Model
             $rows = self::pluck('BranchName','BranchCode');
         }
         if (!$rows->count()) {
-             $rows = [];
+            $rows = [];
         }
         return $rows;
     }

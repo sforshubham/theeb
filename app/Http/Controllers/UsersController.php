@@ -22,7 +22,8 @@ class UsersController extends SoapController
             if (!isset($data->Success) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
-                return view('app.profile')->with('data', $data);
+                $countries = $this->listAllCountries();
+                return view('app.profile')->with('data', $data)->with('countries', $countries);
             }
         }
     }
