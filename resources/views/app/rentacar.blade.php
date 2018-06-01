@@ -90,20 +90,21 @@
 <script type="text/javascript">
     $(function() {
         var pickup_start_date = '';
-        var currentdate = new Date();
-        var cm = parseInt(currentdate.getMinutes());
+        var time_format = "HH:mm";
+        var currentdate = moment();
+        //var cm = parseInt(currentdate.getMinutes());
+        var cm = currentdate.add(1, 'd').format('mm');
         var mm = cm % 5;
         var mins = 0;
         if (mm) {
             var mins = (5 - mm);
         }
-        currentdate.setMinutes(currentdate.getMinutes() + mins);
-        var mins = currentdate.getMinutes();
-        var ctime = currentdate.getHours() + ':' + mins;
+        currentdate.add(mins, 'minutes');
+        var mins = currentdate.format('mm');
+        var ctime = currentdate.format(time_format);
 
-        var latedate = (currentdate.getDate()+1) + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear();
+        var latedate = currentdate.format('DD/MM/YYYY');
         var branch_schedule = {!! json_encode($schedules) !!};
-        var time_format = "HH:mm";
 
         moment.fn.roundNext5Min = function () {
             var intervals = Math.floor(this.minutes() / 5);

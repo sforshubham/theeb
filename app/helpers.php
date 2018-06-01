@@ -202,6 +202,30 @@ function reservationBody()
     return $input;
 }
 
+function priceEstimationBody()
+{
+    $input = [
+        'CDP' => '',
+        'OutBranch' => '19',
+        'InBranch' => '19',
+        'OutDate' => date('d/m/Y', strtotime("+25 days")),
+        'OutTime' => '11:00',
+        'InDate' => date('d/m/Y', strtotime("+30 days")),
+        'InTime' => '15:00',
+        'VEHICLETYPE' => '',
+        'CarGroup' => '',
+        'Currency' => 'SAR',
+        'DebitorCode' => '',
+        'VoucherType' => '',
+        'VoucherNo' => '',
+        'Booked' => [
+            'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
+            'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
+        ],
+    ];
+    return $input;
+}
+
 function DMStoDD($input ='')
 {
     $deg = '';

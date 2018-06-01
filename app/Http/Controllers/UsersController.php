@@ -33,9 +33,25 @@ class UsersController extends SoapController
         if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $veh_type = $this->vehicleTypes();
-            $data = $this->listAllVehicles();
-            return view('app.tariff')->with('data', $data)->with('veh_type', $veh_type);
+            $request_body = priceEstimationBody();
+            $prices = $this->getPriceEstimation($request_body);
+            if (!isset($prices->Success) || empty($prices->Price) || $prices->Success != 'Y') {
+                return back()->with('error', Config::get('settings.resp_msg.no_cars'));
+            } else {
+                if (isset($prices->Price->CarGroupPrice) && is_object($prices->Price->CarGroupPrice)) {
+                    $prices->Price->CarGroupPrice = [$prices->Price->CarGroupPrice];
+                }
+                $veh_type = $this->vehicleTypes();
+                $car_models = $this->listAllVehicles();
+                $data = [];
+                foreach ($car_models as $car) {
+                    $data[$car['Group']] = $car;
+                }
+                return view('app.tariff')
+                    ->with('data', $data)
+                    ->with('veh_type', $veh_type)
+                    ->with('prices', $prices);
+            }
         }
     }
 
@@ -57,25 +73,16 @@ class UsersController extends SoapController
             $request->session()->put('booking_form', $input);
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
-            $request_body = [
-                'CDP' => '',
-                'OutBranch' => $input['PickupLocation'],
-                'InBranch' => $input['DropLocation'],
-                'OutDate' => $input['PickupDate'],
-                'OutTime' => $input['PickupTime'],
-                'InDate' => $input['DropDate'],
-                'InTime' => $input['DropTime'],
-                'VEHICLETYPE' => $input['CarGroup'] ? '' : $input['CarCategory'],
-                'CarGroup' => $input['CarGroup'] ? $input['CarGroup'] : '',
-                'Currency' => 'SAR',
-                'DebitorCode' => '',
-                'VoucherType' => '',
-                'VoucherNo' => '',
-                'Booked' => [
-                    'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
-                    'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
-                ],
-            ];
+            $request_body = priceEstimationBody();
+            $request_body['OutBranch'] = $input['PickupLocation'];
+            $request_body['InBranch'] = $input['DropLocation'];
+            $request_body['OutDate'] = $input['PickupDate'];
+            $request_body['OutTime'] = $input['PickupTime'];
+            $request_body['InDate'] = $input['DropDate'];
+            $request_body['InTime'] = $input['DropTime'];
+            $request_body['VEHICLETYPE'] = $input['CarGroup'] ? '' : $input['CarCategory'];
+            $request_body['CarGroup'] = $input['CarGroup'] ? $input['CarGroup'] : '';
+
             $data = $this->getPriceEstimation($request_body);
             if (!isset($data->Success) || empty($data->Price) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.no_cars'))->with('data',$input);
@@ -120,7 +127,9 @@ class UsersController extends SoapController
                 } elseif ($result->Success != 'Y') {
                     return back()->with('error', Config::get('settings.resp_msg.incorrect_password'));
                 } else {
-                    return back()->with('success', Config::get('settings.resp_msg.reset_password'));
+                    $request->session()->flush();
+                    session()->flush();
+                    return redirect('/')->with('success', Config::get('settings.resp_msg.reset_password'));
                 }
             }
         }
@@ -327,7 +336,7 @@ class UsersController extends SoapController
                 session()->put('ReservationNo', $lw);
                 session()->put('reserved_car', $sess_data);
                 session()->forget('price_estimation');
-                return redirect('/payment_mode')->with('success', $result->VarianceReason);
+                return redirect('/payment_mode')->with('success', Config::get('settings.resp_msg.new_reservation'));
             }
         }
     }
@@ -359,7 +368,7 @@ class UsersController extends SoapController
                 } elseif ($result->Success != 'Y') {
                     return back()->with('error', $result->VarianceReason);
                 } else {
-                    return redirect('/booking')->with('success', $result->VarianceReason);
+                    return redirect('/booking')->with('success', Config::get('settings.resp_msg.extend_reservation'));
                 }
             }
         }
@@ -393,7 +402,7 @@ class UsersController extends SoapController
                 } elseif ($result->Success != 'Y') {
                     return back()->with('error', $result->VarianceReason);
                 } else {
-                    return redirect('/booking')->with('success', $result->VarianceReason);
+                    return redirect('/booking')->with('success', Config::get('settings.resp_msg.cancel_reservation'));
                 }
             }
         }

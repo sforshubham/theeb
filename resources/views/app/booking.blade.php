@@ -32,7 +32,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" car-group="">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
                         <a href="javascript:" class="cancel-booking-btn buttons">{{ __('Cancel Booking') }}</a>
                         <a href="javascript:" class="extend-booking-btn buttons">{{ __('Extend Booking') }}</a>
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
@@ -75,7 +75,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
@@ -139,40 +139,40 @@
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span rel="myModal" class="close">&times;</span>
         <div>
             <div class="white-bg">
                 <div class="show-vehicles">
-                <form method="POST" id="extend-res-form" action = "{{url('/modify_reservation')}}">
-                    <div class="show-vehicles-individual-wrap">
-                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
-                        <select name="OutBranch" required>
-                            <option value="">Select Pickup Location</option>
-                        </select>
-                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
-                        <select name="InBranch" required>
-                            <option value="">Select Drop Location</option>
-                        </select>
-                    </div>
-                    <div class="show-vehicles-individual-wrap">
-                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
-                        <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
-                        <input type="hidden" name="OutDate" id="out_date"/>
-                        <input type="hidden" name="OutTime" id="out_time"/>
-                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
-                        <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
-                        <input type="hidden" name="InDate" id="in_date"/>
-                        <input type="hidden" name="InTime" id="in_time"/>
-                        <input type="hidden" name="ReservationNo" id="reservation_no"/>
-                        <input type="hidden" name="RateNo" id="rate_no"/>
-                        <input type="hidden" name="CarGroup" value="" id="car_group" />
-                    </div>
-                    <div class="show-vehicles-individual-wrap">
-                        <label>&nbsp;</label>
-                        <input type="submit" Value="Extend Booking" />
+                    <form method="POST" id="extend-res-form" action = "{{url('/modify_reservation')}}">
+                        <div class="show-vehicles-individual-wrap">
+                            <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
+                            <select name="OutBranch" required>
+                                <option value="">Select Pickup Location</option>
+                            </select>
+                            <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
+                            <select name="InBranch" required>
+                                <option value="">Select Drop Location</option>
+                            </select>
+                        </div>
+                        <div class="show-vehicles-individual-wrap">
+                            <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
+                            <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
+                            <input type="hidden" name="OutDate" id="out_date"/>
+                            <input type="hidden" name="OutTime" id="out_time"/>
+                            <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
+                            <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
+                            <input type="hidden" name="InDate" id="in_date"/>
+                            <input type="hidden" name="InTime" id="in_time"/>
+                            <input type="hidden" name="ReservationNo" id="reservation_no"/>
+                            <input type="hidden" name="RateNo" id="rate_no"/>
+                            <input type="hidden" name="CarGroup" value="" id="car_group" />
+                        </div>
+                        <div class="show-vehicles-individual-wrap">
+                            <label>&nbsp;</label>
+                            <input type="submit" Value="Extend Booking" />
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
                 </div>
                 <div class="clearBoth"></div>
             </div>
@@ -186,40 +186,53 @@
 <div id="myModal2" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span rel ="myModal2" class="close">&times;</span>
         <div>
             <div class="white-bg">
                 <div class="show-vehicles">
-                <form method="POST" id="extend-res-form" action = "{{url('/modify_reservation')}}">
-                    <div class="show-vehicles-individual-wrap">
-                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Pickup Location</label>
-                        <select name="OutBranch" required>
-                            <option value="">Select Pickup Location</option>
-                        </select>
-                        <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />Drop Location</label>
-                        <select name="InBranch" required>
-                            <option value="">Select Drop Location</option>
-                        </select>
-                    </div>
-                    <div class="show-vehicles-individual-wrap">
-                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Pickup Time</label>
-                        <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required readonly/>
-                        <input type="hidden" name="OutDate" id="out_date"/>
-                        <input type="hidden" name="OutTime" id="out_time"/>
-                        <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />Drop Time</label>
-                        <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required readonly/>
-                        <input type="hidden" name="InDate" id="in_date"/>
-                        <input type="hidden" name="InTime" id="in_time"/>
-                        <input type="hidden" name="ReservationNo" id="reservation_no"/>
-                        <input type="hidden" name="RateNo" id="rate_no"/>
-                        <input type="hidden" name="CarGroup" value="" id="car_group" />
-                    </div>
-                    <div class="show-vehicles-individual-wrap">
-                        <label>&nbsp;</label>
-                        <input type="submit" Value="Extend Booking" />
-
-                    </div>
-                </form>
+                    <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
+                       <tbody>
+                          <tr>
+                             <th id="t_reservation_no" colspan="4"></th>
+                          </tr>
+                          <tr>
+                             <td>Pickup Branch</td>
+                             <td id ="t_pickup_branch"></td>
+                             <td>Drop Branch</td>
+                             <td id ="t_drop_branch"></td>
+                          </tr>
+                          <tr>
+                             <td>Pickup Time</td>
+                             <td id ="t_pickup_time"></td>
+                             <td>Drop Time</td>
+                             <td id ="t_drop_time"></td>
+                          </tr>
+                          <tr>
+                             <td>Car Description</td>
+                             <td id ="t_car_desc"></td>
+                             <td>Current Status</td>
+                             <td id ="t_res_status"></td>
+                          </tr>
+                          <tr>
+                             <td>Total With Tax</td>
+                             <td id ="t_with_tax"></td>
+                             <td>Total Before Tax</td>
+                             <td id ="t_before_tax"></td>
+                          </tr>
+                          <tr>
+                             <td>Sales Tax</td>
+                             <td id ="t_sales_tax"></td>
+                             <td>Total Discount</td>
+                             <td id ="t_tot_disc"></td>
+                          </tr>
+                          <tr>
+                             <td>Total Paid</td>
+                             <td id ="t_total_paid"></td>
+                             <td>Net Payable</td>
+                             <td id ="t_net_payable"></td>
+                          </tr>
+                       </tbody>
+                    </table>
                 </div>
                 <div class="clearBoth"></div>
             </div>
@@ -232,30 +245,65 @@
 <script type="text/javascript" src="{{ url('/js/daterangepicker.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('/css/daterangepicker.css') }}" />
 <script>
+    var modal = document.getElementById('myModal');
+    var modal2 = document.getElementById('myModal2');
 
-    /*$(".view-booking-btn").on('click', function() {
-        var modal = document.getElementById('myModal');
-        jQuery('body').css({'overflow-y': 'hidden'});
-    });*/
-    
-    /*var modal = document.getElementById('myModal');
+    $(".view-booking-btn").on('click', function() {
+        var selector = $(this).parent('.buttons-all');
 
-    $(".extend-booking-btn").on('click', function() {
-        modal.style.display = "block";
+        var out_date = selector.attr('out-date');
+        var in_date = selector.attr('in-date');
+        var show_out_time = selector.attr('show-out-time');
+        var show_in_time = selector.attr('show-in-time');
+
+        var t_pickup_time = out_date+' '+show_out_time ;
+        var t_drop_time = in_date+' '+show_in_time ;
+        var t_pickup_branch = selector.attr('out-branch-name');
+        var t_drop_branch = selector.attr('in-branch-name');
+        var t_car_desc = selector.attr('car-group-desc');
+        var t_reservation_no = selector.attr('real-reservation-no');
+        var t_total_paid = selector.attr('total-paid');
+        var t_before_tax  = selector.attr('total-before-tax');
+        var t_sales_tax = selector.attr('sales-tax');
+        var t_tot_disc = selector.attr('total-discount');
+        var t_with_tax = selector.attr('total-with-tax');
+        var t_res_status = selector.attr('res-status');
+        var t_net_payable = parseFloat(t_with_tax) - parseFloat(t_total_paid);
+
+        var thead = 'Reservation No.: '+t_reservation_no;
+        $('#t_reservation_no').html(thead);
+        $('#t_pickup_branch').html(t_pickup_branch);
+        $('#t_drop_branch').html(t_drop_branch);
+        $('#t_pickup_time').html(t_pickup_time);
+        $('#t_drop_time').html(t_drop_time);
+        $('#t_car_desc').html(t_car_desc);
+        $('#t_res_status').html(t_res_status);
+        $('#t_with_tax').html(t_with_tax);
+        $('#t_before_tax').html(t_before_tax);
+        $('#t_sales_tax').html(t_sales_tax);
+        $('#t_tot_disc').html(t_tot_disc);
+        $('#t_total_paid').html(t_total_paid);
+        $('#t_net_payable').html(t_net_payable.toFixed(2));
+
+        modal2.style.display = "block";
         jQuery('body').css({'overflow-y': 'hidden'});
-        var out_date = $(this).parent('.buttons-all').attr('out-date');
-        var in_date = $(this).parent('.buttons-all').attr('in-date');
-        var out_time = $(this).parent('.buttons-all').attr('out-time');
-        var in_time = $(this).parent('.buttons-all').attr('in-time');
-        var show_out_time = $(this).parent('.buttons-all').attr('show-out-time');
-        var show_in_time = $(this).parent('.buttons-all').attr('show-in-time');
-        var out_branch_name = $(this).parent('.buttons-all').attr('out-branch-name');
-        var out_branch_code = $(this).parent('.buttons-all').attr('out-branch-code');
-        var in_branch_name = $(this).parent('.buttons-all').attr('in-branch-name');
-        var in_branch_code = $(this).parent('.buttons-all').attr('in-branch-code');
-        var car_group = $(this).parent('.buttons-all').attr('car-group');
-        var rate_no = $(this).parent('.buttons-all').attr('rate-no');
-        var reservation_no = $(this).parent('.buttons-all').attr('reservation-no');
+    });
+
+    /*$(".extend-booking-btn").on('click', function() {
+        var selector = $(this).parent('.buttons-all');
+        var out_date = selector.attr('out-date');
+        var in_date = selector.attr('in-date');
+        var out_time = selector.attr('out-time');
+        var in_time = selector.attr('in-time');
+        var show_out_time = selector.attr('show-out-time');
+        var show_in_time = selector.attr('show-in-time');
+        var out_branch_name = selector.attr('out-branch-name');
+        var out_branch_code = selector.attr('out-branch-code');
+        var in_branch_name = selector.attr('in-branch-name');
+        var in_branch_code = selector.attr('in-branch-code');
+        //var car_group = selector.attr('car-group');
+        var rate_no = selector.attr('rate-no');
+        var reservation_no = selector.attr('reservation-no');
 
 
         $('select[name="OutBranch"]').html('<option value="'+out_branch_code+'">'+out_branch_name+'</option>');
@@ -268,7 +316,7 @@
         $('#in_time').val(in_time);
         $('#reservation_no').val(reservation_no);
         $('#rate_no').val(rate_no);
-        $('#car_group').val(car_group);
+        //$('#car_group').val(car_group);
 
         $('#datetimepicker2').daterangepicker({
             minDate: in_date,
@@ -286,19 +334,24 @@
 
             console.log(in_date+'  '+in_date);
         });
-    });
+        modal.style.display = "block";
+        jQuery('body').css({'overflow-y': 'hidden'});
+    });*/
 
     $(".close").on('click', function() {
+        var modal_id = $(this).attr('rel');
         jQuery('body').css({'overflow-y': ''});
-        modal.style.display = "none";
+        $('#'+modal_id).css({'display':'none'})
     });
 
     window.onclick = function(event) {
+        jQuery('body').css({'overflow-y': ''});
         if (event.target == modal) {
-            jQuery('body').css({'overflow-y': ''});
             modal.style.display = "none";
+        } else if (event.target == modal2) {
+            modal2.style.display = "none";
         }
-    }*/
+    }
 </script>
 <script type="text/javascript">
     $('.category_tab').on('click', function(){

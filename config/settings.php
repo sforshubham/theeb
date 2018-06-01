@@ -31,9 +31,12 @@ return [
 
         'logout' => 'Logged out successfully',
         'new_password' => 'Email with new password has been sent to given email address',
-        'reset_password' => 'Password reset has been successful',
+        'reset_password' => 'Password changed successfully. Please login with new password',
         'incorrect_password' => 'Incorrect password entered',
-        'payment_success' => 'Payment is successful'
+        'payment_success' => 'Payment is successful',
+        'cancel_reservation' => 'Booking has been cancelled successfully',
+        'new_reservation' => 'Reservation created successfully',
+        'extend_reservation' => 'Booking details updated successfully',
     ],
     'cmd_operation' => [
         'view_driver' => 'V',

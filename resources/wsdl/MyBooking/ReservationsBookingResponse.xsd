@@ -29,6 +29,11 @@
                     <xs:element type="xs:string" name="LicenseNo"/>
                     <xs:element type="xs:string" name="ReservationNo"/>
                     <xs:element type="xs:string" name="InternetReservationNo"/>
+                    <xs:element type="xs:string" name="TotalPaid"/>
+                    <xs:element type="xs:string" name="TotalBeforeTax"/>
+                    <xs:element type="xs:string" name="SalesTax"/>
+                    <xs:element type="xs:string" name="TotalDiscount"/>
+                    <xs:element type="xs:string" name="TotalWithTax"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -56,6 +61,11 @@
                     <xs:element type="xs:string" name="LicenseNo"/>
                     <xs:element type="xs:string" name="ReservationNo"/>
                     <xs:element type="xs:string" name="InternetReservationNo"/>
+                    <xs:element type="xs:string" name="TotalPaid"/>
+                    <xs:element type="xs:string" name="TotalBeforeTax"/>
+                    <xs:element type="xs:string" name="SalesTax"/>
+                    <xs:element type="xs:string" name="TotalDiscount"/>
+                    <xs:element type="xs:string" name="TotalWithTax"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -83,6 +93,11 @@
                     <xs:element type="xs:string" name="LicenseNo"/>
                     <xs:element type="xs:string" name="ReservationNo"/>
                     <xs:element type="xs:string" name="InternetReservationNo"/>
+                    <xs:element type="xs:string" name="TotalPaid"/>
+                    <xs:element type="xs:string" name="TotalBeforeTax"/>
+                    <xs:element type="xs:string" name="SalesTax"/>
+                    <xs:element type="xs:string" name="TotalDiscount"/>
+                    <xs:element type="xs:string" name="TotalWithTax"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

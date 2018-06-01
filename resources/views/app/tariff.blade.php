@@ -15,19 +15,34 @@
 
                     <div>
                         <div class="white-bg">
-                            @foreach ($data as $key => $car)
-                            <div class="tariff-car-section vthcode{{$car['VTHCode']}} ">
-                                <img src="{{$car['ImageUrl']}}" onerror="this.src='{!!$setting['car_img']!!}'"/>
-                                <h4 class="truncate-text">{{$car['VehTypeDesc'].' - '.$car['VTHType']}}</h4>
-                                <div class="car-price truncate-text">
-                                    {{$car['VTHDesc']}}
+                            @php ($count = 0)
+                            @if (!empty($prices->Price->CarGroupPrice))
+                                @foreach ($prices->Price->CarGroupPrice as $price)
+                                    @if(!isset($data[$price->CarGrop]) || !$price->TotalAmount)
+                                        @continue;
+                                    @endif
+                                <div class="tariff-car-section vthcode{{$data[$price->CarGrop]['VTHCode']}} ">
+                                    <span class="price-tag">{{$prices->Price->Currency}} {{ $price->TotalAmount }}</span>
+                                    <img src="{{$data[$price->CarGrop]['ImageUrl']}}" onerror="this.src='{!!$setting['car_img']!!}'"/>
+                                    <h4 class="truncate-text">{{$data[$price->CarGrop]['VehTypeDesc'].' - '.$data[$price->CarGrop]['VTHType']}}</h4>
+                                    <div class="car-price truncate-text">
+                                        {{$data[$price->CarGrop]['VTHDesc']}}
+                                    </div>
+                                    <div class="buttons-all">
+                                        <a href="{{ url('/book?g='.$data[$price->CarGrop]['Group']) }}" class="view-booking-btn buttons floatLeft">Book now</a>
+                                        <div class="clearBoth"></div>
+                                    </div>
                                 </div>
-                                <div class="buttons-all">
-                                    <a href="{{ url('/book?g='.$car['Group']) }}" class="view-booking-btn buttons floatLeft">Book now</a>
-                                    <div class="clearBoth"></div>
-                                </div>
-                            </div>
-                            @endforeach
+                                    @php ($count++)
+                                @endforeach
+                            @endif
+                            <div class="no-data-div" style="
+                                display: {!! ($count == 0) ? 'block' : 'none' !!};
+                                color: grey;
+                                border-top: 1px grey solid;
+                                padding-top: 40px;
+                                margin-top: 20px;
+                            ">{{$setting['no_data']}}</div>
                             <div class="clearBoth"></div>
                         </div>
 
@@ -39,10 +54,19 @@
     <script>
         $('#filter_cat').on('change', function() {
             var selected = $(this).val().trim();
+
             if (selected != '') {
-                $('.tariff-car-section').hide();
-                $('.vthcode'+selected).show();
+                if ($('.vthcode'+selected).length) {
+                    $('.no-data-div').hide();
+                    $('.tariff-car-section').hide();
+                    $('.vthcode'+selected).show();
+                } else {
+                    $('.no-data-div').show();
+                    $('.tariff-car-section').hide();
+                }
+
             } else {
+                $('.no-data-div').hide();
                 $('.tariff-car-section').show();
             }
         });
