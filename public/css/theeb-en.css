@@ -245,6 +245,10 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 
 .payment-net-amount{padding-top: 16px;    padding-bottom: 16px;}
 
+.payment-net-amount img.edit-icon {width: 17px; display: inline; cursor: pointer; padding-right: 20px;}
+
+#input_for_net_payable {color: #999;width: 23%;margin-right: 15px;border: 1px solid #ccc;padding: 10px; display: none; border-top-width: 0;border-left-width: 0;border-right-width: 0;font-size: 16px;}
+
 .payment-view-detail label{font-size:18px; width: 40%;}
 
 .view-detail-payment-pickup{    margin: 10px 0 0px;    border-top: 1px solid #ccc;    padding-top: 10px;   border-bottom: 1px solid #ccc;    padding-bottom: 10px;}

@@ -108,5 +108,7 @@
     "Show Vehicles": "عرض السيارات",
     "open_daterange_picker": "left",
     "Select Car": "اختيار نوع السيارة",
-    "Proceed": "تقدم"
+    "Proceed": "تقدم",
+    "Your reservation request has been received": "تم استلام طلب الحجز",
+    "Something went wrong. Try after some time.": "حدث خطأ ما جرب بعد مرور من الوقت"
 }

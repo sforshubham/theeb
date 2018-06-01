@@ -459,11 +459,64 @@ class UsersController extends SoapController
         }
     }
 
-    public function paymentMode()
+    public function paymentMode(Request $request)
     {
         if (!$this->checkLogin()) {
             return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
         } else {
+            $requester = $request->route()->getAction('as');
+            if ($requester == 'payment_request_route') {
+                // Handle payment request -- Redirect to PayFort
+                
+                $payfortIntegration = new \PayfortIntegration();
+                $payfortIntegration->amount = $request->paymentAmount;
+                return $payfortIntegration->processRequest($request->paymentMethod);
+            } else if ($requester == 'payment_response_route') {
+                // Handle payment response -- Validate and submit to Payment API & then redirect to a view
+                $status = false;
+                $payfortIntegration = new \PayfortIntegration();
+                $validated_response = $payfortIntegration->processResponse();
+
+                if ($validated_response['status'] === true) {
+                    // Payment has successfully been captured
+                    $validated_response = $validated_response['params'];
+                    $validated_response['amount'] = $payfortIntegration->castAmountFromFort($validated_response['amount'], $validated_response['currency']);
+                    $request_body = [
+                        'PAYMENTOPTION' => $validated_response['payment_option'],
+                        'MERCHANTREFERENCE' => $validated_response['merchant_reference'],
+                        'AMOUNT' => $validated_response['amount'],
+                        'CARDNUMBER' => $validated_response['card_number'],
+                        'EXPIRYDATE' => $validated_response['expiry_date'],
+                        'AUTHORIZATIONCODE' => $validated_response['authorization_code'],
+                        'RESERVATIONNO' => $validated_response['merchant_reference'],
+                        'DRIVERCODE' => session('user.DriverCode'),
+                        'CURRENCY' => $validated_response['currency'],
+                        'INVOICE' => ''
+                    ];
+                    $result = $this->payment($request_body);
+                    if (!isset($result->SUCCESS) || $result->SUCCESS != 'Y') {
+                        $message = 'Payment processed but could not register with us.';
+                    } else {
+                        $status = true;
+                    }
+                } else {
+                    $message = 'Not able to validate the payment';
+                }
+                return redirect()->route('payment_result',['status'=>(int)$status, ]);
+                
+            } else if ($requester == 'payment_result') {
+                // Handle payment response view -- Show relevant details
+                
+                $booking_data = session('reserved_car');
+                $car_group = $booking_data->Price->CarGroupPrice->CarGrop;
+                $group_detail = $this->getVehCode($car_group);
+
+                return view('app.payment_result')
+                    ->with('status', $request->status)
+                    ->with('group_detail', $group_detail)
+                    ->with('booking_data', $booking_data);
+            
+            }
             $booking_data = session('reserved_car');
             $car_group = $booking_data->Price->CarGroupPrice->CarGrop;
             $group_detail = $this->getVehCode($car_group);
