@@ -9,31 +9,32 @@ class PayfortIntegration
     public $gatewayHost        = 'https://checkout.payfort.com/';
     public $gatewaySandboxHost = 'https://sbcheckout.payfort.com/';
     public $language           = 'en';
+
     /**
      * @var string your Merchant Identifier account (mid)
      */
-    public $merchantIdentifier = 'fnISEZbA';
-    
+    public $merchantIdentifier = '';
+
     /**
      * @var string your access code
      */
-    public $accessCode         = 'QMYoYvRcz7LhCpHplJZa';
+    public $accessCode         = '';
     
     /**
      * @var string SHA Request passphrase
      */
-    public $SHARequestPhrase   = 'TESTSHAIN';
+    public $SHARequestPhrase   = '';
     
     /**
      * @var string SHA Response passphrase
      */
-    public $SHAResponsePhrase = 'TESTSHAOUT';
+    public $SHAResponsePhrase = '';
     
     /**
      * @var string SHA Type (Hash Algorith)
      * expected Values ("sha1", "sha256", "sha512")
      */
-    public $SHAType       = 'sha256';
+    public $SHAType       = '';
     
     /**
      * @var string  command
@@ -49,22 +50,22 @@ class PayfortIntegration
     /**
      * @var string order currency
      */
-    public $currency           = 'SAR';
+    public $currency           = '';
     
     /**
      * @var string item name
      */
-    public $itemName           = 'Apple iPhone 6s Plus';
+    public $itemName           = '';
     
     /**
      * @var string you can change it to your email
      */
-    public $customerEmail      = 'test@test.com';
+    public $customerEmail      = '';
     
     /**
      * @var boolean for live account change it to false
      */
-    public $sandboxMode        = true;
+    public $sandboxMode        = '';
     /**
      * @var string  project root folder
      * change it if the project is not on root folder.
@@ -73,7 +74,14 @@ class PayfortIntegration
     
     public function __construct()
     {
-        
+        $this->merchantIdentifier = env('PAYFORT_MERCHANT_IDENTIFIER', 'fnISEZbA');
+        $this->accessCode         = env('PAYFORT_ACCESS_CODE', 'QMYoYvRcz7LhCpHplJZa');
+        $this->SHARequestPhrase   = env('PAYFORT_SHA_REQUEST_PHRASE', 'TESTSHAIN');
+        $this->SHAResponsePhrase  = env('PAYFORT_SHA_RESPONSE_PHRASE', 'TESTSHAOUT');
+        $this->SHAType            = env('PAYFORT_SHA_TYPE', 'sha256');
+        $this->currency           = env('PAYFORT_CURRENCY', 'SAR');
+        $this->customerEmail      = env('PAYFORT_CUSTOMER_EMAIL', 'support@theeb.com.sa');
+        $this->sandboxMode        = env('PAYFORT_USE_SANDBOX', 'false');
     }
 
     public function processRequest($paymentMethod)

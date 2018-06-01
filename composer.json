@@ -25,11 +25,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "PayfortIntegration\\": "app/PayfortIntegration.php"
+            "App\\": "app/"
         },
         "files": [
-            "app/helpers.php"
+            "app/helpers.php",
+            "app/PayfortIntegration.php"
         ]
     },
     "autoload-dev": {
