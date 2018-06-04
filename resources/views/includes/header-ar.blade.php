@@ -106,7 +106,7 @@
 </li>
 <li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://theeb.com.sa/suggestion-form-2/">رأيك يهمنا</a></li>
                         @if (session()->has('user.IDNo'))
-                        <li id="menu-item-n" class="truncate-text menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n"><a href="{{ URL::to('/') }}"><img src="images/log-icon.png" />{{session()->has('user.IDNo') && session('user.FirstName') != '' ? session('user.FirstName') : 'User'}}</a>
+                        <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n"><a href="{{ URL::to('/') }}"><img src="images/log-icon.png" />{{session()->has('user.IDNo') && session('user.FirstName') != '' ? session('user.FirstName') : 'User'}}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/profile') }}">{{ __('Profile') }}</a></li>
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/book') }}">{{ __('Rent a car') }}</a></li>

@@ -210,7 +210,7 @@ function priceEstimationBody()
         'InBranch' => '19',
         'OutDate' => date('d/m/Y', strtotime("+25 days")),
         'OutTime' => '11:00',
-        'InDate' => date('d/m/Y', strtotime("+30 days")),
+        'InDate' => date('d/m/Y', strtotime("+26 days")),
         'InTime' => '15:00',
         'VEHICLETYPE' => '',
         'CarGroup' => '',
