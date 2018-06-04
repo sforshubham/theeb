@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.Import Process" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.Import Process" xmlns:xsdin34="CarProModifyReservationRequest" xmlns:xsdout34="CarProModifyReservationResponse">
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 01/06/2018 Time :18:33:03
+Application   : Import Process
+</documentation>
+
+<import namespace="CarProModifyReservationRequest" location="http://81.21.59.232/Magic94Scripts/Wsdl/ReservationModifyRequest.xsd"/>
+<import namespace="CarProModifyReservationResponse" location="http://81.21.59.232/Magic94Scripts/Wsdl/ReservationModifyResponse.xsd"/>
+
+ 
+<message name="TheebReservationModifyWebServi">
+   <part name="PI_InBlob_1" element="xsdin34:ReservationDetails"/>
+</message>
+<message name="TheebReservationModifyWebServiResponse">
+   <part name="TheebReservationModifyWebServi_Ret" element="xsdout34:ReservationDetails"/>
+</message>
+
+<portType name="Import ProcessPortType">
+         <operation name="TheebReservationModifyWebServi">
+         <input message="tns:TheebReservationModifyWebServi"/>
+         <output message="tns:TheebReservationModifyWebServiResponse"/>
+      </operation>
+</portType>
+
+<binding name="Import ProcessBinding" type="tns:Import ProcessPortType">
+   <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="TheebReservationModifyWebServi">
+         <documentation/>
+         <soap:operation soapAction="966727563526567597669646F6D4E6F69647166727563756252656568645F237375636F62705024727F607D694A336F646"/>
+         <input>
+            <soap:body use="literal"/>
+            
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+</binding>
+<service name="Import Process">
+   <documentation/>
+   <port name="Import ProcessPortType" binding="tns:Import ProcessBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll"/>
+   </port>
+</service>
+</definitions>

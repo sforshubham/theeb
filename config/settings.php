@@ -16,6 +16,7 @@ return [
         //'car_group' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarModelWS.wsdl',
         'reservation' => resource_path().'/wsdl/Reservation/CarProReservationWS.wsdl',
+        'extend_booking' => resource_path().'/wsdl/ExtendBooking/ReservationModify.wsdl',
     ],
     'resp_msg' => [
         'invalid_input' => 'Please provide valid {tag}',

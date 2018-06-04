@@ -32,7 +32,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus == 'Clonfirmed' ? 'Confirmed' : $list->ReservationStatus }}">
                         <a href="javascript:" class="cancel-booking-btn buttons">{{ __('Cancel Booking') }}</a>
                         <a href="javascript:" class="extend-booking-btn buttons">{{ __('Extend Booking') }}</a>
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
@@ -75,7 +75,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus == 'Clonfirmed' ? 'Confirmed' : $list->ReservationStatus }}">
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                         {{ $list->CheckInDate.' '.convert24hrto12hr($list->CheckInTime) }}
                         </span>
                     </div>
-                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" rate-no="{{ $list->RateNo }}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus }}">
+                    <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus == 'Clonfirmed' ? 'Confirmed' : $list->ReservationStatus }}">
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
@@ -164,8 +164,6 @@
                             <input type="hidden" name="InDate" id="in_date"/>
                             <input type="hidden" name="InTime" id="in_time"/>
                             <input type="hidden" name="ReservationNo" id="reservation_no"/>
-                            <input type="hidden" name="RateNo" id="rate_no"/>
-                            <input type="hidden" name="CarGroup" value="" id="car_group" />
                         </div>
                         <div class="show-vehicles-individual-wrap">
                             <label>&nbsp;</label>
@@ -290,7 +288,7 @@
         jQuery('body').css({'overflow-y': 'hidden'});
     });
 
-    /*$(".extend-booking-btn").on('click', function() {
+    $(".extend-booking-btn").on('click', function() {
         var selector = $(this).parent('.buttons-all');
         var out_date = selector.attr('out-date');
         var in_date = selector.attr('in-date');
@@ -302,8 +300,6 @@
         var out_branch_code = selector.attr('out-branch-code');
         var in_branch_name = selector.attr('in-branch-name');
         var in_branch_code = selector.attr('in-branch-code');
-        //var car_group = selector.attr('car-group');
-        var rate_no = selector.attr('rate-no');
         var reservation_no = selector.attr('reservation-no');
 
 
@@ -316,8 +312,6 @@
         $('#in_date').val(in_date);
         $('#in_time').val(in_time);
         $('#reservation_no').val(reservation_no);
-        $('#rate_no').val(rate_no);
-        //$('#car_group').val(car_group);
 
         $('#datetimepicker2').daterangepicker({
             minDate: in_date,
@@ -332,12 +326,10 @@
             var in_time = start.format('HH:mm');
             $('#in_date').val(in_date);
             $('#in_time').val(in_time);
-
-            console.log(in_date+'  '+in_date);
         });
         modal.style.display = "block";
         jQuery('body').css({'overflow-y': 'hidden'});
-    });*/
+    });
 
     $(".close").on('click', function() {
         var modal_id = $(this).attr('rel');
@@ -355,7 +347,7 @@
     }
 </script>
 <script type="text/javascript">
-    $('.category_tab').on('click', function(){
+    $('.category_tab').on('click', function() {
         var tab_title = $(this).attr('rel');
         $('.category_tab').removeClass('active');
         $(this).addClass('active');

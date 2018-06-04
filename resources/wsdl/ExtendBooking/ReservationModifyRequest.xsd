@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="DriverImport" xmlns:ns1="CarProModifyReservationRequest" targetNamespace="CarProModifyReservationRequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ReservationDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Reservation" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OutBranch" type="xs:string"/>
+							<xs:element name="InBranch" type="xs:string"/>
+							<xs:element name="OutDate" type="xs:string"/>
+							<xs:element name="OutTime" type="xs:string"/>
+							<xs:element name="InDate" type="xs:string"/>
+							<xs:element name="InTime" type="xs:string"/>
+							<xs:element name="ReservationNo" type="xs:string"/>
+							<xs:element name="ReservationStatus" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

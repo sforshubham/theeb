@@ -347,7 +347,16 @@ class UsersController extends SoapController
         } else {
             $operation = Config::get('settings.reservation_operation')['modify_reservation'];
             $rules = reservationRules($operation);
-            $request_body = reservationBody();
+            $request_body = [
+                'OutBranch' => '',
+                'InBranch' => '',
+                'OutDate' => '',
+                'OutTime' => '',
+                'InDate' => '',
+                'InTime' => '',
+                'ReservationNo' => '',
+                'ReservationStatus' => 'A',
+            ];
             $input = [];
             foreach ($request->all() as $key => $val) {
                 if (isset($request_body[$key])) {
@@ -359,8 +368,7 @@ class UsersController extends SoapController
                 return back()->with('error', $validator->errors()->all());
             } else {
                 $request_body['ReservationStatus'] = $operation;
-                $request_body['DriverCode'] = session('user.DriverCode');
-                $result = $this->reservation(['Reservation' => $request_body]);
+                $result = $this->extendBooking(['Reservation' => $request_body]);
 
                 if (!isset($result->Success)) {
                     return back()->with('error', Config::get('settings.resp_msg.processing_error'));

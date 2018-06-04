@@ -24,6 +24,10 @@
                                         <span>{{$data->ID ? $data->ID.'-'.$data->IDVersion : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
+                                        <strong>{{ __('Mobile Number') }}</strong>
+                                        <span>{{$data->MobileNo ? $data->MobileNo : '--'}}</span>
+                                    </div>
+                                    <div class="profile-single-wrap">
                                         <strong>{{ __('License Number') }}</strong>
                                         <span>{{$data->LicenseID ? $data->LicenseID : '--'}}</span>
                                     </div>
@@ -32,7 +36,7 @@
                                         <span>{{$data->LicenseExpiryDate ? $data->LicenseExpiryDate : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>License Issued By</strong>
+                                        <strong>{{ __('Licence Issued By') }}</strong>
                                         <span>{{$data->LicenseIssuedBy ? $data->LicenseIssuedBy : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
@@ -40,7 +44,7 @@
                                         <span>{{$data->Email ? $data->Email : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
-                                        <strong>{{ __('Date Of Birth') }}</strong>
+                                        <strong>{{ __('Date of Birth') }}</strong>
                                         <span>{{$data->DateOfBirth ? $data->DateOfBirth : '--'}}</span>
                                     </div>
                                 </div>

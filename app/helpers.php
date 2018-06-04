@@ -289,13 +289,11 @@ function reservationRules($operation = '')
             $rules = [
                 'OutBranch' => 'required',
                 'InBranch' => 'required',
-                'OutDate' => 'required|date_format:d/m/Y|after:today',
+                'OutDate' => 'required|date_format:d/m/Y',
                 'OutTime' => 'required',
                 'InDate' => 'date_format:d/m/Y|after:OutDate',
                 'InTime' => 'required',
-                'RateNo' => 'required',
                 'ReservationNo' => 'required',
-                'CarGroup' => 'required',
             ];
             break;
     }

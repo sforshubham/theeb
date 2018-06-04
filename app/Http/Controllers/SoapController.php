@@ -279,6 +279,25 @@ class SoapController extends BaseController
         return $result;
     }
 
+    public function extendBooking($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Reservation', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.extend_booking'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Reservation.TheebReservationModifyWebServi', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
 
 
 
@@ -297,37 +316,14 @@ class SoapController extends BaseController
             'DriverImageFileExt' => ''
         ];*/
         $input = [ //reservation
-            'DriverCode' => '9800002661',
-            'LicenseNo' => '2258370366',
-            'LastName' => '',
-            'FirstName' => '',
-            'CDP' => '300',
-            'OutBranch' => '',
-            'InBranch' => '5',
-            'OutDate' => '23/08/2017',
-            'OutTime' => '16:49',
-            'InDate' => '30/08/2017',
-            'InTime' => '16:49',
-            'RateNo' => '302',
-            'RentalSum' => '5040',
-            'DepositAmount' => '',
-            'ReservationNo' => '11448337',
+            'OutBranch' => '2',
+            'InBranch' => '2',
+            'OutDate' => '03/06/2018',
+            'OutTime' => '11:03',
+            'InDate' => '08/06/2018',
+            'InTime' => '11:02',
+            'ReservationNo' => '1875315918',
             'ReservationStatus' => 'A',
-            'CarGroup' => 'PR38',
-            'Currency' => env('APP_CURRENCY'),
-            'PaymentType' => '',
-            'CreditCardNo' => '',
-            'CarMake' => '',
-            'CarModel' => '',
-            'Remarks' => 'Testing',
-            'Booked' => [
-                'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
-                'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
-            ],
-            'included' => [
-                'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
-                'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
-            ],
         ];
         /*$input = [ // Price estimation
             'CDP' => '',
@@ -348,12 +344,12 @@ class SoapController extends BaseController
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
         ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.doc_print'), array('trace' => 1));
-        $a = $client->GetRentProPrint(['PrintFor' => 'R', 'DocumentNumber' => '000660004352']);
+        $client = new \SoapClient(Config::get('settings.wsdl.extend_booking'), array('trace' => 1));
+        $a = $client->TheebReservationModifyWebServi(['Reservation' => $input]);
         //pr($client->__getLastRequest());
-        pr($a);
+        //pr($a);
         //throw new \Exception('hi');
-        //pr($client->__getLastResponse());
+        pr($client->__getLastResponse());
     }
 
 
