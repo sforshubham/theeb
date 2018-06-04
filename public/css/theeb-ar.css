@@ -152,7 +152,7 @@ Version: 1.0
 
 .buttons-signup a{color:#1d4578; font-weight:bold;}
 
-.signup-wrapper{ margin:30px auto 0; border-radius: 10px;   min-height: 300px;  text-align:right;   border: 1px solid #ccc; position:relative;}
+.signup-wrapper{ margin:30px auto 0; border-radius: 10px;   min-height: 300px;  text-align:right;   border: 1px solid #ccc; position:relative;z-index:0;}
 
 .signup-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
 
