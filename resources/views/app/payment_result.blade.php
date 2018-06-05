@@ -13,7 +13,7 @@
                             </div>
                             @else
                             <div class="payment-pickup-details floatRight" style="width: 97%; background-color: #F2DEDE; border-color: #EED3D7;">
-                                <span style="color: #B94A48;">{{ __('Something went wrong. Try after some time.') }}</span>
+                                <span style="color: #B94A48;">{{ __('Dear Customer payment has been declined. Please contact your bank.') }}</span>
                             </div>
                             @endif 
                             <div class="payment-pickup-details floatRight" style="width: 45%;">

@@ -16,7 +16,7 @@ Route::get('/login', 'GuestController@guest');
 
 // Language Switcher
 Route::get('/lang_switch/{locale}', function ($locale) {
-    Cookie::queue(Cookie::make('locale', $locale, 60));
+    Cookie::queue(Cookie::make('locale', $locale, 365 * 24 * 60));
     if (session()->has('user.IDNo')) {
         return redirect('/book');
     } else {
