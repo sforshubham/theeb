@@ -34,6 +34,7 @@ class UsersController extends SoapController
         } else {
             $request_body = priceEstimationBody();
             $prices = $this->getPriceEstimation($request_body);
+
             if (!isset($prices->Success) || empty($prices->Price) || $prices->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.no_cars'));
             } else {
@@ -369,7 +370,6 @@ class UsersController extends SoapController
             } else {
                 $request_body['ReservationStatus'] = $operation;
                 $result = $this->extendBooking(['Reservation' => $request_body]);
-
                 if (!isset($result->Success)) {
                     return back()->with('error', Config::get('settings.resp_msg.processing_error'));
                 } elseif ($result->Success != 'Y') {

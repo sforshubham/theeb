@@ -73,6 +73,9 @@ class GuestController extends SoapController
 
     public function createModifyDriver(Request $request)
     {
+        if (session()->has('user.IDNo')) {
+            return redirect('/book');
+        }
         $requester = $request->route()->getAction('as');
         if ($request->isMethod('post') || $requester == 'view_driver') {
             

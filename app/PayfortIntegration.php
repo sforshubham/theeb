@@ -546,8 +546,8 @@ class PayfortIntegration
      */
     public function log($messages) {
         $messages = "========================================================\n\n".$messages."\n\n";
-        $file = __DIR__.'/trace.log';
-        if (filesize($file) > 907200) {
+        $file = storage_path('logs/payfort.log');
+        if (file_exists($file) && filesize($file) > 907200) {
             $fp = fopen($file, "r+");
             ftruncate($fp, 0);
             fclose($fp);

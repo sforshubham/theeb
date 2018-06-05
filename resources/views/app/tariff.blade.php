@@ -18,11 +18,11 @@
                             @php ($count = 0)
                             @if (!empty($prices->Price->CarGroupPrice))
                                 @foreach ($prices->Price->CarGroupPrice as $price)
-                                    @if(!isset($data[$price->CarGrop]) || !$price->TotalAmount)
+                                    @if(!isset($data[$price->CarGrop]) || !$price->RatePackagePrice)
                                         @continue;
                                     @endif
                                 <div class="tariff-car-section vthcode{{$data[$price->CarGrop]['VTHCode']}} ">
-                                    <span class="price-tag">{{$prices->Price->Currency}} {{ $price->TotalAmount }}</span>
+                                    <span class="price-tag">{{$prices->Price->Currency}} {{ $price->RatePackagePrice }}</span>
                                     <img src="{{$data[$price->CarGrop]['ImageUrl']}}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                                     <h4 class="truncate-text">{{$data[$price->CarGrop]['VehTypeDesc'].' - '.$data[$price->CarGrop]['VTHType']}}</h4>
                                     <div class="car-price truncate-text">

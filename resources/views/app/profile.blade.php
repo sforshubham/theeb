@@ -17,7 +17,7 @@
                                     <span>{{ __('Personal Details') }}</span>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Nationality') }}</strong>
-                                        <span>{{ $countries[$data->Nationality] ?? '--'}}</span>
+                                        <span>{{ trim($data->Nationality) != '' ? $data->Nationality : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Id # & Version') }}</strong>
@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Mobile Number') }}</strong>
-                                        <span>{{$data->MobileNo ? $data->MobileNo : '--'}}</span>
+                                        <span>{{$data->MobileNo ? '0'.$data->MobileNo : '--'}}</span>
                                     </div>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('License Number') }}</strong>

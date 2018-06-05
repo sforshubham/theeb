@@ -80,7 +80,7 @@ Version: 1.0
 
 .table-rental tr th{background:#f1f1f1; color:#333; border:1px solid #ccc; padding:10px; text-align:right;}
 
-.table-rental tr td{border:1px solid #ccc; padding:10px; width:25%}
+.table-rental tr td{border:1px solid #ccc; padding:10px; width:16%}
 
 .table-rental tr td:first-child, .table-rental tr td:nth-child(3){font-weight:bold;}
 

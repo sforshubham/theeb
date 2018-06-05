@@ -248,6 +248,9 @@
     var currency = "{{ env('APP_CURRENCY') }}";
 
     $(".view-booking-btn").on('click', function() {
+
+        modal2.style.display = "block";
+        jQuery('body').css({'overflow-y': 'hidden'});
         var selector = $(this).parent('.buttons-all');
 
         var out_date = selector.attr('out-date');
@@ -283,12 +286,12 @@
         $('#t_tot_disc').html(t_tot_disc);
         $('#t_total_paid').html(t_total_paid);
         $('#t_net_payable').html(t_net_payable.toFixed(2));
-
-        modal2.style.display = "block";
-        jQuery('body').css({'overflow-y': 'hidden'});
     });
 
     $(".extend-booking-btn").on('click', function() {
+        modal.style.display = "block";
+        jQuery('body').css({'overflow-y': 'hidden'});
+
         var selector = $(this).parent('.buttons-all');
         var out_date = selector.attr('out-date');
         var in_date = selector.attr('in-date');
@@ -327,8 +330,6 @@
             $('#in_date').val(in_date);
             $('#in_time').val(in_time);
         });
-        modal.style.display = "block";
-        jQuery('body').css({'overflow-y': 'hidden'});
     });
 
     $(".close").on('click', function() {

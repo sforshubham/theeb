@@ -182,7 +182,7 @@ return [
     'vehicles_db_fields' => ['VTHCode' => '', 'VTHDesc' => '', 'VTHType' => '', 'Group' => '', 'VehTypeDesc' => '', 'ImageUrl' => '', 'VTHDescription' => ''],
 
     'reservation' => [
-        'init_no' => rand(22000000, 22999999),
+        'init_no' => rand(110000000, 119000000),
         'file_path' => storage_path('app/res_no.txt'),
     ]
 

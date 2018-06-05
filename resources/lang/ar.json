@@ -110,5 +110,6 @@
     "Select Car": "اختيار نوع السيارة",
     "Proceed": "تقدم",
     "Your reservation request has been received": "تم استلام طلب الحجز",
-    "Something went wrong. Try after some time.": "حدث خطأ ما جرب بعد مرور من الوقت"
+    "Something went wrong. Try after some time.": "حدث خطأ ما جرب بعد مرور من الوقت",
+    "Dear Customer payment has been declined. Please contact your bank":"عزيزي العميل لقد تم رفض الدفع. يرجى الاتصال البنك الذي تتعامل معه"
 }

@@ -322,7 +322,7 @@ class SoapController extends BaseController
             'OutTime' => '11:03',
             'InDate' => '08/06/2018',
             'InTime' => '11:02',
-            'ReservationNo' => '1875315918',
+            'ReservationNo' => '22472585',
             'ReservationStatus' => 'A',
         ];
         /*$input = [ // Price estimation
