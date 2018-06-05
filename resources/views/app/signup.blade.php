@@ -306,7 +306,6 @@
 @stop
 
 @section('custom_script')
-<script type="text/javascript" src="{{ URL::asset('js/notify.min.js') }}"></script>
 <script type="text/javascript">
     jQuery(function() {
         // Set Notifier defaults
@@ -407,6 +406,9 @@
             jQuery.get( "{{url('/view_driver')}}", { IdNo: id_number.val() } ).done(function( data ) {
                 if (data['IdNo'] != '') {
                     for (var property in data) {
+                        if (property == 'IdType' || property == 'IdNo') {
+                            continue;
+                        }
                         if (jQuery('input[name="' + property + '"]').length) {
                             jQuery('input[name="' + property + '"]').val(data[property]);
                         } else if (jQuery('select[name="' + property + '"]').length) {

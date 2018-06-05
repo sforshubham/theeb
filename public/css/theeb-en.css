@@ -287,6 +287,16 @@ input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
 .show-vehicles-individual-wrap input[type="text"]{float:left; color:#999; width:23%; margin-right:15px; background:url(../images/calender-grey-icon.png)  no-repeat right; border:1px solid #ccc; padding:10px}
 .show-vehicles-individual-wrap input[type="submit"]{float:left; color:#fff; width:25%; border-radius:10px; margin-right:15px; background:#1269a0; border:0;padding:15px 10px;cursor:pointer;font-size: 15px;}
 
+.mg-rt-30{margin-right:30px}
+.border-all{border:1px solid #ccc;}
+.theeb-logo img{width:80%}
+.padding-all-10{padding:10px;}
+.pd-top-15{padding-top:15px;}
+.table-rental{border:1px solid #ccc;}
+.table-invoice tr td{width:10%}
+.mg-top-30{margin-top:30px;}
+.table-rental tr td:nth-child(5), .table-rental tr td:nth-child(7){font-weight:bold;}
+
 
 /*--------------CSS by Shubham start-------------------*/
 .single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
