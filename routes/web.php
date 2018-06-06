@@ -61,8 +61,8 @@ Route::get('/payment', ['as'=>"payment", 'uses'=>'UsersController@getTransDetail
 Route::get('/reservation', ['as'=>"reservation", 'uses'=>'UsersController@getTransDetails']);
 
 // Signup & View & Update
-Route::get('/signup', 'GuestController@createModifyDriver');
-Route::post('/signup', 'GuestController@createModifyDriver');
+Route::get('/signup', ['as'=>"signup", 'uses'=>'GuestController@createModifyDriver']);
+Route::post('/signup', ['as'=>"signup", 'uses'=>'GuestController@createModifyDriver']);
 Route::get('/view_driver', ['as'=>"view_driver", 'uses'=>'GuestController@createModifyDriver']);
 
 /**

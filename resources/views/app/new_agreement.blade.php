@@ -28,7 +28,9 @@
                             </div>
                             <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice">
                                 <tr>
-                                    <th colspan="8">Agreement No.</th>
+                                    <th colspan="5">Agreement No:676</th>
+                                    <th><strong>Branch:</strong> Riyadh</th>
+                                    <th colspan="2"><strong>Contact:</strong> +956000000</th>
                                 </tr>
                                 <tr>
                                     <td>Branch</td>
@@ -62,42 +64,7 @@
                                     <td>+966 2020202</td>
                                 </tr>
                             </table>
-                            <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice mg-top-30">
-                                <tr>
-                                    <th colspan="8">Invoice</th>
-                                </tr>
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
 
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
-                            </table>
                             <div class="clearBoth"></div>
                         </div>
 

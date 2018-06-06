@@ -26,51 +26,11 @@
                                 </div>
                                 <div class="clearBoth"></div>
                             </div>
-                            <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice">
+                            <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
                                 <tr>
-                                    <th colspan="8">Agreement No.</th>
+                                    <th colspan="4">Agreement No.</th>
                                 </tr>
                                 <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
-                                </tr>
-                            </table>
-                            <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice mg-top-30">
-                                <tr>
-                                    <th colspan="8">Invoice</th>
-                                </tr>
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
                                     <td>Branch</td>
                                     <td>Riyadh</td>
                                     <td>Contact No.</td>
@@ -81,17 +41,11 @@
                                     <td>Riyadh</td>
                                     <td>Contact No.</td>
                                     <td>+966 2020202</td>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
                                 </tr>
-
                                 <tr>
-                                    <td>Branch</td>
-                                    <td>Riyadh</td>
-                                    <td>Contact No.</td>
-                                    <td>+966 2020202</td>
+                                    <th colspan="4">Invoice</th>
+                                </tr>
+                                <tr>
                                     <td>Branch</td>
                                     <td>Riyadh</td>
                                     <td>Contact No.</td>

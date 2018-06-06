@@ -24,7 +24,7 @@
                                     </div>
                                     <div class="two-column-signup">
                                         <input type="text" placeholder="{{ __('License Number') }}" class="license-number" name="LicenseId" value="{{ $LicenseId }}" id="LicenseId" /><input type="file" name="LicenseDoc" id="LicenseDoc"><label for="LicenseDoc" id="LicenseDocLabel"></label>
-                                        <input type="text" placeholder="{{ __('License Expiry Date') }}*" name="LicenseExpiryDate" value="{{ $LicenseExpiryDate }}" />
+                                        <input type="text" placeholder="{{ __('License Expiry Date') }}*" readonly="readonly" name="LicenseExpiryDate" value="{{ $LicenseExpiryDate }}" />
                                     </div>
                                     <div class="three-column-signup">
                                         <select name="Nationality">
@@ -277,7 +277,7 @@
                                         <input type="text" placeholder="{{ __('Address 2') }}" name="Address2" value="{{ $Address2 }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" placeholder="{{ __('Date of Birth') }}*" name="DateOfBirth" value="{{ $DateOfBirth }}" />
+                                        <input type="text" placeholder="{{ __('Date of Birth') }}*" name="DateOfBirth" readonly="readonly" value="{{ $DateOfBirth }}" />
                                         <input type="text" placeholder="{{ __('Mobile Number') }}*" name="Mobile" value="{{ $Mobile }}" />
                                     </div>
                                     <div class="two-column-signup">
@@ -306,6 +306,7 @@
 @stop
 
 @section('custom_script')
+
 <script type="text/javascript">
     jQuery(function() {
         // Set Notifier defaults
@@ -318,7 +319,7 @@
         @endif
 
         @if ($Nationality != '')
-            jQuery('select[name="Nationality"] option[value={{ $Nationality }}]').attr('selected', 'selected');
+            jQuery('select[name="Nationality"] option[value="{{ $Nationality }}"]').attr('selected', 'selected');
         @endif
 
         // Init date of birth calender
@@ -326,6 +327,7 @@
             autoUpdateInput: false,
             showDropdowns: true,
             singleDatePicker: true,
+            maxDate:moment().startOf('d'),
             locale: {
                 format: 'DD/MM/YYYY'
             }
@@ -381,14 +383,14 @@
                 id_type.notify("Please select ID Type first", "error");
                 return;
             } else if (id_type.val() == 'S') {
-                // Saudi ID - ID Number must start wtih 2
-                if (!/^2.*/.test(id_number.val())) {
+                // Saudi ID - ID Number must start wtih 1
+                if (!/^1[0-9]{9}$/.test(id_number.val())) {
                     id_number.notify("Invalid ID number for a Saudi ID, please recheck", "error");
                     return;
                 }
             } else if (id_type.val() == 'I') {
                 // Iqama - ID Number must start with 2
-                if (!/^1.*/.test(id_number.val())) {
+                if (!/^2[0-9]{9}$/.test(id_number.val())) {
                     id_number.notify("Invalid ID number for an Iqama, please recheck", "error");
                     return;
                 }
@@ -455,13 +457,13 @@
 
             if (id_type.val() == 'S') {
                 // Saudi ID - ID Number must start wtih 2
-                if (!/^2.*/.test(id_number.val())) {
+                if (!/^1[0-9]{9}$/.test(id_number.val())) {
                     id_number.focus().notify("Invalid ID number for a Saudi ID, please recheck", "error");
                     return;
                 }
             } else if (id_type.val() == 'I') {
                 // Iqama - ID Number must start with 2
-                if (!/^1.*/.test(id_number.val())) {
+                if (!/^2[0-9]{9}$/.test(id_number.val())) {
                     id_number.focus().notify("Invalid ID number for an Iqama, please recheck", "error");
                     return;
                 }

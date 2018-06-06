@@ -78,7 +78,7 @@ class GuestController extends SoapController
         }
         $requester = $request->route()->getAction('as');
         if ($request->isMethod('post') || $requester == 'view_driver') {
-            
+
             $status_code = 200;
             $response = array();
 
@@ -91,7 +91,7 @@ class GuestController extends SoapController
                     $input[$key] = $request_body[$key] = is_object($val) ? $val : trim($val);
                 }
             }
-
+            $input['id_version'] = $request->get('id_version');
             $validator = Validator::make($input, $rules);
             if ($validator->fails()) {
                 $status_code = 400;
@@ -104,7 +104,7 @@ class GuestController extends SoapController
                     'IdType' => $request_body['IdType'] ?? '',
                     'IdNo' => $request_body['IdNo'] ?? '',
                     'IdDoc' => $request_body['IdDoc'] ?? '',
-                    'id_version' => $request_body['id_version'] ?? '',
+                    'id_version' => $input['id_version'] ?? '',
                     'LicenseId' => $request_body['LicenseId'] ?? '',
                     'LicenseDoc' => $request_body['LicenseDoc'] ?? '',
                     'LicenseExpiryDate' => $request_body['LicenseExpiryDate'] ?? '',
@@ -133,15 +133,17 @@ class GuestController extends SoapController
             $request_body['LicenseDocFileExt'] = '.' . strtoupper($license_doc['ext']);
             $request_body['IdDoc'] = $id_doc['file_base64'];
             $request_body['IdDocFileExt'] = '.' . strtoupper($id_doc['ext']);
-            $request_body['IDSerialNo'] = '1';
+            $request_body['IDSerialNo'] = $input['id_version'] ?? '1';
 
             $data = $this->getDriverCreateModify($request_body);
 
-            if (empty((array) $data) || !isset($data->Success) || $data->Success != 'Y') {
+            if (empty((array) $data) || !isset($data->Success)) {
                 $status_code = 400;
                 $response['status'] = false;
                 $response['message'] = Config::get('settings.resp_msg.processing_error');
                 $response['result'] = NULL;
+            } elseif($data->Success != 'Y') {
+
             } else {
                 $response['status'] = true;
                 $response['message'] = '';
@@ -189,7 +191,7 @@ class GuestController extends SoapController
             'IdType' => $request_body['IdType'] ?? '',
             'IdNo' => $request_body['IdNo'] ?? '',
             'IdDoc' => $request_body['IdDoc'] ?? '',
-            'id_version' => $request_body['id_version'] ?? '',
+            'id_version' => $input['id_version'] ?? '',
             'LicenseId' => $request_body['LicenseId'] ?? '',
             'LicenseDoc' => $request_body['LicenseDoc'] ?? '',
             'LicenseExpiryDate' => $request_body['LicenseExpiryDate'] ?? '',
