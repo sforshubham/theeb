@@ -79,7 +79,6 @@ class GuestController extends SoapController
         $requester = $request->route()->getAction('as');
         if ($request->isMethod('post') || $requester == 'view_driver') {
 
-            $status_code = 200;
             $response = array();
 
             $operation = Config::get('settings.cmd_operation')[$request->segment(1)];
@@ -94,7 +93,6 @@ class GuestController extends SoapController
             $input['id_version'] = $request->get('id_version');
             $validator = Validator::make($input, $rules);
             if ($validator->fails()) {
-                $status_code = 400;
                 $response['status'] = false;
                 $response['message'] = $validator->errors()->all();
                 $response['result'] = null;
@@ -119,7 +117,7 @@ class GuestController extends SoapController
                     'Password' => $request_body['Password'] ?? '',
                 ]);
             }
-            
+
             $request_body['Operation'] = $operation;
             if ($operation != 'V') {
                 $id_doc = $this->getFileAndEncode($request->file('IdDoc'));
@@ -137,12 +135,10 @@ class GuestController extends SoapController
 
             $data = $this->getDriverCreateModify($request_body);
             if (empty((array) $data) || !isset($data->Success)) {
-                $status_code = 400;
                 $response['status'] = false;
                 $response['message'] = [Config::get('settings.resp_msg.processing_error')];
                 $response['result'] = NULL;
             } elseif($data->Success != 'Y') {
-                $status_code = 400;
                 $response['status'] = false;
                 $response['message'] = [$data->VarianceReason];
                 $response['result'] = NULL;
@@ -229,7 +225,6 @@ class GuestController extends SoapController
                 return back()->with('success', Config::get('settings.resp_msg.new_password'));
             }
         }
-        return response()->json($response, $status_code);
     }
 
     public function maps()

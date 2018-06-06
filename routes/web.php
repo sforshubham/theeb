@@ -42,6 +42,7 @@ Route::post('/modify_reservation', ['as'=> 'modify_reservation', 'uses'=>'UsersC
 Route::post('/cancel_reservation', ['as'=> 'cancel_reservation', 'uses'=>'UsersController@cancelReservation']);
 Route::get('/tariff', 'UsersController@tariff');
 Route::get('/book', 'UsersController@rentACar');
+Route::get('/edit_profile', 'UsersController@editRenderView');
 Route::get('/change_password', 'UsersController@changePassword');
 Route::get('/car_detail/{index}', 'UsersController@viewCarDetail');
 Route::get('/payment_mode', ['as'=> 'payment_mode', 'uses'=>'UsersController@paymentMode']);
@@ -50,6 +51,7 @@ Route::post('/payment_request_route', ['as'=> 'payment_request_route', 'uses'=>'
 Route::get('/payment_response_route', ['as'=> 'payment_response_route', 'uses'=>'UsersController@paymentMode']);
 Route::post('/payment_response_route', ['as'=> 'payment_response_route', 'uses'=>'UsersController@paymentMode']);
 
+Route::post('/edit_profile', 'UsersController@updateProfile');
 Route::get('/testq', function () {
     return view('test');
 });

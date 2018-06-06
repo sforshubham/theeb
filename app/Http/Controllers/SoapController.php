@@ -165,6 +165,25 @@ class SoapController extends BaseController
         return $result;
     }
 
+    public function getDriverView($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('Driverview', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.driver_modify'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('Driverview.CarProDriverWS', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
     public function password($input)
     {
         $result = [];

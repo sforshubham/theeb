@@ -19,7 +19,7 @@
     "Password": "الرقم السري",
     "Register": "التسجيل",
     "Company": "الشركة",
-    "Abount company": "نبذة عن الشركه",
+    "About company": "نبذة عن الشركه",
     "Vision and Mission": "الرؤية والرسالة",
     "Honors and awards": "التكريم والجوائـز",
     "CEO Message": "كلمة المدير العام",
@@ -111,5 +111,7 @@
     "Proceed": "تقدم",
     "Your reservation request has been received": "تم استلام طلب الحجز",
     "Something went wrong. Try after some time.": "حدث خطأ ما جرب بعد مرور من الوقت",
-    "Dear Customer payment has been declined. Please contact your bank.":"عزيزي العميل لقد تم رفض الدفع. يرجى الاتصال البنك الذي تتعامل معه."
+    "Dear Customer payment has been declined. Please contact your bank.":"عزيزي العميل لقد تم رفض الدفع. يرجى الاتصال البنك الذي تتعامل معه.",
+    "Edit Profile": "تحرير الملف الشخصي",
+    "Update":"تحديث"
 }

@@ -67,6 +67,7 @@ class UsersController extends SoapController
             'DropTime' => 'required',
             'CarCategory' => 'required',
         ]);
+
         if ($validator->fails()) {
             return back()->with('error', $validator->errors()->all())->with('data',$input);
         } elseif (!$this->checkLogin()) {
@@ -522,7 +523,6 @@ class UsersController extends SoapController
                     ->with('status', $request->status)
                     ->with('group_detail', $group_detail)
                     ->with('booking_data', $booking_data);
-            
             }
             $booking_data = session('reserved_car');
             $car_group = $booking_data->Price->CarGroupPrice->CarGrop;
@@ -531,6 +531,109 @@ class UsersController extends SoapController
             return view('app.payment_mode')
                 ->with('group_detail', $group_detail)
                 ->with('booking_data', $booking_data);
+        }
+    }
+
+    public function editRenderView()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $request_body = driverRequestBody();
+            $arr = $this->viewDriver();
+
+            $arr['status'] = '';
+            $arr['response'] = '';
+            return view('app.edit_profile', $arr);
+        }
+    }
+
+    public function viewDriver()
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $request_body = driverRequestBody();
+            $request_body['IdNo'] = session('user.IDNo');
+            $request_body['Operation'] = 'V';
+            $data = $this->getDriverView($request_body);
+            //$data->IdDoc = trim($data->IdDoc) != '' ? base64_encode($data->IdDoc) : '';
+            //$data->DriverImage = trim($data->DriverImage) != '' ? base64_encode($data->DriverImage) : '';
+            //$data->LicenseDoc = trim($data->LicenseDoc) != '' ? base64_encode($data->LicenseDoc) : '';
+            //$data->WorkIdDoc = trim($data->WorkIdDoc) != '' ? base64_encode($data->WorkIdDoc) : '';
+            pr($data);die;
+            $arr = object_to_array($data);
+            return $arr;
+        }
+    }
+
+    public function updateProfile(Request $request)
+    {
+        if (!$this->checkLogin()) {
+            return redirect('/')->with('error', Config::get('settings.resp_msg.auth_error'));
+        } else {
+            $response = array();
+            $operation = Config::get('settings.cmd_operation')['modify_driver'];
+
+            $rules = createModifyDriverRules($operation);
+            $request_body = driverRequestBody();
+            $input = [];
+            foreach ($request->all() as $key => $val) {
+                if (isset($request_body[$key])) {
+                    $input[$key] = $request_body[$key] = is_object($val) ? $val : trim($val);
+                }
+            }
+            $validator = Validator::make($input, $rules);
+            if ($validator->fails()) {
+                $input['status'] = false;
+                $input['response'] = $validator->errors()->all();
+                return view('app.edit_profile', $input);
+            } else {
+                $data = $this->viewDriver();
+                foreach ($data as $key => $val) {
+                    if (isset($request_body[$key])) {
+                        $request_body[$key] = $request_body[$key] ? $request_body[$key] : $val;
+                    } else if ($key == 'DriverImageExt') {
+                        $request_body['DriverImageFileExt'] = $val;
+                    } else if ($key == 'LicenseDocExt') {
+                        $request_body['LicenseDocFileExt'] = $val;
+                    } else if ($key == 'IdDocExt') {
+                        $request_body['IdDocFileExt'] = $val;
+                    }
+                }
+
+                if ($request->hasFile('IdDoc')) {
+                    $id_doc = $this->getFileAndEncode($request->file('IdDoc'));
+                    $request_body['IdDoc'] = $id_doc['file_base64'];
+                    $request_body['IdDocFileExt'] = '.' . strtoupper($id_doc['ext']);
+                }
+                if ($request->hasFile('LicenseDoc')) {
+                    $license_doc = $this->getFileAndEncode($request->file('LicenseDoc'));
+                    $request_body['LicenseDoc'] = $license_doc['file_base64'];
+                    $request_body['LicenseDocFileExt'] = '.' . strtoupper($license_doc['ext']);
+                }
+                $request_body['Operation'] = 'E';
+                $result = $this->getDriverCreateModify($request_body);
+                if (empty((array) $result) || !isset($result->Success)) {
+                    $response['status'] = false;
+                    $response['message'] = [Config::get('settings.resp_msg.processing_error')];
+                    $response['result'] = NULL;
+                } elseif($result->Success != 'Y') {
+                    $response['status'] = false;
+                    $response['message'] = [$result->VarianceReason];
+                    $response['result'] = NULL;
+                } else {
+                    $response['status'] = true;
+                    $response['message'] = 'Profile has been updated successfully.';
+                    $response['result'] = $result;
+
+                    $request_body = array_replace($request_body, (array)$response['result']);
+                }
+
+                $request_body['status'] = $response['status'];
+                $request_body['response'] = $response['message'];
+                return view('app.edit_profile', $request_body);
+            }
         }
     }
 }

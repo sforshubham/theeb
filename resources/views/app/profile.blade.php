@@ -15,6 +15,7 @@
                                 </div>
                                 <div class="profile-details">
                                     <span>{{ __('Personal Details') }}</span>
+                                    <span class="floatLeft"><a href="edit_profile" >{{ __('Update') }}</a></span>
                                     <div class="profile-single-wrap">
                                         <strong>{{ __('Nationality') }}</strong>
                                         <span>{{ trim($data->Nationality) != '' ? $data->Nationality : '--'}}</span>
