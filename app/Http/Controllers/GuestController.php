@@ -136,14 +136,16 @@ class GuestController extends SoapController
             $request_body['IDSerialNo'] = $input['id_version'] ?? '1';
 
             $data = $this->getDriverCreateModify($request_body);
-
             if (empty((array) $data) || !isset($data->Success)) {
                 $status_code = 400;
                 $response['status'] = false;
-                $response['message'] = Config::get('settings.resp_msg.processing_error');
+                $response['message'] = [Config::get('settings.resp_msg.processing_error')];
                 $response['result'] = NULL;
             } elseif($data->Success != 'Y') {
-
+                $status_code = 400;
+                $response['status'] = false;
+                $response['message'] = [$data->VarianceReason];
+                $response['result'] = NULL;
             } else {
                 $response['status'] = true;
                 $response['message'] = '';
@@ -184,7 +186,7 @@ class GuestController extends SoapController
             );
             return response()->json($request_body, 200);
         }
-        
+
         return view('app.signup', [
             'status' => $response['status'] ?? '',
             'response' => $response['message'] ?? '',

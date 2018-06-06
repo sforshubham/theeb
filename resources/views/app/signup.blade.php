@@ -309,6 +309,7 @@
 
 <script type="text/javascript">
     jQuery(function() {
+        var old_date = moment().subtract(18, 'years').subtract(1, 'days');
         // Set Notifier defaults
         jQuery.notify.defaults({ autoHideDelay: 7000 });
 
@@ -327,7 +328,8 @@
             autoUpdateInput: false,
             showDropdowns: true,
             singleDatePicker: true,
-            maxDate:moment().startOf('d'),
+            startDate:old_date,
+            maxDate:old_date,
             locale: {
                 format: 'DD/MM/YYYY'
             }
@@ -338,6 +340,7 @@
             autoUpdateInput: false,
             showDropdowns: true,
             singleDatePicker: true,
+            minDate: moment(),
             locale: {
                 format: 'DD/MM/YYYY'
             }

@@ -31,14 +31,6 @@
                 </script>
             @endif
 
-            <script type="text/javascript">
-                var fname = "{!! session('user.FirstName') ?? '' !!}";
-                if (localStorage) {
-                    localStorage.setItem('name', fname);
-                    console.log(localStorage.getItem('name'));
-                }
-
-            </script>
             @yield('content')
         </div>
         <footer>

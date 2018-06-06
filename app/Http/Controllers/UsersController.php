@@ -313,6 +313,7 @@ class UsersController extends SoapController
             }
             file_put_contents(Config::get('settings.reservation.file_path'), $res_no);
             $request_body['DriverCode'] = session('user.DriverCode');
+            $request_body['LicenseNo'] = session('user.IDNo');
             $request_body['OutBranch'] = $sess_data->Price->OutBranch;
             $request_body['CDP'] = $sess_data->Price->CDP;
             $request_body['InBranch'] = $sess_data->Price->InBranch;
