@@ -49,7 +49,7 @@ return [
     'trans_master' => [
         'agreement' => [
             'operation' => 'A',
-            'view' => 'agreement',
+            'view' => 'new_agreement',
             'labels' => [
                 'CheckOutBranch' => 'Check Out Branch',
                 'CheckInBranch' => 'Check In Branch',
@@ -144,7 +144,7 @@ return [
         ],
         'payment' => [
             'operation' => 'P',
-            'view' => 'payment',
+            'view' => 'new_payment',
             'labels' => [
                 'ReceiptNo' => 'Receipt No',
                 'PaymentMethod' => 'Payment Method',

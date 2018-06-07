@@ -25,10 +25,18 @@
                         @endif
                         @php($row_count = count($result->Reservations->Reservation))
 
-
-                        <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
                         @for ($i = 0; $i < $row_count; $i++)
-                                @php ($reservation = $result->Reservations->Reservation[$i])
+                            @php ($reservation = $result->Reservations->Reservation[$i])
+                            <div class="address-table border-all padding-all-10" style="margin-bottom:0">
+                                <div class="floatRight mg-rt-30 theeb-logo"><img src="../images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
+                                <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
+                                    <br>Riyadh- 11423, P.O-9551,
+                                    <br/>H.O contact- 011 2780246, Customer Service - 925002345
+                                    <br/> Branch : 10
+                                </div>
+                                <div class="clearBoth"></div>
+                            </div>
+                        <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
                             <tr>
                                 <th colspan="3">Reservation No. {{ $reservation->ReservationNo }}</th>
                                 <th colspan="1"><a href="javascript:void(0);" class="doc-download-btn" rel="{{ $reservation->ReservationNo }}">Download Document</a></th>
@@ -49,8 +57,8 @@
                                 @php($j++)
                             @endforeach
                             </tr>
-                        @endfor
                         </table>
+                        @endfor
                         <div class="clearBoth"></div>
                     @else
                         <div style="
