@@ -78,3 +78,12 @@ Route::get('/test', 'SoapController@noshow');
 Route::get('/payfort', 'UsersController@payFortPay');
 Route::get('/maps', 'GuestController@maps');
 Route::get('/sharer', 'GuestController@sharer');
+Route::get('/get_sfname', function () {
+	if (session()->has('user.FirstName')) {
+    	$name = session('user.FirstName');
+    } else {
+        $name = '';
+    }
+    echo $name;
+    exit();
+});
