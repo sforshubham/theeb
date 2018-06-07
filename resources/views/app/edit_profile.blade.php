@@ -77,7 +77,7 @@
         jQuery.notify.defaults({ autoHideDelay: 7000 });
 
         @if ($status == true)
-            jQuery.notify("Profile has been updated successfully.", "success");
+            jQuery.notify("Profile has been updated successfully", "success");
         @elseif (is_array($response))
             jQuery.notify("{{ implode($response, '\n') }}", "error");
         @endif

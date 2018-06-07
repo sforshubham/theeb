@@ -38,6 +38,7 @@ return [
         'cancel_reservation' => 'Booking has been cancelled successfully',
         'new_reservation' => 'Reservation created successfully',
         'extend_reservation' => 'Booking details updated successfully',
+        'profile_updated' => 'Profile updated successfully',
     ],
     'cmd_operation' => [
         'view_driver' => 'V',

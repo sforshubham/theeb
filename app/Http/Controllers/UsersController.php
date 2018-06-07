@@ -561,7 +561,7 @@ class UsersController extends SoapController
             //$data->DriverImage = trim($data->DriverImage) != '' ? base64_encode($data->DriverImage) : '';
             //$data->LicenseDoc = trim($data->LicenseDoc) != '' ? base64_encode($data->LicenseDoc) : '';
             //$data->WorkIdDoc = trim($data->WorkIdDoc) != '' ? base64_encode($data->WorkIdDoc) : '';
-            pr($data);die;
+            //pr($data);die;
             $arr = object_to_array($data);
             return $arr;
         }
@@ -591,14 +591,10 @@ class UsersController extends SoapController
             } else {
                 $data = $this->viewDriver();
                 foreach ($data as $key => $val) {
-                    if (isset($request_body[$key])) {
+                    if ($key == 'IdDoc' || $key == 'LicenseDoc' || $key == 'DriverImage') {
+                        continue;
+                    } elseif (isset($request_body[$key])) {
                         $request_body[$key] = $request_body[$key] ? $request_body[$key] : $val;
-                    } else if ($key == 'DriverImageExt') {
-                        $request_body['DriverImageFileExt'] = $val;
-                    } else if ($key == 'LicenseDocExt') {
-                        $request_body['LicenseDocFileExt'] = $val;
-                    } else if ($key == 'IdDocExt') {
-                        $request_body['IdDocFileExt'] = $val;
                     }
                 }
 
@@ -624,7 +620,7 @@ class UsersController extends SoapController
                     $response['result'] = NULL;
                 } else {
                     $response['status'] = true;
-                    $response['message'] = 'Profile has been updated successfully.';
+                    $response['message'] = [Config::get('settings.resp_msg.profile_updated')];
                     $response['result'] = $result;
 
                     $request_body = array_replace($request_body, (array)$response['result']);
