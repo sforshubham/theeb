@@ -80,10 +80,9 @@ Route::get('/maps', 'GuestController@maps');
 Route::get('/sharer', 'GuestController@sharer');
 Route::get('/get_sfname', function () {
 	if (session()->has('user.FirstName')) {
-    	$name = session('user.FirstName');
+    	$name = view('includes.user-menu');
     } else {
         $name = '';
     }
-    echo $name;
-    exit();
+    return $name;
 });
