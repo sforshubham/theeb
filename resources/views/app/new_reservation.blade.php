@@ -17,7 +17,7 @@
                                 <input type="text" placeholder="Filter by date range" id="daterangepicker" />
                             </div>
                             <div class="address-table border-all padding-all-10">
-                                <div class="floatRight mg-rt-30 theeb-logo"><img src="../images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
+                                <div class="floatRight mg-rt-30 theeb-logo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
                                 <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
                                     <br>Riyadh- 11423, P.O-9551,
                                     <br/>H.O contact- 011 2780246, Customer Service - 925002345

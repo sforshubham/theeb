@@ -24,7 +24,7 @@
                             @for ($i = 0; $i < $row_count; $i++)
                                 @php ($payment = $result->Payments->Payment[$i])
                             <div class="address-table border-all padding-all-10" style="margin-bottom:0">
-                                <div class="floatRight mg-rt-30 theeb-logo"><img src="../images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
+                                <div class="floatRight mg-rt-30 theeb-logo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
                                 <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
                                     <br>{{ $result->Payments->H1 }}
                                     <br/>{{ $result->Payments->H2 }}
