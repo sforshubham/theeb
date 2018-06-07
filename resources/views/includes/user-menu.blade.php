@@ -1,4 +1,4 @@
-							<a href="{{ URL::to('/') }}"><img src="{{ url('/') }}/images/log-icon.png" /> {{session()->has('user.IDNo') && session('user.FirstName') != '' ? session('user.FirstName') : 'User'}}</a>
+							<a id="lang_switch_link" href="{{ URL::to('/') }}"><img src="{{ url('/') }}/images/log-icon.png" /> {{session()->has('user.IDNo') && session('user.FirstName') != '' ? session('user.FirstName') : 'User'}}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/profile') }}">{{ __('Profile') }}</a></li>
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/book') }}">{{ __('Rent a car') }}</a></li>
