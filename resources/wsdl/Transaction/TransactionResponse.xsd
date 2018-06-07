@@ -79,6 +79,8 @@
         <xs:element name="Invoices">
           <xs:complexType>
             <xs:sequence>
+              <xs:element type="xs:string" name="H1"/>
+              <xs:element type="xs:string" name="H2"/>
               <xs:element name="Invoice" maxOccurs="unbounded" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
@@ -125,6 +127,16 @@
                     <xs:element type="xs:string" name="InvoiceAmountPaid"/>
                     <xs:element type="xs:string" name="InvoiceBalance"/>
                     <xs:element type="xs:string" name="InvoiceReservation"/>
+                    <xs:element name="InvoiceExtras" maxOccurs="1" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="ExtraName" />
+                          <xs:element type="xs:string" name="Days" />
+                          <xs:element type="xs:string" name="Units" />
+                          <xs:element type="xs:string" name="Amount" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

@@ -84,7 +84,7 @@ Version: 1.0
 
 .table-rental tr td:first-child, .table-rental tr td:nth-child(3){font-weight:bold;}
 
-.address-table{font-weight:normal; margin:20px 0}
+.address-table{font-weight:normal; margin:20px 0 0;}
 
 .from-end-date-rental input{ background:url(../images/calender.png) no-repeat 2%; border: 1px solid #ccc; margin-left:5px;   padding: 15px 10px;min-width:250px;     float: right;}
 

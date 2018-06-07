@@ -475,6 +475,10 @@ class UsersController extends SoapController
             $requester = $request->route()->getAction('as');
             if ($requester == 'payment_request_route') {
                 // Handle payment request -- Redirect to PayFort
+
+                if (isset($request->source)) {
+                    session()->put('return_invoice_url_query', parse_url(url()->previous())['query']);
+                }
                 
                 $payfortIntegration = new \PayfortIntegration();
                 $payfortIntegration->amount = $request->paymentAmount;
@@ -509,6 +513,12 @@ class UsersController extends SoapController
                     }
                 } else {
                     $message = 'Not able to validate the payment';
+                }
+
+                if (session()->has('return_invoice_url_query')) {
+                    parse_str(session('return_invoice_url_query'), $output);
+                    session()->forget('return_invoice_url_query');
+                    return redirect()->route('invoice',['StartDate'=>$output['StartDate'], 'EndDate'=>$output['EndDate']]);
                 }
                 return redirect()->route('payment_result',['status'=>(int)$status, ]);
                 

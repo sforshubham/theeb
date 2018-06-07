@@ -1,4 +1,5 @@
-function getPaymentPage(paymentMethod, url, paymentAmount) {
+function getPaymentPage(paymentMethod, url, paymentAmount, source) {
+    source = source || 0;
     var check3ds = getUrlParameter('3ds');
     var url = url + '?r=getPaymentPage';
     if(check3ds == 'no') {
@@ -8,7 +9,7 @@ function getPaymentPage(paymentMethod, url, paymentAmount) {
        url: url, 
        type: 'post',
        dataType: 'json',
-       data: {paymentMethod: paymentMethod, paymentAmount: paymentAmount},
+       data: {paymentMethod: paymentMethod, paymentAmount: paymentAmount, source: source},
        success: function (response) {
             if (response.form) {
                 $('body').append(response.form);

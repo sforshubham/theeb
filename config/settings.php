@@ -95,7 +95,7 @@ return [
         ],
         'invoice' => [
             'operation' => 'I',
-            'view' => 'invoice',
+            'view' => 'new_invoice',
             'labels' => [
                 'InvoiceNo' => 'Invoice No',
                 'InvoiceType' => 'Invoice Type',
