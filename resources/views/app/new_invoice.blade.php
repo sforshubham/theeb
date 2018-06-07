@@ -185,7 +185,7 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5">{{ __('Balance') }} <span class="bln_pay" data-amount="57" style="float: right;font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer; display: none;">{{ __('Pay Balance') }}</span></td>
+                                            <td colspan="5">{{ __('Balance') }} <span class="bln_pay" data-amount="57" style="float: right;font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer;">{{ __('Pay Balance') }}</span></td>
                                             <td>{{ $invoice->InvoiceBalance }}</td>
                                             <td></td>
                                             <td></td>
@@ -238,7 +238,12 @@
                 }
             }
             else{
-                getPaymentPage(paymentMethod, "{{ url('/payment_request_route') }}", paymentAmount);
+                getPaymentPage(
+                    paymentMethod,
+                    "{{ url('/payment_request_route') }}",
+                    paymentAmount,
+                    "{{ url()->full() }}"
+                );
             }
         });
     });
