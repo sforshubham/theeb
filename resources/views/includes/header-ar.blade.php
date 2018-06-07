@@ -106,16 +106,8 @@
 </li>
 <li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://theeb.com.sa/suggestion-form-2/">رأيك يهمنا</a></li>
                         @if (session()->has('user.IDNo'))
-                        <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n"><a href="{{ URL::to('/') }}"><img src="{{ url('/') }}/images/log-icon.png" /> {{session()->has('user.IDNo') && session('user.FirstName') != '' ? session('user.FirstName') : 'User'}}</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/profile') }}">{{ __('Profile') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/book') }}">{{ __('Rent a car') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/tariff') }}">{{ __('Tariffs') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/booking') }}">{{ __('My Booking') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/agreement') }}">{{ __('Rental History') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/change_password') }}">{{ __('Change Password') }}</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ URL::to('/logout') }}">{{ __('Logout') }}</a></li>
-                            </ul>
+                        <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n">
+                            @include('includes.user-menu')
                         </li>
                         @else
                             <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n"><a href="{{ URL::to('/') }}">{{ __('Login') }}</a></li>

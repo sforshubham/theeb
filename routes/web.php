@@ -23,6 +23,22 @@ Route::get('/lang_switch/{locale}', function ($locale) {
         return redirect('/');
     }
 });
+Route::get('/get_sfname/{locale}', function ($locale) {
+    $locale = strtolower($locale);
+    if ($locale == 'ar' || $locale == 'en') {
+        //
+    } else {
+            $locale = 'ar';
+    }
+    App::setLocale($locale);
+    Cookie::queue(Cookie::make('locale', $locale, 365 * 24 * 60));
+    if (session()->has('user.FirstName')) {
+    $name = view('includes.user-menu');
+    } else {
+        $name = '';
+    }
+    return $name;
+});
 
 Route::get('/branches', 'GuestController@getAllBranches');
 Route::get('/vehicle_types', 'GuestController@getAllVehicleTypes');
@@ -78,12 +94,3 @@ Route::get('/test', 'SoapController@noshow');
 Route::get('/payfort', 'UsersController@payFortPay');
 Route::get('/maps', 'GuestController@maps');
 Route::get('/sharer', 'GuestController@sharer');
-Route::get('/get_sfname', function () {
-	if (session()->has('user.FirstName')) {
-    	$name = session('user.FirstName');
-    } else {
-        $name = '';
-    }
-    echo $name;
-    exit();
-});
