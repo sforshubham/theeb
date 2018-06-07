@@ -24,9 +24,16 @@ Route::get('/lang_switch/{locale}', function ($locale) {
     }
 });
 Route::get('/get_sfname/{locale}', function ($locale) {
-	Cookie::queue(Cookie::make('locale', $locale, 365 * 24 * 60));
-	if (session()->has('user.FirstName')) {
-    	$name = view('includes.user-menu');
+    $locale = strtolower($locale);
+    if ($locale == 'ar' || $locale == 'en') {
+        //
+    } else {
+            $locale = 'ar';
+    }
+    App::setLocale($locale);
+    Cookie::queue(Cookie::make('locale', $locale, 365 * 24 * 60));
+    if (session()->has('user.FirstName')) {
+    $name = view('includes.user-menu');
     } else {
         $name = '';
     }
