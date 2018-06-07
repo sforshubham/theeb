@@ -37,6 +37,7 @@
             @yield('jquery_script')
             @yield('daterangepicker_script')
             @yield('custom_script')
+            @yield('custom_script_new')
 
             @if (App::getLocale() == 'en')
                 @include('includes.footer-en')
