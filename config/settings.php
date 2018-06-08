@@ -39,6 +39,7 @@ return [
         'new_reservation' => 'Reservation created successfully',
         'extend_reservation' => 'Booking details updated successfully',
         'profile_updated' => 'Profile updated successfully',
+        'signup_success' => 'Your details have been saved successfully. Please login with your credentials.',
     ],
     'cmd_operation' => [
         'view_driver' => 'V',

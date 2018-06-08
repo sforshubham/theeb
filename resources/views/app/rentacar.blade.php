@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-            <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
+            <div class="bodyPageHolder">
                 <div class="safeArea">
                     <div class="tabs-top">
                         <a href="javascript:" class="my-booking-btn">{{ __('Show Vehicles') }}</a>
@@ -125,6 +125,7 @@
         @endif
 
         $('#FormSubmit').on('click', function (e){
+            $('.notifyjs-corner').empty(); // removes existing messages
             var out_location = $('#out_location').val();
             var out_date = $('#out_date').val();
             var out_time = $('#out_time').val();
@@ -132,9 +133,10 @@
             var in_date = $('#in_date').val();
             var in_time = $('#in_time').val();
 
-            /*if (out_location == '' || in_location == '') {
+            if (out_location == '' || in_location == '') {
+                $.notify("Pickup and Drop location can not be blank", {globalPosition: "top right", className: "error"});
                 return false;
-            }*/
+            }
 
             var out_m = moment(out_date+' '+out_time, 'DD/MM/YYYY HH:mm');
             var in_m = moment(in_date+' '+in_time, 'DD/MM/YYYY HH:mm');
@@ -174,12 +176,12 @@
             }
             if (is_drop_avail == false) {
                 e.preventDefault();
-                $.notify("{!! str_replace('{tag}', 'Drop Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error", autoHide: true});
+                $.notify("{!! str_replace('{tag}', 'Drop Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error"});
             }
 
             if (is_pickup_avail == false) {
                 e.preventDefault();
-                $.notify("{!! str_replace('{tag}', 'Pickup Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error", autoHide: true});
+                $.notify("{!! str_replace('{tag}', 'Pickup Location', config('settings.resp_msg.branch_unavailable')) !!}", {globalPosition: "top right", className: "error"});
             }
 
         });

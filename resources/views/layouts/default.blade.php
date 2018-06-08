@@ -16,22 +16,27 @@
         <div id="DivBody">
             @if (session('success'))
                 <script>
-                    $.notify("{!! session('success') !!}", {globalPosition: "top right", className: "success", autoHide: false});
+                    $.notify("{!! session('success') !!}", {globalPosition: "top right", className: "success"});
                 </script>
             @endif
             @if (session('error') && is_array(session('error')))
                 <script>
                     @foreach (session('error') as $err)
-                    $.notify("{!! $err !!}", {globalPosition: "top right", className: "error", autoHide: false});
+                    $.notify("{!! $err !!}", {globalPosition: "top right", className: "error"});
                     @endforeach
                 </script>
             @elseif (session('error'))
                 <script>
-                    $.notify("{!! session('error') !!}", {globalPosition: "top right", className: "error", autoHide: false});
+                    $.notify("{!! session('error') !!}", {globalPosition: "top right", className: "error"});
                 </script>
             @endif
 
             @yield('content')
+            <script>
+            jQuery(function() {
+                jQuery.notify.defaults({ autoHideDelay: 7000 });
+            });
+            </script>
         </div>
         <footer>
             @yield('jquery_script')

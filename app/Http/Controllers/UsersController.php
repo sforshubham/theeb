@@ -629,11 +629,7 @@ class UsersController extends SoapController
                     $response['message'] = [$result->VarianceReason];
                     $response['result'] = NULL;
                 } else {
-                    $response['status'] = true;
-                    $response['message'] = [Config::get('settings.resp_msg.profile_updated')];
-                    $response['result'] = $result;
-
-                    $request_body = array_replace($request_body, (array)$response['result']);
+                    return redirect('/profile')->with('success', Config::get('settings.resp_msg.profile_updated'));
                 }
 
                 $request_body['status'] = $response['status'];
