@@ -198,7 +198,7 @@
                                             <td colspan="5">
                                                 {{ __('Balance') }} 
                                                 @if ($invoice->InvoiceBalance > 0)
-                                                <span class="bln_pay" data-amount="{{ $invoice->InvoiceBalance }}" data-invoice="{{ $invoice->InvoiceNo }}" style="float: right;font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer;">{{ __('Pay Balance') }}</span>
+                                                <span class="bln_pay" data-amount="{{ $invoice->InvoiceBalance }}" data-invoice="{{ $invoice->InvoiceNo }}" style="font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer;">{{ __('Pay Balance') }}</span>
                                                 @endif
                                             </td>
                                             <td>{{ $invoice->InvoiceBalance }}</td>
