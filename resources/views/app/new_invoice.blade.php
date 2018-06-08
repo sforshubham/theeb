@@ -13,6 +13,16 @@
                     </div>
                     <div>
                         <div class="white-bg">
+                            @if (app('request')->input('status') === '1')
+                            <div class="payment-pickup-details floatRight" style="width: 97%;background-color: #DFF0D8;border-color: #D6E9C6;">
+                                <span style="color: #468847;">{{ __('Your payment has been processed successfully') }}</span>
+                            </div>
+                            @elseif (app('request')->input('status') === '0')
+
+                            <div class="payment-pickup-details floatRight" style="width: 97%; background-color: #F2DEDE; border-color: #EED3D7;">
+                                <span style="color: #B94A48;">{{ __('Dear Customer payment has been declined. Please contact your bank.') }}</span>
+                            </div>
+                            @endif 
                             <div class="from-end-date-rental">
                                 <input type="text" placeholder="Filter by date range" id="daterangepicker" />
                             </div>
@@ -185,7 +195,12 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5">{{ __('Balance') }} <span class="bln_pay" data-amount="57" style="float: right;font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer;">{{ __('Pay Balance') }}</span></td>
+                                            <td colspan="5">
+                                                {{ __('Balance') }} 
+                                                @if ($invoice->InvoiceBalance > 0)
+                                                <span class="bln_pay" data-amount="{{ $invoice->InvoiceBalance }}" data-invoice="{{ $invoice->InvoiceNo }}" style="float: right;font-weight: normal;color: #1269a0;text-decoration: underline; cursor: pointer;">{{ __('Pay Balance') }}</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $invoice->InvoiceBalance }}</td>
                                             <td></td>
                                             <td></td>
@@ -198,6 +213,12 @@
                                 @endfor
                                 
                             @else
+                            <div style="
+                                color:  grey;
+                                border-top: 1px grey solid;
+                                padding-top: 40px;
+                                margin-top: 20px;
+                            ">{{ __('Record not found') }}</div>
                             @endif
                             
                             <div class="clearBoth"></div>
@@ -219,6 +240,7 @@
         jQuery('.bln_pay').click(function () {
             var paymentMethod = 'creditcard';
             var paymentAmount = jQuery(this).data('amount');
+            var invoiceNo = jQuery(this).data('invoice');
 
             if(paymentMethod == '' || paymentMethod === undefined || paymentMethod === null) {
                 alert('Pelase Select Payment Method!');
@@ -242,7 +264,7 @@
                     paymentMethod,
                     "{{ url('/payment_request_route') }}",
                     paymentAmount,
-                    "{{ url()->full() }}"
+                    invoiceNo
                 );
             }
         });

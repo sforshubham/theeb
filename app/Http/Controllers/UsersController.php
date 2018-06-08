@@ -476,23 +476,40 @@ class UsersController extends SoapController
             if ($requester == 'payment_request_route') {
                 // Handle payment request -- Redirect to PayFort
 
-                if (isset($request->source)) {
-                    session()->put('return_invoice_url_query', parse_url(url()->previous())['query']);
-                }
-                
                 $payfortIntegration = new \PayfortIntegration();
                 $payfortIntegration->amount = $request->paymentAmount;
+                if (isset($request->source) && $request->source != '0') {
+                    // If this request has originated from Invoice section
+                    $parsed_url = parse_url(url()->previous());
+                    $url_query_string = $parsed_url['query'] ?? '';
+                    // $request->session()->put('return_invoice_url_query', $url_query_string);
+                    // $request->session()->put('invoice_no', $request->source);
+                    $payfortIntegration->merchantReference = $request->source;
+                }
                 return $payfortIntegration->processRequest($request->paymentMethod);
             } else if ($requester == 'payment_response_route') {
                 // Handle payment response -- Validate and submit to Payment API & then redirect to a view
                 $status = false;
                 $payfortIntegration = new \PayfortIntegration();
                 $validated_response = $payfortIntegration->processResponse();
+                $pg_status = $validated_response['status'];
+                $validated_response = $validated_response['params'];
+                
+                preg_match('/^--R--(.*)--[0-9]+--/', $validated_response['merchant_reference'], $res_matches);
+                preg_match('/^--I--(.*)--[0-9]+--/', $validated_response['merchant_reference'], $inv_matches);
 
-                if ($validated_response['status'] === true) {
+                $reservation_no = $invoice_no = '';
+                if ($res_matches == true) {
+                    $reservation_no = $res_matches[1];
+                }
+                if ($inv_matches == true) {
+                    $invoice_no = $inv_matches[1];
+                }
+
+                if ($pg_status === true) {
                     // Payment has successfully been captured
-                    $validated_response = $validated_response['params'];
                     $validated_response['amount'] = $payfortIntegration->castAmountFromFort($validated_response['amount'], $validated_response['currency']);
+
                     $request_body = [
                         'PAYMENTOPTION' => $validated_response['payment_option'],
                         'MERCHANTREFERENCE' => $validated_response['merchant_reference'],
@@ -500,10 +517,10 @@ class UsersController extends SoapController
                         'CARDNUMBER' => $validated_response['card_number'],
                         'EXPIRYDATE' => $validated_response['expiry_date'],
                         'AUTHORIZATIONCODE' => $validated_response['authorization_code'],
-                        'RESERVATIONNO' => $validated_response['merchant_reference'],
+                        'RESERVATIONNO' => $reservation_no,
                         'DRIVERCODE' => session('user.DriverCode'),
                         'CURRENCY' => $validated_response['currency'],
-                        'INVOICE' => ''
+                        'INVOICE' => $invoice_no
                     ];
                     $result = $this->payment($request_body);
                     if (!isset($result->SUCCESS) || $result->SUCCESS != 'Y') {
@@ -515,12 +532,22 @@ class UsersController extends SoapController
                     $message = 'Not able to validate the payment';
                 }
 
-                if (session()->has('return_invoice_url_query')) {
+                if (isset($inv_matches) && $inv_matches == true) {
+                    /*
                     parse_str(session('return_invoice_url_query'), $output);
-                    session()->forget('return_invoice_url_query');
-                    return redirect()->route('invoice',['StartDate'=>$output['StartDate'], 'EndDate'=>$output['EndDate']]);
+
+                    $url_params = [];
+                    if (isset($output['StartDate'])) {
+                        $url_params['StartDate'] = $output['StartDate'];
+                    }
+
+                    if (isset($output['EndDate'])) {
+                        $url_params['EndDate'] = $output['EndDate'];
+                    }
+                    */
+                    return redirect()->route('invoice', ['status'=>(int)$status]);
                 }
-                return redirect()->route('payment_result',['status'=>(int)$status, ]);
+                return redirect()->route('payment_result', ['status'=>(int)$status]);
                 
             } else if ($requester == 'payment_result') {
                 // Handle payment response view -- Show relevant details

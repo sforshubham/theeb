@@ -70,7 +70,11 @@ class PayfortIntegration
      * @var string  project root folder
      * change it if the project is not on root folder.
      */
-    public $projectUrlPath     = '/'; 
+    public $projectUrlPath     = '/';
+    /**
+     * @var string your Merchant Reference
+     */
+    public $merchantReference = '';
     
     public function __construct()
     {
@@ -538,7 +542,10 @@ class PayfortIntegration
 
     public function generateMerchantReference()
     {
-        return session('ReservationNo');
+        if ($this->merchantReference != '') {
+            return '--I--' . $this->merchantReference . '--' . time() . '--';
+        }
+        return '--R--' . session('ReservationNo') . '--' . time() . '--';
     }
     
     /**
