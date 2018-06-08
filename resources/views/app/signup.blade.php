@@ -72,6 +72,7 @@
 @section('custom_script')
 
 <script type="text/javascript">
+    var max_upload_size = {!! env('MAX_UPLOAD_SIZE_IN_MB',2) !!};
     jQuery(function() {
         var old_date = moment().subtract(18, 'years').subtract(1, 'days');
         // Set Notifier defaults
@@ -247,6 +248,12 @@
                 return;
             }
 
+            if (id_doc.val() && id_doc[0].files[0].size > max_upload_size*1000*1000) {
+                id_doc.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                id_doc.val('');
+                return;
+            }
+
             if (id_type.val() == 'P' || !isNaN(id_version.val()) && id_version.val() != 0 && /^[0-9]{1,2}$/.test(id_version.val())) {
                 // Valid ID Version number
             } else {
@@ -266,6 +273,11 @@
             if (license_doc.get(0).files.length === 0) {
                 // ID Doc - mandatory
                 license_doc.focus().notify("Submit a snapshot of the License ID", "error");
+                return;
+            }
+            if (license_doc.val() && license_doc[0].files[0].size > max_upload_size*1000*1000) {
+                license_doc.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                license_doc.val('');
                 return;
             }
 

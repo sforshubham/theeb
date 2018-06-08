@@ -72,6 +72,8 @@
 @section('custom_script')
 
 <script type="text/javascript">
+    var max_upload_size = {!! env('MAX_UPLOAD_SIZE_IN_MB',2) !!};
+
     jQuery(function() {
         //var old_date = moment().subtract(18, 'years').subtract(1, 'days');
         // Set Notifier defaults
@@ -102,6 +104,23 @@
             jQuery(this).val(picker.startDate.format('DD/MM/YYYY'));
         });
 
+        // Id type - dropdown - on change event handler
+        jQuery('select[name="IdType"]').change(function() {
+            var id_type = jQuery(this);
+            var id_version = jQuery('input[name="id_version"]')
+
+            id_version.prop('disabled', false);
+            if (id_type.val() == 'P') {
+                // Passport - Disable ID Version
+                id_version.val('');
+                id_version.prop('disabled', true);
+            }
+
+            if (jQuery('input[name="IdNo"]').val() != '') {
+                jQuery('input[name="IdNo"]').trigger('change');
+            }
+        });
+
         @if ($IdType != '')
             jQuery('select[name="IdType"]').val('{{ $IdType }}').trigger('change');
         @endif
@@ -125,6 +144,7 @@
             var address1 = jQuery('input[name="Address1"]');
             var address2 = jQuery('input[name="Address2"]');
             var date_of_birth = jQuery('input[name="DateOfBirth"]');
+            var driver_image = jQuery('input[name="DriverImage"]');
 
             if (id_type.val() == 'P' || !isNaN(IDSerialNo.val()) && IDSerialNo.val() != 0 && /^[0-9]{1,2}$/.test(IDSerialNo.val())) {
                 // Valid ID Version number
@@ -133,15 +153,33 @@
                 return;
             }
 
+            if (id_doc.val() && id_doc[0].files[0].size > max_upload_size*1000*1000) {
+                id_doc.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                id_doc.val('');
+                return;
+            }
+
+
             if (license_expiry_date.val() == "") {
                 // License Expiry Date - mandatory
                 license_expiry_date.focus().notify("Please enter the expiry date for License", "error");
+                return;
+            }
+            if (license_doc.val() && license_doc[0].files[0].size > max_upload_size*1000*1000) {
+                license_doc.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                license_doc.val('');
                 return;
             }
 
             // Mobile validation
             if (!/^05[0-9]{8}$/.test(mobile.val())) {
                 mobile.focus().notify("Invalid mobile number", "error");
+                return;
+            }
+
+            if (driver_image.val() && driver_image[0].files[0].size > max_upload_size*1000*1000) {
+                driver_image.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                driver_image.val('');
                 return;
             }
 
