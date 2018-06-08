@@ -46,6 +46,7 @@
                                     </div>
                                     <div class="two-column-signup">
                                         <input disabled="disabled" type="text" placeholder="{{ __('Email') }}*" name="Email" value="{{ $Email }}" />
+                                        <input type="file" name="DriverImage" title ="Upload Driver profile image"/>
                                     </div>
                                     <input type="button" value="{{ __('Update') }}" name="signup" />
                                 </form>

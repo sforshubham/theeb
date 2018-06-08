@@ -618,6 +618,11 @@ class UsersController extends SoapController
                     $request_body['LicenseDoc'] = $license_doc['file_base64'];
                     $request_body['LicenseDocFileExt'] = '.' . strtoupper($license_doc['ext']);
                 }
+                if ($request->hasFile('DriverImage')) {
+                    $img_doc = $this->getFileAndEncode($request->file('DriverImage'));
+                    $request_body['DriverImage'] = $img_doc['file_base64'];
+                    $request_body['DriverImageFileExt'] = '.' . strtoupper($img_doc['ext']);
+                }
                 $request_body['Operation'] = 'E';
                 $result = $this->getDriverCreateModify($request_body);
                 if (empty((array) $result) || !isset($result->Success)) {

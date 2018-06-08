@@ -113,7 +113,7 @@
                                     <td>{{ $agreement->DebitorCode }}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>License No</td>
+                                    <td>Vehicle No</td>
                                     <td>{{ $agreement->LicenseNo }}</td>
                                     <td>Model</td>
                                     <td>{{ $agreement->AgreementModelName }}</td>

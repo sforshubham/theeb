@@ -10,7 +10,7 @@
                         <div class="white-bg">
                             <div class="left-wrap-profile floatRight">
                                 <div class="profile-image-show">
-                                    <img src="data:image/gif;base64,{{$data->DriverImage}}" onerror="this.src='{!!$setting['profile_img']!!}'"/>
+                                    <img src="data:image/gif;base64,{{base64_decode($data->DriverImage)}}" onerror="this.src='{!!$setting['profile_img']!!}'"/>
                                     <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">
