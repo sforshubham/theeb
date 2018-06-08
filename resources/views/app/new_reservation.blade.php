@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-            <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
+            <div class="bodyPageHolder">
                 <div class="safeArea">
                     <div class="rental-tabs-top">
                         <a href="#" class="rental-history-btn">Rental History</a>
@@ -14,15 +14,13 @@
                     <div>
                         <div class="white-bg">
                             <div class="from-end-date-rental">
-                                <input type="text" placeholder="From Date" />
-                                <input type="text" placeholder="To Date" />
+                                <input type="text" placeholder="Filter by date range" id="daterangepicker" />
                             </div>
                             <div class="address-table border-all padding-all-10">
-                                <div class="floatRight mg-rt-30 theeb-logo"><img src="../images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
+                                <div class="floatRight mg-rt-30 theeb-logo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
                                 <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
                                     <br>Riyadh- 11423, P.O-9551,
                                     <br/>H.O contact- 011 2780246, Customer Service - 925002345
-                                    <br/> Branch : 10
                                 </div>
                                 <div class="clearBoth"></div>
                             </div>
@@ -68,3 +66,4 @@
             </div>
 
 @stop
+@include('app.daterangepicker')

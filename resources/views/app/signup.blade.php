@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
+    <div class="bodyPageHolder">
         <div class="safeArea">
 
             <div>

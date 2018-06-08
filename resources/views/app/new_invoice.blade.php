@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-            <div class="bodyPageHolder" style="background: url(images/about-page-img.html) no-repeat center top;">
+            <div class="bodyPageHolder">
                 <div class="safeArea">
                     <div class="rental-tabs-top">
                         <a href="javascript:" class="rental-history-btn">{{ __('Rental History') }}</a>
@@ -34,7 +34,7 @@
                                 @for ($i = 0; $i < $row_count; $i++)
                                     @php ($invoice = $result->Invoices->Invoice[$i])
                                     <div class="address-table border-all padding-all-10" style="border-bottom: none;">
-                                        <div class="floatRight mg-rt-30 theeb-logo"><img src="../images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
+                                        <div class="floatRight mg-rt-30 theeb-logo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
                                         <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
                                             <br>{{ $result->Invoices->H1 }}
                                             <br/>{{ $result->Invoices->H2 }}

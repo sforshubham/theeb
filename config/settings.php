@@ -39,6 +39,7 @@ return [
         'new_reservation' => 'Reservation created successfully',
         'extend_reservation' => 'Booking details updated successfully',
         'profile_updated' => 'Profile updated successfully',
+        'signup_success' => 'Your details have been saved successfully. Please login with your credentials.',
     ],
     'cmd_operation' => [
         'view_driver' => 'V',
@@ -49,7 +50,7 @@ return [
     'trans_master' => [
         'agreement' => [
             'operation' => 'A',
-            'view' => 'agreement',
+            'view' => 'new_agreement',
             'labels' => [
                 'CheckOutBranch' => 'Check Out Branch',
                 'CheckInBranch' => 'Check In Branch',
@@ -144,7 +145,7 @@ return [
         ],
         'payment' => [
             'operation' => 'P',
-            'view' => 'payment',
+            'view' => 'new_payment',
             'labels' => [
                 'ReceiptNo' => 'Receipt No',
                 'PaymentMethod' => 'Payment Method',
