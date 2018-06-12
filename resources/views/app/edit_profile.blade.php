@@ -107,13 +107,13 @@
         // Id type - dropdown - on change event handler
         jQuery('select[name="IdType"]').change(function() {
             var id_type = jQuery(this);
-            var id_version = jQuery('input[name="id_version"]')
+            var IDSerialNo = jQuery('input[name="IDSerialNo"]')
 
-            id_version.prop('disabled', false);
+            IDSerialNo.prop('disabled', false);
             if (id_type.val() == 'P') {
                 // Passport - Disable ID Version
-                id_version.val('');
-                id_version.prop('disabled', true);
+                IDSerialNo.val('');
+                IDSerialNo.prop('disabled', true);
             }
 
             if (jQuery('input[name="IdNo"]').val() != '') {
