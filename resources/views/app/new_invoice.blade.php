@@ -24,7 +24,7 @@
                             </div>
                             @endif 
                             <div class="from-end-date-rental">
-                                <input type="text" placeholder="Filter by date range" id="daterangepicker" />
+                                <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                             </div>
                             @if (isset($result->Invoices) && isset($result->Invoices->Invoice))
                                 @if (is_object($result->Invoices->Invoice))
@@ -83,7 +83,7 @@
                                     </table>
                                     <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice mg-top-30">
                                         <tr>
-                                            <th colspan="8">Renter Information</th>
+                                            <th colspan="8">{{ __('Renter Information') }}</th>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Billing Name') }}</td>
@@ -116,7 +116,7 @@
                                     </table>
                                     <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice mg-top-30">
                                         <tr>
-                                            <th colspan="8">Rental Charges</th>
+                                            <th colspan="8">{{ __('Rental Charges') }}</th>
                                         </tr>
                                         <tr>
                                             <td colspan="8">{{ __('Tariff') }} {{ $invoice->AgreementTariff }} {{ __('Rate No') }} {{ $invoice->AgreementRateNo }} {{ __('Currency') }} {{ $invoice->AgreementCurrency }}</td>
