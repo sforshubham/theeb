@@ -20,10 +20,10 @@
                                             <option value="P">Passport</option>
                                         </select>
                                         <input type="text" placeholder="{{ __('ID Number') }}" name="IdNo" id="IdNo" disabled="disabled" class="id-number" value="{{ $IdNo }}" /><input type="file" name="IdDoc" id="IdDoc"><label for="IdDoc" id="IdDocLabel"></label>
-                                        <input type="text" placeholder="{{ __('ID Version') }}*" name="IDSerialNo" value="{{ $IDSerialNo }}" />
+                                        <input type="text" placeholder="{{ __('ID Version') }}" name="IDSerialNo" value="{{ $IDSerialNo }}" />
                                     </div>
                                     <div class="two-column-signup">
-                                        <input type="text" disabled="disabled" placeholder="{{ __('License Number') }}" class="license-number" name="LicenseId" value="{{ $LicenseId }}" id="LicenseId" /><input type="file" name="LicenseDoc" id="LicenseDoc"><label for="LicenseDoc" id="LicenseDocLabel"></label>
+                                        <input type="text" disabled="disabled" placeholder="{{ __('License Number') }}" class="license-number-edit" name="LicenseId" value="{{ $LicenseId }}" id="LicenseId" /><input type="file" name="LicenseDoc" id="LicenseDoc"><label for="LicenseDoc" id="LicenseDocLabel"></label>
                                         <input type="text" placeholder="{{ __('License Expiry Date') }}*" readonly="readonly" name="LicenseExpiryDate" value="{{ $LicenseExpiryDate }}" />
                                     </div>
                                     <div class="three-column-signup">
@@ -46,7 +46,8 @@
                                     </div>
                                     <div class="two-column-signup">
                                         <input disabled="disabled" type="text" placeholder="{{ __('Email') }}*" name="Email" value="{{ $Email }}" />
-                                        <input type="file" name="DriverImage" title ="Upload Driver profile image"/>
+                                        <!-- <input type="file" name="DriverImage" title ="Upload Driver profile image"/> -->
+                                        <input readonly="readonly" style="cursor:pointer;" type="text" placeholder="{{ __('Driver Image') }}" class="driver-image" id="DriverImgId" /><input type="file" name="DriverImage" id="DriverImage"><label for="DriverImage" id="DriverImageLabel"></label>
                                     </div>
                                     <input type="button" value="{{ __('Update') }}" name="signup" />
                                 </form>
@@ -88,6 +89,15 @@
         @if ($Nationality != '')
             jQuery('select[name="Nationality"] option[value="{{ $Nationality }}"]').attr('selected', 'selected');
         @endif
+
+        jQuery('#DriverImgId').on('click', function(){
+            jQuery('#DriverImage').trigger('click');
+        });
+
+        jQuery('#DriverImage').on('change', function(){
+            var img = jQuery('#DriverImage').val();
+            jQuery('#DriverImgId').val(img);
+        });
 
         // Init license expiry data calender
         jQuery('input[name="LicenseExpiryDate"]').daterangepicker({
@@ -178,7 +188,7 @@
             }
 
             if (driver_image.val() && driver_image[0].files[0].size > max_upload_size*1000*1000) {
-                driver_image.focus().notify("File size should be less than "+max_upload_size+" MB", "error");
+                jQuery('#DriverImgId').focus().notify("File size should be less than "+max_upload_size+" MB", "error");
                 driver_image.val('');
                 return;
             }

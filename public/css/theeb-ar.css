@@ -164,12 +164,14 @@ Version: 1.0
 
 .signup-inner-wrapper{text-align:right;}
 
-.license-number#LicenseId, .id-number#IdNo{ border-top-left-radius: 0; border-bottom-left-radius: 0; width: 24%; border-left: 0; border-left-width: 0; }
-input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
+.license-number-edit#LicenseId, .license-number#LicenseId, .id-number#IdNo, .driver-image#DriverImgId{ border-top-left-radius: 0; border-bottom-left-radius: 0; width: 24%; border-left: 0; border-left-width: 0; }
+input.license-number-edit#LicenseId, input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
 
-#IdDoc, #LicenseDoc{ width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+input.driver-image#DriverImgId{ width: 38.3%; margin-left: 0;}
 
-#IdDocLabel, #LicenseDocLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 27px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-left-radius: 8px; border-top-left-radius: 8px; border: 1px solid #ccc; }
+#IdDoc, #LicenseDoc, #DriverImage{ width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+
+#IdDocLabel, #LicenseDocLabel, #DriverImageLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 27px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-left-radius: 8px; border-top-left-radius: 8px; border: 1px solid #ccc; }
 
 .submit-buttom{margin-bottom:20px !important;}
 
