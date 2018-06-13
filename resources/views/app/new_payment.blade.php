@@ -23,48 +23,20 @@
                             @php($row_count = count($result->Payments->Payment))
                             @for ($i = 0; $i < $row_count; $i++)
                                 @php ($payment = $result->Payments->Payment[$i])
-                            <div class="address-table border-all padding-all-10" style="margin-bottom:0">
-                                <div class="floatRight mg-rt-30 theeb-logo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></div>
-                                <div class="floatRight pd-top-15"><strong>Theeb Rent A Car Co</strong>
-                                    <br>{{ $result->Payments->H1 }}
-                                    <br/>{{ $result->Payments->H2 }}
+                                
+                                <div class="address-table padding-all-10 floatLeft">
+                                        
+                                    <span class="download_link" data-paymentno="{{ $i }}" style="color: #1269a0; cursor: pointer;">Download PDF</span>
+                                    <form action="{{ url('/download_rental_history_pdf') }}" method="post" name="download_pdf_{{ $i }}">
+                                        <input type="hidden" name="for" value="P">
+                                        <input type="hidden" name="payment" value="{{ json_encode($payment) }}">
+                                        <input type="hidden" name="h1" value="{{ $result->Payments->H1 }}">
+                                        <input type="hidden" name="h2" value="{{ $result->Payments->H2 }}">
+                                    </form>
+                                    <div class="clearBoth"></div>
                                 </div>
-                                <div class="clearBoth"></div>
-                            </div>
 
-                            <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
-                                <tr>
-                                    <td colspan="4">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('Receipt No') }}</td>
-                                    <td>{{ $payment->ReceiptNo }}</td>
-                                    <td>{{ __('Invoice No') }}</td>
-                                    <td>{{ $payment->InvoiceNo }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('Receipt Date') }}</td>
-                                    <td>{{ $payment->ReceiptDate }}</td>
-                                    <td>{{ __('Agreement No') }}</td>
-                                    <td>{{ $payment->AgreementNo }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('Customer Name') }}</td>
-                                    <td>{{ $payment->CustomerName }}</td>
-                                    <td>{{ __('Address') }}</td>
-                                    <td>{{ $payment->CustomerAddress }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('Payment Mode') }}</td>
-                                    <td>{{ $payment->PaymentMode }}</td>
-                                    <td>{{ __('Amount/SR') }}</td>
-                                    <td>{{ number_format($payment->ReceiptAmount,2) }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1">{{ __('Created User') }}</td>
-                                    <td colspan="3">{{ $payment->PaymentUser }}</td>
-                                </tr>
-                            </table>
+                                @include('app.single_payment', ['payment' => $payment, 'h1' => $result->Payments->H1, 'h2' => $result->Payments->H2])
                             @endfor
                             <div class="clearBoth"></div>
                         @else
@@ -85,3 +57,13 @@
 
 @stop
 @include('app.daterangepicker')
+@section('custom_script_new')
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery('.download_link').click(function() {
+            var paymentno = jQuery(this).data('paymentno');
+            jQuery('form[name="download_pdf_' + paymentno + '"]').submit();
+        });
+    });
+</script>
+@stop
