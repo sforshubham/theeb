@@ -89,6 +89,7 @@
                     <xs:element type="xs:string" name="AgreementNo"/>
                     <xs:element type="xs:string" name="InvoiceDate"/>
                     <xs:element type="xs:string" name="InvoiceRental"/>
+                    <xs:element type="xs:string" name="InvoiceVat"/>
                     <xs:element type="xs:string" name="InvoiceOther"/>
                     <xs:element type="xs:string" name="InvoiceTotal"/>
                     <xs:element type="xs:string" name="InvoiceTime"/>

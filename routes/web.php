@@ -94,3 +94,4 @@ Route::get('/test', 'SoapController@noshow');
 Route::get('/payfort', 'UsersController@payFortPay');
 Route::get('/maps', 'GuestController@maps');
 Route::get('/sharer', 'GuestController@sharer');
+Route::post('/download_rental_history_pdf', 'UsersController@downloadRentalHistoryPdf');

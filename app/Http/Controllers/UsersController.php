@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Config;
 use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class UsersController extends SoapController
 {
@@ -669,5 +670,24 @@ class UsersController extends SoapController
                 return view('app.edit_profile', $request_body);
             }
         }
+    }
+
+    public function downloadRentalHistoryPdf(Request $request)
+    {
+        if (!isset($request->for)) {
+            return 'Nothing Found';
+        }
+
+        if ($request->for == 'I') {
+            $view_data = View::make('app.pdf_invoice', ['invoice' => json_decode($request->invoice), 'h1' => $request->h1, 'h2' => $request->h2]);
+        }
+        
+        // Generate PDF
+        $mpdf = new \Mpdf\Mpdf([
+            'default_font_size' => 9,
+            'default_font' => 'arial'
+        ]);
+        $mpdf->WriteHTML((string)$view_data);
+        $mpdf->Output('PDF_Document.pdf', 'D');
     }
 }
