@@ -682,8 +682,10 @@ class UsersController extends SoapController
             $view_data = View::make('app.pdf_invoice', ['invoice' => json_decode($request->invoice), 'h1' => $request->h1, 'h2' => $request->h2]);
         } else if ($request->for == 'P') {
             $view_data = View::make('app.pdf_payment', ['payment' => json_decode($request->payment), 'h1' => $request->h1, 'h2' => $request->h2]);
+        } else if ($request->for == 'A') {
+            $view_data = View::make('app.pdf_agreement', ['agreement' => json_decode($request->agreement), 'h1' => $request->h1, 'h2' => $request->h2]);
         }
-        
+
         // Generate PDF
         $mpdf = new \Mpdf\Mpdf([
             'default_font_size' => 9,
