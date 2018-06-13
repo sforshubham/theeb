@@ -1,0 +1,999 @@
+<!doctype html>
+<html>
+    <head id="Head1">
+        <title>PDF Document</title>
+<style type="text/css">
+@page {
+    margin-bottom: 2%;
+    margin-top: 2%; /* <any of the usual CSS values for margins> */
+                /*(% of page-box width for LR, of height for TB) */
+}
+</style>
+    @if (App::getLocale() == 'en')
+<style type="text/css">
+/*
+Theme Name: Theeb
+Theme URI: https://theeb.com.sa/
+Author: Theeb Inc
+Author URI: https://theeb.com.sa/
+Description: Theeb Inc website theme
+Version: 1.0
+*/
+.floatRight {
+    float: left;
+}
+.floatLeft {
+    float: right;
+}
+
+/*Added Amit */
+
+.my-booking-btn{    display: inline-block;  font-size:15px;  background: #1269a0;    padding: 15px 65px;    color: #fff;    border-radius: 10px;    text-align: center;}
+
+.tabs-top ul li{   float:left;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.tabs-top ul{float:right; background: #f9b1c5;    padding-bottom: 7px;    border-radius: 10px;}
+
+.tabs-top ul li a{color:#fff;   padding: 15px 110px; display:block; position:relative;}
+
+.tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}
+
+.tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.tabs-top ul li.active a:after{display:none;}
+
+.tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+
+.tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+
+.tabs-top ul li:last-child a:after{display:none;}
+
+.rental-history-btn{    display: inline-block;    background: #1269a0;    padding: 15px 55px;    color: #fff;    border-radius: 10px;    text-align: center;}
+
+.rental-tabs-top ul li{   float:left;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.rental-tabs-top ul{float:right; background: #f9b1c5;    padding-bottom: 5px;    border-radius: 10px;}
+
+.rental-tabs-top ul li a{color:#fff;   padding: 13px 75px; display:block; position:relative;}
+
+/*.rental-tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; right:0; top:19px;}*/
+
+.rental-tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.rental-tabs-top ul li.active a:after{display:none;}
+
+.rental-tabs-top ul li:first-child{border-radius:10px 0 0 10px}
+
+.rental-tabs-top ul li:last-child{border-radius:0 10px 10px 0}
+
+.rental-tabs-top ul li:last-child a:after{display:none;}
+
+ 
+
+.white-bg{background:#fff; margin-top:50px; border-radius:10px; padding:20px 15px;margin-top: 30px;}
+
+.single-car-section{width:48%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;}
+
+.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:left; padding:0 0 10px 10px;}
+
+.pickup-drop-time span{color:#444; font-size:16px; text-align:center;}
+
+.pickup-drop-time span strong{ color:#1e4878; margin-bottom:10px; display:inline-block; }
+
+.pickup-drop-time{ width:45%; text-align:left; display:inline-block; margin-top:20px; padding-left:10px;  margin-right:10px;}
+
+.border-right{border-right:1px solid #ccc}
+
+.buttons-all { text-align:left; margin-top:30px; margin-left:10px; margin-bottom:30px;}
+
+.buttons-all .buttons{width:110px; text-align:center; display:inline-block;color:#fff; border-radius:10px; font-size:14px; margin-right:10px; padding:10px 23px; }
+
+.buttons-all .cancel-booking-btn{ background:#bf0005;}
+
+.buttons-all .extend-booking-btn{ background:#f59c1e;}
+
+.buttons-all .view-booking-btn{ background:#1d4578;}
+
+.cancelled{color:#ff0000; float:right; padding-right:10px; font-weight:normal;}
+
+table {border-collapse: collapse;}
+
+.table-rental tr th{background:#f1f1f1; color:#333; border:1px solid #ccc; padding:10px; text-align:left;}
+
+.table-rental tr td{border:1px solid #ccc; padding:10px; width:16%}
+
+.table-rental tr td:nth-child(1), .table-rental tr td:nth-child(3){font-weight:bold;}
+
+.address-table{font-weight:normal; margin:20px 0 0;}
+
+.from-end-date-rental input{ background:url(../images/calender.png) no-repeat 96%; border: 1px solid #ccc; margin-right:5px;   padding: 15px 10px;min-width:250px;     float: left;}
+
+.from-end-date-rental:after{clear:both; content:''; display:block}
+
+ 
+
+.tariff-car-section{width:31.5%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;position:relative;}
+
+.tariff-car-section h4{ color:#1e4878; font-size:17px; border-bottom:1px solid #ccc; text-align:left; padding:10px 0px 0 10px;}
+
+.tariff-car-section img{margin-top:10px;}
+
+.tariff-car-section .car-price{    width: 45%;    text-align: left;    display: inline-block;    margin-top: 35px;    padding-left: 10px;    margin-right: 10px;    float: left;    vertical-align: top;}
+
+.filter-category{    padding: 13px 10px;    border: 1px solid #ccc;    min-width: 230px;}
+
+.left-wrap-profile{width:27%; padding:15px; border:1px solid #ccc; border-radius:10px;}
+
+.profile-image-show{ text-align:center;}
+
+.profile-image-show img{border-radius:100%; max-width:150px;}
+
+.profile-image-show h5{font-size:16px;    color: #1269a0;}
+
+.profile-single-wrap{margin-top:15px; font-size:15px;}
+
+.profile-single-wrap strong{display:inline-block; width:50%;}
+
+.profile-details{margin-top:20px;}
+
+.right-wrap-profile{ width:67%}
+
+.profile-right-single{ border-radius: 10px; font-size:14px;width:100%;padding-bottom: 10px; margin-bottom:25px; box-shadow:0px 1px 1px #999; }
+
+.profile-right-single h5{background:#094c77; font-size: 18px; padding:10px; color: #fff; border-radius: 10px 10px 0 0;}
+
+.membership-details strong{    float: left;    width: 20%;    padding: 10px;}
+
+.membership-details span{    float: right;    padding: 10px;    width: 20%;}
+
+.membership-details:after{content:''; clear:both; display:block;}
+
+.login-bg{background:url(../images/login.jpg) no-repeat; margin-top:0px; border-radius:10px; padding:20px 15px; min-height:300px}
+
+.login-wrapper{max-width:600px; margin:40px auto; border-radius: 10px;   min-height: 300px;    border: 1px solid #ccc; position:relative;z-index:0;}
+
+.login-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.white-transparent{background:#fff; border-radius: 10px;opacity:0.7; border-radius:10px; width:100%;z-index:0; height:100%; position:absolute; }
+
+.main-login-wrapper{position:relative;     border-radius: 10px; border-radius:10px;}
+
+.login-wrapper input{width:80%; padding: 15px 20px 15px 50px; font-size:16px; border-radius:8px; border: 1px solid #ccc; margin: 32px auto 0;}
+
+.login-wrapper input.email{background:url(../images/lock.png) #fff 2% no-repeat}
+
+.login-wrapper input.username{background:url(../images/user.png) #fff 2% no-repeat}
+
+.login-wrapper input[type="submit"]{width:92%; background:#1d4578; color:#fff;cursor:pointer;}
+
+.login-inner-wrapper{text-align:center;}
+
+.buttons-signup{margin:20px;}
+
+.buttons-signup a{color:#1d4578; font-weight:bold;}
+
+.signup-wrapper{ margin:30px auto 0; border-radius: 10px;   min-height: 300px;  text-align:left;   border: 1px solid #ccc; position:relative;z-index:0;}
+
+.signup-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.signup-wrapper .two-column-signup  input{width:42%; display:inline-block; padding:10px 20px 10px 20px; font-size:15px; border-radius:8px; border:1px solid #ccc; margin:30px 20px 0;}
+
+.signup-wrapper .three-column-signup input, .signup-wrapper .three-column-signup select{width:28%; display:inline-block; padding:10px 20px 10px 20px; font-size:15px; border-radius:8px; border:1px solid #ccc; margin:30px 0 0 20px;}
+
+.signup-wrapper input[type="button"]{    width: 35%;    background: #1d4578;    color: #fff;    padding: 16px 0;    margin: 20px 20px 20px 350px;    border: 0;    border-radius: 10px;}
+
+.signup-inner-wrapper{text-align:left;}
+
+.license-number#LicenseId, .id-number#IdNo{ border-top-right-radius: 0; border-bottom-right-radius: 0; width: 24%; border-right: 0; border-right-width: 0; }
+input.license-number#LicenseId{ width: 40.3%; margin-right: 0;}
+
+#IdDoc, #LicenseDoc{ width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+
+#IdDocLabel, #LicenseDocLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 27px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-right-radius: 8px; border-top-right-radius: 8px; border: 1px solid #ccc; }
+
+.submit-buttom{margin-bottom:20px !important;}
+
+.change-pwd-input{padding:23px 20px 23px 20px !important}
+
+.change-pwd-input-btn{ width:88% !important; padding:20px !important}
+
+.reservation-individual-wrap {    display: inline-block;    width: 350px;    margin-bottom: 20px;}
+
+.reservation-individual-wrap.width230{     width: 230px;  margin-left:20px;   margin-bottom: 20px;}
+
+.reservation-individual-wrap select {    background: url(../images/selcect_arrow.jpg) 98% 50% no-repeat #fff!important;    -webkit-appearance: none;
+
+    -moz-appearance: none;    appearance: none; width: 100%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;    border-left: 0;
+
+    border-top: 0;}
+
+.reservation-individual-wrap input{    width: 91%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;
+
+    border-left: 0;    border-top: 0;}
+
+.reservation-form{     position: absolute;  background-color: rgba(255,255,255,0.6); padding:20px;    border-radius: 10px;  z-index: 1;    right: 0;    left: 0;    margin: auto;    bottom: 240px;    width: 80%;}
+
+.reservation-form h3{    font-size: 22px;    margin-bottom: 20px;}
+
+.reservation-form .home-butt {    background-color: #dd5094;    border: 0; margin-top:5px;   padding: 10px 15px;    border-radius: 6px;    color: #fff;    cursor: pointer;    text-align: center;    border: 1px solid #b71b5c;}
+
+.SliderCaption{bottom: -70px; width:550px;top:auto; right:0; margin:0 auto;     background: #dd5094;}
+
+.captionPad a.btnMore {
+
+  background: #fff;   color: #000;  font-size: 20px;  height: auto;  padding: 20px 32px;  text-align: center;
+
+  text-transform: uppercase;  width: auto; float:right;  transition: all 300ms linear 0s;}
+
+  .captionPad{padding:0;     border: 1px solid #b12e6d;}
+
+.captionTitle a{    padding: 7px 20px 0; width:70%; font-size:21px;  float: left;}
+
+.payment-pickup-details{width:100%; border:1px solid #999; padding:15px; margin-bottom:20px;}
+.payment-pickup-details.payment-pickup-details-section-first{width: 45%;border: 0;padding: 0;}
+.payment-pickup-details.payment-pickup-details-section-second{width: 45%; border: 0; padding: 0; margin: 0 0 0 70px;}
+
+.payment-pickup-details span{ font-size:18px; color: #1269a0; display:block;}
+
+.payment-pickup-date{padding: 19px 20px 20px 0;    display: inline-block;    border-right: 1px solid #ccc; color:#444;   width: 49%;}
+
+.payment-pickup-location{padding: 19px 20px 20px 0;    display: inline-block;    color:#444;   width: 40%;}
+
+.payment-pickup-details a img{position:relative; top:7px;}
+
+.payment-fare-details{padding: 10px 20px 0px 0;    display: inline-block;   color:#444;   width: 45%;}
+
+.proceed-btn{background: #1269a0;    color: #fff;    margin: 9px auto;    width: 300px;    padding: 20px 40px;    border-radius: 35px;    border: 0;
+
+    font-size: 18px;cursor:pointer;}
+
+.payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px; margin-left: 115px;}
+
+.payment-pickup-details a label{margin-left: 30px;}
+
+.align-left{text-align:left;}
+
+.payment-label{border: 1px solid #9a9a9a; min-width:300px; padding: 20px 40px 20px 4px;}
+
+.payment-credit-card-detail{width:90%;  padding:15px; margin-bottom:20px;}
+
+.payment-master-card{margin:10px 0}
+
+.payment-master-card span{font-size:20px;}
+
+.payment-master-card img{ padding:10px 0}
+
+.payment-net-amount{padding-top: 16px;    padding-bottom: 16px;}
+
+.payment-net-amount img.edit-icon {width: 17px; display: inline; cursor: pointer; padding-right: 20px;}
+
+#input_for_net_payable {color: #999;width: 23%;margin-right: 15px;border: 1px solid #ccc;padding: 10px; display: none; border-top-width: 0;border-left-width: 0;border-right-width: 0;font-size: 16px;}
+
+.payment-view-detail label{font-size:18px; width: 40%;}
+
+.view-detail-payment-pickup{    margin: 10px 0 0px;    border-top: 1px solid #ccc;    padding-top: 10px;   border-bottom: 1px solid #ccc;    padding-bottom: 10px;}
+
+.border-top-none{border-top:0px !important}
+
+.payment-fare-details {border:1px solid #999; width:45%; }
+
+.view-detail-payment-pickup-drop { padding:10px 20px 10px 10px !important}
+
+.payment-fare-details h4{font-size:18px; color:#1269a0;padding:10px 0 7px 10px; border-bottom:1px solid #999;}
+
+.payment-fare-details label{display:inline-block; float:none; width:47%; font-size:16px;  padding:7px 0 10px 10px}
+
+.payment-fare-details span{display:inline-block; width:47%; font-size:16px; padding:7px 0 10px 10px}
+
+.padding-none{padding:0px !important}
+
+.border-none{border:0 !important;}
+
+.pd-left-10{padding-left:10px;}
+
+.wdth-49{width:49% !important}
+
+.proceed-btn-select-car{ background:#1269a0;margin:0 10px 10px 0;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: right;    text-align: center;top: -7px;}
+
+.price-tag{background: url(../images/price-bg.png) no-repeat right;    color: #fff;    padding: 10px 30px 10px 10px;   position: absolute; left:0;    top: 15px;}
+
+.select-car img{margin-top:30px}
+
+.show-vehicles-individual-wrap label{float:left; padding-top:0px; width:20%; font-size:18px; color:#1269a0;}
+.show-vehicles-individual-wrap select{float:left; color:#999; width:25%; margin-right:15px; border:1px solid #ccc; padding:10px }
+.show-vehicles-individual-wrap:after{clear:both; display:block;  content:'';}
+.show-vehicles-individual-wrap img{    position: relative;  margin-right:10px;   top: 5px;}
+.show-vehicles-individual-wrap{margin-bottom:20px;}
+.show-vehicles-individual-wrap input[type="text"]{float:left; color:#999; width:23%; margin-right:15px; background:url(../images/calender-grey-icon.png)  no-repeat right; border:1px solid #ccc; padding:10px}
+.show-vehicles-individual-wrap input[type="submit"]{float:left; color:#fff; width:25%; border-radius:10px; margin-right:15px; background:#1269a0; border:0;padding:15px 10px;cursor:pointer;font-size: 15px;}
+
+.mg-rt-30{margin-right:30px}
+.border-all{border:1px solid #ccc;}
+.theeb-logo img{width:80%}
+.padding-all-10{padding:10px;}
+.pd-top-15{padding-top:15px;}
+.table-rental{border:1px solid #ccc;}
+.table-invoice tr td{width:10%}
+.mg-top-30{margin-top:30px;}
+.table-rental tr td:nth-child(5), .table-rental tr td:nth-child(7){font-weight:bold;}
+
+
+/*--------------CSS by Shubham start-------------------*/
+.single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
+.truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+.payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-left: auto; margin-right: auto;}
+.payment-pickup-details  h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+.doc-download-btn {color: #333;}
+span.my-booking-reservation-no{font-size: small; margin-top: 8px; display: block;}
+
+/*--------------modal start-------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*--------------modal end-------------------*/
+/*--------------CSS by Shubham end-------------------*/
+
+/*--------------CSS for Loader start-------------------*/
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*--------------CSS for Loader end-------------------*/
+
+.bln_pay {float: right;}
+</style>
+    @else
+<style type="text/css">
+td, div {
+    vertical-align: top;
+    font-family: Arial;
+}
+.floatRight {
+    float: right;
+}
+.floatLeft {
+    float: left;
+}
+/*
+Theme Name: Theeb
+Theme URI: https://theeb.com.sa/
+Author: Theeb Inc
+Author URI: https://theeb.com.sa/
+Description: Theeb Inc website theme
+Version: 1.0
+*/
+
+
+/*Added Amit */
+
+.my-booking-btn{    display: inline-block;    background: #1269a0;    padding: 15px 65px;    color: #fff;    border-radius: 10px; font-size:15px;   text-align: center;}
+
+.tabs-top ul li{   float:right;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.tabs-top ul{float:left; background: #f9b1c5;    padding-bottom: 7px;    border-radius: 10px;}
+
+.tabs-top ul li a{color:#fff;   padding: 15px 110px; display:block; position:relative;}
+
+.tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; left:0; top:19px;}
+
+.tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.tabs-top ul li.active a:after{display:none;}
+
+.tabs-top ul li:first-child{border-radius:0 10px 10px 0}
+
+.tabs-top ul li:last-child{border-radius:10px 0 0 10px}
+
+.tabs-top ul li:last-child a:after{display:none;}
+
+.rental-history-btn{    display: inline-block;    background: #1269a0;    padding: 15px 55px;    color: #fff;    border-radius: 10px;    text-align: center;}
+
+.rental-tabs-top ul li{   float:right;    background: #1269a0;     color: #fff;     text-align: center;}
+
+.rental-tabs-top ul{float:left; background: #f9b1c5;    padding-bottom: 5px;    border-radius: 10px;}
+
+.rental-tabs-top ul li a{color:#fff;   padding: 13px 75px; display:block; position:relative;}
+
+/*.rental-tabs-top ul li a:after{ position:absolute; width:1px; height:12px; content:''; display:block;background:#fff; left:0; top:19px;}*/
+
+.rental-tabs-top ul li.active{color:#fff; background:#f9b1c5; position:relative;}
+
+.rental-tabs-top ul li.active a:after{display:none;}
+
+.rental-tabs-top ul li:first-child{border-radius:0 10px 10px 0}
+
+.rental-tabs-top ul li:last-child{border-radius:10px 0 0 10px}
+
+.rental-tabs-top ul li:last-child a:after{display:none;}
+
+ 
+
+.white-bg{background:#fff; margin-top:30px; border-radius:10px; padding:20px 15px;}
+
+.single-car-section{width:48%; float:right; text-align:center; border:1px solid #ccc; border-radius:10px; margin-right:15px; margin-bottom:30px;}
+
+.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:right; padding:0 10px 10px 0;}
+
+.pickup-drop-time span{color:#444; font-size:16px; text-align:center;}
+
+.pickup-drop-time span strong{ color:#1e4878; margin-bottom:10px; display:inline-block; }
+
+.pickup-drop-time{ width:45%; text-align:right; display:inline-block; margin-top:20px; padding-right:10px;  margin-left:10px;}
+
+.border-right{border-left:1px solid #ccc}
+
+.buttons-all { text-align:right; margin-top:30px; margin-right:10px; margin-bottom:30px;}
+
+.buttons-all .buttons{width:110px; text-align:center; display:inline-block;color:#fff; border-radius:10px; font-size:14px; margin-left:10px; padding:10px 23px; }
+
+.buttons-all .cancel-booking-btn{ background:#bf0005;}
+
+.buttons-all .extend-booking-btn{ background:#f59c1e;}
+
+.buttons-all .view-booking-btn{ background:#1d4578;}
+
+.cancelled{color:#ff0000; float:left; padding-left:10px; font-weight:normal;}
+
+table {border-collapse: collapse;}
+
+.table-rental tr th{background:#f1f1f1; color:#333; border:1px solid #ccc; padding:10px; text-align:right;}
+
+.table-rental tr td{border:1px solid #ccc; padding:10px; width:16%}
+
+.table-rental tr td:nth-child(1), .table-rental tr td:nth-child(3){font-weight:bold;}
+
+.address-table{font-weight:normal; margin:20px 0 0;}
+
+.from-end-date-rental input{ background:url(../images/calender.png) no-repeat 2%; border: 1px solid #ccc; margin-left:5px;   padding: 15px 10px;min-width:250px;     float: right;}
+
+.from-end-date-rental:after{clear:both; content:''; display:block}
+
+ 
+
+.tariff-car-section{width:31.5%; float:right; text-align:center; border:1px solid #ccc; border-radius:10px; margin-right:15px; margin-right:0; margin-bottom:30px;position:relative;}
+
+.tariff-car-section h4{ color:#1e4878; font-size:17px; border-bottom:1px solid #ccc; text-align:right; padding:10px 10px 0 0;}
+
+.tariff-car-section img{margin-top:10px;}
+
+.tariff-car-section .car-price{    width: 45%;    text-align: right;    display: inline-block;    margin-top: 35px;    padding-right: 10px;    margin-left: 10px;    float: right;    vertical-align: top; padding-left: 0; margin-right: 0; }
+
+.filter-category{    padding: 13px 10px;    border: 1px solid #ccc;    min-width: 230px;}
+
+.left-wrap-profile{width:27%; padding:15px; border:1px solid #ccc; border-radius:10px;}
+
+.profile-image-show{ text-align:center;}
+
+.profile-image-show img{border-radius:100%; max-width:150px;}
+
+.profile-image-show h5{font-size:16px;    color: #1269a0;}
+
+.profile-single-wrap{margin-top:15px; font-size:15px;}
+
+.profile-single-wrap strong{display:inline-block; width:50%;}
+
+.profile-details{margin-top:20px;}
+
+.right-wrap-profile{ width:67%}
+
+.profile-right-single{ border-radius: 10px; font-size:14px;width:100%;padding-bottom: 10px; margin-bottom:25px; box-shadow:0px 1px 1px #999; }
+
+.profile-right-single h5{background:#094c77; font-size: 18px; padding:10px; color: #fff; border-radius: 10px 10px 0 0;}
+
+.membership-details strong{    float: right;    width: 20%;    padding: 10px;}
+
+.membership-details span{    float: left;    padding: 10px;    width: 20%;}
+
+.membership-details:after{content:''; clear:both; display:block;}
+
+.login-bg{background:url(../images/login.jpg) no-repeat; margin-top:0px; border-radius:10px; padding:20px 15px; min-height:300px}
+
+.login-wrapper{max-width:600px; margin:40px auto; border-radius: 10px;   min-height: 300px;    border: 1px solid #ccc; position:relative;z-index:0;}
+
+.login-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.white-transparent{background:#fff; border-radius: 10px;opacity:0.7; border-radius:10px; width:100%;z-index:0; height:100%; position:absolute; }
+
+.main-login-wrapper{position:relative;  z-index: 0;   border-radius: 10px; border-radius:10px;}
+
+.login-wrapper input{width:80%; padding:15px 50px 15px 20px; font-size:16px; border-radius:8px; border:1px solid #ccc; margin:32px auto 0;}
+
+.login-wrapper input.email{background:url(../images/lock.png) #fff 98% no-repeat}
+
+.login-wrapper input.username{background:url(../images/user.png) #fff 98% no-repeat}
+
+.login-wrapper input[type="submit"]{width:92%; background:#1d4578; color:#fff;cursor:pointer;}
+
+.login-inner-wrapper{text-align:center;}
+
+.buttons-signup{margin:20px;}
+
+.buttons-signup a{color:#1d4578; font-weight:bold;}
+
+.signup-wrapper{ margin:30px auto 0; border-radius: 10px;   min-height: 300px;  text-align:right;   border: 1px solid #ccc; position:relative;z-index:0;}
+
+.signup-wrapper h4{background:#1d4578;border-radius: 10px 10px 0 0;font-size: 18px; color:#fff;    padding: 20px;}
+
+.signup-wrapper .two-column-signup  input{width:42%; display:inline-block; padding:10px 20px 10px 20px; font-size:17px; border-radius:8px; border:1px solid #ccc; margin:30px 20px 0;}
+
+.signup-wrapper .three-column-signup input, .signup-wrapper .three-column-signup select{width:28%; display:inline-block; padding:10px 20px 10px 20px; font-size:15px; border-radius:8px; border:1px solid #ccc; margin:30px 20px 0 0;}
+
+.signup-wrapper input[type="button"]{    width: 35%;    background: #1d4578;    color: #fff;    padding: 16px 0;    margin: 20px 350px 20px 20px;    border: 0;    border-radius: 10px;}
+
+.signup-inner-wrapper{text-align:right;}
+
+.license-number#LicenseId, .id-number#IdNo{ border-top-left-radius: 0; border-bottom-left-radius: 0; width: 24%; border-left: 0; border-left-width: 0; }
+input.license-number#LicenseId{ width: 40.3%; margin-left: 0;}
+
+#IdDoc, #LicenseDoc{ width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+
+#IdDocLabel, #LicenseDocLabel{ cursor: pointer; background: url(../images/upload-icon.png) no-repeat #fff 50%;width: 40px;height: 27px;display: inline-block;padding: 12px 0 0 0;margin: 0;vertical-align: bottom; float: none; border-bottom-left-radius: 8px; border-top-left-radius: 8px; border: 1px solid #ccc; }
+
+.submit-buttom{margin-bottom:20px !important;}
+
+.change-pwd-input{padding:23px 20px 23px 20px !important}
+
+.change-pwd-input-btn{ width:88% !important; padding:20px !important}
+
+.reservation-individual-wrap {    display: inline-block;    width: 350px;    margin-bottom: 20px;}
+
+.reservation-individual-wrap.width230{     width: 230px;  margin-right:20px;   margin-bottom: 20px;}
+
+.reservation-individual-wrap select {    background: url(../images/selcect_arrow.jpg) 98% 50% no-repeat #fff!important;    -webkit-appearance: none;
+
+    -moz-appearance: none;    appearance: none; width: 100%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;    border-right: 0;
+
+    border-top: 0;}
+
+.reservation-individual-wrap input{    width: 91%;    padding: 15px 10px;    border-radius: 6px;    border: 2px solid #0d6ba8;
+
+    border-right: 0;    border-top: 0;}
+
+.reservation-form{     position: absolute;  background-color: rgba(255,255,255,0.6); padding:20px;    border-radius: 10px;  z-index: 1;    left: 0;    right: 0;    margin: auto;    bottom: 240px;    width: 80%;}
+
+.reservation-form h3{    font-size: 22px;    margin-bottom: 20px;}
+
+.reservation-form .home-butt {    background-color: #dd5094;    border: 0; margin-top:5px;   padding: 10px 15px;    border-radius: 6px;    color: #fff;    cursor: pointer;    text-align: center;    border: 1px solid #b71b5c;}
+
+.SliderCaption{bottom: -70px; width:550px;top:auto; left:0; margin:0 auto;     background: #dd5094;}
+
+.captionPad a.btnMore {
+
+  background: #fff;   color: #000;  font-size: 20px;  height: auto;  padding: 20px 32px;  text-align: center;
+
+  text-transform: uppercase;  width: auto; float:left;  transition: all 300ms linear 0s;}
+
+  .captionPad{padding:0;     border: 1px solid #b12e6d;}
+
+.captionTitle a{    padding: 7px 20px 0; width:70%; font-size:21px;  float: right;}
+
+.payment-pickup-details{width:100%; border:1px solid #999; padding:15px; margin-bottom:20px;}
+.payment-pickup-details.payment-pickup-details-section-first{width: 45%;border: 0;padding: 0;}
+.payment-pickup-details.payment-pickup-details-section-second{width: 45%; border: 0; padding: 0; margin: 0 70px 0 0;}
+
+.payment-pickup-details span{ font-size:18px; color: #1269a0; display:block;}
+
+.payment-pickup-date{padding: 19px 20px 20px 0;    display: inline-block;    border-left: 1px solid #ccc; color:#444;   width: 49%;}
+
+.payment-pickup-location{padding: 19px 20px 20px 0;    display: inline-block;    color:#444;   width: 40%;}
+
+.payment-pickup-details a img{position:relative; top:7px;}
+
+.payment-fare-details{padding: 10px 20px 0px 0;    display: inline-block;   color:#444;   width: 45%;}
+
+.proceed-btn{background: #1269a0;    color: #fff;    margin: 9px auto;    width: 300px;    padding: 20px 40px;    border-radius: 35px;    border: 0;
+
+    font-size: 18px;cursor:pointer;}
+
+.payment-pickup-details-btn{width:44%; border:0px solid #999; text-align:center;padding:15px; margin-bottom:20px; margin-right: 115px;}
+
+.payment-pickup-details a label{margin-right: 30px;}
+
+.align-left{text-align:right;}
+
+.payment-label{border: 1px solid #9a9a9a; min-width:300px; padding: 20px 40px 20px 4px;}
+
+.payment-credit-card-detail{width:90%;  padding:15px; margin-bottom:20px;}
+
+.payment-master-card{margin:10px 0}
+
+.payment-master-card span{font-size:20px;}
+
+.payment-master-card img{ padding:10px 0}
+
+.payment-net-amount{padding-top: 16px;    padding-bottom: 16px;}
+
+.payment-net-amount img.edit-icon {width: 17px; display: inline; cursor: pointer; padding-left: 20px;}
+
+#input_for_net_payable {color: #999;width: 23%;margin-left: 15px;border: 1px solid #ccc;padding: 10px; display: none; border-top-width: 0;border-left-width: 0;border-right-width: 0;font-size: 16px;}
+
+.payment-view-detail label{font-size:18px; width: 40%;}
+
+.view-detail-payment-pickup{    margin: 10px 0 0px;    border-top: 1px solid #ccc;    padding-top: 10px;   border-bottom: 1px solid #ccc;    padding-bottom: 10px;}
+
+.border-top-none{border-top:0px !important}
+
+.payment-fare-details {border:1px solid #999; width:45%; }
+
+.view-detail-payment-pickup-drop { padding:10px 20px 10px 10px !important}
+
+.payment-fare-details h4{font-size:18px; color:#1269a0;padding:10px 0 7px 10px; border-bottom:1px solid #999;}
+
+.payment-fare-details label{display:inline-block; float:none; width:47%; font-size:16px;  padding:7px 0 10px 10px}
+
+.payment-fare-details span{display:inline-block; width:47%; font-size:16px; padding:7px 0 10px 10px}
+
+.padding-none{padding:0px !important}
+
+.border-none{border:0 !important;}
+
+.pd-left-10{padding-right:10px;}
+
+.wdth-49{width:49% !important}
+
+.proceed-btn-select-car{ background:#1269a0;margin:0 0 10px 10px;   width: 70px; color:#fff;   padding: 10px;    border-radius: 15px;    border: 0;    font-size: 14px;    float: left;    text-align: center;top: -7px;}
+
+.price-tag{background: url(../images/price-bg-ar.png) no-repeat left;    color: #fff;    padding: 10px 10px 10px 30px;   position: absolute; right:0;    top: 15px; left: auto;}
+
+.select-car img{margin-top:30px}
+
+.show-vehicles-individual-wrap label{float:right; padding-top:0px; width:20%; font-size:18px; color:#1269a0;}
+.show-vehicles-individual-wrap select{float:right; color:#999; width:25%; margin-left:15px; border:1px solid #ccc; padding:10px }
+.show-vehicles-individual-wrap:after{clear:both; display:block;  content:'';}
+.show-vehicles-individual-wrap img{    position: relative;  margin-left:10px;   top: 5px;}
+.show-vehicles-individual-wrap{margin-bottom:20px;}
+.show-vehicles-individual-wrap input[type="text"]{float:right; color:#999; width:23%; margin-left:15px; background:url(../images/calender-grey-icon.png)  no-repeat left; border:1px solid #ccc; padding:10px}
+.show-vehicles-individual-wrap input[type="submit"]{float:right; color:#fff; width:25%; border-radius:10px; margin-left:15px; background:#1269a0; border:0;padding:15px 10px; font-size: 15px; cursor:pointer;}
+
+.mg-rt-30{margin-right:30px}
+.border-all{border:1px solid #ccc;}
+.theeb-logo img{width:80%}
+.padding-all-10{padding:10px;}
+.pd-top-15{padding-top:15px;}
+.table-rental{border:1px solid #ccc;}
+.table-invoice tr td{width:10%}
+.mg-top-30{margin-top:30px;}
+.table-rental tr td:nth-child(5), .table-rental tr td:nth-child(7){font-weight:bold;}
+
+/*--------------CSS by Shubham start-------------------*/
+.single-car-section > img, .tariff-car-section > img {width:400px;height:224px;}
+.truncate-text{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+.payment-pickup-details > img {max-height: 310px;text-align: center;display: block; margin-right: auto; margin-left: auto;}
+.payment-pickup-details  h4{color: #1e4878; font-size: 20px; border-bottom: 1px solid #ccc; padding:  10px 0 10px 0px;}
+.doc-download-btn {color: #333;}
+span.my-booking-reservation-no{font-size: small; margin-top: 8px; display: block;}
+
+/*--------------modal start-------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    right: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*--------------modal end-------------------*/
+/*--------------CSS by Shubham end-------------------*/
+
+/*--------------CSS for Loader start-------------------*/
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*--------------CSS for Loader end-------------------*/
+
+.bln_pay {float: left;}
+</style>
+
+    @endif
+    </head>
+    <body style="
+        @if (App::getLocale() == 'ar')
+            direction: rtl; 
+        @endif
+    ">
+       
+        <div id="DivBody">
+            
+            @yield('content')
+            
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>
