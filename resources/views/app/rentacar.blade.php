@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
             <div class="bodyPageHolder">
+                 <div class="book-a-car-bg"></div>
                 <div class="safeArea">
                     <div class="tabs-top">
                         <a href="javascript:" class="my-booking-btn">{{ __('Show Vehicles') }}</a>
@@ -28,44 +29,32 @@
                     $vehicleOptn = str_replace('<option value="'.$selected['CarCategory'].'">', '<option value="'.$selected['CarCategory'].'" selected="selected">', $vehicleOptn);
                     ?>
                     <div>
-                        <div class="white-bg">
+                        <div class="white-bg white-bg-space">
                             <div class="show-vehicles">
                             <form method="GET" action = "{{url('/price_estimation')}}">
-                                <div class="show-vehicles-individual-wrap">
-                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />{{ __('Pickup Location') }}</label>
-                                    <select name="PickupLocation" id="out_location" required="required">
+                                <div class="show-vehicles-individual-wrap ishow-vehicles-individual-wrap">
+                                    <select class="widthbig" name="PickupLocation" id="out_location" required="required">
                                         <option value="">{{ __('Select Pickup Location') }}</option>
                                         {!! isset($input_data['PickupLocation']) ? str_replace('<option value="'.$input_data['PickupLocation'].'">', '<option value="'.$input_data['PickupLocation'].'" selected="selected">', $branchOptn) : $branchOptn !!}
                                     </select>
-                                    <label><img src="{{url('/')}}/images/map-icon.png" align="absmiddle" />{{ __('Drop Location') }}</label>
-                                    <select name="DropLocation" id="in_location" required="required">
-                                        <option value="">{{ __('Select Drop Location') }}</option>
-                                        {!! isset($input_data['DropLocation']) ? str_replace('<option value="'.$input_data['DropLocation'].'">', '<option value="'.$input_data['DropLocation'].'" selected="selected">', $branchOptn) : $branchOptn !!}
-                                    </select>
-                                </div>
-                                <div class="show-vehicles-individual-wrap">
-                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />{{ __('Pickup Time') }}</label>
-                                    <input type="text" placeholder="Select Pickup Time" id="datetimepicker1" required="required" readonly="readonly" />
+                                    <input class="widthsm" type="text" placeholder="Select Pickup Time" id="datetimepicker1" required="required" readonly="readonly" />
                                     <input type="hidden" name="PickupDate" id="out_date" value="{{ $input_data['PickupDate'] ?? '' }}" />
                                     <input type="hidden" name="PickupTime" id="out_time" value="{{ $input_data['PickupTime'] ?? '' }}" />
-                                    <label><img src="{{url('/')}}/images/time-icon.png" align="absmiddle" />{{ __('Drop Time') }}</label>
-                                    <input type="text" placeholder="Select Drop Time" id="datetimepicker2" required="required" readonly="readonly" />
-                                    <input type="hidden" name="DropDate" id="in_date" value="{{ $input_data['DropDate'] ?? '' }}"/>
-                                    <input type="hidden" name="DropTime" id="in_time" value="{{ $input_data['DropTime'] ?? '' }}"/>
-                                    <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
-                                </div>
-                                <div class="show-vehicles-individual-wrap">
-                                    <label><img src="{{url('/')}}/images/car-icon.png" align="absmiddle" />{{ __('Select Car Category') }}</label>
-                                    <select name="CarCategory" required="required">
+                                    <select class="widthbig" name="CarCategory" required="required">
                                         <option value="">{{ __('Select Car Category') }}</option>
                                         {!! $vehicleOptn !!}
                                     </select>
-
                                 </div>
-                                <div class="show-vehicles-individual-wrap">
-                                    <label>&nbsp;</label>
-                                    <input type="submit" id="FormSubmit" Value="{{ __('Show Vehicles') }}" />
-
+                                <div class="show-vehicles-individual-wrap ishow-vehicles-individual-wrap">
+                                    <select class="widthbig" name="DropLocation" id="in_location" required="required">
+                                        <option value="">{{ __('Select Drop Location') }}</option>
+                                        {!! isset($input_data['DropLocation']) ? str_replace('<option value="'.$input_data['DropLocation'].'">', '<option value="'.$input_data['DropLocation'].'" selected="selected">', $branchOptn) : $branchOptn !!}
+                                    </select>
+                                    <input class="widthsm" type="text" placeholder="Select Drop Time" id="datetimepicker2" required="required" readonly="readonly" />
+                                    <input type="hidden" name="DropDate" id="in_date" value="{{ $input_data['DropDate'] ?? '' }}"/>
+                                    <input type="hidden" name="DropTime" id="in_time" value="{{ $input_data['DropTime'] ?? '' }}"/>
+                                    <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
+                                    <input class="widthbig" type="submit" id="FormSubmit" Value="{{ __('Show Vehicles') }}" />
                                 </div>
                             </form>
                             </div>
@@ -132,9 +121,14 @@
             var in_location = $('#in_location').val();
             var in_date = $('#in_date').val();
             var in_time = $('#in_time').val();
+            var car_cat = $('select[name="CarCategory"]').val();
 
             if (out_location == '' || in_location == '') {
                 $.notify("Pickup and Drop location can not be blank", {globalPosition: "top right", className: "error"});
+                return false;
+            }
+            if (car_cat == '') {
+                $.notify("Car Category can not be blank", {globalPosition: "top right", className: "error"});
                 return false;
             }
 

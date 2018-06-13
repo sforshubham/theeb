@@ -143,7 +143,13 @@ class GuestController extends SoapController
                 $response['message'] = [$data->VarianceReason];
                 $response['result'] = NULL;
             } else {
-                return redirect('/')->with('success', Config::get('settings.resp_msg.signup_success'));
+                $response['status'] = true;
+                $response['message'] = '';
+                $response['result'] = $data;
+                $request_body = array_replace($request_body, (array)$response['result']);
+                if ($requester != 'view_driver') {
+                    return redirect('/')->with('success', Config::get('settings.resp_msg.signup_success'));
+                }
             }
             /**
              * @todo For users having base64 encoded file handle the case
