@@ -13,7 +13,7 @@
             <div>
                 <div class="white-bg">
                     <div class="from-end-date-rental">
-                        <input type="text" placeholder="Filter by date range" id="daterangepicker" />
+                        <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                     </div>
 
                     @if (isset($result->Payments) && isset($result->Payments->Payment))

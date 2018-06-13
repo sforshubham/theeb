@@ -14,7 +14,7 @@
             <div>
                 <div class="white-bg">
                     <div class="from-end-date-rental">
-                        <input type="text" placeholder="Filter by date range" id="daterangepicker" />
+                        <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                     </div>
 
                     <div class="address-table"></div>
@@ -38,8 +38,8 @@
                             </div>
                         <table cellpadding="0" cellspacing="0" width="100%" class="table-rental">
                             <tr>
-                                <th colspan="3">Reservation No. {{ $reservation->ReservationNo }}</th>
-                                <th colspan="1"><a href="javascript:void(0);" class="doc-download-btn" rel="{{ $reservation->ReservationNo }}">Download Document</a></th>
+                                <th colspan="3">{{ __('Reservation No') }}: {{ $reservation->ReservationNo }}</th>
+                                <th colspan="1"><a href="javascript:void(0);" class="doc-download-btn" rel="{{ $reservation->ReservationNo }}">{{ __('Download Document') }}</a></th>
                             </tr>
                             <tr>
                             @php($j = 1)

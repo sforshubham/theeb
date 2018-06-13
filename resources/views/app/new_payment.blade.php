@@ -14,7 +14,7 @@
                     <div>
                         <div class="white-bg">
                             <div class="from-end-date-rental">
-                                <input type="text" placeholder="Filter by date range" id="daterangepicker" />
+                                <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                             </div>
                         @if (isset($result->Payments) && isset($result->Payments->Payment))
                             @if (is_object($result->Payments->Payment))
@@ -37,31 +37,31 @@
                                     <td colspan="4">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>Receipt No :</td>
+                                    <td>{{ __('Receipt No') }}</td>
                                     <td>{{ $payment->ReceiptNo }}</td>
-                                    <td>Invoice No :</td>
+                                    <td>{{ __('Invoice No') }}</td>
                                     <td>{{ $payment->InvoiceNo }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Receipt Date</td>
+                                    <td>{{ __('Receipt Date') }}</td>
                                     <td>{{ $payment->ReceiptDate }}</td>
-                                    <td>Agreement No.</td>
+                                    <td>{{ __('Agreement No') }}</td>
                                     <td>{{ $payment->AgreementNo }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Customer Name</td>
+                                    <td>{{ __('Customer Name') }}</td>
                                     <td>{{ $payment->CustomerName }}</td>
-                                    <td>Address</td>
+                                    <td>{{ __('Address') }}</td>
                                     <td>{{ $payment->CustomerAddress }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Payment Mode</td>
+                                    <td>{{ __('Payment Mode') }}</td>
                                     <td>{{ $payment->PaymentMode }}</td>
-                                    <td>Amount/SR</td>
+                                    <td>{{ __('Amount/SR') }}</td>
                                     <td>{{ number_format($payment->ReceiptAmount,2) }}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="1">Created User : </td>
+                                    <td colspan="1">{{ __('Created User') }}</td>
                                     <td colspan="3">{{ $payment->PaymentUser }}</td>
                                 </tr>
                             </table>
