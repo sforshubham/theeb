@@ -472,3 +472,59 @@ span.my-booking-reservation-no{font-size: small; margin-top: 8px; display: block
 /*--------------CSS for Loader end-------------------*/
 
 .bln_pay {float: right;}
+
+.book-a-car-bg{background: url(http://www.theeb.com.sa/contentfiles/55Image.jpg) center top no-repeat;width: 1293px;height: 450px;background-size: contain;
+
+    position: absolute;
+
+    z-index: -1;
+
+    top: 201px;
+
+    right: 0;
+
+    bottom: auto;
+
+    left: 0;
+
+    margin: auto; border-radius: 0}
+
+.white-bg-space{margin-bottom: 135px; background-color: rgba(255, 255, 255, 0.7);width: 810px;
+
+    margin-left: auto;
+
+    margin-right: auto;}
+
+.ishow-vehicles-individual-wrap select{background: url(../images/selcect_arrow.jpg) 98% 50% no-repeat #fff!important;
+
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+
+    appearance: none;
+
+    padding: 15px 10px;
+
+    border-radius: 6px;
+
+    border: 2px solid #0d6ba8;
+
+    border-left: 0;
+
+    border-top: 0; color: #000;}
+
+.ishow-vehicles-individual-wrap input[type=text]{
+
+    padding: 15px 10px;
+
+    border-radius: 6px;
+
+    border: 2px solid #0d6ba8;
+
+    border-left: 0;
+
+    border-top: 0; background-color: #fff; color: #000;}
+
+.widthbig{width: 250px !important}
+
+.widthsm{width: 230px !important}

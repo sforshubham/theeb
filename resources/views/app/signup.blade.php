@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="two-column-signup">
                                         <input type="text" placeholder="{{ __('Email') }}*" name="Email" value="{{ $Email }}" />
-                                        <input type="password" placeholder="{{ __('Password') }}*" name="Password" value="{{ $Password }}" />
+                                        <input autocomplete="new-password" type="password" placeholder="{{ __('Password') }}*" name="Password" value="{{ $Password }}" />
                                     </div>
                                     <input type="button" value="{{ __('Register') }}" name="signup" />
                                 </form>
