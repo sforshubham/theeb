@@ -4,7 +4,7 @@
                  <div class="book-a-car-bg"></div>
                 <div class="safeArea">
                     <div class="tabs-top">
-                        <a href="javascript:" class="my-booking-btn">{{ __('Show Vehicles') }}</a>
+                        <a href="javascript:" class="my-booking-btn">{{ __('Reservation') }}</a>
 
                     </div>
                     <?php 
@@ -54,7 +54,7 @@
                                     <input type="hidden" name="DropDate" id="in_date" value="{{ $input_data['DropDate'] ?? '' }}"/>
                                     <input type="hidden" name="DropTime" id="in_time" value="{{ $input_data['DropTime'] ?? '' }}"/>
                                     <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
-                                    <input class="widthbig" type="submit" id="FormSubmit" Value="{{ __('Show Vehicles') }}" />
+                                    <input class="widthbig" style="background-color: #dd5094 !important;" type="submit" id="FormSubmit" Value="{{ __('Book Now') }}" />
                                 </div>
                             </form>
                             </div>
