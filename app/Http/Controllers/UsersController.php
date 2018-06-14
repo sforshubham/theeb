@@ -249,8 +249,8 @@ class UsersController extends SoapController
             } else {
                 $request_body = [];
                 $request_body['TransactionFor'] = $operation;
-                $request_body['StartDate'] = ''; // isset($input['StartDate']) ? $input['StartDate'] : (new \DateTime("-3 months"))->format('d/m/Y');
-                $request_body['EndDate'] = ''; // isset($input['EndDate']) ? $input['EndDate'] : (new \DateTime())->format('d/m/Y');
+                $request_body['StartDate'] = isset($input['StartDate']) ? $input['StartDate'] : (new \DateTime("-3 months"))->format('d/m/Y');
+                $request_body['EndDate'] = isset($input['EndDate']) ? $input['EndDate'] : (new \DateTime())->format('d/m/Y');
                 $request_body['DriverCode'] = session('user.DriverCode');
 
                 $result = $this->transaction($request_body);
