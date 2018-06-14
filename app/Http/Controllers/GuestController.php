@@ -81,7 +81,7 @@ class GuestController extends SoapController
 
             $response = array();
 
-            $operation = Config::get('settings.cmd_operation')[$request->segment(1)];
+            $operation = Config::get('settings.cmd_operation')[$requester];
             $rules = createModifyDriverRules($operation);
             $request_body = driverRequestBody();
             $input = [];
