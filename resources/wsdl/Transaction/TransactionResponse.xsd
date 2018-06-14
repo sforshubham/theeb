@@ -90,7 +90,6 @@
                     <xs:element type="xs:string" name="InvoiceDate"/>
                     <xs:element type="xs:string" name="InvoiceRental"/>
                     <xs:element type="xs:string" name="InvoiceVat"/>
-                    <xs:element type="xs:string" name="InvoiceOther"/>
                     <xs:element type="xs:string" name="InvoiceTotal"/>
                     <xs:element type="xs:string" name="InvoiceTime"/>
                     <xs:element type="xs:string" name="InvoiceBranchName"/>
@@ -132,6 +131,16 @@
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element type="xs:string" name="ExtraName" />
+                          <xs:element type="xs:string" name="Days" />
+                          <xs:element type="xs:string" name="Units" />
+                          <xs:element type="xs:string" name="Amount" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="InvoiceInsurances" maxOccurs="1" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="InsuranceName" />
                           <xs:element type="xs:string" name="Days" />
                           <xs:element type="xs:string" name="Units" />
                           <xs:element type="xs:string" name="Amount" />

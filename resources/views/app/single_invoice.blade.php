@@ -119,6 +119,17 @@
                                             <td></td>
                                         </tr>
                                         <tr>
+                                            <td>{{ __('Insurance') }} / {{ __('CDW') }}</td>
+                                            <td colspan="4"></td>
+                                            @if (isset($invoice->InvoiceInsurances))
+                                            <td style="font-weight: normal;">{{ $invoice->InvoiceInsurances->Amount }}</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ __('Extras') }}</td>
                                             <td colspan="4"></td>
                                             @if (isset($invoice->InvoiceExtras))
