@@ -3,10 +3,6 @@
             <div class="bodyPageHolder">
                  <div class="book-a-car-bg"></div>
                 <div class="safeArea">
-                    <div class="tabs-top">
-                        <a href="javascript:" class="my-booking-btn">{{ __('Reservation') }}</a>
-
-                    </div>
                     <?php 
                     $vehicleOptn = $branchOptn = '';
 
@@ -30,6 +26,7 @@
                     ?>
                     <div>
                         <div class="white-bg white-bg-space">
+                            <h3 style="font-size: 25px; margin-bottom: 20px;">{{ __('Car Reservation') }}</h3>
                             <div class="show-vehicles">
                             <form method="GET" action = "{{url('/price_estimation')}}">
                                 <div class="show-vehicles-individual-wrap ishow-vehicles-individual-wrap">
