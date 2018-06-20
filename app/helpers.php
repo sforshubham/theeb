@@ -301,6 +301,16 @@ function reservationRules($operation = '')
     return $rules;
 }
 
+function otp_request()
+{
+    return [
+        'PassportID' => '',
+        'EmailID' => '',
+        'OTP' => '',
+        'Operation' => 'G'
+    ];
+}
+
 function default_settings()
 {
     $setting = [

@@ -95,3 +95,6 @@ Route::get('/payfort', 'UsersController@payFortPay');
 Route::get('/maps', 'GuestController@maps');
 Route::get('/sharer', 'GuestController@sharer');
 Route::post('/download_rental_history_pdf', 'UsersController@downloadRentalHistoryPdf');
+
+Route::get('/verify', ['as'=>'g', 'uses'=>'GuestController@verifyOTP']);
+Route::post('/verify', ['as'=>'p', 'uses'=>'GuestController@verifyOTP']);

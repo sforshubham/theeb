@@ -317,6 +317,25 @@ class SoapController extends BaseController
         return $result;
     }
 
+    public function otp($input)
+    {
+        $result = [];
+
+        try {
+            $this->soapWrapper->add('otp', function ($service) {
+              $service
+                ->wsdl(Config::get('settings.wsdl.otp'))
+                ->trace(true);
+            });
+            $result = $this->soapWrapper->call('otp.DriverOTPValidation', [
+                new GetSoapRequest($input)
+            ]);
+        } catch (Exception $e) {
+            //
+        }
+        return $result;
+    }
+
 
 
 
@@ -363,10 +382,16 @@ class SoapController extends BaseController
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
         ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.extend_booking'), array('trace' => 1));
-        $a = $client->TheebReservationModifyWebServi(['Reservation' => $input]);
+        $input = [
+            'PassportID' => '1987632541',
+            'EmailID' => '',
+            'OTP' => '',
+            'Operation' => 'G'
+        ];
+        $client = new \SoapClient(Config::get('settings.wsdl.otp'), array('trace' => 1));
+        $a = $client->DriverOTPValidation($input);
         //pr($client->__getLastRequest());
-        //pr($a);
+        pr($a);
         //throw new \Exception('hi');
         pr($client->__getLastResponse());
     }

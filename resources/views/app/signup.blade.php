@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="two-column-signup">
                                         <input type="text" placeholder="{{ __('Email') }}*" name="Email" value="{{ $Email }}" />
-                                        <input autocomplete="new-password" type="password" placeholder="{{ __('Password') }}*" name="Password" value="{{ $Password }}" />
+                                        <input autocomplete="new-password" disabled="disabled" type="hidden" placeholder="{{ __('Password') }}*" name="Password" value="" />
                                     </div>
                                     <input type="button" value="{{ __('Register') }}" name="signup" />
                                 </form>
@@ -170,7 +170,7 @@
             }
 
             jQuery('input[name="LicenseId"]').val(id_number.val());
-            
+
             // try to fetch the ID based records
             jQuery('#loader').show();
             jQuery.get( "{{url('/view_driver')}}", { IdNo: id_number.val() } ).done(function( data ) {
@@ -202,7 +202,7 @@
             var last_name = jQuery('input[name="LastName"]');
             var mobile = jQuery('input[name="Mobile"]');
             var email = jQuery('input[name="Email"]');
-            var password = jQuery('input[name="Password"]');
+            //var password = jQuery('input[name="Password"]');
             var id_doc = jQuery('input[name="IdDoc"]');
             var license_id = jQuery('input[name="LicenseId"]');
             var license_doc = jQuery('input[name="LicenseDoc"]');
@@ -342,10 +342,10 @@
             }
 
             // Password validation - min 8 chars
-            if (!/^.{8,}$/.test(password.val())) {
+            /*if (!/^.{8,}$/.test(password.val())) {
                 password.focus().notify("Password field should have minimum 8 chars", "error");
                 return;
-            }
+            }*/
 
             jQuery('form[name="signup_form"]').submit();
         });

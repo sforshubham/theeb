@@ -3,7 +3,6 @@ return [
     'wsdl' => [
         'login' => resource_path().'/wsdl/Login/LogInWS.wsdl',
         'branches' => resource_path().'/wsdl/Branch&Schedule/BranchMaster.wsdl',
-        //'vehicle_type' => resource_path().'/wsdl/VehicleTypes/VehicleTypeWS.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'driver_profile' => resource_path().'/wsdl/DriverProfile/DriverProfileRequest.wsdl',
         'price_estimation' => resource_path().'/wsdl/PriceEstimation/PriceEstimationWS.wsdl',
@@ -13,10 +12,10 @@ return [
         'doc_print' => resource_path().'/wsdl/DocumentPrint/RentProPrint.wsdl',
         'transaction' => resource_path().'/wsdl/Transaction/TransactionData.WSDL',
         'booking' => resource_path().'/wsdl/MyBooking/ReservationsBookingRequest.wsdl',
-        //'car_group' => resource_path().'/wsdl/VehicleTypes/CarGroupMaster.wsdl',
         'car_model' => resource_path().'/wsdl/VehicleTypes/CarModelWS.wsdl',
         'reservation' => resource_path().'/wsdl/Reservation/CarProReservationWS.wsdl',
         'extend_booking' => resource_path().'/wsdl/ExtendBooking/ReservationModify.wsdl',
+        'otp' => resource_path().'/wsdl/OTP/ValiDateOTP.wsdl',
     ],
     'resp_msg' => [
         'invalid_input' => 'Please provide valid {tag}',
@@ -39,7 +38,8 @@ return [
         'new_reservation' => 'Reservation created successfully',
         'extend_reservation' => 'Booking details updated successfully',
         'profile_updated' => 'Profile updated successfully',
-        'signup_success' => 'Your details have been saved successfully. Please login with your credentials.',
+        'signup_success' => 'An email with OTP is sent to your email. Please enter otp here to complete verification',
+        'verify_success' => 'Successfully verified. Please login to continue'
     ],
     'cmd_operation' => [
         'view_driver' => 'V',

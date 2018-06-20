@@ -133,12 +133,15 @@ class GuestController extends SoapController
             $request_body['IdDocFileExt'] = '.' . strtoupper($id_doc['ext']);
             $request_body['IDSerialNo'] = $input['id_version'] ?? '1';
 
+            $user_email = $request_body['Email'];
+            $request_body['Email'] = '';
             $data = $this->getDriverCreateModify($request_body);
+
             if (empty((array) $data) || !isset($data->Success)) {
                 $response['status'] = false;
                 $response['message'] = [Config::get('settings.resp_msg.processing_error')];
                 $response['result'] = NULL;
-            } elseif($data->Success != 'Y') {
+            } elseif ($data->Success != 'Y') {
                 $response['status'] = false;
                 $response['message'] = [$data->VarianceReason];
                 $response['result'] = NULL;
@@ -146,10 +149,33 @@ class GuestController extends SoapController
                 $response['status'] = true;
                 $response['message'] = '';
                 $response['result'] = $data;
-                $request_body = array_replace($request_body, (array)$response['result']);
+
                 if ($requester != 'view_driver') {
-                    return redirect('/')->with('success', Config::get('settings.resp_msg.signup_success'));
+                    $otp_request = otp_request();
+                    $otp_request['PassportID'] = $request_body['IdNo'];
+                    $otp_request['EmailID'] = $user_email;
+                    $otp_result = $this->otp($otp_request);
+
+                    if (empty((array) $otp_result) || !isset($otp_result->Success)) {
+                        $response['status'] = false;
+                        $response['message'] = [Config::get('settings.resp_msg.processing_error')];
+
+                    } elseif ($otp_result->Success != 'Y') {
+                        $response['status'] = false;
+                        $response['message'] = [$otp_result->VarianceReason];
+                    } else {
+                        $response['status'] = true;
+                        $response['message'] = Config::get('settings.resp_msg.signup_success');
+
+                        return view('app.verify',[
+                            'status' => $response['status'],
+                            'response' => $response['message'],
+                            'PassportID' => $otp_request['PassportID'],
+                            'EmailID' => $otp_request['EmailID'],
+                        ]);
+                    }
                 }
+                $request_body = array_replace($request_body, (array)$response['result']);
             }
             /**
              * @todo For users having base64 encoded file handle the case
@@ -202,7 +228,7 @@ class GuestController extends SoapController
             'Address2' => $request_body['Address2'] ?? '',
             'DateOfBirth' => $request_body['DateOfBirth'] ?? '',
             'Mobile' => $request_body['Mobile'] ?? '',
-            'Email' => $request_body['Email'] ?? '',
+            'Email' => $user_email ?? '',
             'Password' => $request_body['Password'] ?? '',
         ]);
     }
@@ -256,6 +282,52 @@ class GuestController extends SoapController
             return redirect('/book');
         } else {
             return view('app.login');
+        }
+    }
+
+    public function verifyOTP(Request $request)
+    {
+        if (session()->has('user.IDNo')) {
+            return redirect('/book');
+        }
+        $response = [];
+        $requester = $request->route()->getAction('as');
+
+        if ($requester == 'g') {
+            return view('app.verify');
+        } else {
+            $input = array_map('trim', $request->all());
+            $validator = Validator::make($input, [
+                'PassportID' => 'required',
+                'EmailID' => 'required|email',
+                'OTP' => 'required',
+            ]);
+            $otp_request = otp_request();
+            $otp_request['PassportID'] = $input['PassportID'];
+            $otp_request['EmailID'] = $input['EmailID'];
+            $otp_request['OTP'] = $input['OTP'];
+            $otp_request['Operation'] = 'V';
+
+            $otp_result = $this->otp($otp_request);
+            if (empty((array) $otp_result) || !isset($otp_result->Success)) {
+                $response['status'] = false;
+                $response['message'] = [Config::get('settings.resp_msg.processing_error')];
+
+            } elseif ($otp_result->Success != 'Y') {
+                $response['status'] = false;
+                $response['message'] = [$otp_result->VarianceReason];
+            } else {
+                $response['status'] = true;
+                $response['message'] = Config::get('settings.resp_msg.verify_success');
+                return redirect('/')->with('success', Config::get('settings.resp_msg.verify_success'));
+            }
+
+            return view('app.verify',[
+                'status' => $response['status'],
+                'response' => $response['message'],
+                'PassportID' => $otp_request['PassportID'],
+                'EmailID' => $otp_request['EmailID'],
+            ]);
         }
     }
 }

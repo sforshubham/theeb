@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:magic.81.21.59.232.ValiDateOTP"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="urn:magic.81.21.59.232.ValiDateOTP"
+             xmlns:xsdin71="ValiDateOTPRequest"
+             xmlns:xsdout71="ValiDateOTPResponse"
+>
+
+<documentation>
+WSDL Builder (Magic eDeveloper v9.4)
+Created By   : HITESH---HITESH
+Created Date : 15/06/2018 Time :11:51:33
+Application   : Import Process
+</documentation>
+
+<import  namespace="ValiDateOTPRequest" location="ValiDateOTPRequest.XSD"/>
+<import  namespace="ValiDateOTPResponse" location="ValiDateOTPResponse.XSD"/>
+
+ 
+<message name="DriverOTPValidation">
+   <part name="PI_InBlob_1" element="xsdin71:DriverOTP" />
+</message>
+<message name="DriverOTPValidationResponse">
+   <part name="DriverOTPValidation_Ret"  element="xsdout71:DriverOTP" />
+</message>
+
+<portType name="ValiDateOTPPortType">
+         <operation name="DriverOTPValidation" >
+         <input message="tns:DriverOTPValidation" />
+         <output message="tns:DriverOTPValidationResponse"/>
+      </operation>
+</portType>
+
+<binding name="ValiDateOTPBinding"
+   type="tns:ValiDateOTPPortType">
+   <soap:binding  transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+         <operation name="DriverOTPValidation">
+         <documentation></documentation>
+         <soap:operation soapAction="E6F69647164696C616650545F4275667962744F237375636F62705024727F607D694A336F646" />
+         <input>
+            <soap:body use="literal" />
+            
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+</binding>
+<service name="ValiDateOTP">
+   <documentation></documentation>
+   <port name="ValiDateOTPPortType" binding="tns:ValiDateOTPBinding">
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+   </port>
+</service>
+</definitions>
