@@ -78,7 +78,7 @@
     </form>
     <script type="text/javascript">
         $('.doc-download-btn').on('click', function (){
-            var doc_num = parseInt($(this).attr('rel'));
+            var doc_num = $(this).attr('rel');
             console.log(doc_num);
             if (doc_num) {
                 $('#reservation_number').val(doc_num);

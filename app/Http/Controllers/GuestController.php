@@ -250,7 +250,7 @@ class GuestController extends SoapController
             if (!isset($result->Success) || $result->Success != 'Y') {
                 return back()->with('error', $result->VarianceReason)->with('data', $input);
             } else {
-                return back()->with('success', Config::get('settings.resp_msg.new_password'));
+                return redirect('/')->with('success', Config::get('settings.resp_msg.new_password'));
             }
         }
     }
