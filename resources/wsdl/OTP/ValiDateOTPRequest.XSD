@@ -5,7 +5,7 @@
                      <xs:sequence>
                             <xs:element name="PassportID" type="xs:int"></xs:element>
                             <xs:element name="EmailID" type="xs:string"></xs:element>
-                            <xs:element name="OTP" type="xs:int"></xs:element>
+                            <xs:element name="OTP" type="xs:string"></xs:element>
                             <xs:element name="Operation" type="xs:string"></xs:element>
                         </xs:sequence>
                  </xs:complexType>

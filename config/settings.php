@@ -39,7 +39,7 @@ return [
         'extend_reservation' => 'Booking details updated successfully',
         'profile_updated' => 'Profile updated successfully',
         'signup_success' => 'An email with OTP is sent to your email. Please enter otp here to complete verification',
-        'verify_success' => 'Successfully verified. Please login to continue'
+        'verify_success' => 'Successfully verified. Please check your email for login password'
     ],
     'cmd_operation' => [
         'view_driver' => 'V',

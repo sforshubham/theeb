@@ -34,6 +34,7 @@
 				<xs:element name="WorkIdDocExt" type="xs:string" minOccurs="0"/>
 				<xs:element name="DriverImage" type="xs:base64Binary" minOccurs="0"/>
 				<xs:element name="DriverImageExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="OTPVerified" type="xs:string" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

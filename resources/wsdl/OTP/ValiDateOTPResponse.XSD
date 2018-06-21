@@ -4,7 +4,7 @@
               <xs:complexType>
                      <xs:sequence>
                             <xs:element name="Success" type="xs:string"></xs:element>
-                            <xs:element name="VarianceReason"></xs:element>
+                            <xs:element name="VarianceReason" type="xs:string"></xs:element>
                         </xs:sequence>
                  </xs:complexType>
           </xs:element>
