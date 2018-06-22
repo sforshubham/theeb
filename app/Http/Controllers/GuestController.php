@@ -185,6 +185,7 @@ class GuestController extends SoapController
         }
 
         if ($requester == 'view_driver') {
+            $request_body['id_version'] = $request_body['IDSerialNo'];
             unset(
                 $request_body['LicenseDoc'],
                 $request_body['LicenseDocExt'],
