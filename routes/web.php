@@ -13,6 +13,7 @@
 
 Route::get('/', 'GuestController@guest');
 Route::get('/login', 'GuestController@guest');
+Route::get('/already_verified', 'GuestController@alreadyVerified');
 
 // Language Switcher
 Route::get('/lang_switch/{locale}', function ($locale) {

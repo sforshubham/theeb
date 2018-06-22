@@ -174,7 +174,9 @@
             // try to fetch the ID based records
             jQuery('#loader').show();
             jQuery.get( "{{url('/view_driver')}}", { IdNo: id_number.val() } ).done(function( data ) {
-                if (data['IdNo'] != '') {
+                if (data['OTPVerified'] == 'Y' && data['Email'] != '') {
+                    window.location = "{{url('/already_verified')}}"
+                } else if (data['IdNo'] != '') {
                     for (var property in data) {
                         if (property == 'IdType' || property == 'IdNo') {
                             continue;

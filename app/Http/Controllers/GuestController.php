@@ -331,4 +331,9 @@ class GuestController extends SoapController
             ]);
         }
     }
+
+    public function alreadyVerified()
+    {
+        return redirect('/login')->with('success', Config::get('settings.resp_msg.already_verified'));
+    }
 }
