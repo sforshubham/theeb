@@ -268,7 +268,7 @@
                 // License ID - mandatory
                 license_id.focus().notify("Please enter a License ID", "error");
                 return;
-            } else if (license_id.val() != id_number.val()) {
+            } else if (license_id.val() != id_number.val() && id_type.val() != 'P') {
                 license_id.focus().notify("License ID should match the ID number", "error");
                 return;
             }
