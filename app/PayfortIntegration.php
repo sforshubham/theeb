@@ -40,7 +40,7 @@ class PayfortIntegration
      * @var string  command
      * expected Values ("AUTHORIZATION", "PURCHASE")
      */
-    public $command       = 'AUTHORIZATION';
+    public $command       = 'PURCHASE';
     
     /**
      * @var decimal order amount
