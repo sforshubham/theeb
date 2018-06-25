@@ -3,8 +3,12 @@
                                 <tr>
                                     <td style="border: none; width: 10%;"><img src="http://www.theeb.com.sa/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></td>
                                     <td style="border: none; width: 80%; vertical-align: middle;">
-                                        <center><h3>{{ __('Agreement') }}</h3></center><br>
-                                        <strong>Theeb Rent A Car Co</strong><br>{{ $h1 }}<br/>{{ $h2 }}<br><br><br>
+                                        <table cellpadding="0" cellspacing="0" width="100%" style="border: none;">
+                                            <tr><td style="border: none; font-weight: bold; text-align: center;">{{ __('Agreement') }}</td></tr>
+                                            <tr><td style="border: none; font-weight: 400;">
+                                            <strong>Theeb Rent A Car Co</strong><br>{{ $h1 }}<br/>{{ $h2 }}
+                                            </td></tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>
