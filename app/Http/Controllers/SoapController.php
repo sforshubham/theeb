@@ -363,16 +363,16 @@ class SoapController extends BaseController
             'ReservationNo' => '22472585',
             'ReservationStatus' => 'A',
         ];
-        /*$input = [ // Price estimation
+        $input = [ // Price estimation
             'CDP' => '',
             'OutBranch' => '19',
             'InBranch' => '19',
-            'OutDate' => '11/05/2018',
+            'OutDate' => date('d/m/Y', strtotime("+1 days")),
             'OutTime' => '11:00',
-            'InDate' => '13/05/2018',
-            'InTime' => '15:00',
+            'InDate' => date('d/m/Y', strtotime("+1 days")),
+            'InTime' => '20:00',
+            'VEHICLETYPE' => '',
             'CarGroup' => '',
-            'VEHICLETYPE' => '3',
             'Currency' => env('APP_CURRENCY'),
             'DebitorCode' => '',
             'VoucherType' => '',
@@ -381,19 +381,19 @@ class SoapController extends BaseController
                 'Insurance' => ['Code' => '', 'Name' => '', 'Quantity' => ''],
                 'Extra' => ['Code' => '', 'Name' => '', 'Quantity' => '']
             ],
-        ];*/
-        $input = [
+        ];
+        /*$input = [
             'PassportID' => '1987632541',
             'EmailID' => '',
             'OTP' => '',
             'Operation' => 'G'
-        ];
-        $client = new \SoapClient(Config::get('settings.wsdl.otp'), array('trace' => 1));
-        $a = $client->DriverOTPValidation($input);
+        ];*/
+        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
+        $a = $client->PriceEstimationWS(['Price' => $input]);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');
-        pr($client->__getLastResponse());
+        //pr($client->__getLastResponse());
     }
 
 
