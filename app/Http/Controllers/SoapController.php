@@ -388,14 +388,12 @@ class SoapController extends BaseController
             'OTP' => '',
             'Operation' => 'G'
         ];*/
-        $client = new \SoapClient(Config::get('settings.wsdl.price_estimation'), array('trace' => 1));
-        $a = $client->PriceEstimationWS(['Price' => $input]);
+        $client = new \SoapClient(Config::get('settings.wsdl.car_model'), array('trace' => 1));
+        $a = $client->CarModelWS(['VehicleType' => '5']);
         //pr($client->__getLastRequest());
         pr($a);
         //throw new \Exception('hi');
         //pr($client->__getLastResponse());
     }
-
-
 
 }

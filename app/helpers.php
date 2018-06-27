@@ -207,8 +207,8 @@ function priceEstimationBody()
 {
     $input = [
         'CDP' => '',
-        'OutBranch' => '97',
-        'InBranch' => '97',
+        'OutBranch' => env('TARIFF_BRANCH', '97'),
+        'InBranch' => env('TARIFF_BRANCH', '97'),
         'OutDate' => date('d/m/Y', strtotime("+1 days")),
         'OutTime' => '11:00',
         'InDate' => date('d/m/Y', strtotime("+1 days")),
