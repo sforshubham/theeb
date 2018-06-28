@@ -1,7 +1,7 @@
 
                             <table cellpadding="0" cellspacing="0" width="100%" class="table-rental table-invoice" style="border-top: 1px solid #ccc; border-bottom: none;">
                                 <tr>
-                                    <td style="border: none; width: 10%;"><img src="http://www.theeb.com.sa/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></td>
+                                    <td style="border: none; width: 10%;"><img src="/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></td>
                                     <td style="border: none; width: 80%; vertical-align: middle;">
                                         <table cellpadding="0" cellspacing="0" width="100%" style="border: none;">
                                             <tr><td style="border: none; font-weight: bold; text-align: center;">{{ __('Agreement') }}</td></tr>

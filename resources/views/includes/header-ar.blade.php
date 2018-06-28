@@ -6,7 +6,7 @@
 <div class="topBackground"></div>
 <div class="headerCont">
 <div class="floatRight logoHolder">
-                        <a href="http://theeb.com.sa/ar/home-2/" id="aLogo"><img src="http://www.theeb.com.sa/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
+                        <a href="/ar/home-2/" id="aLogo"><img src="/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
                     </div>
 <div class="floatLeft ">
 <div class="leftCol">
@@ -14,7 +14,7 @@
 <div class="companyLink floatRight"><a href="javascript:;">الشركة</a></div>
 <div onkeypress="javascript:return WebForm_FireDefaultButton(event, 'asearch')">
 <div class="searchField floatRight">
-<form role="search" method="get" id="searchform" action="http://theeb.com.sa/">
+<form role="search" method="get" id="searchform" action="/">
 <div>
         <input value="" name="s" id="s" type="text"><br>
     <a id="asearch" class="searchButn" href="javascript:void(0)" onclick="document.getElementById('searchform').submit();"></a>
@@ -68,43 +68,43 @@
                     <nav id="site-navigation" class="main-navigation posRelative mobileMenu" role="navigation" aria-label="Top Menu">
 
 
-    <div class="mainMenu"><ul id="top-menu" class="menu"><li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-27"><a href="http://theeb.com.sa/company-2/">الشركه</a>
+    <div class="mainMenu"><ul id="top-menu" class="menu"><li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-27"><a href="/company-2/">الشركه</a>
 <ul class="sub-menu">
-    <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="http://theeb.com.sa/company-2/about-company/">نبذة عن الشركه</a></li>
-    <li id="menu-item-113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="http://theeb.com.sa/company-2/vision-and-mission/">الرؤية والرسالة</a></li>
-    <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="http://theeb.com.sa/company-2/word-of-gm/">كلمة المدير العام</a></li>
-    <li id="menu-item-256" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a href="http://theeb.com.sa/company-2/certifications-prizes/">التكريم والجوائـز</a></li>
-    <li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-251"><a href="http://theeb.com.sa/company-2/traffic-safety-2/">السلامة المرورية</a></li>
-    <li id="menu-item-515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-515"><a href="http://theeb.com.sa/faq/">أسئلة وأجوبة</a></li>
-    <li id="menu-item-381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-381"><a href="http://theeb.com.sa/company-2/policies/">سياسات</a></li>
+    <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="/company-2/about-company/">نبذة عن الشركه</a></li>
+    <li id="menu-item-113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="/company-2/vision-and-mission/">الرؤية والرسالة</a></li>
+    <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="/company-2/word-of-gm/">كلمة المدير العام</a></li>
+    <li id="menu-item-256" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a href="/company-2/certifications-prizes/">التكريم والجوائـز</a></li>
+    <li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-251"><a href="/company-2/traffic-safety-2/">السلامة المرورية</a></li>
+    <li id="menu-item-515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-515"><a href="/faq/">أسئلة وأجوبة</a></li>
+    <li id="menu-item-381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-381"><a href="/company-2/policies/">سياسات</a></li>
 </ul>
 </li>
-<li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40"><a href="http://theeb.com.sa/cars-2/">السيارات</a>
+<li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40"><a href="/cars-2/">السيارات</a>
 <ul class="sub-menu">
-    <li id="menu-item-271" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-271"><a href="http://theeb.com.sa/cars-2/about-the-cars/">عن السيارات</a></li>
-    <li id="menu-item-564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="http://theeb.com.sa/cars-2/car-fleet/">أسطول السيارات</a></li>
+    <li id="menu-item-271" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-271"><a href="/cars-2/about-the-cars/">عن السيارات</a></li>
+    <li id="menu-item-564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="/cars-2/car-fleet/">أسطول السيارات</a></li>
 </ul>
 </li>
-<li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39"><a href="http://theeb.com.sa/membership-2/">عضوية</a>
+<li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39"><a href="/membership-2/">عضوية</a>
 <ul class="sub-menu">
-    <li id="menu-item-190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190"><a href="http://theeb.com.sa/membership-2/new-membership-2/">عن العضوية</a></li>
-    <li id="menu-item-281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-281"><a href="http://theeb.com.sa/membership-2/new-membership-form/">عضوية جديدة</a></li>
-    <li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="http://theeb.com.sa/membership-2/qitaf_stc_theeb/">شركاء برنامج المكافأت</a></li>
+    <li id="menu-item-190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190"><a href="/membership-2/new-membership-2/">عن العضوية</a></li>
+    <li id="menu-item-281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-281"><a href="/membership-2/new-membership-form/">عضوية جديدة</a></li>
+    <li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="/membership-2/qitaf_stc_theeb/">شركاء برنامج المكافأت</a></li>
 </ul>
 </li>
-<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-70"><a href="http://theeb.com.sa/services-2/">الخدمات</a>
+<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-70"><a href="/services-2/">الخدمات</a>
 <ul class="sub-menu">
-    <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="http://theeb.com.sa/services-2/business-sector/">قطاع الأعمال</a></li>
-    <li id="menu-item-278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-278"><a href="http://theeb.com.sa/services-2/services/">عن الخدمات</a></li>
+    <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/services-2/business-sector/">قطاع الأعمال</a></li>
+    <li id="menu-item-278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-278"><a href="/services-2/services/">عن الخدمات</a></li>
 </ul>
 </li>
-<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="http://theeb.com.sa/branches-2/">الفروع</a></li>
-<li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-54"><a href="http://theeb.com.sa/media-center-2/">أخبار وأحداث</a>
+<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="/branches-2/">الفروع</a></li>
+<li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-54"><a href="/media-center-2/">أخبار وأحداث</a>
 <ul class="sub-menu">
-    <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="http://theeb.com.sa/media-center-2/photo-gallery/">أخبار وأحداث</a></li>
+    <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="/media-center-2/photo-gallery/">أخبار وأحداث</a></li>
 </ul>
 </li>
-<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://theeb.com.sa/suggestion-form-2/">رأيك يهمنا</a></li>
+<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="/suggestion-form-2/">رأيك يهمنا</a></li>
                         @if (session()->has('user.IDNo'))
                         <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n">
                             @include('includes.user-menu')

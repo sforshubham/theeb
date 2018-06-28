@@ -8,7 +8,7 @@
         <div class="site-branding">
             <div class="wrap">
                 <div class="site-branding-text">
-                        <p class="site-title"><a href="http://theeb.com.sa/en/home/" rel="home"></a></p>
+                        <p class="site-title"><a href="/en/home/" rel="home"></a></p>
                 </div><!-- .site-branding-text -->
 
             </div><!-- .wrap -->
@@ -23,7 +23,7 @@
                         <div class="topBackground"></div>
                         <div class="headerCont">
                             <div class="floatRight logoHolder">
-                                <a href="http://www.theeb.com.sa/en/home" id="aLogo"><img src="http://www.theeb.com.sa/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
+                                <a href="/en/home" id="aLogo"><img src="/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
                             </div>
                             <div class="floatLeft ">
                                 <div class="leftCol">
@@ -31,7 +31,7 @@
                                         <div class="companyLink floatRight"><a href="javascript:;">الشركة</a></div>
                                         <div onkeypress="javascript:return WebForm_FireDefaultButton(event, 'asearch')">
                                             <div class="searchField floatRight">
-                                                <form role="search" method="get" id="searchform" action="http://theeb.com.sa/en/">
+                                                <form role="search" method="get" id="searchform" action="/en/">
                                                     <div>
                                                         <input type="text" value="" name="s" id="s" /><br />
                                                         <a id="asearch" class="searchButn" href="javascript:void(0)" onclick="document.getElementById('searchform').submit();"></a>
@@ -85,41 +85,41 @@
             <nav id="site-navigation" class="main-navigation posRelative mobileMenu" role="navigation" aria-label="Top Menu">
                 <div class="mainMenu">
                     <ul id="top-menu" class="menu">
-                        <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-29"><a href="http://theeb.com.sa/en/company/">Company</a>
+                        <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-29"><a href="/en/company/">Company</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-24 current_page_item menu-item-28"><a href="http://theeb.com.sa/en/company/about-company/">About Company</a></li>
-                                <li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="http://theeb.com.sa/en/company/vision-and-mission/">Vision and Mission</a></li>
-                                <li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="http://theeb.com.sa/en/company/honors-and-awards/">Honors and awards</a></li>
-                                <li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="http://theeb.com.sa/en/company/word-of-the-general-manager/">CEO Message</a></li>
-                                <li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="http://theeb.com.sa/en/company/traffic-safety/">Traffic Safety</a></li>
+                                <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-24 current_page_item menu-item-28"><a href="/en/company/about-company/">About Company</a></li>
+                                <li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="/en/company/vision-and-mission/">Vision and Mission</a></li>
+                                <li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="/en/company/honors-and-awards/">Honors and awards</a></li>
+                                <li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="/en/company/word-of-the-general-manager/">CEO Message</a></li>
+                                <li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="/en/company/traffic-safety/">Traffic Safety</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-44"><a href="http://theeb.com.sa/en/cars/">Cars</a>
+                        <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-44"><a href="/en/cars/">Cars</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-215" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-215"><a href="http://theeb.com.sa/en/cars/about-the-cars/">About the cars</a></li>
-                                <li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="http://theeb.com.sa/en/cars/car-fleet/">Car Fleet</a></li>
+                                <li id="menu-item-215" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-215"><a href="/en/cars/about-the-cars/">About the cars</a></li>
+                                <li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="/en/cars/car-fleet/">Car Fleet</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-43"><a href="http://theeb.com.sa/en/membership/">Membership</a>
+                        <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-43"><a href="/en/membership/">Membership</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a href="http://theeb.com.sa/en/membership/about-membership/">About Membership</a></li>
-                                <li id="menu-item-170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="http://theeb.com.sa/en/membership/new-membership/">New Membership</a></li>
+                                <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a href="/en/membership/about-membership/">About Membership</a></li>
+                                <li id="menu-item-170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="/en/membership/new-membership/">New Membership</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-72"><a href="http://theeb.com.sa/en/services/">Services</a>
+                        <li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-72"><a href="/en/services/">Services</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a href="http://theeb.com.sa/en/services/business-sector/">Business Sector</a></li>
-                                <li id="menu-item-286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-286"><a href="http://theeb.com.sa/en/services/about-services/">About Services</a></li>
+                                <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a href="/en/services/business-sector/">Business Sector</a></li>
+                                <li id="menu-item-286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-286"><a href="/en/services/about-services/">About Services</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="http://theeb.com.sa/en/branches/">Branches</a></li>
-                        <li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-53"><a href="http://theeb.com.sa/en/media-center/">Media Center</a>
+                        <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="/en/branches/">Branches</a></li>
+                        <li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-53"><a href="/en/media-center/">Media Center</a>
                             <ul class="sub-menu">
-                                <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="http://theeb.com.sa/en/media-center/photo-gallery/">Photo Gallery</a></li>
-                                <li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="http://theeb.com.sa/en/media-center/charity/">Theeb Al Kheir Programme</a></li>
+                                <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="/en/media-center/photo-gallery/">Photo Gallery</a></li>
+                                <li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="/en/media-center/charity/">Theeb Al Kheir Programme</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-91" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="http://theeb.com.sa/en/suggestion-form/">Suggestion Form</a></li>
+                        <li id="menu-item-91" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="/en/suggestion-form/">Suggestion Form</a></li>
                         @if (session()->has('user.IDNo'))
                         <li id="menu-item-n" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-n">
                             @include('includes.user-menu')
