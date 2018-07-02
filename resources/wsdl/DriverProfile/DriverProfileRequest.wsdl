@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.235.DriverProfileRequest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdin22="DriverProfileRequest" xmlns:xsdout22="DriverProfileResposne" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:magic.81.21.59.235.DriverProfileRequest">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.DriverProfileRequest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdin22="DriverProfileRequest" xmlns:xsdout22="DriverProfileResposne" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:magic.81.21.59.232.DriverProfileRequest">
    <documentation>WSDL Builder (Magic eDeveloper v9.4)
 Created By   : HITESH---HITESH
 Created Date : 01/08/2017 Time :18:14:28
@@ -34,7 +34,7 @@ Application   : Import Process</documentation>
    <service name="DriverProfileRequest">
       <documentation />
       <port name="DriverProfileRequestPortType" binding="tns:DriverProfileRequestBinding">
-         <soap:address location="http://81.21.59.235/Magic94Scripts/mgrqispi94.dll" />
+         <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
       </port>
    </service>
 </definitions>

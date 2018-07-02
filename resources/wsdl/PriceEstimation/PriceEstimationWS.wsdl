@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Administrator (EMBRACE) -->
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.235.PriceEstimationWS" xmlns:xsdin14="CarproPriceEstimation" xmlns:xsdout14="PriceEstimationResponse" targetNamespace="urn:magic.81.21.59.235.PriceEstimationWS">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:magic.81.21.59.232.PriceEstimationWS" xmlns:xsdin14="CarproPriceEstimation" xmlns:xsdout14="PriceEstimationResponse" targetNamespace="urn:magic.81.21.59.232.PriceEstimationWS">
 	<import namespace="CarproPriceEstimation" location="PriceEstimationRequest.xsd"/>
 	<import namespace="PriceEstimationResponse" location="PriceEstimationResponse.xsd"/>
 	<message name="PriceEstimationWS">
@@ -31,7 +31,7 @@
 	<service name="PriceEstimationWS">
 		<documentation/>
 		<port name="PriceEstimationWSPortType" binding="tns:PriceEstimationWSBinding">
-			<soap:address location="http://81.21.59.235/RentPro.Server/Services.aspx"/>
+			<soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll"/>
 		</port>
 	</service>
 	<documentation>

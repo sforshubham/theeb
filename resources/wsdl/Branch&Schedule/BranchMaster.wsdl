@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="urn:magic.81.21.59.235.BranchMaster"
+<definitions targetNamespace="urn:magic.81.21.59.232.BranchMaster"
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-             xmlns:tns="urn:magic.81.21.59.235.BranchMaster"
+             xmlns:tns="urn:magic.81.21.59.232.BranchMaster"
              xmlns:xsdin3270="DummyRequest"
              xmlns:xsdout3270="BrancheMstResponse"
 >
@@ -52,7 +52,7 @@ Application   : RentproWeb
 <service name="BranchMaster">
    <documentation></documentation>
    <port name="BranchMasterPortType" binding="tns:BranchMasterBinding">
-      <soap:address location="http://81.21.59.235/Magic94Scripts/mgrqispi94.dll" />
+      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
    </port>
 </service>
 </definitions>
