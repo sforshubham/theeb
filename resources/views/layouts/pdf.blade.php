@@ -13,9 +13,9 @@
 <style type="text/css">
 /*
 Theme Name: Theeb
-Theme URI: https://theeb.com.sa/
+Theme URI: http://www.theebonline.com/en/home/
 Author: Theeb Inc
-Author URI: https://theeb.com.sa/
+Author URI: http://www.theebonline.com/en/home/
 Description: Theeb Inc website theme
 Version: 1.0
 */
@@ -506,9 +506,9 @@ td, div {
 }
 /*
 Theme Name: Theeb
-Theme URI: https://theeb.com.sa/
+Theme URI: http://www.theebonline.com/en/home/
 Author: Theeb Inc
-Author URI: https://theeb.com.sa/
+Author URI: http://www.theebonline.com/en/home/
 Description: Theeb Inc website theme
 Version: 1.0
 */

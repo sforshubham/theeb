@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="urn:magic.81.21.59.232.PaymentCreateRequest"
+<definitions targetNamespace="urn:magic.81.21.59.235.PaymentCreateRequest"
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-             xmlns:tns="urn:magic.81.21.59.232.PaymentCreateRequest"
+             xmlns:tns="urn:magic.81.21.59.235.PaymentCreateRequest"
              xmlns:xsdin28="ReservationMobilePayment"
              xmlns:xsdout28="ReservationMobilePayment"
 >
@@ -52,7 +52,7 @@ Application   : Import Process
 <service name="PaymentCreateRequest">
    <documentation></documentation>
    <port name="PaymentCreateRequestPortType" binding="tns:PaymentCreateRequestBinding">
-      <soap:address location="http://81.21.59.232/Magic94Scripts/mgrqispi94.dll" />
+      <soap:address location="http://81.21.59.235/Magic94Scripts/mgrqispi94.dll" />
    </port>
 </service>
 </definitions>

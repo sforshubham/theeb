@@ -6,7 +6,7 @@
 <div class="topBackground"></div>
 <div class="headerCont">
 <div class="floatRight logoHolder">
-                        <a href="/ar/home-2/" id="aLogo"><img src="/images/logo.png" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
+                        <a href="/ar/home-2/" id="aLogo"><img src="{{url('/images/logo.png')}}" alt="شركة ذيب لتأجير السيارات" title="شركة ذيب لتأجير السيارات"></a>
                     </div>
 <div class="floatLeft ">
 <div class="leftCol">

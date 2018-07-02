@@ -99,3 +99,7 @@ Route::post('/download_rental_history_pdf', 'UsersController@downloadRentalHisto
 
 Route::get('/verify', ['as'=>'g', 'uses'=>'GuestController@verifyOTP']);
 Route::post('/verify', ['as'=>'p', 'uses'=>'GuestController@verifyOTP']);
+
+Route::get('/cront', function () {
+    Artisan::call('schedule:run');
+});

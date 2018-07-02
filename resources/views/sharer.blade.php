@@ -20,6 +20,6 @@
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 		<!-- Place this tag where you want the share button to render. -->
-		<div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="http://www.theeb.com.sa/en/charity1"></div>
+		<div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="{{url('/')}}"></div>
 	</body>
 </html>
