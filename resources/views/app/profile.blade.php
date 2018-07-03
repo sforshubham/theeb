@@ -1,6 +1,8 @@
 @extends('layouts.default')
 @section('content')
 @php ($setting = default_settings())
+@php ($mimetypes = Config::get('settings.mimetypes'))
+@php ($image_mime = $mimetypes[strtolower($data->DriverImageExt)] ?? 'image/gif')
             <div class="bodyPageHolder">
                 <div class="safeArea">
                     <div class="tabs-top">
@@ -10,7 +12,7 @@
                         <div class="white-bg">
                             <div class="left-wrap-profile floatRight">
                                 <div class="profile-image-show">
-                                    <img src="data:image/gif;base64,{{base64_decode($data->DriverImage)}}" onerror="this.src='{!!$setting['profile_img']!!}'"/>
+                                    <img src="data:{{$image_mime}};base64,{{base64_decode($data->DriverImage)}}" onerror="this.src='{!!$setting['profile_img']!!}'"/>
                                     <h5>{{$data->Name ? $data->Name : '--'}}</h5>
                                 </div>
                                 <div class="profile-details">

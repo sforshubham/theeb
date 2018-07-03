@@ -56,7 +56,7 @@ Version: 1.0
 
 .single-car-section{width:48%; float:left; text-align:center; border:1px solid #ccc; border-radius:10px; margin-left:15px; margin-bottom:30px;}
 
-.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:left; padding:0 0 10px 10px;}
+.single-car-section h4{ color:#1e4878; font-size:20px; border-bottom:1px solid #ccc; text-align:left; padding:0 10px 10px 10px;}
 
 .pickup-drop-time span{color:#444; font-size:16px; text-align:center;}
 

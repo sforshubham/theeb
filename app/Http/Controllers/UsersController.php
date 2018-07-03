@@ -19,6 +19,7 @@ class UsersController extends SoapController
         } else {
             $IDNo = session('user.IDNo');
             $data = $this->getDriverProfile($IDNo);
+            
             if (!isset($data->Success) || $data->Success != 'Y') {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
             } else {
@@ -252,7 +253,6 @@ class UsersController extends SoapController
                 $request_body['StartDate'] = isset($input['StartDate']) ? $input['StartDate'] : (new \DateTime("-3 months"))->format('d/m/Y');
                 $request_body['EndDate'] = isset($input['EndDate']) ? $input['EndDate'] : (new \DateTime())->format('d/m/Y');
                 $request_body['DriverCode'] = session('user.DriverCode');
-
                 $result = $this->transaction($request_body);
                 if (!isset($result->Success)) {
                     return back()->with('error', Config::get('settings.resp_msg.processing_error'));
@@ -316,6 +316,8 @@ class UsersController extends SoapController
             file_put_contents(Config::get('settings.reservation.file_path'), $res_no);
             $request_body['DriverCode'] = session('user.DriverCode');
             $request_body['LicenseNo'] = session('user.IDNo');
+            $request_body['FirstName'] = session('user.FirstName');
+            $request_body['LastName'] = session('user.LastName');
             $request_body['OutBranch'] = $sess_data->Price->OutBranch;
             $request_body['CDP'] = $sess_data->Price->CDP;
             $request_body['InBranch'] = $sess_data->Price->InBranch;
@@ -327,6 +329,7 @@ class UsersController extends SoapController
             $request_body['CarGroup'] = $sess_data->Price->CarGroupPrice[$index]->CarGrop;
 
             $request_body['ReservationNo'] = $res_no;
+
             $result = $this->reservation(['Reservation' => $request_body]);
             if (!isset($result->Success)) {
                 return back()->with('error', Config::get('settings.resp_msg.processing_error'));
@@ -599,8 +602,8 @@ class UsersController extends SoapController
             //$data->DriverImage = trim($data->DriverImage) != '' ? base64_encode($data->DriverImage) : '';
             //$data->LicenseDoc = trim($data->LicenseDoc) != '' ? base64_encode($data->LicenseDoc) : '';
             //$data->WorkIdDoc = trim($data->WorkIdDoc) != '' ? base64_encode($data->WorkIdDoc) : '';
-            //pr($data);die;
             $arr = object_to_array($data);
+            
             return $arr;
         }
     }

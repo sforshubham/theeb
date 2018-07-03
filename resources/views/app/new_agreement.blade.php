@@ -14,7 +14,7 @@
                     <div>
                         <div class="white-bg">
                             <div class="from-end-date-rental">
-                                <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
+                                <input type="text" readonly="readonly" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                             </div>
                             @if (isset($result->Agreements) && isset($result->Agreements->Agreement))
                                 @if (is_object($result->Agreements->Agreement))

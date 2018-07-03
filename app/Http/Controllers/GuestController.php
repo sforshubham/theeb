@@ -43,6 +43,7 @@ class GuestController extends SoapController
             return back()->with('error', $validator->errors()->all())->with('data',$input);
         } else {
             $result = $this->doLogin($input['emailId'], $input['password']);
+
             // if login is success, write IDNo in session
             if (isset($result->Success) && $result->Success == 'True') {
                 $session_IDNo = $result->IDNo ? $result->IDNo : $result->LicenseNo;
@@ -50,6 +51,7 @@ class GuestController extends SoapController
                 $request->session()->put('user.DriverCode', $result->DriverCode);
                 $request->session()->put('user.Email', $result->Email);
                 $request->session()->put('user.FirstName', $result->FirstName);
+                $request->session()->put('user.LastName', $result->LastName);
 
                 if (session()->has('booking_form')) {
                     $form_data = session('booking_form');

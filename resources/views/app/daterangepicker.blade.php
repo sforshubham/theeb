@@ -14,9 +14,6 @@
                 autoUpdateInput: false,
                 opens: '{{ __('open_daterange_picker') }}',
                 maxDate: moment().format('DD/MM/Y'),
-                maxSpan: {
-                    "months": 3
-                },
                 ranges: {
                    'Today': [moment(), moment()],
                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],

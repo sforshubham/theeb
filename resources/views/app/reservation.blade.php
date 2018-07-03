@@ -14,7 +14,7 @@
             <div>
                 <div class="white-bg">
                     <div class="from-end-date-rental">
-                        <input type="text" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
+                        <input type="text" readonly="readonly" placeholder="{{ __('Filter by date range') }}" id="daterangepicker" />
                     </div>
 
                     <div class="address-table"></div>
@@ -79,7 +79,6 @@
     <script type="text/javascript">
         $('.doc-download-btn').on('click', function (){
             var doc_num = $(this).attr('rel');
-            console.log(doc_num);
             if (doc_num) {
                 $('#reservation_number').val(doc_num);
                 $('#reservation_doc').submit();
