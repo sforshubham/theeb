@@ -11,7 +11,7 @@
 				<xs:element name="LicenseId" type="xs:string"/>
 				<xs:element name="LicenseIssuedBy" type="xs:string"/>
 				<xs:element name="LicenseExpiryDate" type="xs:string"/>
-				<xs:element name="LicenseDoc" type="xs:base64Binary"/>
+				<xs:element name="LicenseDoc" type="xs:string"/>
 				<xs:element name="LicenseDocFileExt" type="xs:string"/>
 				<xs:element name="Address1" type="xs:string"/>
 				<xs:element name="Address2" type="xs:string"/>
@@ -21,15 +21,15 @@
 				<xs:element name="Email" type="xs:string"/>
 				<xs:element name="IdType" type="xs:string"/>
 				<xs:element name="IdNo" type="xs:string"/>
-				<xs:element name="IdDoc" type="xs:base64Binary"/>
+				<xs:element name="IdDoc" type="xs:string"/>
 				<xs:element name="IdDocFileExt" type="xs:string"/>
 				<xs:element name="MembershipNo" type="xs:string"/>
 				<xs:element name="Operation" type="xs:string"/>
 				<xs:element name="Password" type="xs:string"/>
 				<xs:element name="IDSerialNo" type="xs:string"/>
-				<xs:element name="WorkIdDoc" type="xs:base64Binary"/>
+				<xs:element name="WorkIdDoc" type="xs:string"/>
 				<xs:element name="WorkIdDocFileExt" type="xs:string"/>
-				<xs:element name="DriverImage" type="xs:base64Binary"/>
+				<xs:element name="DriverImage" type="xs:string"/>
 				<xs:element name="DriverImageFileExt" type="xs:string"/>
 			</xs:sequence>
 		</xs:complexType>

@@ -598,12 +598,7 @@ class UsersController extends SoapController
             $request_body['IdNo'] = session('user.IDNo');
             $request_body['Operation'] = 'V';
             $data = $this->getDriverView($request_body);
-            //$data->IdDoc = trim($data->IdDoc) != '' ? base64_encode($data->IdDoc) : '';
-            //$data->DriverImage = trim($data->DriverImage) != '' ? base64_encode($data->DriverImage) : '';
-            //$data->LicenseDoc = trim($data->LicenseDoc) != '' ? base64_encode($data->LicenseDoc) : '';
-            //$data->WorkIdDoc = trim($data->WorkIdDoc) != '' ? base64_encode($data->WorkIdDoc) : '';
             $arr = object_to_array($data);
-            
             return $arr;
         }
     }

@@ -14,7 +14,7 @@
 				<xs:element name="LicenseId" type="xs:string" minOccurs="0"/>
 				<xs:element name="LicenseIssuedBy" type="xs:string" minOccurs="0"/>
 				<xs:element name="LicenseExpiryDate" type="xs:string" minOccurs="0"/>
-				<xs:element name="LicenseDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="LicenseDoc" type="xs:string" minOccurs="0"/>
 				<xs:element name="LicenseDocExt" type="xs:string" minOccurs="0"/>
 				<xs:element name="Address1" type="xs:string" minOccurs="0"/>
 				<xs:element name="Address2" type="xs:string" minOccurs="0"/>
@@ -24,15 +24,15 @@
 				<xs:element name="Email" type="xs:string" minOccurs="0"/>
 				<xs:element name="IdType" type="xs:string" minOccurs="0"/>
 				<xs:element name="IdNo" type="xs:string" minOccurs="0"/>
-				<xs:element name="IdDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="IdDoc" type="xs:string" minOccurs="0"/>
 				<xs:element name="IdDocExt" type="xs:string" minOccurs="0"/>
 				<xs:element name="MembershipNo" type="xs:string" minOccurs="0"/>
 				<xs:element name="IDSerialNo" type="xs:string" minOccurs="0"/>
 				<xs:element name="Password" type="xs:string" minOccurs="0"/>
 				<xs:element name="Status" type="xs:string" minOccurs="0"/>
-				<xs:element name="WorkIdDoc" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="WorkIdDoc" type="xs:string" minOccurs="0"/>
 				<xs:element name="WorkIdDocExt" type="xs:string" minOccurs="0"/>
-				<xs:element name="DriverImage" type="xs:base64Binary" minOccurs="0"/>
+				<xs:element name="DriverImage" type="xs:string" minOccurs="0"/>
 				<xs:element name="DriverImageExt" type="xs:string" minOccurs="0"/>
 				<xs:element name="OTPVerified" type="xs:string" minOccurs="0"/>
 			</xs:sequence>
