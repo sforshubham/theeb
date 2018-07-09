@@ -11,9 +11,9 @@ class TransactionFeedback extends Model
         $this->attributes['response'] = json_encode($value);
     }
 
-    public function insertIntoDB($value)
+    public static function insertIntoDB($value)
     {
-        $obj = self;
+        $obj = new self;
         $obj->response = $value;
         $obj->save();
     }
