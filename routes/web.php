@@ -103,3 +103,6 @@ Route::post('/verify', ['as'=>'p', 'uses'=>'GuestController@verifyOTP']);
 Route::get('/cront', function () {
     Artisan::call('schedule:run');
 });
+
+Route::match(['get', 'post'], '/payfort/trans_feedback', 'PayfortController@transaction');
+Route::match(['get', 'post'], '/payfort/trans_notify', 'PayfortController@notification');
