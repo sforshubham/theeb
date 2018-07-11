@@ -5,10 +5,10 @@
 		<title>Theeb - @yield('title')</title>
 
 	@if (App::getLocale() == 'en')
-        <link rel='stylesheet' id='theeb-lingual-style-css'  href="{{ env('SITE_BASE_URL','http://theebonline.com/') }}/wp-content/themes/theeb/style-en.css?ver=4.9.5" type='text/css' media='all' />
+        <link rel='stylesheet' id='theeb-lingual-style-css'  href="{{ env('SITE_BASE_URL','//theebonline.com/') }}/wp-content/themes/theeb/style-en.css?ver=4.9.5" type='text/css' media='all' />
         <link rel="stylesheet" href="{{ asset('css/theeb-en.css') }}">
     @else
-        <link rel='stylesheet' id='theeb-lingual-style-css'  href="{{ env('SITE_BASE_URL','http://theebonline.com/') }}/wp-content/themes/theeb/style-ar.css?ver=4.9.5" type='text/css' media='all' />
+        <link rel='stylesheet' id='theeb-lingual-style-css'  href="{{ env('SITE_BASE_URL','//theebonline.com/') }}/wp-content/themes/theeb/style-ar.css?ver=4.9.5" type='text/css' media='all' />
         <link rel="stylesheet" href="{{ asset('css/theeb-ar.css') }}">
     @endif
 		

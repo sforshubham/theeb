@@ -22,7 +22,7 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}
                         <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').': ' . $list->ReservationNo : '&nbsp;' }}
-                            <span class="floatLeft" style="font-size: medium;" >{!! isset($list->ReservationStatus) ? __('Status').': ' . $list->ReservationStatus : '' !!}</span>
+                            <span class="floatLeft" style="font-size: medium;" >{!! ($list->RefundRequestExist == 'Y') ? __('Status').': '. __('Refund in process') :  __('Status').': ' . $list->ReservationStatus !!}</span>
                         </span>
                     </h4><br/>
 

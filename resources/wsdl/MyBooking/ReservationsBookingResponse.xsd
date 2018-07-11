@@ -34,6 +34,7 @@
                     <xs:element type="xs:string" name="SalesTax"/>
                     <xs:element type="xs:string" name="TotalDiscount"/>
                     <xs:element type="xs:string" name="TotalWithTax"/>
+                    <xs:element type="xs:string" name="RefundRequestExist"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
