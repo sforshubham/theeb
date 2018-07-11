@@ -104,5 +104,5 @@ Route::get('/cront', function () {
     Artisan::call('schedule:run');
 });
 
-Route::match(['get', 'post'], '/payfort/trans_feedback', 'PayfortController@transaction');
-Route::match(['get', 'post'], '/payfort/trans_notify', 'PayfortController@notification');
+Route::post('/payfort/trans_feedback', 'PayfortController@transaction');
+Route::post('/payfort/trans_notify', 'PayfortController@notification');

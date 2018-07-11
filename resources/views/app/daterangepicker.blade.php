@@ -12,6 +12,7 @@
             @endif
             jQuery('input#daterangepicker').daterangepicker({
                 autoUpdateInput: false,
+                showDropdowns:true,
                 opens: '{{ __('open_daterange_picker') }}',
                 maxDate: moment().format('DD/MM/Y'),
                 ranges: {

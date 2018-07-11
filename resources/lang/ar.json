@@ -116,5 +116,8 @@
     "Update":"تحديث",
     "Driver Image":"صورة سائق",
     "Car Reservation":"حجز السيارة",
-    "Agreement":"اتفاقية"
+    "Agreement":"اتفاقية",
+    "One Time Password":"كلمة السر لمرة واحدة",
+    "Enter One Time Password":"أدخل كلمة مرور مرة واحدة",
+    "Verify":"التحقق"
 }

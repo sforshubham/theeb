@@ -13,7 +13,7 @@
                                         <form action="{{url('/verify')}}" method="POST" name="verify-form">
                                             <input type="text" disabled="disabled" name="PassportID" placeholder="{{ __('ID Number') }}" class="username" value="{{ $PassportID ?? ''}}"/>
                                             <input type="text" disabled="disabled" name="EmailID" placeholder="{{ __('Email') }}" class="username" value="{{ $EmailID ?? ''}}"/>
-                                            <input autocomplete="new-password" type="password" name="OTP" placeholder="{{ __('OTP') }}" class="email"/>
+                                            <input autocomplete="new-password" type="password" name="OTP" placeholder="{{ __('One Time Password') }}" class="email"/>
                                             <input type="hidden" name="PassportID" value="{{ $PassportID ?? ''}}">
                                             <input type="hidden" name="EmailID" value="{{ $EmailID ?? ''}}">
                                             <input type="button" name="verify" value="{{ __('Verify') }}" />

@@ -38,7 +38,7 @@ return [
         'new_reservation' => 'Reservation created successfully',
         'extend_reservation' => 'Booking details updated successfully',
         'profile_updated' => 'Profile updated successfully',
-        'signup_success' => 'An email with OTP is sent to your email. Please enter otp here to complete verification',
+        'signup_success' => 'An email with One Time password (OTP) is sent to your email. Please enter OTP here to complete verification',
         'verify_success' => 'Successfully verified. Please check your email for login password',
         'already_verified' => 'Your account is already verified. Please login to continue'
     ],

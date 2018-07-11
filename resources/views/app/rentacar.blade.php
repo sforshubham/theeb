@@ -51,7 +51,7 @@
                                     <input type="hidden" name="DropDate" id="in_date" value="{{ $input_data['DropDate'] ?? '' }}"/>
                                     <input type="hidden" name="DropTime" id="in_time" value="{{ $input_data['DropTime'] ?? '' }}"/>
                                     <input type="hidden" name="CarGroup" value="{{$selected['CarGroup']}}" />
-                                    <input class="widthbig" style="background-color: #dd5094 !important;" type="submit" id="FormSubmit" Value="{{ __('Book Now') }}" />
+                                    <input class="widthbig" style="background-color: #e3a6c2 !important;" type="submit" id="FormSubmit" Value="{{ __('Book Now') }}" />
                                 </div>
                             </form>
                             </div>
