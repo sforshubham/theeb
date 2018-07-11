@@ -528,3 +528,17 @@ span.my-booking-reservation-no{font-size: small; margin-top: 8px; display: block
 .widthbig{width: 250px !important}
 
 .widthsm{width: 230px !important}
+
+.disable-extend {
+  opacity: .6;
+  cursor: default !important;
+  pointer-events: none;
+  background:#f59c1e;
+}
+
+.disable-cancel {
+  opacity: .5;
+  cursor: default !important;
+  pointer-events: none;
+  background:#bf0005;
+}

@@ -18,11 +18,12 @@
                     @php ($result->OnGoing->Reservation = [$result->OnGoing->Reservation])
                 @endif
                 @foreach ($result->OnGoing->Reservation as $list)
+                @php ($is_refund_request = isset($list->RefundRequestExist) && ($list->RefundRequestExist == 'Y') ? 1 : 0 )
                 <div class="single-car-section">
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}
                         <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').': ' . $list->ReservationNo : '&nbsp;' }}
-                            <span class="floatLeft" style="font-size: medium;" >{!! ($list->RefundRequestExist == 'Y') ? __('Status').': '. __('Refund in process') :  __('Status').': ' . $list->ReservationStatus !!}</span>
+                            <span class="floatLeft" style="font-size: medium;" >{!! $is_refund_request == 1 ? __('Status').': '. __('Refund in process') :  __('Status').': ' . $list->ReservationStatus !!}</span>
                         </span>
                     </h4><br/>
 
@@ -37,8 +38,8 @@
                         </span>
                     </div>
                     <div class="buttons-all" real-reservation-no="{{ $list->ReservationNo }}" reservation-no="{{ $list->InternetReservationNo }}" out-date="{{ $list->CheckOutDate }}" in-date="{{ $list->CheckInDate }}" out-time="{{$list->CheckOutTime}}" in-time="{{$list->CheckInTime}}" show-out-time="{{convert24hrto12hr($list->CheckOutTime) }}" show-in-time="{{convert24hrto12hr($list->CheckInTime)}}" out-branch-name ="{{ remove_numbers($list->CheckOutBranch) }}"  in-branch-name ="{{ remove_numbers($list->CheckInBranch) }}"  out-branch-code ="{{ remove_characters($list->CheckOutBranch) }}" in-branch-code ="{{ remove_characters($list->CheckInBranch) }}" total-paid="{{ $list->TotalPaid }}" total-before-tax="{{ $list->TotalBeforeTax }}" sales-tax="{{ $list->SalesTax }}" total-discount="{{ $list->TotalDiscount }}" total-with-tax="{{ $list->TotalWithTax }}" car-group-desc="{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}" res-status="{{ $list->ReservationStatus == 'Clonfirmed' ? 'Confirmed' : $list->ReservationStatus }}">
-                        <a href="javascript:" class="cancel-booking-btn buttons">{{ __('Cancel Booking') }}</a>
-                        <a href="javascript:" class="extend-booking-btn buttons">{{ __('Extend Booking') }}</a>
+                        <a href="javascript:" class="{!! $is_refund_request == 1 ? 'disable-cancel' : 'cancel-booking-btn' !!} buttons">{{ __('Cancel Booking') }}</a>
+                        <a href="javascript:" class="{!! $is_refund_request == 1 ? 'disable-extend' : 'extend-booking-btn' !!} buttons">{{ __('Extend Booking') }}</a>
                         <a href="javascript:" class="view-booking-btn buttons">{{ __('View Booking') }}</a>
                     </div>
                 </div>
