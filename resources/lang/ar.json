@@ -120,5 +120,8 @@
     "One Time Password":"كلمة السر لمرة واحدة",
     "Enter One Time Password":"أدخل كلمة مرور مرة واحدة",
     "Verify":"التحقق",
-    "Refund in process":"برد في العملية"
+    "Refund in Progress":"برد في التقدم",
+    "Open":"افتح",
+    "Confirmed":"تم تأكيد",
+    "Closed":"مغلق"
 }

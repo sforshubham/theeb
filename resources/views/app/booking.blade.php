@@ -23,7 +23,7 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}
                         <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').': ' . $list->ReservationNo : '&nbsp;' }}
-                            <span class="floatLeft" style="font-size: medium;" >{!! $is_refund_request == 1 ? __('Status').': '. __('Refund in process') :  __('Status').': ' . $list->ReservationStatus !!}</span>
+                            <span class="floatLeft" style="font-size: medium;" >{!! $is_refund_request == 1 ? __('Status').': '. __('Refund in Progress') :  __('Status').': ' . __($list->ReservationStatus) !!}</span>
                         </span>
                     </h4><br/>
 
@@ -71,7 +71,7 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}
                         <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').': ' . $list->ReservationNo : '&nbsp;' }}
-                            <span class="floatLeft" style="font-size: medium;" >{!! isset($list->ReservationStatus) ? __('Status').': ' . $list->ReservationStatus : '' !!}</span>
+                            <span class="floatLeft" style="font-size: medium;" >{!! isset($list->ReservationStatus) ? __('Status').': ' . __($list->ReservationStatus) : '' !!}</span>
                         </span>
                     </h4><br/>
                     <div class="pickup-drop-time border-right">
@@ -113,7 +113,7 @@
                     <img src="{{ $list->CarGroupImagePath }}" onerror="this.src='{!!$setting['car_img']!!}'"/>
                     <h4 class="truncate-text">{{ $list->CarGroupDescription ? $list->CarGroupDescription : $setting['car_desc'] }}
                         <span class="my-booking-reservation-no">{{ isset($list->ReservationNo) ? __('Reservation No').': ' . $list->ReservationNo : '&nbsp;' }}
-                            <span class="floatLeft" style="font-size: medium;" >{!! isset($list->ReservationStatus) ? __('Status').': ' . $list->ReservationStatus : '' !!}</span>
+                            <span class="floatLeft" style="font-size: medium;" >{!! isset($list->ReservationStatus) ? __('Status').': ' . __($list->ReservationStatus) : '' !!}</span>
                         </span>
                     </h4><br/>
                     <div class="pickup-drop-time border-right">
