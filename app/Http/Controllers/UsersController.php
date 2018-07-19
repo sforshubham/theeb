@@ -328,6 +328,7 @@ class UsersController extends SoapController
             $request_body['RateNo'] = $sess_data->Price->CarGroupPrice[$index]->RateNo;
             $request_body['CarGroup'] = $sess_data->Price->CarGroupPrice[$index]->CarGrop;
 
+            $request_body['Remarks'] = 'Online-Web';
             $request_body['ReservationNo'] = $res_no;
 
             $result = $this->reservation(['Reservation' => $request_body]);
