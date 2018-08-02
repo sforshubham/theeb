@@ -104,9 +104,9 @@ Version: 1.0
 
 .left-wrap-profile{width:27%; padding:15px; border:1px solid #ccc; border-radius:10px;}
 
-.profile-image-show{ text-align:center;}
+.profile-image-show{ text-align: center; width: 150px; height: 150px; border-radius: 100%; overflow: hidden; margin: 0 auto;}
 
-.profile-image-show img{border-radius:100%; max-width:150px;}
+.profile-image-show img{border-radius:0}
 
 .profile-image-show h5{font-size:16px;    color: #1269a0;}
 
